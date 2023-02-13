@@ -1,8 +1,22 @@
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 export default function App() {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const open = Boolean(anchorEl);
+
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
   return (
     <div className="App">
       <div className="rect1"></div>
@@ -20,7 +34,26 @@ export default function App() {
               <Button variant="outlined">Большой взрыв</Button>
               <Button variant="outlined">Солнечная Система</Button>
               <Button variant="outlined">Образование Луны</Button>
-              <Button variant="outlined">История Земли</Button>
+              <Button
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}>
+                История Земли
+              </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  'aria-labelledby': 'basic-button',
+                }}>
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
             </div>
           </div>
           <div className="instrument">
