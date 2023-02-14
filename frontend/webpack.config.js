@@ -39,7 +39,10 @@ module.exports = {
     static: path.resolve(__dirname, 'src'),
     port: 8080,
     open: true,
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
-  plugins: [new MiniCssExtractPlugin()]
+  plugins: [
+    new MiniCssExtractPlugin()
+  ]
 }
