@@ -24,35 +24,13 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="rect1"></div>
-      <div className="rect2"></div>
       <div className="wrapper">
-        <header className="header">
-          <Link to="">
-            <div className="title">
-              <h1>история вселенной</h1>
-            </div>
-          </Link>
-        </header>
-        <main className="content">
-          <Routes>
-            {routes.map((obj, i) => {
-              return <Route path={obj.path} element={obj.element} key={i} />;
-            })}
-          </Routes>
-        </main>
+        <Routes>
+          {routes.map((obj, i) => {
+            return <Route path={obj.path} element={obj.element} key={i} />;
+          })}
+        </Routes>
       </div>
-      <footer className="footer">
-        <Link to="/about">
-          <Button>О проекте</Button>
-        </Link>
-        <Link to="/participants">
-          <Button>Участники</Button>
-        </Link>
-        <Link to="/sources">
-          <Button>Источники</Button>
-        </Link>
-      </footer>
     </div>
   );
 }
