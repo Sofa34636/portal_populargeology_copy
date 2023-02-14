@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { Layout } from '../../components/Layout/Layout';
 
 export const ArticlePage = () => {
   return (
     <div>
-      <h1>ArticlePage</h1>
+      <Layout/>
     </div>
   );
 };
