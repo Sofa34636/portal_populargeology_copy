@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
+
 
 export const Home = () => {
   return (
@@ -24,7 +24,7 @@ export const Home = () => {
             <Button variant="outlined">Большой взрыв</Button>
             <Button variant="outlined">Солнечная Система</Button>
             <Button variant="outlined">Образование Луны</Button>
-            <Button variant="outlined">История Земли</Button>
+            <EarthTypeMenu/>
           </div>
         </div>
         <div className="instrument">

@@ -8,9 +8,10 @@ import App from './App';
 
 import './styles/app.scss';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root'),
-);
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('root');
+const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+root.render(
+<BrowserRouter>
+  <App />
+</BrowserRouter>,);

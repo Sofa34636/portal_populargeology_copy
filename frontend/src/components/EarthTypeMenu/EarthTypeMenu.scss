@@ -1,0 +1,21 @@
+// menu
+.MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
+    text-align: center;
+    background-color: $black;
+    color: $white;
+    text-transform: uppercase;
+    font-family: RSRegular;
+    :hover {
+        color: $orange;
+        // background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+        // border-radius: 100px;
+        // transform: matrix(1, -0.01, 0, 1, 0, 0);
+    }
+}
+.menu {
+    .btn-selected {
+        background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+        border-radius: 6px;
+        // transform: matrix(1, -0.01, 0, 1, 0, 0);
+    }
+}

@@ -1,0 +1,111 @@
+.wrapper {
+	text-transform: uppercase;
+	padding-bottom: 2.5rem;
+
+	padding-top: 32px;
+
+	button {
+		padding: 12px 24px;
+		height: 40px;
+		border: 1px solid #F4F4F4;
+		border-radius: 6px;
+		text-align: center;
+		color: $white;
+		border-color: $white;
+        &:hover {
+            color: $orange;
+            border-color: $orange;
+        }
+	}
+}
+
+.title {
+	padding-bottom: 48px;
+
+	h1 {
+		font-family: RSLight;
+		font-size: 32px;
+		font-weight: 250;
+		line-height: 60px;
+	}
+}
+
+.content {
+	h2 {
+		font-family: RSRegular;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 32px;
+
+		padding-bottom: 45px;
+	}
+
+	.time_buttons {
+		margin-left: 78px;
+		padding-bottom: 96px;
+        display: flex;
+        flex-direction: row;
+
+		button {
+			font-family: RSRegular;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 16px;
+			margin-right: 32px;
+		}
+	}
+
+	.instrument_buttons {
+		margin-left: 78px;
+		padding-bottom: 96px;
+
+		button {
+			font-family: RSRegular;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 16px;
+			margin-right: 32px;
+			margin-right: 32px;
+		}
+	}
+
+	.learn {
+		button {
+			font-family: RSBold;
+			font-weight: 600;
+			font-size: 20px;
+			line-height: 20px;
+			padding: 24px 24px;
+			text-align: center;
+		}
+	}
+}
+
+
+.footer {
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;
+
+	button {
+        border: none;
+		text-transform: none;
+		color: $white;
+		font-family: 'RSLight';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 14px;
+		text-align: center;
+		color: #BBBBBB;
+	}
+}

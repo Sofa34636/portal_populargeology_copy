@@ -5,7 +5,7 @@ enum mainTimeline {
   'История земли',
 }
 
-enum historyOfEarth {
+export const historyOfEarth = [
   'черная земля',
   'голубая земля',
   'серая земля',
@@ -17,4 +17,4 @@ enum historyOfEarth {
   'эпоха человека',
   'настоящее',
   'будущее',
-}
+]
