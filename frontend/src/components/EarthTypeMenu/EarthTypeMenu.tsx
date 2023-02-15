@@ -9,15 +9,14 @@ export const EarthTypeMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [title, setTitle] = React.useState<string>("История Земли")
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (event: React.MouseEvent<any>) => {
-    setAnchorEl(null);
     if (event.type == 'click' && event.currentTarget.innerText != '') {
         setTitle(event.currentTarget.innerText)
         const button: HTMLElement | null = document.getElementById('earth-menu-button')
-        if (title != 'История Земли') {
+        if (title != 'История Земли'.toUpperCase()) {
             if (!button.classList.contains('btn-selected')) {
                 button.classList.add('btn-selected')
             }
@@ -25,6 +24,7 @@ export const EarthTypeMenu = () => {
             button.classList.remove('btn-selected')
         }
     }
+    setAnchorEl(null);
   };
 
   return (
@@ -35,7 +35,7 @@ export const EarthTypeMenu = () => {
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        onMouseOver={handleClick}
+        onMouseOver={handleOpen}
       >
         { title }
       </Button>
