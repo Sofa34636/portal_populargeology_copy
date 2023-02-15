@@ -20,7 +20,7 @@ export const EarthTypeMenu = () => {
             if (!button.classList.contains('btn-selected')) {
                 button.classList.add('btn-selected')
             }
-        } else if (title == 'История Земли') {
+        } else if (title == 'История Земли'.toUpperCase()) {
             button.classList.remove('btn-selected')
         }
     }
