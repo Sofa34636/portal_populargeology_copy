@@ -54,6 +54,10 @@
 			font-size: 16px;
 			line-height: 16px;
 			margin-right: 32px;
+            &.btn-selected {
+                background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+                border-radius: 6px;
+            }
 		}
 	}
 
@@ -69,6 +73,10 @@
 			line-height: 16px;
 			margin-right: 32px;
 			margin-right: 32px;
+            &.btn-deactivated {
+                border: 1px solid #313131; 
+                color: #313131;
+            }
 		}
 	}
 

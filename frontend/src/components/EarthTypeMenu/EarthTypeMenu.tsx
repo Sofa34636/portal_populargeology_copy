@@ -5,25 +5,29 @@ import MenuItem from '@mui/material/MenuItem';
 import { historyOfEarth } from '../../types/timeline';
 
 
-export const EarthTypeMenu = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [title, setTitle] = React.useState<string>("История Земли")
+export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any>) => void, title: string }) => {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+//   const [title, setTitle] = React.useState<string>("ИСТОРИЯ ЗЕМЛИ")
   const open = Boolean(anchorEl);
   const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = (event: React.MouseEvent<any>) => {
-    if (event.type == 'click' && event.currentTarget.innerText != '') {
-        setTitle(event.currentTarget.innerText)
-        const button: HTMLElement | null = document.getElementById('earth-menu-button')
-        if (title != 'История Земли'.toUpperCase()) {
-            button.classList.add('btn-selected')
-        } else if (title == 'История Земли'.toUpperCase()) {
-            button.classList.remove('btn-selected')
-        }
-    }
-    setAnchorEl(null);
-  };
+//   const handleClose = (event: React.MouseEvent<any>) => {
+//     if (event.type == 'click' && event.currentTarget.innerText != '') {
+//         setTitle(event.currentTarget.innerText)
+//         const button: HTMLElement | null = document.getElementById('earth-menu-button')
+//         if (title != 'История Земли'.toUpperCase()) {
+//             button.classList.add('btn-selected')
+//         } else if (title == 'История Земли'.toUpperCase()) {
+//             button.classList.remove('btn-selected')
+//         }
+//     }
+//     setAnchorEl(null);
+//   };
+  const handleCloseMenu = (event: React.MouseEvent<any>) => {
+    props.handleClose(event)
+    setAnchorEl(null)
+  }
 
   return (
     <div className='menu'>
@@ -35,22 +39,22 @@ export const EarthTypeMenu = () => {
         aria-expanded={open ? 'true' : undefined}
         onMouseOver={handleOpen}
       >
-        { title }
+        { props.title }
       </Button>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={props.handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
-          onMouseLeave: handleClose,
+          onMouseLeave: handleCloseMenu,
         }}
       >
        {
         historyOfEarth.map((type, index) => {
             return (
-                <MenuItem key={index} onClick={handleClose}><span>{ type }</span></MenuItem>
+                <MenuItem key={index} onClick={handleCloseMenu}><span>{ type }</span></MenuItem>
             )
         })
        } 

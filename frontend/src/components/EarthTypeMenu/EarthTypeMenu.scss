@@ -1,4 +1,5 @@
 // menu
+
 .MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
     text-align: center;
     background-color: $black;
@@ -8,7 +9,14 @@
     :hover {
         color: $orange;
     }
+    #earth-menu-button {
+        border-color: $orange;
+        color: $orange;
+    }
 }
+
+// button
+
 .menu {
     .btn-selected {
         background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
