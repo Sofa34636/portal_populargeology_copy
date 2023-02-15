@@ -17,9 +17,7 @@ export const EarthTypeMenu = () => {
         setTitle(event.currentTarget.innerText)
         const button: HTMLElement | null = document.getElementById('earth-menu-button')
         if (title != 'История Земли'.toUpperCase()) {
-            if (!button.classList.contains('btn-selected')) {
-                button.classList.add('btn-selected')
-            }
+            button.classList.add('btn-selected')
         } else if (title == 'История Земли'.toUpperCase()) {
             button.classList.remove('btn-selected')
         }
