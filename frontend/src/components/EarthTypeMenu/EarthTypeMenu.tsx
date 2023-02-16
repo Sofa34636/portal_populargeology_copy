@@ -5,7 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { historyOfEarth } from '../../types/timeline';
 
 
-export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any>) => void, title: string }) => {
+export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any> | MouseEvent) => void, title: string }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 //   const [title, setTitle] = React.useState<string>("ИСТОРИЯ ЗЕМЛИ")
   const open = Boolean(anchorEl);
@@ -24,10 +24,18 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
 //     }
 //     setAnchorEl(null);
 //   };
-  const handleCloseMenu = (event: React.MouseEvent<any>) => {
+  const handleCloseMenu = (event: React.MouseEvent<any> | MouseEvent) => {
     props.handleClose(event)
     setAnchorEl(null)
   }
+
+  React.useEffect(() => {
+    window.addEventListener('click', handleCloseMenu)
+
+    return () => {
+      window.removeEventListener('click', handleCloseMenu)
+    }
+  }, [handleCloseMenu])
 
   return (
     <div className='menu'>
