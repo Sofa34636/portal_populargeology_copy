@@ -15,9 +15,9 @@ import { ArticlePage } from './pages/ArticlePage/ArticlePage';
 export default function App() {
   const routes = [
     { path: '', element: <Home /> },
-    { path: '/about', element: <About /> },
+    // { path: '/about', element: <About /> },
     { path: '/participants', element: <ParticipantsPage /> },
-    { path: '/sources', element: <SourcesPage /> },
+    // { path: '/sources', element: <SourcesPage /> },
     { path: '/article', element: <ArticlePage /> },
     { path: '/*', element: <NotFound /> },
   ];

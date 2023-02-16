@@ -6,42 +6,56 @@ import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
 
 
 export const Home = () => {
+  const defaultMenuTitle = 'ИСТОРИЯ ЗЕМЛИ'
+  const [selectedTime, setSelectedTime] = React.useState<HTMLButtonElement | null>(null)
+  const [selectedInstrument, setSelectedInstrument] = React.useState<HTMLButtonElement | null>(null)
+  const [titleEarthMenu, setTitleEarthMenu] = React.useState<string>(defaultMenuTitle)
+
   const handleTimeClick = (event: React.MouseEvent<any> | MouseEvent) => {
     if (event.type == 'click') {
       const menuButton: HTMLElement | null = document.getElementById('earth-menu-button') // EarthTypeMenu.tsx
       const reliefButton: HTMLElement | null = document.getElementById('reliefInstrument')
       const threeDEarthButton: HTMLElement | null = document.getElementById('3dEarthInstrument')
       if (event.currentTarget instanceof HTMLLIElement && event.currentTarget.innerText != '') {
-        if (event.currentTarget.innerText != 'ИСТОРИЯ ЗЕМЛИ') {
+        if (event.currentTarget.innerText != defaultMenuTitle) {
           menuButton.classList.add('btn-selected')
-          reliefButton.classList.remove('btn-deactivated')
-          threeDEarthButton.classList.remove('btn-deactivated')
+          reliefButton.classList.remove('btn-deactivated', 'btn-selected')
+          threeDEarthButton.classList.remove('btn-deactivated', 'btn-selected')
           if (selectedTime != null) {
             selectedTime.classList.remove('btn-selected')
           }
         setSelectedTime(null)
-        setTitle(event.currentTarget.innerText)
+        setTitleEarthMenu(event.currentTarget.innerText)
         }
       } else if (event.currentTarget instanceof HTMLButtonElement) {
         event.currentTarget.classList.add('btn-selected')
         reliefButton.classList.add('btn-deactivated')
+        reliefButton.classList.remove('btn-selected')
         threeDEarthButton.classList.add('btn-deactivated')
+        threeDEarthButton.classList.remove('btn-selected')
         if (selectedTime != null && selectedTime != event.currentTarget) {
             selectedTime.classList.remove('btn-selected')
         }
         setSelectedTime(event.currentTarget)
-        setTitle('ИСТОРИЯ ЗЕМЛИ')
+        setTitleEarthMenu(defaultMenuTitle)
         menuButton.classList.remove('btn-selected')
       }
     }
   }
 
   const handleInstrumentClick = (event: React.MouseEvent<any>) => {
-
+    if (event.type == 'click') {
+      if (event.currentTarget instanceof HTMLButtonElement) {
+        if (!event.currentTarget.classList.contains('btn-deactivated')) {
+          event.currentTarget.classList.add('btn-selected')
+        }
+        if (selectedInstrument != null && selectedInstrument != event.currentTarget) {
+          selectedInstrument.classList.remove('btn-selected')
+        }
+        setSelectedInstrument(event.currentTarget)
+      }
+    }
   }
-  const [selectedTime, setSelectedTime] = React.useState<HTMLButtonElement | null>(null)
-  const [selectedInstrument, setSelectedInstrument] = React.useState<HTMLButtonElement | null>(null)
-  const [title, setTitle] = React.useState<string>('ИСТОРИЯ ЗЕМЛИ')
   return (
     <>
       <div className="rect1"></div>
@@ -60,19 +74,19 @@ export const Home = () => {
             <Button onClick={handleTimeClick} variant="outlined">Большой взрыв</Button>
             <Button onClick={handleTimeClick} variant="outlined">Солнечная Система</Button>
             <Button onClick={handleTimeClick} variant="outlined">Образование Луны</Button>
-            <EarthTypeMenu title={title} handleClose={handleTimeClick}/>
+            <EarthTypeMenu title={titleEarthMenu} handleClose={handleTimeClick}/>
           </div>
         </div>
         <div className="instrument">
           <h2>Выбирай инструмент</h2>
           <div className="instrument_buttons">
-            <Button variant="outlined">видео</Button>
+            <Button onClick={handleInstrumentClick} variant="outlined">видео</Button>
             {/* <Link to="/article"> */}
-            <Button variant="outlined">статьи</Button>
+            <Button onClick={handleInstrumentClick} variant="outlined">статьи</Button>
             {/* </Link> */}
-            <Button variant="outlined">Галерея</Button>
-            <Button id='reliefInstrument' className='btn-deactivated' variant="outlined">рельеф</Button>
-            <Button id='3dEarthInstrument' className='btn-deactivated' variant="outlined">3d земли</Button>
+            <Button onClick={handleInstrumentClick} variant="outlined">Галерея</Button>
+            <Button id='reliefInstrument' className='btn-deactivated' onClick={handleInstrumentClick} variant="outlined">рельеф</Button>
+            <Button id='3dEarthInstrument' className='btn-deactivated' onClick={handleInstrumentClick} variant="outlined">3d земли</Button>
           </div>
         </div>
         <div className="learn">
@@ -80,15 +94,11 @@ export const Home = () => {
         </div>
       </main>
       <footer className="footer">
-        <Link to="/about">
-          <Button>О проекте</Button>
-        </Link>
+        <Button><a href='https://populargeology.ru/about/#'>О проекте</a></Button>
         <Link to="/participants">
           <Button>Участники</Button>
         </Link>
-        <Link to="/sources">
-          <Button>Источники</Button>
-        </Link>
+        <Button><a href='https://populargeology.ru/istochniki/'>Источники</a></Button>
       </footer>
     </>
   );

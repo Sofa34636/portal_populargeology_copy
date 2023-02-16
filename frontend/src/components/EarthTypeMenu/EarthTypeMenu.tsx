@@ -7,23 +7,11 @@ import { historyOfEarth } from '../../types/timeline';
 
 export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any> | MouseEvent) => void, title: string }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
-//   const [title, setTitle] = React.useState<string>("ИСТОРИЯ ЗЕМЛИ")
   const open = Boolean(anchorEl);
   const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
-  };
-//   const handleClose = (event: React.MouseEvent<any>) => {
-//     if (event.type == 'click' && event.currentTarget.innerText != '') {
-//         setTitle(event.currentTarget.innerText)
-//         const button: HTMLElement | null = document.getElementById('earth-menu-button')
-//         if (title != 'История Земли'.toUpperCase()) {
-//             button.classList.add('btn-selected')
-//         } else if (title == 'История Земли'.toUpperCase()) {
-//             button.classList.remove('btn-selected')
-//         }
-//     }
-//     setAnchorEl(null);
-//   };
+  }
+
   const handleCloseMenu = (event: React.MouseEvent<any> | MouseEvent) => {
     props.handleClose(event)
     setAnchorEl(null)
@@ -53,7 +41,7 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={props.handleClose}
+        onClose={handleCloseMenu}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
           onMouseLeave: handleCloseMenu,
@@ -62,7 +50,7 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
        {
         historyOfEarth.map((type, index) => {
             return (
-                <MenuItem key={index} onClick={handleCloseMenu}><span>{ type }</span></MenuItem>
+              <MenuItem key={index} onClick={handleCloseMenu}><span>{ type }</span></MenuItem>
             )
         })
        } 
