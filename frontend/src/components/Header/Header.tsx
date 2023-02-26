@@ -1,17 +1,8 @@
 import * as React from 'react';
-
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
+import BreadcrumbsComponent from '../Breadcrumbs/Breadcrumbs';
 
 export const Header = () => {
   return (
-    <Breadcrumbs aria-label="breadcrumb">
-      <Link underline="hover" color="white" href="/">
-        MUI
-      </Link>
-      <Link underline="hover" color="white" href="/material-ui/getting-started/installation/">
-        Core
-      </Link>
-    </Breadcrumbs>
+    <BreadcrumbsComponent time="большой взрыв" instrument='статьи'/>
   );
 };

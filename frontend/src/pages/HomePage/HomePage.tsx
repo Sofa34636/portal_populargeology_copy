@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
 
-
+// TODO hover button menu, close menu after mouse leaving
 export const Home = () => {
   const defaultMenuTitle = 'ИСТОРИЯ ЗЕМЛИ'
   const [selectedTime, setSelectedTime] = React.useState<HTMLButtonElement | null>(null)
