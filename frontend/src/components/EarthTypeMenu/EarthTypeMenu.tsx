@@ -50,7 +50,7 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
        {
         historyOfEarth.map((type, index) => {
             return (
-              <MenuItem key={index} onClick={handleCloseMenu}><span>{ type }</span></MenuItem>
+              <MenuItem key={index} onClick={handleCloseMenu}><span>{ type.toUpperCase() }</span></MenuItem>
             )
         })
        } 

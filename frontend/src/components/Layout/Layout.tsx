@@ -4,12 +4,16 @@ import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
 import '../../styles/app.scss';
+import { LayoutProps } from '../../types/LayoutProps';
 
-export const Layout = () => {
+export const Layout = (props: LayoutProps) => {
   return (
     <div>
       <header className="header">
-        <Header />
+        <Header
+          time={props.time} 
+          instrument={props.instrument} 
+        />
       </header>
       <main className="content"></main>
       <footer className='footer'>

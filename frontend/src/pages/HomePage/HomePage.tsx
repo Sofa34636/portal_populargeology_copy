@@ -14,7 +14,7 @@ export const HomePage = () => {
     'РЕЛЬЕФ' : '/relief',
     '3D ЗЕМЛИ' : '/threeDEarth',
   }
-  const [selectedTimeButton, setSelectedTimeButton] = React.useState<HTMLButtonElement | null>(null)
+  const [selectedTimeButton, setSelectedTimeButton] = React.useState<HTMLButtonElement | HTMLLIElement | null>(null)
   const [selectedInstrumentButton, setSelectedInstrumentButton] = React.useState<HTMLButtonElement | null>(null)
   const [titleEarthMenu, setTitleEarthMenu] = React.useState<string>(defaultMenuTitle)
 
@@ -31,7 +31,7 @@ export const HomePage = () => {
           if (selectedTimeButton != null) {
             selectedTimeButton.classList.remove('btn-selected')
           }
-        setSelectedTimeButton(null)
+        setSelectedTimeButton(event.currentTarget)
         setTitleEarthMenu(event.currentTarget.innerText)
         }
       } else if (event.currentTarget instanceof HTMLButtonElement) {
@@ -63,6 +63,11 @@ export const HomePage = () => {
       }
     }
   }
+
+  // const handleLearnClick = () => {
+  //   console.log(selectedInstrumentButton)
+  //   console.log(selectedTimeButton)
+  // }
   return (
     <>
       <div className="rect1"></div>
@@ -89,15 +94,16 @@ export const HomePage = () => {
           <div className="instrument_buttons">
             <Button onClick={handleInstrumentClick} variant="outlined">видео</Button>
             <Button onClick={handleInstrumentClick} variant="outlined">статьи</Button>
-            <Button onClick={handleInstrumentClick} variant="outlined">Галерея</Button>
+            <Button onClick={handleInstrumentClick} variant="outlined">галерея</Button>
             <Button id='reliefInstrument' className='btn-deactivated' onClick={handleInstrumentClick} variant="outlined">рельеф</Button>
             <Button id='3dEarthInstrument' className='btn-deactivated' onClick={handleInstrumentClick} variant="outlined">3d земли</Button>
           </div>
         </div>
         <div className="learn">
           <Button variant="outlined">
-            <Link to={ selectedInstrumentButton !== null ? instruments[selectedInstrumentButton.innerText] : instruments['ВИДЕО'] }
-             state={{ from: selectedTimeButton !== null ? selectedTimeButton.innerText : 'БОЛЬШОЙ ВЗРЫВ' }}
+            {/* TODO: Can't go to any route if instrument is chosen after time */}
+            <Link to={ selectedInstrumentButton != null ? instruments[selectedInstrumentButton.innerText] : instruments['ВИДЕО'] }
+            //  state={{ from: 'БОЛЬШОЙ ВЗРЫВ' }}
             >
               Изучать Вселенную
             </Link>
