@@ -5,10 +5,17 @@ import { Link } from 'react-router-dom';
 import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
 
 // TODO hover button menu, close menu after mouse leaving
-export const Home = () => {
+export const HomePage = () => {
   const defaultMenuTitle = 'ИСТОРИЯ ЗЕМЛИ'
-  const [selectedTime, setSelectedTime] = React.useState<HTMLButtonElement | null>(null)
-  const [selectedInstrument, setSelectedInstrument] = React.useState<HTMLButtonElement | null>(null)
+  const instruments = {
+    'ВИДЕО' : '/video',
+    'СТАТЬИ' : '/article',
+    'ГАЛЕРЕЯ' : '/gallery',
+    'РЕЛЬЕФ' : '/relief',
+    '3D ЗЕМЛИ' : '/threeDEarth',
+  }
+  const [selectedTimeButton, setSelectedTimeButton] = React.useState<HTMLButtonElement | null>(null)
+  const [selectedInstrumentButton, setSelectedInstrumentButton] = React.useState<HTMLButtonElement | null>(null)
   const [titleEarthMenu, setTitleEarthMenu] = React.useState<string>(defaultMenuTitle)
 
   const handleTimeClick = (event: React.MouseEvent<any> | MouseEvent) => {
@@ -21,10 +28,10 @@ export const Home = () => {
           menuButton.classList.add('btn-selected')
           reliefButton.classList.remove('btn-deactivated', 'btn-selected')
           threeDEarthButton.classList.remove('btn-deactivated', 'btn-selected')
-          if (selectedTime != null) {
-            selectedTime.classList.remove('btn-selected')
+          if (selectedTimeButton != null) {
+            selectedTimeButton.classList.remove('btn-selected')
           }
-        setSelectedTime(null)
+        setSelectedTimeButton(null)
         setTitleEarthMenu(event.currentTarget.innerText)
         }
       } else if (event.currentTarget instanceof HTMLButtonElement) {
@@ -33,10 +40,10 @@ export const Home = () => {
         reliefButton.classList.remove('btn-selected')
         threeDEarthButton.classList.add('btn-deactivated')
         threeDEarthButton.classList.remove('btn-selected')
-        if (selectedTime != null && selectedTime != event.currentTarget) {
-            selectedTime.classList.remove('btn-selected')
+        if (selectedTimeButton != null && selectedTimeButton != event.currentTarget) {
+            selectedTimeButton.classList.remove('btn-selected')
         }
-        setSelectedTime(event.currentTarget)
+        setSelectedTimeButton(event.currentTarget)
         setTitleEarthMenu(defaultMenuTitle)
         menuButton.classList.remove('btn-selected')
       }
@@ -49,10 +56,10 @@ export const Home = () => {
         if (!event.currentTarget.classList.contains('btn-deactivated')) {
           event.currentTarget.classList.add('btn-selected')
         }
-        if (selectedInstrument != null && selectedInstrument != event.currentTarget) {
-          selectedInstrument.classList.remove('btn-selected')
+        if (selectedInstrumentButton != null && selectedInstrumentButton != event.currentTarget) {
+          selectedInstrumentButton.classList.remove('btn-selected')
         }
-        setSelectedInstrument(event.currentTarget)
+        setSelectedInstrumentButton(event.currentTarget)
       }
     }
   }
@@ -81,23 +88,25 @@ export const Home = () => {
           <h2>Выбирай инструмент</h2>
           <div className="instrument_buttons">
             <Button onClick={handleInstrumentClick} variant="outlined">видео</Button>
-            {/* <Link to="/article"> */}
             <Button onClick={handleInstrumentClick} variant="outlined">статьи</Button>
-            {/* </Link> */}
             <Button onClick={handleInstrumentClick} variant="outlined">Галерея</Button>
             <Button id='reliefInstrument' className='btn-deactivated' onClick={handleInstrumentClick} variant="outlined">рельеф</Button>
             <Button id='3dEarthInstrument' className='btn-deactivated' onClick={handleInstrumentClick} variant="outlined">3d земли</Button>
           </div>
         </div>
         <div className="learn">
-          <Button variant="outlined">Изучать Вселенную</Button>
+          <Button variant="outlined">
+            <Link to={ selectedInstrumentButton !== null ? instruments[selectedInstrumentButton.innerText] : instruments['ВИДЕО'] }
+             state={{ from: selectedTimeButton !== null ? selectedTimeButton.innerText : 'БОЛЬШОЙ ВЗРЫВ' }}
+            >
+              Изучать Вселенную
+            </Link>
+          </Button>
         </div>
       </main>
       <footer className="footer">
         <Button><a href='https://populargeology.ru/about/#'>О проекте</a></Button>
-        <Link to="/participants">
-          <Button>Участники</Button>
-        </Link>
+        <Button><a href='https://populargeology.ru/about/#'>Участники</a></Button>
         <Button><a href='https://populargeology.ru/istochniki/'>Источники</a></Button>
       </footer>
     </>
