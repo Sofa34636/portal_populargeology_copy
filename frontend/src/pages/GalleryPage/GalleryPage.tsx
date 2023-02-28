@@ -1,11 +1,17 @@
 import * as React from 'react';
 
+import { useLocation } from 'react-router-dom';
+import { Layout } from '../../components/Layout/Layout';
+
+
 export const GalleryPage = () => {
+    const location = useLocation()
+    const { timeProp } = location.state
     return (
         <div>
-            <div className="rect1"></div>
-            <div className="rect2"></div>
-            <h1>GalleryPage</h1>
+            <Layout
+                layoutProps={{time: timeProp, instrument: 'ГАЛЛЕРЕЯ'}}
+            />
         </div>
     )
 }

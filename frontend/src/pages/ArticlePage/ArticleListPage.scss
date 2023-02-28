@@ -1,0 +1,13 @@
+.article_list_content {
+    ul {
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 2.5em;
+        row-gap: 32px;
+        padding-left: 67.5px;
+        padding-right: 67.5px;
+        padding-bottom: 35px;
+    }
+}

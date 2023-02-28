@@ -1,0 +1,17 @@
+.article_card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    width: 350px;
+    height: 270px;
+    color: $white;
+    .photo {
+        height: 210px;
+        // border-radius: 4px;
+    }
+    .title {
+        padding-top: 5px;
+        padding-bottom: 25px;
+    }
+}

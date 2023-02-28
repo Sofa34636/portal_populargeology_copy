@@ -6,16 +6,19 @@ import { Footer } from '../Footer/Footer';
 import '../../styles/app.scss';
 import { LayoutProps } from '../../types/LayoutProps';
 
-export const Layout = (props: LayoutProps) => {
+
+export const Layout = (props: { layoutProps: LayoutProps, children?: React.ReactNode }) => {
   return (
     <div>
       <header className="header">
         <Header
-          time={props.time} 
-          instrument={props.instrument} 
+          time={props.layoutProps.time} 
+          instrument={props.layoutProps.instrument} 
         />
       </header>
-      <main className="content"></main>
+      <main>
+        { props.children }
+      </main>
       <footer className='footer'>
         <Footer />
       </footer>

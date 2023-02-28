@@ -3,13 +3,12 @@ import { Layout } from '../../components/Layout/Layout'
 import { useLocation } from 'react-router-dom'
 
 export const VideoPage = () => {
-    // const location = useLocation()
-    // const { from } = location.state
+    const location = useLocation()
+    const { timeProp } = location.state
     return (
         <div>
             <Layout 
-                time={'awdawd'}
-                instrument='ВИДЕО'
+                layoutProps={{time: timeProp, instrument: 'ВИДЕО'}}
             />
         </div>
     )

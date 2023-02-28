@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 import './styles/app.scss';
-import { ArticlePage } from './pages/ArticlePage/ArticlePage';
+import { ArticleListPage } from './pages/ArticlePage/ArticleListPage';
 import { VideoPage } from './pages/VideoPage/VideoPage';
 import { GalleryPage } from './pages/GalleryPage/GalleryPage';
-import { ThreeDEarth } from './pages/ThreeDEarthPage/ThreeDEarth';
+import { ThreeDEarthPage } from './pages/ThreeDEarthPage/ThreeDEarth';
 import { ReliefPage } from './pages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
-import { NotFound } from './pages/NotFoundPage/NotFoundPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 export default function App() {
   const routes = [
     { path: '', element: <HomePage /> },
-    { path: '/article', element: <ArticlePage /> },
+    { path: '/article', element: <ArticleListPage /> },
     { path: '/video', element: <VideoPage />},
     { path: '/gallery', element: <GalleryPage /> },
-    { path: '/threeDEarth', element: <ThreeDEarth /> },
+    { path: '/threeDEarth', element: <ThreeDEarthPage /> },
     { path: '/relief', element: <ReliefPage /> },
-    { path: '/*', element: <NotFound /> },
+    { path: '/*', element: <NotFoundPage /> },
   ];
 
   return (

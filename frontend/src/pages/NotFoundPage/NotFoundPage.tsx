@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
 
-export const NotFound = () => {
-  return (
-    <div>
-      <h2>Not Found Page</h2>
-    </div>
-  );
-};
+export const NotFoundPage = () => {
+    return (
+        <div className='not_found'>
+          <h1>Page not found</h1>
+        </div>
+    )
+}

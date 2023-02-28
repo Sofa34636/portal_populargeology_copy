@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
 
@@ -14,6 +15,7 @@ export const HomePage = () => {
     'РЕЛЬЕФ' : '/relief',
     '3D ЗЕМЛИ' : '/threeDEarth',
   }
+  const navigate = useNavigate()
   const [selectedTimeButton, setSelectedTimeButton] = React.useState<HTMLButtonElement | HTMLLIElement | null>(null)
   const [selectedInstrumentButton, setSelectedInstrumentButton] = React.useState<HTMLButtonElement | null>(null)
   const [titleEarthMenu, setTitleEarthMenu] = React.useState<string>(defaultMenuTitle)
@@ -64,10 +66,12 @@ export const HomePage = () => {
     }
   }
 
-  // const handleLearnClick = () => {
-  //   console.log(selectedInstrumentButton)
-  //   console.log(selectedTimeButton)
-  // }
+  const handleLearnClick = () => {
+    navigate(
+      selectedInstrumentButton != null ? instruments[selectedInstrumentButton.innerText] : instruments['ВИДЕО'],
+      { state: { timeProp: selectedTimeButton != null ? selectedTimeButton.innerText : 'БОЛЬШОЙ ВЗРЫВ'} }
+      )
+  }
   return (
     <>
       <div className="rect1"></div>
@@ -100,13 +104,8 @@ export const HomePage = () => {
           </div>
         </div>
         <div className="learn">
-          <Button variant="outlined">
-            {/* TODO: Can't go to any route if instrument is chosen after time */}
-            <Link to={ selectedInstrumentButton != null ? instruments[selectedInstrumentButton.innerText] : instruments['ВИДЕО'] }
-            //  state={{ from: 'БОЛЬШОЙ ВЗРЫВ' }}
-            >
+          <Button onClick={handleLearnClick} variant="outlined">
               Изучать Вселенную
-            </Link>
           </Button>
         </div>
       </main>

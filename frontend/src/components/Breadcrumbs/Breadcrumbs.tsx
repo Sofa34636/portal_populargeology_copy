@@ -10,7 +10,7 @@ function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
 
 export default function BreadcrumbsComponent(props: BreadCrumbsProps) {
   return (
-    <div role="presentation">
+    <div role="presentation" className='breadcrumbs-container'>
       <Breadcrumbs aria-label="breadcrumb" className='breadcrumbs'>
         <Link underline="hover" color="white" href="/">
           Главная
