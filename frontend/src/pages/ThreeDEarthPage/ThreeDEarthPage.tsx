@@ -11,6 +11,7 @@ import { Earth } from '../../components/ToolComponents/Earth/Earth';
 
 export const ThreeDEarthPage = () => {
   const location = useLocation();
+  console.log(location.state);
   const { timeProp } = location.state;
   return (
     <div>
@@ -18,7 +19,7 @@ export const ThreeDEarthPage = () => {
         <Layout layoutProps={{ time: timeProp, instrument: '3Д ЗЕМЛЯ' }}>
           <Grid className="parent" container spacing={0}>
             <Grid className="left" item xs={6}>
-              <h1>Белая земля</h1>
+              <h1>{timeProp} </h1>
               <h2>650 млн. лет назад</h2>
               <p>
                 Три четверти миллиарда лет назад Земля вошла в период нестабильности климата.

@@ -46,6 +46,10 @@ p {
 	text-transform: none;
 }
 
-footer {
-	justify-content: start;
+
+.footer {
+	&_not_home {
+		justify-content: space-between;
+		width: 50%;
+	}
 }
