@@ -17,20 +17,12 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
     setAnchorEl(null)
   }
 
-  React.useEffect(() => {
-    window.addEventListener('click', handleCloseMenu)
-
-    return () => {
-      window.removeEventListener('click', handleCloseMenu)
-    }
-  }, [handleCloseMenu])
-
   return (
     <div className='menu'>
       <Button
         id="earth-menu-button"
         variant='outlined'
-        aria-controls={open ? 'basic-menu' : undefined}
+        aria-controls={open ? 'earth-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onMouseOver={handleOpen}
@@ -38,12 +30,12 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
         { props.title }
       </Button>
       <Menu
-        id="basic-menu"
+        id="earth-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleCloseMenu}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          'aria-labelledby': 'earth-menu-list',
           onMouseLeave: handleCloseMenu,
         }}
       >
