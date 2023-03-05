@@ -8,7 +8,7 @@ import './styles/app.scss';
 import { ArticleListPage } from './pages/ArticlePage/ArticleListPage';
 import { VideoPage } from './pages/VideoPage/VideoPage';
 import { GalleryPage } from './pages/GalleryPage/GalleryPage';
-import { ThreeDEarthPage } from './pages/ThreeDEarthPage/ThreeDEarth';
+import { ThreeDEarthPage } from './pages/ThreeDEarthPage/ThreeDEarthPage';
 import { ReliefPage } from './pages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
@@ -17,7 +17,7 @@ export default function App() {
   const routes = [
     { path: '', element: <HomePage /> },
     { path: '/article', element: <ArticleListPage /> },
-    { path: '/video', element: <VideoPage />},
+    { path: '/video', element: <VideoPage /> },
     { path: '/gallery', element: <GalleryPage /> },
     { path: '/threeDEarth', element: <ThreeDEarthPage /> },
     { path: '/relief', element: <ReliefPage /> },

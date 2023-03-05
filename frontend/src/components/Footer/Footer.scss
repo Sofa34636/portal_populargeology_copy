@@ -1,15 +1,17 @@
 .footer {
-    &_not_home {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+	&_not_home {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 
-        width: 100%;
-        button {
-            border: 1px solid #F4F4F4;
-            font-family: 'RSRegular';
-            text-transform: uppercase;
-            bottom: 24px;
-        }
-    }
+
+		width: 100%;
+
+		button {
+			border: 1px solid #F4F4F4;
+			font-family: RSRegular;
+			text-transform: uppercase;
+			bottom: 24px;
+		}
+	}
 }

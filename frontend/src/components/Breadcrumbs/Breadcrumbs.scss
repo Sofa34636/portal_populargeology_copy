@@ -1,14 +1,16 @@
 .breadcrumbs-container {
-    .breadcrumbs {
-        
-        .MuiBreadcrumbs-separator {
-            color: #F4F4F4;
-        }
-        a {
-            display: flex;
-            align-items: center;
-        }
-    }
-    padding-bottom: 64px;
-    top: 32px;
+	.breadcrumbs {
+
+		.MuiBreadcrumbs-separator {
+			color: #F4F4F4;
+		}
+
+		a {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	padding-bottom: 32px;
+	top: 32px;
 }
