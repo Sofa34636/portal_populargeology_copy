@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Layout } from '../../components/Layout/Layout';
 import { useLocation } from 'react-router-dom';
 import { ArticleCard } from '../../components/ArticleCard/ArticleCard';
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
 
 export const ArticleListPage = () => {
@@ -14,9 +15,10 @@ export const ArticleListPage = () => {
     <ArticleCard/>,
     <ArticleCard/>,
     <ArticleCard/>,
+    <ArrowForwardIosRoundedIcon/>
   ]
   return (
-    <div>
+    <div className='article'>
       <Layout 
         layoutProps={{time: timeProp, instrument: 'СТАТЬИ'}}
       >
@@ -28,6 +30,8 @@ export const ArticleListPage = () => {
               )
             }) }
           </ul>
+          {/* <div className='article_arrow_right'>
+          </div> */}
         </div>
       </Layout>
     </div>
