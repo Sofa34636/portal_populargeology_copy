@@ -3,8 +3,11 @@ import { Layout } from '../../components/Layout/Layout';
 import { useLocation } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
 
 import './ThreeDEarthPage.scss';
+import { Earth } from '../../components/ToolComponents/Earth/Earth';
 
 export const ThreeDEarthPage = () => {
   const location = useLocation();
@@ -13,8 +16,8 @@ export const ThreeDEarthPage = () => {
     <div>
       <div>
         <Layout layoutProps={{ time: timeProp, instrument: '3Д ЗЕМЛЯ' }}>
-          <Grid container spacing={0}>
-            <Grid item xs={6}>
+          <Grid className="parent" container spacing={0}>
+            <Grid className="left" item xs={6}>
               <h1>Белая земля</h1>
               <h2>650 млн. лет назад</h2>
               <p>
@@ -33,7 +36,13 @@ export const ThreeDEarthPage = () => {
               </p>
               <Button className="learn-btn">УЗНАТЬ БОЛЬШЕ</Button>
             </Grid>
-            <Grid item xs={6}></Grid>
+            <Grid className="right" item xs={6}>
+              <Canvas>
+                <Suspense fallback={null}>
+                  <Earth />
+                </Suspense>
+              </Canvas>
+            </Grid>
           </Grid>
         </Layout>
       </div>

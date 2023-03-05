@@ -24,6 +24,13 @@ module.exports = {
       {
         test: /\.ttf$/i,
         type: 'asset/resource'
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'images'
+        }
       }
     ]
   },
