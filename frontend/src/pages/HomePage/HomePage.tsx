@@ -45,6 +45,9 @@ export const HomePage = () => {
         if (selectedTimeButton != null && selectedTimeButton != event.currentTarget) {
             selectedTimeButton.classList.remove('btn-selected')
         }
+        if (selectedInstrumentButton == reliefButton || selectedInstrumentButton == threeDEarthButton) {
+          setSelectedInstrumentButton(null)
+        }
         setSelectedTimeButton(event.currentTarget)
         setTitleEarthMenu(defaultMenuTitle)
         menuButton.classList.remove('btn-selected')
@@ -57,6 +60,9 @@ export const HomePage = () => {
       if (event.currentTarget instanceof HTMLButtonElement) {
         if (!event.currentTarget.classList.contains('btn-deactivated')) {
           event.currentTarget.classList.add('btn-selected')
+        } else if (event.currentTarget.classList.contains('btn-deactivated')) {
+          setSelectedInstrumentButton(null)
+          return
         }
         if (selectedInstrumentButton != null && selectedInstrumentButton != event.currentTarget) {
           selectedInstrumentButton.classList.remove('btn-selected')
@@ -71,6 +77,7 @@ export const HomePage = () => {
       selectedInstrumentButton != null ? instruments[selectedInstrumentButton.innerText] : instruments['ВИДЕО'],
       { state: { timeProp: selectedTimeButton != null ? selectedTimeButton.innerText : 'БОЛЬШОЙ ВЗРЫВ'} }
       )
+    // console.log(selectedInstrumentButton)
   }
   return (
     <>
