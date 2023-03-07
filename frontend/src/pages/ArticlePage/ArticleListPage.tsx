@@ -1,21 +1,25 @@
 import * as React from 'react';
 import { Layout } from '../../components/Layout/Layout';
 import { useLocation } from 'react-router-dom';
-import { ArticleCard } from '../../components/ArticleCard/ArticleCard';
-import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import { ArticleCardProps } from '../../types/ArticleCardProps';
+import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
 
 
 export const ArticleListPage = () => {
   const location = useLocation()
   const { timeProp } = location.state
-  const cards: React.ReactNode[] = [
-    <ArticleCard/>,
-    <ArticleCard/>,
-    <ArticleCard/>,
-    <ArticleCard/>,
-    <ArticleCard/>,
-    <ArticleCard/>,
-    <ArrowForwardIosRoundedIcon/>
+  const cards: ArticleCardProps[][] = [
+    [
+      { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ1' },
+      { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ2' },
+      { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ3' },
+      { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ4' },
+    ],
+    [
+      { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ5' },
+      { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ6' },
+      { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ7' },
+    ]
   ]
   return (
     <div className='article'>
@@ -23,15 +27,7 @@ export const ArticleListPage = () => {
         layoutProps={{time: timeProp, instrument: 'СТАТЬИ'}}
       >
         <div className='article_list_content'>
-          <ul>
-            { cards.map((card, index) => {
-              return (
-                <li id={'card' + index} key={index}>{ card }</li>
-              )
-            }) }
-          </ul>
-          {/* <div className='article_arrow_right'>
-          </div> */}
+          <ArticleCarousel articleCards={cards}/>
         </div>
       </Layout>
     </div>
