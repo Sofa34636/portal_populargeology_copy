@@ -38,12 +38,9 @@
     "eslint-plugin-react": "^7.32.2",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.7.2",
-<<<<<<< HEAD
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
-=======
     "react-material-ui-carousel": "^3.4.2",
->>>>>>> cda1bff77eb92969069b884d2a38548afbb14def
     "sass": "^1.58.0",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
