@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
 
-import { useTypedSelector } from '../../hooks';
-import { TimeLineState } from '../../types/timeline';
+// import { useTypedSelector } from '../../hooks';
+// import { TimeLineState } from '../../types/timeline';
 
 // TODO hover button menu, close menu after mouse leaving
 export const HomePage = () => {

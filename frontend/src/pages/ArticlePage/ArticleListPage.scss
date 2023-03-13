@@ -1,45 +1,40 @@
 .article {
     .article_list_content {
-        ul {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 0.5fr;
-            grid-template-areas:
-                "a b c d"
-                "e f g d";
-            column-gap: 2.5em;
-            row-gap: 30px;
-            padding-left: 100px;
-            padding-top: 30px;
-            svg {
-                color: $white;
-                font-size: xx-large;
-            }
-            #card0 {
-                grid-area: a;
-            }
-            #card1 {
-                grid-area: b;
-            }
-            #card2 {
-                grid-area: c;
-            }
-            #card3 {
-                grid-area: e;
-            }
-            #card4 {
-                grid-area: f;
-            }
-            #card5 {
-                grid-area: g;
-            }
-            #arrow6 {
-                grid-area: d;
-                align-self: center;
-                :hover {
-                    color: $orange
-                }
-            }
+        // padding-left: 60px;
+        svg {
+            font-size: xx-large;
         }
-
+        // ul {
+            // display: grid;
+            // grid-template-columns: 1fr 1fr 1fr;
+            // grid-template-areas:
+            //     "a b c d"
+            //     "e f g d";
+            // column-gap: 2.5em;
+            // row-gap: 30px;
+            // padding-left: 100px;
+            // padding-top: 30px;
+            // #card0 {
+            //     grid-area: a;
+            // }
+            // #card1 {
+            //     grid-area: b;
+            // }
+            // #card2 {
+            //     grid-area: c;
+            // }
+            // #card3 {
+            //     grid-area: e;
+            // }
+            // #card4 {
+            //     grid-area: f;
+            // }
+            // #card5 {
+            //     grid-area: g;
+            // }
+            // display: flex;
+            // justify-content: center;
+            // flex-direction: column;
+        // }
     }
 }

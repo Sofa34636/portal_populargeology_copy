@@ -5,25 +5,35 @@ import { ArticleCard } from '../ArticleCard/ArticleCard';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
+import { NONAME } from 'dns';
 
 
 export const ArticleCarousel = (props: { articleCards: ArticleCardProps[][]}) => {
     return (
-        <div className='article-carousel'>
-            <Carousel 
+        <div>
+            <Carousel
+                className='article-carousel'
                 NextIcon={<ArrowForwardIosRoundedIcon/>}
                 PrevIcon={<ArrowBackIosRoundedIcon/>}
-                next={ (next, active) => console.log(next, active) }
-                prev={ (prev, active) => console.log(prev, active) }
                 autoPlay={false}
+                indicators={false}
+                navButtonsAlwaysVisible={true}
+                cycleNavigation={false}
+                swipe={false}
+                navButtonsProps={{
+                    style: {
+                        background: 'none',
+                        border: 'none',
+                    }
+                }}
             >
                 {
                     props.articleCards.map((articleCardsRow: ArticleCardProps[], indexI) => {
                         return (
-                            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} key={indexI}>
+                            <Grid sx={{ width: '100%', paddingRight: '75px', paddingLeft: '90px' }} container columns={3} spacing={2} key={indexI}>
                                 { articleCardsRow.map((cardProps, indexJ) => {
                                     return (
-                                        <Grid item xs={2} sm={4} md={4} key={indexJ}>
+                                        <Grid item xs={1} key={indexJ}>
                                             <ArticleCard key={indexJ} photoPath={cardProps.photoPath} title={cardProps.title}/>
                                         </Grid>
                                     )
