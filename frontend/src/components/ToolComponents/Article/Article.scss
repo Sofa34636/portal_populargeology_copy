@@ -1,0 +1,26 @@
+.article {
+    color: $white;
+    &__subtitle {
+        font-size: 16px;
+        line-height: 16px;
+        padding-top: 50px;
+        color: #B9B9B9;
+    }
+    &__title {
+        font-size: 24px;
+        line-height: 32px;
+        padding-top: 17px;
+    }
+    &__sources {
+        font-size: 14px;
+        line-height: 20px;
+        padding-top: 44px;
+        color: #B9B9B9;
+    }
+    &__content {
+        font-size: 14px;
+        line-height: 20px;
+        padding-top: 32px;
+        color: #B9B9B9;
+    }
+}

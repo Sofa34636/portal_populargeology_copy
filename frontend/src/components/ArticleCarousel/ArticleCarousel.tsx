@@ -5,7 +5,6 @@ import { ArticleCard } from '../ArticleCard/ArticleCard';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
-import { NONAME } from 'dns';
 
 
 export const ArticleCarousel = (props: { articleCards: ArticleCardProps[][]}) => {

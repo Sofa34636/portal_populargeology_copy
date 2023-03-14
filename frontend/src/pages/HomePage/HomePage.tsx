@@ -99,7 +99,6 @@ export const HomePage = () => {
         },
       },
     );
-    // console.log(selectedInstrumentButton)
   };
 
   return (
