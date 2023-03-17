@@ -4,7 +4,6 @@
 
 
 
-
 // COMPONENTS
 @import "../components/EarthTypeMenu/EarthTypeMenu.scss";
 @import "../components/Footer/Footer.scss";
@@ -16,6 +15,7 @@
 @import "../pages/ArticlePage/ArticleListPage.scss";
 @import "../pages/ThreeDEarthPage/ThreeDEarthPage.scss";
 
+@import "../components/ToolComponents/Article/Article.scss";
 
 .App {
 	position: relative;

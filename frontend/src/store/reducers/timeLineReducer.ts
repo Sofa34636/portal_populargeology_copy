@@ -1,4 +1,4 @@
-// import { TimeLineActionTypes, TimeLineState, ChangeAction } from '../../types/timeline';
+// import { ChangeAction, TimeLineActionTypes, TimeLineState } from '../../types/timeline';
 
 // const initialState: TimeLineState = {
 //   time: null,

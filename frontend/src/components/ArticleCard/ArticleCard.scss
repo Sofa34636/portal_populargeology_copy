@@ -3,9 +3,13 @@
     flex-direction: column;
     border: 1px solid #FFFFFF;
     border-radius: 4px;
-    width: 350px;
     height: 270px;
     color: $white;
+    cursor: pointer;
+    &:hover {
+        border-color: $orange;
+        color: $orange;
+    }
     .photo {
         height: 210px;
     }
