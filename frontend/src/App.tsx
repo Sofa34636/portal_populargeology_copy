@@ -14,7 +14,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Article } from './components/ToolComponents/Article/Article';
 // import { store } from './store';
-
+//
 export default function App() {
   const routes = [
     { path: '', element: <HomePage /> },
