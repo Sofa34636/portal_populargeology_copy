@@ -26,10 +26,12 @@ module.exports = {
         type: 'asset/resource'
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        loader: 'file-loader',
-        options: {
-          outputPath: 'images'
+        test: /\.(jpg|png|svg)/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 50000
+          }
         }
       }
     ]
