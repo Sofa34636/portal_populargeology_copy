@@ -8,7 +8,6 @@ import * as THREE from 'three';
 import { Mesh } from 'three';
 
 import EarthDayMap from '../../../assets/textures/Earth_Diffuse.jpg';
-
 import EarthNormalMap from '../../../assets/textures/Earth_Normal.jpg';
 import EarthSpecularMap from '../../../assets/textures/Earth_Specular.jpg';
 import EarthCloudMap from '../../../assets/textures/Earth_Cloud.jpg';
