@@ -3,9 +3,8 @@
 .buttons {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;;
+	justify-content: space-between;
 	width: 100%;
-
 	button {
 		border: 1px solid $gray;
 		font-family: RSRegular;

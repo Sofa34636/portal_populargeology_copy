@@ -10,7 +10,7 @@ export const Article = () => {
   // title.substring(title.lastIndexOf('/') + 1)
 
   return (
-    <Layout layoutProps={{ time: 'vremya', instrument: 'instrument' }}>
+    <Layout layoutProps={{ time: 'vremya', instrument: 'instrument'}}>
       <div className="article">
         <div className="article__subtitle">
           <h4>Lorem, ipsum dolor.</h4>

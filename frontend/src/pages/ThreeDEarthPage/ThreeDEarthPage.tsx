@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Layout } from '../../components/Layout/Layout';
 import { useLocation } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-import { Button } from '@mui/material';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 
@@ -17,7 +16,7 @@ export const ThreeDEarthPage = () => {
   return (
     <div>
       <div>
-        <Layout layoutProps={{ time: timeProp, instrument: '3Д ЗЕМЛЯ' }}>
+        <Layout layoutProps={{ time: timeProp, instrument: '3Д ЗЕМЛЯ', isFooterButtonsLeft: true}}>
           <Grid className="parent" container spacing={0}>
             <Grid className="left" item xs={6}>
               <h1>{timeProp} </h1>
@@ -36,9 +35,9 @@ export const ThreeDEarthPage = () => {
                 плит не мог он и противостоять бесконечным выбросам вулканических газов из сотен
                 черных кратеров, выступавших над поверхностью льда.
               </p>
-              <div className='learn'>
-                <Button className="learn-btn">Узнать больше</Button>
-              </div>
+              {/*<div className='learn'>*/}
+              {/*  <Button className="learn-btn">Узнать больше</Button>*/}
+              {/*</div>*/}
             </Grid>
             <Grid className="right" item xs={6}>
               <Canvas>
