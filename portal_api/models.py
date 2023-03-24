@@ -7,7 +7,7 @@ class Article(models.Model):
     image = models.ImageField(upload_to='thumbnail/images', null=True, blank=True)
     text = models.TextField()
     src_article = models.CharField(max_length=100)
-    src_magazine = models.CharField(max_length=200)
+    src_magazine = models.CharField(max_length=500)
 
 
 class Exhibit(models.Model):
