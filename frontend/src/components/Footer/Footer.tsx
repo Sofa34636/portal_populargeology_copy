@@ -2,9 +2,12 @@ import * as React from 'react';
 
 import Button from '@mui/material/Button';
 
-export const Footer = () => {
+import './Footer.scss';
+
+export const Footer = (props) => {
+    const isLeft = props.isLeft;
   return (
-    <div className='footer_not_home'>
+    <div className="buttons">
       <Button className="prevBtn">Что было раньше?</Button>
       <Button className="nextBtn">Что было дальше?</Button>
     </div>

@@ -1,3 +1,6 @@
+@import "/src/styles/variables.scss";
+
+
 parent {
 	position: relative;
 }
@@ -7,14 +10,28 @@ parent {
 	right: 0;
 	top: 0;
 	bottom: 0;
+
+	.learn {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		//padding-top: 6px;
+
+		.learn-btn {
+			border: none;
+			//text-transform: none;
+
+		}
+	}
+
 }
 
 .right {
-	position: absolute;
+	position: absolute; // delete
 	left: 50%;
 	right: 0;
-	top: 0;
-	bottom: 0;
+	top: 10%; // 0%
+	bottom: 10%; // 0%
 }
 
 h1 {
@@ -47,9 +64,7 @@ p {
 }
 
 
-.footer {
-	&_not_home {
-		justify-content: space-between;
-		width: 50%;
-	}
+
+canvas {
+	//border: 1px solid $gray;
 }

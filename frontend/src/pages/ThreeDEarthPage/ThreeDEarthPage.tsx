@@ -9,6 +9,7 @@ import { Suspense } from 'react';
 import './ThreeDEarthPage.scss';
 import { Earth } from '../../components/ToolComponents/Earth/Earth';
 
+
 export const ThreeDEarthPage = () => {
   const location = useLocation();
   console.log(location.state);
@@ -35,7 +36,9 @@ export const ThreeDEarthPage = () => {
                 плит не мог он и противостоять бесконечным выбросам вулканических газов из сотен
                 черных кратеров, выступавших над поверхностью льда.
               </p>
-              <Button className="learn-btn">УЗНАТЬ БОЛЬШЕ</Button>
+              <div className='learn'>
+                <Button className="learn-btn">Узнать больше</Button>
+              </div>
             </Grid>
             <Grid className="right" item xs={6}>
               <Canvas>

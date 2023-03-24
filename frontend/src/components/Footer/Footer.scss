@@ -1,17 +1,16 @@
-.footer {
-	&_not_home {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+@import "/src/styles/variables.scss";
 
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;;
+	width: 100%;
 
-		width: 100%;
-
-		button {
-			border: 1px solid #F4F4F4;
-			font-family: RSRegular;
-			text-transform: uppercase;
-			bottom: 24px;
-		}
+	button {
+		border: 1px solid $gray;
+		font-family: RSRegular;
+		text-transform: uppercase;
+		bottom: 24px;
 	}
 }
+

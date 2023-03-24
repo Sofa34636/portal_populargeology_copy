@@ -12,6 +12,8 @@ import EarthNormalMap from '../../../assets/textures/Earth_Normal.jpg';
 import EarthSpecularMap from '../../../assets/textures/Earth_Specular.jpg';
 import EarthCloudMap from '../../../assets/textures/Earth_Cloud.jpg';
 
+import './Earth.scss'
+
 export function Earth(props) {
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(TextureLoader, [
     EarthDayMap,
@@ -31,10 +33,10 @@ export function Earth(props) {
   });
 
   return (
-    <>
+      <>
       <ambientLight intensity={0.8} />
       <pointLight color="#ffffde" position={[2, 0, 2]} intensity={2} />
-      <mesh scale={[2.5, 2.5, 2.5]} ref={cloudsRef}>
+      <mesh scale={[3,3,3]} ref={cloudsRef}>
         <sphereGeometry args={[1.01, 32, 32]} />
         <meshPhongMaterial
           map={cloudsMap}
@@ -44,7 +46,7 @@ export function Earth(props) {
           side={THREE.DoubleSide}
         />
       </mesh>
-      <mesh scale={[2.5, 2.5, 2.5]} ref={earthRef}>
+      <mesh scale={[3,3,3]} ref={earthRef}>
         <sphereGeometry args={[1, 64, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
@@ -55,6 +57,6 @@ export function Earth(props) {
         />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.3} />
       </mesh>
-    </>
+      </>
   );
 }
