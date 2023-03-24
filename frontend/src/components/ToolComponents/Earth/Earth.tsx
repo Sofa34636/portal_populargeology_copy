@@ -55,7 +55,7 @@ export function Earth(props) {
           metalness={0.4}
           roughness={0.7}
         />
-        <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.3} />
+        <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.15} />
       </mesh>
       </>
   );
