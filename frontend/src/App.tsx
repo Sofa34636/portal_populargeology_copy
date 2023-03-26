@@ -27,13 +27,13 @@ export default function App() {
     { path: '/*', element: <NotFoundPage /> },
   ];
 
-  useEffect(() => {
-    const apiUrl = 'http://127.0.0.1:8000/api/article/1/';
-    fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-
-  }, [])
+  // useEffect(() => {
+  //   const apiUrl = 'http://127.0.0.1:8000/api/article/1/';
+  //   fetch(apiUrl)
+  //       .then((response) => response.json())
+  //       .then((data) => console.log(data));
+  //
+  // }, [])
 
 
 

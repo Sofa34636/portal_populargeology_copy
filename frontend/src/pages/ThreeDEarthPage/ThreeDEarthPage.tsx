@@ -42,7 +42,7 @@ export const ThreeDEarthPage = () => {
             <Grid className="right" item xs={6}>
               <Canvas>
                 <Suspense fallback={null}>
-                  <Earth />
+                  {/*<Earth />*/}
                 </Suspense>
               </Canvas>
             </Grid>
