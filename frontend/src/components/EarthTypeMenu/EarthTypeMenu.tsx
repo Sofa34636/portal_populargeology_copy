@@ -24,7 +24,6 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
         id="earth-menu-button"
         variant='outlined'
         aria-controls={open ? 'earth-menu' : undefined}
-        aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onMouseOver={handleOpen}
       >
@@ -35,6 +34,7 @@ export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any
         anchorEl={anchorEl}
         open={open}
         onClose={handleCloseMenu}
+        // hideBackdrop={true}
         MenuListProps={{
           'aria-labelledby': 'earth-menu-list',
           onMouseLeave: handleCloseMenu,

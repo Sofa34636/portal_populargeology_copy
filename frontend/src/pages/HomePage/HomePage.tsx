@@ -100,7 +100,7 @@ export const HomePage = () => {
       },
     );
   };
-
+  
   return (
     <>
       <div className="rect1"></div>

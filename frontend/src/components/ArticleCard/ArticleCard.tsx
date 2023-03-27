@@ -6,7 +6,6 @@ import { ArticleCardProps } from '../../types/ArticleCardProps'
 export const ArticleCard = (props: ArticleCardProps) => {
 
     const navigate = useNavigate()
-    // const history = useHi
 
     const handleClick = () => {
         navigate(`/article/${props.title.toLowerCase()}`);
