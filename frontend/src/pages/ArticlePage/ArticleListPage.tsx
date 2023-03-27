@@ -3,14 +3,17 @@ import { Layout } from '../../components/Layout/Layout';
 import { useLocation } from 'react-router-dom';
 import { ArticleCardProps } from '../../types/ArticleCardProps';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
-import { articleAPI } from '../../services/ArticleService'
+import { useGetArticleByIdQuery } from '../../services/ArticleService'
 
 
 export const ArticleListPage = () => {
   const location = useLocation()
-  const {data} = articleAPI.useGetArticleByIdQuery(1)
+
   const { timeProp } = location.state
+
+  const {isLoading, data, error} = useGetArticleByIdQuery(1)
   const cards: ArticleCardProps[][] = [
+
     [
       { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ1' },
       { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ2' },
@@ -34,8 +37,6 @@ export const ArticleListPage = () => {
       { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ16' },
     ]
   ]
-
-  console.log(data)
 
   return (
     <div className='article_list'>
