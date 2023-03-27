@@ -1,5 +1,7 @@
+import { Instrument, Time } from './timeline'
+
 export interface LayoutProps {
-    time: string,
-    instrument: string
+    time: Time
+    instrument: Instrument
     isFooterButtonsLeft?: boolean
 }

@@ -4,16 +4,19 @@ import { useLocation } from 'react-router-dom';
 import { ArticleCardProps } from '../../types/ArticleCardProps';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
 import { useGetArticleByIdQuery } from '../../services/ArticleService'
+import { useAppSelector } from '../../hooks/redux'
 
 
 export const ArticleListPage = () => {
   const location = useLocation()
 
-  const { timeProp } = location.state
 
+  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
   const {isLoading, data, error} = useGetArticleByIdQuery(1)
-  const cards: ArticleCardProps[][] = [
 
+
+
+  const cards: ArticleCardProps[][] = [
     [
       { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ1' },
       { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ2' },
@@ -40,9 +43,7 @@ export const ArticleListPage = () => {
 
   return (
     <div className='article_list'>
-      <Layout
-        layoutProps={{time: timeProp, instrument: 'СТАТЬИ'}}
-      >
+      <Layout layoutProps={{time: time, instrument: instrument}}>
         <div className='article_list__content'>
           <ArticleCarousel articleCards={cards}/>
         </div>

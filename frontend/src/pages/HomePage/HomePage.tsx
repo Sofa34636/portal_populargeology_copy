@@ -7,10 +7,9 @@ import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { useEffect } from 'react'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
-
+import { instrumentTypes, timeTypes } from '../../types/timeline'
 // import { useTypedSelector } from '../../hooks';
 // import { TimeLineState } from '../../types/timeline';
-
 // TODO hover button menu, close menu after mouse leaving
 export const HomePage = () => {
   // //////////
@@ -25,7 +24,8 @@ export const HomePage = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(changeTime("солнечная система"))
+    dispatch(changeTime(timeTypes.living_earth))
+    dispatch(changeInstrument(instrumentTypes.earth))
   }, [])
 
 

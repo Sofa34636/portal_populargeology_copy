@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import { Layout } from '../../Layout/Layout';
+import { useAppSelector } from '../../../hooks/redux'
 
 export const Article = () => {
   const location = useLocation();
-
+  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
   const decodedPath = decodeURI(location.pathname);
   const title = decodedPath.substring(decodedPath.lastIndexOf('/') + 1);
   title.substring(title.lastIndexOf('/') + 1)
@@ -25,7 +26,7 @@ export const Article = () => {
 
 
   return (
-    <Layout layoutProps={{ time: 'vremya', instrument: 'instrument'}}>
+    <Layout layoutProps={{ time: time, instrument: instrument}}>
       <div className="article">
         <div className="article__subtitle">
           {/*<h4>{articleState.time_ago}</h4>*/}

@@ -1,6 +1,6 @@
 
 
-require('file-loader?name=[name].[ext]!./index.html'); // wtf?
+require('file-loader?name=[name].[ext]!./index.html'); // ?
 
 import * as React from 'react';
 
@@ -11,7 +11,7 @@ import './styles/app.scss';
 import { setupStore } from './store'
 
 import { Provider } from 'react-redux'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
 const store = setupStore();
