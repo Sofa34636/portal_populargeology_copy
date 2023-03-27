@@ -20,13 +20,11 @@ import EarthCloudMap from '../../../assets/textures/Earth_Cloud.jpg';
 import './Earth.scss'
 
 export function Earth(props) {
-  const [colorMap, normalMap, specularMap, cloudsMap, metallicMap, roughnessMap] = useLoader(TextureLoader, [
+  const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(TextureLoader, [
     EarthDayMap,
     EarthNormalMap,
     EarthSpecularMap,
     EarthCloudMap,
-      Metallic,
-      Roughness,
   ]);
 
   const cloudsRef = useRef<Mesh>(null!);
@@ -43,25 +41,23 @@ export function Earth(props) {
       <>
       <ambientLight intensity={0.8} />
       <pointLight color="#ffffde" position={[2, 0, 2]} intensity={2} />
-      {/*<mesh scale={[3,3,3]} ref={cloudsRef}>*/}
-      {/*  <sphereGeometry args={[1.01, 32, 32]} />*/}
-      {/*  <meshPhongMaterial*/}
-      {/*    map={cloudsMap}*/}
-      {/*    opacity={0.3}*/}
-      {/*    depthWrite={true}*/}
-      {/*    transparent={true}*/}
-      {/*    side={THREE.DoubleSide}*/}
-      {/*  />*/}
-      {/*</mesh>*/}
+      <mesh scale={[3,3,3]} ref={cloudsRef}>
+       <sphereGeometry args={[1.01, 32, 32]} />
+       <meshPhongMaterial
+         map={cloudsMap}
+         opacity={0.3}
+         depthWrite={true}
+         transparent={true}
+         side={THREE.DoubleSide}
+       />
+      </mesh>
       <mesh scale={[3,3,3]} ref={earthRef}>
         <sphereGeometry args={[1, 64, 32]} />
-        {/*<meshPhongMaterial specularMap={roughnessMap} />*/}
+        <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
-          // map={metallicMap}
-          // normalMap={normalMap}
-          metalnessMap={metallicMap}
+          map={colorMap}
+          normalMap={normalMap}
           metalness={0.4}
-          roughnessMap={roughnessMap}
           roughness={0.7}
         />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.15} />

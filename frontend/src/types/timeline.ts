@@ -46,17 +46,3 @@ export interface TimeLineState {
   instrument: Instrument | null;
 }
 
-export enum TimeLineActionTypes {
-  CHANGE_TIME = 'CHANGE_TIME',
-  CHANGE_INSTRUMENT = 'CHANGE_INSTRUMENT',
-}
-interface ChangeTimeAction {
-  type: TimeLineActionTypes.CHANGE_TIME;
-  payload: Time;
-}
-interface ChangeInstrumentAction {
-  type: TimeLineActionTypes.CHANGE_INSTRUMENT;
-  payload: Instrument;
-}
-
-export type ChangeAction = ChangeTimeAction | ChangeInstrumentAction;

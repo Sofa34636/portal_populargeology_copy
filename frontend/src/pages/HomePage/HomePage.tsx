@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useEffect } from 'react'
+import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 
 // import { useTypedSelector } from '../../hooks';
 // import { TimeLineState } from '../../types/timeline';
@@ -16,6 +19,15 @@ export const HomePage = () => {
   // // console.log('time: ', time, 'instrument: ', instrument);
 
   // // //////////
+
+  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
+  const { changeTime, changeInstrument } = timeLineSlice.actions;
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(changeTime("солнечная система"))
+  }, [])
+
 
   const defaultMenuTitle = 'ИСТОРИЯ ЗЕМЛИ';
   const instruments = {
@@ -83,6 +95,7 @@ export const HomePage = () => {
         if (selectedInstrumentButton != null && selectedInstrumentButton != event.currentTarget) {
           selectedInstrumentButton.classList.remove('btn-selected');
         }
+        // dispatch(changeInstrument())
         setSelectedInstrumentButton(event.currentTarget);
       }
     }

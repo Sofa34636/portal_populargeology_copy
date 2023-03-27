@@ -8,11 +8,13 @@ import App from './App';
 
 import './styles/app.scss';
 
-import { store } from './store'
+import { setupStore } from './store'
 
 import { Provider } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
+
+const store = setupStore();
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 
