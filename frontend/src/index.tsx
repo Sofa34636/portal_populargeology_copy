@@ -1,17 +1,28 @@
-require('file-loader?name=[name].[ext]!./index.html');
+
+
+require('file-loader?name=[name].[ext]!./index.html'); // ?
 
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import App from './App';
 
 import './styles/app.scss';
 
+import { setupStore } from './store'
+
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
-const container = document.getElementById('root');
-const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+
+const store = setupStore();
+
+const root = createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
-<BrowserRouter>
-  <App />
-</BrowserRouter>,);
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+);
+
