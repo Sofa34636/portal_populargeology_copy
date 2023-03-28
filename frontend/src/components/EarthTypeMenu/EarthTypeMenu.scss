@@ -6,14 +6,25 @@
     color: $white;
     text-transform: uppercase;
     font-family: RSRegular;
-    :hover {
-        color: $orange;
-    }
+
 }
 
 .earth-type-menu {
     .btn-selected {
         background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
         border-radius: 6px;
+    }
+}
+
+button {
+    &:hover {
+        color: $orange;
+        border-color: $orange;
+    }
+}
+
+li {
+    :hover {
+        color: $orange;
     }
 }

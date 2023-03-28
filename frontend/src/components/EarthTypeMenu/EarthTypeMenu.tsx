@@ -2,51 +2,63 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { historyOfEarth } from '../../types/timeline';
+import { historyOfEarth, instrumentTypes, Time, timeTypes } from '../../types/timeline'
+import { timeLineSlice } from '../../store/reducers/timeLineSlice'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 
 
-export const EarthTypeMenu = (props: { handleClose: (event: React.MouseEvent<any> | MouseEvent) => void, title: string }) => {
+export const EarthTypeMenu = ({onTimeButtonClick: onTimeButtonClick}) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
+  const [selectedTime, setSelectedTime] = React.useState<Time>(timeTypes.earthHistory);
 
-  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const {time: timeState } = useAppSelector((state) => state.timeLineReducer);
+
+  const handleClickMenuButton = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
-  }
+  };
 
-  const handleCloseMenu = (event: React.MouseEvent<any> | MouseEvent) => {
-    props.handleClose(event)
-    setAnchorEl(null)
-  }
+  const handleClickMenuItem = (
+    event: React.MouseEvent<HTMLElement>,
+    time: Time,
+  ) => {
+    setSelectedTime(time);
+    onTimeButtonClick(time)
+    setAnchorEl(null);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <div className='menu'>
       <Button
-        id="earth-menu-button"
         variant='outlined'
-        aria-controls={open ? 'earth-menu' : undefined}
-        aria-expanded={open ? 'true' : undefined}
-        onMouseOver={handleOpen}
+        onClick={handleClickMenuButton}
+        onMouseEnter={handleClickMenuButton}
+        className={selectedTime === timeState ? 'btn-selected' : ''}
       >
-        { props.title }
-      </Button>
+        { selectedTime != timeState ? timeTypes.earthHistory : selectedTime }
+      </Button
+        >
       <Menu
-        id="earth-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleCloseMenu}
-        // hideBackdrop={true}
-        MenuListProps={{
-          'aria-labelledby': 'earth-menu-list',
-          onMouseLeave: handleCloseMenu,
-        }}
+        onClose={handleClose}
+        onMouseLeave={handleClose}
       >
-       {
-        historyOfEarth.map((type, index) => {
+        {
+          Object.values(timeTypes).slice(4).map((time, index) => {
             return (
-              <MenuItem key={index} onClick={handleCloseMenu}><span>{ type.toUpperCase() }</span></MenuItem>
+              <MenuItem
+                key={index}
+                // onClick={() => props.onTimeButtonClick(time)}
+                onClick={(event) => handleClickMenuItem(event, time)}
+              ><span>{ time }</span></MenuItem>
             )
-        })
-       } 
+          })
+        }
       </Menu>
     </div>
   );

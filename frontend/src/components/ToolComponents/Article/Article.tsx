@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom'
 import { Layout } from '../../Layout/Layout';
 import { useAppSelector } from '../../../hooks/redux'
 
 export const Article = () => {
-  const location = useLocation();
+  // const location = useLocation();
   const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
-  const decodedPath = decodeURI(location.pathname);
-  const title = decodedPath.substring(decodedPath.lastIndexOf('/') + 1);
-  title.substring(title.lastIndexOf('/') + 1)
+  // const decodedPath = decodeURI(location.pathname);
+  // const title = decodedPath.substring(decodedPath.lastIndexOf('/') + 1);
+  // title.substring(title.lastIndexOf('/') + 1)
 
   // const [articleState, setArticleState] = useState({});
   //
@@ -23,7 +23,9 @@ export const Article = () => {
   //       );
   //
   // }, [])
+  const params = useParams();
 
+  console.log(params)
 
   return (
     <Layout layoutProps={{ time: time, instrument: instrument}}>
@@ -33,7 +35,7 @@ export const Article = () => {
             <h4>Lorem, ipsum dolor.</h4>
             </div>
             <div className="article__title">
-            <h1>{title}</h1>
+            <h1>dasda</h1>
             </div>
             <div className="article__sources">
             <h5>Источники</h5>
@@ -64,7 +66,7 @@ export const Article = () => {
             </div>
         </div>
         <div className="article__sub">
-            
+
         </div>
         <div className="article__subtitle">
           {/*<h4>{articleState.time_ago}</h4>*/}

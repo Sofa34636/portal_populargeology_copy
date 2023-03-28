@@ -1,119 +1,39 @@
 import * as React from 'react';
-
 import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu';
+import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
-import { instrumentTypes, timeTypes } from '../../types/timeline'
-// import { useTypedSelector } from '../../hooks';
-// import { TimeLineState } from '../../types/timeline';
-// TODO hover button menu, close menu after mouse leaving
+import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
+import { clsx } from 'clsx';
+
 export const HomePage = () => {
-  // //////////
 
-  // const store = useTypedSelector((state) => console.log(state));
-  // // console.log('time: ', time, 'instrument: ', instrument);
-
-  // // //////////
-
-  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
+  const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
 
+  const [activeTimeButton, setActiveTimeButton] = useState<Time | null>(null)
+  const [activeInstrumentButton, setActiveInstrumentButton] = useState<Instrument | null>(null)
+
+  const onTimeButtonClick = (time: Time) => {
+    dispatch(changeTime(time))
+    setActiveTimeButton(time)
+  }
+
+  const onInstrumentButtonClick = (instrument: Instrument) => {
+    dispatch(changeInstrument(instrument))
+    setActiveInstrumentButton(instrument)
+  }
+
+  const onLearnButtonClick = () => {
+    console.log(timeState, instrumentState)
+  }
+
   useEffect(() => {
-    dispatch(changeTime(timeTypes.living_earth))
-    dispatch(changeInstrument(instrumentTypes.earth))
-  }, [])
+  })
 
-
-  const defaultMenuTitle = 'ИСТОРИЯ ЗЕМЛИ';
-  const instruments = {
-    ВИДЕО: '/video',
-    СТАТЬИ: '/article',
-    ГАЛЕРЕЯ: '/gallery',
-    РЕЛЬЕФ: '/relief',
-    '3D ЗЕМЛИ': '/threeDEarth',
-  };
-  const navigate = useNavigate();
-  const [selectedTimeButton, setSelectedTimeButton] = React.useState<
-    HTMLButtonElement | HTMLLIElement | null
-  >(null);
-  const [selectedInstrumentButton, setSelectedInstrumentButton] =
-    React.useState<HTMLButtonElement | null>(null);
-  const [titleEarthMenu, setTitleEarthMenu] = React.useState<string>(defaultMenuTitle);
-
-  const handleTimeClick = (event: React.MouseEvent<any> | MouseEvent) => {
-    if (event.type == 'click') {
-      const menuButton: HTMLElement | null = document.getElementById('earth-menu-button'); // EarthTypeMenu.tsx
-      const reliefButton: HTMLElement | null = document.getElementById('reliefInstrument');
-      const threeDEarthButton: HTMLElement | null = document.getElementById('3dEarthInstrument');
-      if (event.currentTarget instanceof HTMLLIElement && event.currentTarget.innerText != '') {
-        if (event.currentTarget.innerText != defaultMenuTitle) {
-          menuButton.classList.add('btn-selected');
-          reliefButton.classList.remove('btn-deactivated', 'btn-selected');
-          threeDEarthButton.classList.remove('btn-deactivated', 'btn-selected');
-          if (selectedTimeButton != null) {
-            selectedTimeButton.classList.remove('btn-selected');
-          }
-          setSelectedTimeButton(event.currentTarget);
-          setTitleEarthMenu(event.currentTarget.innerText);
-        }
-      } else if (event.currentTarget instanceof HTMLButtonElement) {
-        event.currentTarget.classList.add('btn-selected');
-        reliefButton.classList.add('btn-deactivated');
-        reliefButton.classList.remove('btn-selected');
-        threeDEarthButton.classList.add('btn-deactivated');
-        threeDEarthButton.classList.remove('btn-selected');
-        if (selectedTimeButton != null && selectedTimeButton != event.currentTarget) {
-          selectedTimeButton.classList.remove('btn-selected');
-        }
-        if (
-          selectedInstrumentButton == reliefButton ||
-          selectedInstrumentButton == threeDEarthButton
-        ) {
-          setSelectedInstrumentButton(null);
-        }
-        setSelectedTimeButton(event.currentTarget);
-        setTitleEarthMenu(defaultMenuTitle);
-        menuButton.classList.remove('btn-selected');
-      }
-    }
-  };
-
-  const handleInstrumentClick = (event: React.MouseEvent<any>) => {
-    if (event.type == 'click') {
-      if (event.currentTarget instanceof HTMLButtonElement) {
-        if (!event.currentTarget.classList.contains('btn-deactivated')) {
-          event.currentTarget.classList.add('btn-selected');
-        } else if (event.currentTarget.classList.contains('btn-deactivated')) {
-          setSelectedInstrumentButton(null);
-          return;
-        }
-        if (selectedInstrumentButton != null && selectedInstrumentButton != event.currentTarget) {
-          selectedInstrumentButton.classList.remove('btn-selected');
-        }
-        // dispatch(changeInstrument())
-        setSelectedInstrumentButton(event.currentTarget);
-      }
-    }
-  };
-
-  const handleLearnClick = () => {
-    navigate(
-      selectedInstrumentButton != null
-        ? instruments[selectedInstrumentButton.innerText]
-        : instruments['ВИДЕО'],
-      {
-        state: {
-          timeProp: selectedTimeButton != null ? selectedTimeButton.innerText : 'БОЛЬШОЙ ВЗРЫВ',
-        },
-      },
-    );
-  };
-  
   return (
     <>
       <div className="rect1"></div>
@@ -127,50 +47,59 @@ export const HomePage = () => {
       </header>
       <main className="content">
         <div className="time">
-          <h2>Выбирай время</h2>
+          <h2>Выбирайте время</h2>
           <div className="time_buttons">
-            <Button onClick={handleTimeClick} variant="outlined">
-              Большой взрыв
-            </Button>
-            <Button onClick={handleTimeClick} variant="outlined">
-              Солнечная Система
-            </Button>
-            <Button onClick={handleTimeClick} variant="outlined">
-              Образование Луны
-            </Button>
-            <EarthTypeMenu title={titleEarthMenu} handleClose={handleTimeClick} />
+            {
+              Object.values(timeTypes).slice(0, 3).map((time, index) => {
+                return (
+                  <Button
+                    key = {index}
+                    onClick={() => onTimeButtonClick(time)}
+                    variant="outlined"
+                    className={time === activeTimeButton ? 'btn-selected' : ''}
+                  >
+                    {time}
+                  </Button>
+                )
+              })
+            }
+            <EarthTypeMenu onTimeButtonClick={onTimeButtonClick} />
           </div>
         </div>
         <div className="instrument">
-          <h2>Выбирай инструмент</h2>
+          <h2>Выбирайте инструмент</h2>
           <div className="instrument_buttons">
-            <Button onClick={handleInstrumentClick} variant="outlined">
-              видео
-            </Button>
-            <Button onClick={handleInstrumentClick} variant="outlined">
-              статьи
-            </Button>
-            <Button onClick={handleInstrumentClick} variant="outlined">
-              галерея
-            </Button>
-            <Button
-              id="reliefInstrument"
-              className="btn-deactivated"
-              onClick={handleInstrumentClick}
-              variant="outlined">
-              рельеф
-            </Button>
-            <Button
-              id="3dEarthInstrument"
-              className="btn-deactivated"
-              onClick={handleInstrumentClick}
-              variant="outlined">
-              3d земли
-            </Button>
+            {
+              Object.values(instrumentTypes).map((instrument, index) => {
+                let isNonActive = ( instrument === instrumentTypes.relief ||
+                                             instrument === instrumentTypes.earth ?
+                                             'btn-deactivated':'' );
+                let isSelected = instrument === activeInstrumentButton ? 'btn-selected' : '';
+
+                if (Object.values(timeTypes).splice(4).includes(timeState)) {
+                  isNonActive = '';
+                }
+
+                if (isNonActive) {
+                  isSelected = ''
+                }
+
+                return (
+                  <Button
+                    key = {index}
+                    onClick={() => onInstrumentButtonClick(instrument)}
+                    variant="outlined"
+                    className={ clsx(isNonActive, isSelected) }
+                  >
+                    {instrument}
+                  </Button>
+                )
+              })
+            }
           </div>
         </div>
         <div className="learn">
-          <Button onClick={handleLearnClick} variant="outlined">
+          <Button onClick={onLearnButtonClick} variant="outlined">
             Изучать Вселенную
           </Button>
         </div>

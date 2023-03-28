@@ -15,7 +15,6 @@ export const ArticleListPage = () => {
   const {isLoading, data, error} = useGetArticleByIdQuery(1)
 
 
-
   const cards: ArticleCardProps[][] = [
     [
       { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ1' },

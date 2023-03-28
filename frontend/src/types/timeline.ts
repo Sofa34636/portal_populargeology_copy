@@ -23,6 +23,7 @@ export const timeTypes = {
   bigBang: 'большой взрыв',
   solarSystem: 'солнечная система',
   moonFormation: 'образование луны',
+  earthHistory: 'история земли',
   blackEarth: 'черная земля',
   blueEarth: 'голубая земля',
   greyEarth: 'серая земля',
