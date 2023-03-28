@@ -1,8 +1,8 @@
 export const mainTimeline  = [
-  'Большой взрыв',
-  'Солнечная система',
-  'Образование луны',
-  'История земли',
+  'Большой Взрыв',
+  'Солнечная Система',
+  'Образование Луны',
+  'История Земли',
 ]
 
 export const historyOfEarth = [
@@ -20,18 +20,18 @@ export const historyOfEarth = [
 ];
 
 export const timeTypes = {
-  big_bang: 'большой взрыв',
-  solar_system: 'солнечная система',
-  moon_formation: 'образование луны',
-  black_earth: 'черная земля',
-  blue_earth: 'голубая земля',
-  grey_earth: 'серая земля',
-  living_earth: 'живая земля',
-  red_earth: 'красная земля',
-  boring_billion: 'скучный миллиард',
-  white_earth: 'белая земля',
-  green_earth: 'зеленая земля',
-  age_of_man: 'эпоха человека',
+  bigBang: 'большой взрыв',
+  solarSystem: 'солнечная система',
+  moonFormation: 'образование луны',
+  blackEarth: 'черная земля',
+  blueEarth: 'голубая земля',
+  greyEarth: 'серая земля',
+  livingEarth: 'живая земля',
+  redEarth: 'красная земля',
+  boringBillion: 'скучный миллиард',
+  whiteEarth: 'белая земля',
+  greenEarth: 'зеленая земля',
+  ageOfMan: 'эпоха человека',
   present: 'настоящее',
   future: 'будущее'
 } as const;
