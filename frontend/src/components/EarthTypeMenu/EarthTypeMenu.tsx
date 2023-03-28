@@ -16,6 +16,7 @@ export const EarthTypeMenu = ({onTimeButtonClick: onTimeButtonClick}) => {
 
   const handleClickMenuButton = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    console.log(event)
   };
 
   const handleClickMenuItem = (
@@ -27,16 +28,18 @@ export const EarthTypeMenu = ({onTimeButtonClick: onTimeButtonClick}) => {
     setAnchorEl(null);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    console.log(e)
     setAnchorEl(null);
   };
 
   return (
     <div className='menu'>
       <Button
+        id='menu_button'
         variant='outlined'
-        onClick={handleClickMenuButton}
-        onMouseEnter={handleClickMenuButton}
+        // onClick={handleClickMenuButton}
+        onMouseEnter={(e) => handleClickMenuButton(e)}
         className={selectedTime === timeState ? 'btn-selected' : ''}
       >
         { selectedTime != timeState ? timeTypes.earthHistory : selectedTime }
@@ -45,15 +48,14 @@ export const EarthTypeMenu = ({onTimeButtonClick: onTimeButtonClick}) => {
       <Menu
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
-        onMouseLeave={handleClose}
+        // onClose={handleClose}
+        onMouseLeave={(e) => handleClose(e)}
       >
         {
           Object.values(timeTypes).slice(4).map((time, index) => {
             return (
               <MenuItem
                 key={index}
-                // onClick={() => props.onTimeButtonClick(time)}
                 onClick={(event) => handleClickMenuItem(event, time)}
               ><span>{ time }</span></MenuItem>
             )

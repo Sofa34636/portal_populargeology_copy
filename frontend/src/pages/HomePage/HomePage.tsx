@@ -8,6 +8,7 @@ import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
 import { clsx } from 'clsx';
 
+
 export const HomePage = () => {
 
   const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -20,11 +21,20 @@ export const HomePage = () => {
   const onTimeButtonClick = (time: Time) => {
     dispatch(changeTime(time))
     setActiveTimeButton(time)
+    if (time === activeTimeButton) {
+      dispatch(changeTime(null))
+      setActiveTimeButton(null)
+    }
   }
 
   const onInstrumentButtonClick = (instrument: Instrument) => {
     dispatch(changeInstrument(instrument))
     setActiveInstrumentButton(instrument)
+
+    if (instrument === activeInstrumentButton) {
+      dispatch(changeInstrument(null))
+      setActiveInstrumentButton(null)
+    }
   }
 
   const onLearnButtonClick = () => {
@@ -39,11 +49,9 @@ export const HomePage = () => {
       <div className="rect1"></div>
       <div className="rect2"></div>
       <header className="header">
-        <Link to="">
-          <div className="title">
+          <div className="title no_select">
             <h1>история вселенной</h1>
           </div>
-        </Link>
       </header>
       <main className="content">
         <div className="time">

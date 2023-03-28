@@ -1,3 +1,4 @@
+
 .wrapper {
 	text-transform: uppercase;
 	padding-bottom: 2.5rem;
@@ -18,6 +19,7 @@
         }
 	}
 }
+
 
 .title {
 	padding-bottom: 48px;
@@ -47,7 +49,9 @@
         display: flex;
         flex-direction: row;
 
+
 		button {
+
 			font-family: RSRegular;
 			font-style: normal;
 			font-weight: 400;
@@ -76,6 +80,7 @@
             &.btn-deactivated {
                 border: 1px solid #313131;
                 color: #313131;
+				cursor: default;
             }
 			&.btn-selected {
                 background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
