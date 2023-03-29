@@ -1,26 +1,37 @@
 import * as React from 'react';
 import { Layout } from '../../components/Layout/Layout';
-import { useLocation } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
+import {Suspense, useEffect} from 'react';
 
 import './ThreeDEarthPage.scss';
 import { Earth } from '../../components/ToolComponents/Earth/Earth';
-import { useAppSelector } from '../../hooks/redux'
+import {useAppDispatch, useAppSelector} from '../../hooks/redux'
+import {timeLineSlice} from "../../store/reducers/timeLineSlice";
+import {useGetArticleByIdQuery} from "../../services/ArticleService";
+import {instrumentTypes} from "../../types/timeline";
 
 
 export const ThreeDEarthPage = () => {
 
-  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
+  const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+  const { changeTime, changeInstrument } = timeLineSlice.actions;
+  const dispatch = useAppDispatch()
+
+
+  const { isLoading, data, error } = useGetArticleByIdQuery(1)
+
+  useEffect(() => {
+    dispatch(changeInstrument(instrumentTypes.earth))
+  })
 
   return (
     <div>
       <div>
-        <Layout layoutProps={{ time: time, instrument: instrument, isFooterButtonsLeft: true}}>
+        <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: true}}>
           <Grid className="parent" container spacing={0}>
             <Grid className="left" item xs={6}>
-              <h1>{time} </h1>
+              <h1>{timeState} </h1>
               <h2>650 млн. лет назад</h2>
               <p>
                 Три четверти миллиарда лет назад Земля вошла в период нестабильности климата.

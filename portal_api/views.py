@@ -15,22 +15,6 @@ class ArticleView(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
-    def article_list(request):
-        if request.method == 'GET':
-            articles = Article.objects.all()
-
-            title = request.query_params.get('title', None)
-            if title is not None:
-                tutorials = articles.filter(title__icontains=title)
-
-            tutorials_serializer = ArticleSerializer(tutorials, many=True)
-            return JsonResponse(tutorials_serializer.data, safe=False)
-
-        elif request.method == 'DELETE':
-            count = Article.objects.all().delete()
-            return JsonResponse({'message': '{} Articles were deleted successfully!'.format(count[0])},
-                                status=status.HTTP_204_NO_CONTENT)
-
 
 class EarthView(viewsets.ModelViewSet):
     queryset = Earth.objects.all()

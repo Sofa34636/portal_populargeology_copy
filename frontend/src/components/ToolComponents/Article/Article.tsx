@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import { useLocation, useParams } from 'react-router-dom'
+import React from 'react';
+import { useParams } from 'react-router-dom'
 import { Layout } from '../../Layout/Layout';
 import { useAppSelector } from '../../../hooks/redux'
+import {ArticleVerticalList} from "../../ArticleVerticalList/ArticleVerticalList";
 
 export const Article = () => {
   // const location = useLocation();
-  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
+  const {time: timeState, instrument: instrumentState} = useAppSelector((state) => state.timeLineReducer);
   // const decodedPath = decodeURI(location.pathname);
   // const title = decodedPath.substring(decodedPath.lastIndexOf('/') + 1);
   // title.substring(title.lastIndexOf('/') + 1)
@@ -28,19 +29,19 @@ export const Article = () => {
   console.log(params)
 
   return (
-    <Layout layoutProps={{ time: time, instrument: instrument}}>
+    <Layout layoutProps={{ time: timeState, instrument: instrumentState}}>
       <div className="article">
-        <div className='article__main'>
-            <div className="article__subtitle">
+        <div className='article--main'>
+            <div className="article--main__subtitle">
             <h4>Lorem, ipsum dolor.</h4>
             </div>
-            <div className="article__title">
+            <div className="article--main__title">
             <h1>dasda</h1>
             </div>
-            <div className="article__sources">
+            <div className="article--main__sources">
             <h5>Источники</h5>
             </div>
-            <div className="article__content">
+            <div className="article--main__content">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt perspiciatis aut
             reprehenderit alias molestiae magnam fugiat voluptatibus quos quis quas, animi fuga,
             voluptatem necessitatibus ex, nobis maxime voluptate molestias vel natus? Animi unde
@@ -65,22 +66,24 @@ export const Article = () => {
             iste, earum doloribus quo? Eos, expedita.
             </div>
         </div>
-        <div className="article__sub">
+        {/*<div className="article__sub">*/}
 
+        {/*</div>*/}
+        {/*<div className="article__subtitle">*/}
+        {/*  /!*<h4>{articleState.time_ago}</h4>*!/*/}
+        {/*</div>*/}
+        {/*<div className="article__title">*/}
+        {/*  /!*<h1>{articleState.title}</h1>*!/*/}
+        {/*</div>*/}
+        {/*<div className="article__sources">*/}
+        {/*  <h5>Источники</h5>*/}
+        {/*</div>*/}
+        {/*<div className="article__content">*/}
+        {/*  /!*{articleState.text}*!/*/}
+        {/*</div>*/}
+        <div className="article__articleVerticalList">
+            <ArticleVerticalList/>
         </div>
-        <div className="article__subtitle">
-          {/*<h4>{articleState.time_ago}</h4>*/}
-        </div>
-        <div className="article__title">
-          {/*<h1>{articleState.title}</h1>*/}
-        </div>
-        <div className="article__sources">
-          <h5>Источники</h5>
-        </div>
-        <div className="article__content">
-          {/*{articleState.text}*/}
-        </div>
-        <div className="article__anotherArticles"></div>
       </div>
     </Layout>
   );

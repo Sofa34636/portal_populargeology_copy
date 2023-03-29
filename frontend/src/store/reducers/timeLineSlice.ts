@@ -1,11 +1,11 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Instrument, Time, TimeLineState } from '../../types/timeline'
+import {Instrument, instrumentTypes, Time, TimeLineState, timeTypes} from '../../types/timeline'
 
 
 const initialState: TimeLineState = {
-  time: null,
-  instrument: null
+  time: timeTypes.bigBang,
+  instrument: instrumentTypes.video
 };
 
 export const timeLineSlice = createSlice({

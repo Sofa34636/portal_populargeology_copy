@@ -1,19 +1,26 @@
 import * as React from 'react';
 import { Layout } from '../../components/Layout/Layout';
-import { useLocation } from 'react-router-dom';
 import { ArticleCardProps } from '../../types/ArticleCardProps';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
 import { useGetArticleByIdQuery } from '../../services/ArticleService'
-import { useAppSelector } from '../../hooks/redux'
+import {useAppDispatch, useAppSelector} from '../../hooks/redux'
+import {useEffect} from "react";
+import {timeLineSlice} from "../../store/reducers/timeLineSlice";
+import {instrumentTypes} from "../../types/timeline";
 
 
 export const ArticleListPage = () => {
-  const location = useLocation()
+
+  const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+  const { changeTime, changeInstrument } = timeLineSlice.actions;
+  const dispatch = useAppDispatch()
 
 
-  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
-  const {isLoading, data, error} = useGetArticleByIdQuery(1)
+  const { isLoading, data, error } = useGetArticleByIdQuery(1)
 
+  useEffect(() => {
+    dispatch(changeInstrument(instrumentTypes.article))
+  })
 
   const cards: ArticleCardProps[][] = [
     [
@@ -42,7 +49,7 @@ export const ArticleListPage = () => {
 
   return (
     <div className='article_list'>
-      <Layout layoutProps={{time: time, instrument: instrument}}>
+      <Layout layoutProps={{time: timeState, instrument: instrumentState}}>
         <div className='article_list__content'>
           <ArticleCarousel articleCards={cards}/>
         </div>
