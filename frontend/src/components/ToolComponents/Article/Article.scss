@@ -1,9 +1,14 @@
 .article {
     color: $white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    display: grid;
+    grid-template-areas:
+            "A A A A  A A A A  B B B B"
+            "A A A A  A A A A  B B B B"
+            "A A A A  A A A A  B B B B"
+            "C C C C  C C C C  B B B B";
     &--main {
+        grid-area: A;
+        padding-bottom: 20px;
         &__subtitle {
             font-size: 16px;
             line-height: 16px;
@@ -27,5 +32,11 @@
             padding-top: 32px;
             color: #B9B9B9;
         }
+    }
+    &--articleVerticalList {
+        grid-area: B;
+    }
+    &--goBackButton {
+        grid-area: C;
     }
 }

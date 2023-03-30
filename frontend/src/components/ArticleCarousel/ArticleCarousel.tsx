@@ -18,6 +18,7 @@ export const ArticleCarousel = (props: { articleCards: ArticleCardProps[][] }) =
         navButtonsAlwaysVisible={true}
         cycleNavigation={false}
         swipe={false}
+        animation={"slide"}
         navButtonsProps={{
           style: {
             background: 'none',

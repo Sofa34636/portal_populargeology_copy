@@ -1,18 +1,15 @@
-import React from 'react';
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'
 import { Layout } from '../../Layout/Layout';
 import { useAppSelector } from '../../../hooks/redux'
 import {ArticleVerticalList} from "../../ArticleVerticalList/ArticleVerticalList";
+import Button from "@mui/material/Button";
 
 export const Article = () => {
-  // const location = useLocation();
-  const {time: timeState, instrument: instrumentState} = useAppSelector((state) => state.timeLineReducer);
-  // const decodedPath = decodeURI(location.pathname);
-  // const title = decodedPath.substring(decodedPath.lastIndexOf('/') + 1);
-  // title.substring(title.lastIndexOf('/') + 1)
-
+  const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+  const navigate = useNavigate()
   // const [articleState, setArticleState] = useState({});
-  //
+
 
   // useEffect(() => {
   //   const apiUrl = 'http://127.0.0.1:8000/api/article/';
@@ -24,9 +21,9 @@ export const Article = () => {
   //       );
   //
   // }, [])
-  const params = useParams();
-
-  console.log(params)
+  // const params = useParams();
+  //
+  // console.log(params)
 
   return (
     <Layout layoutProps={{ time: timeState, instrument: instrumentState}}>
@@ -81,8 +78,13 @@ export const Article = () => {
         {/*<div className="article__content">*/}
         {/*  /!*{articleState.text}*!/*/}
         {/*</div>*/}
-        <div className="article__articleVerticalList">
-            <ArticleVerticalList/>
+        <div className="article--articleVerticalList">
+          <ArticleVerticalList/>
+        </div>
+        <div className='article--goBackButton'>
+          <Button onClick={() => navigate(-1)} variant="outlined">
+              НАЗАД
+          </Button>
         </div>
       </div>
     </Layout>

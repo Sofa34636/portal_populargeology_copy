@@ -17,7 +17,7 @@ export default function App() {
   const routes = [
     { path: '', element: <HomePage /> },
     { path: '/article', element: <ArticleListPage /> },
-    { path: '/article/:name', element: <Article /> },
+    { path: '/article/:id', element: <Article /> },
     { path: '/video', element: <VideoPage /> },
     { path: '/gallery', element: <GalleryPage /> },
     { path: '/earth', element: <ThreeDEarthPage /> },

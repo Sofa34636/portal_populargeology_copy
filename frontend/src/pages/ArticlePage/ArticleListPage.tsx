@@ -16,7 +16,7 @@ export const ArticleListPage = () => {
   const dispatch = useAppDispatch()
 
 
-  const { isLoading, data, error } = useGetArticleByIdQuery(1)
+  // const { isLoading, data, error } = useGetArticleByIdQuery(1)
 
   useEffect(() => {
     dispatch(changeInstrument(instrumentTypes.article))
