@@ -8,7 +8,7 @@ import './ThreeDEarthPage.scss';
 import { Earth } from '../../components/ToolComponents/Earth/Earth';
 import {useAppDispatch, useAppSelector} from '../../hooks/redux'
 import {timeLineSlice} from "../../store/reducers/timeLineSlice";
-import {useGetArticleByIdQuery} from "../../services/ArticleService";
+import {useGetArticleByIdQuery} from "../../store/services/ArticleService";
 import {instrumentTypes} from "../../types/timeline";
 
 

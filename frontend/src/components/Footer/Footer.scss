@@ -2,15 +2,12 @@
 
 .buttons {
 	display: flex;
-	flex-direction: row;
 	justify-content: space-between;
 	width: 100%;
-	padding-top: 10px;
 	button {
 		border: 1px solid $gray;
 		font-family: RSRegular;
 		text-transform: uppercase;
-		bottom: 24px;
 	}
 }
 

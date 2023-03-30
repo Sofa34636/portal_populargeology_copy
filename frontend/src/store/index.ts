@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { articleAPI } from '../services/ArticleService';
-import { earthApi } from '../services/EarthService'
+import { articleAPI } from './services/ArticleService';
+import { earthApi } from './services/EarthService'
 import timeLineReducer from './reducers/timeLineSlice';
 
 const rootReducer = combineReducers({
