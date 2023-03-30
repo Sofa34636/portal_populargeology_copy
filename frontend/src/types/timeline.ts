@@ -45,7 +45,6 @@ export const instrumentTypes = {
   earth: '3д земля'
 } as const;
 
-
 type time_keys = keyof typeof timeTypes;
 export type Time = (typeof timeTypes)[time_keys]
 

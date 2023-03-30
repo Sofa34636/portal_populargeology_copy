@@ -47,8 +47,15 @@ export const HomePage = () => {
   }
 
   const onLearnButtonClick = () => {
-    navigate(Object.fromEntries(
-      Object.entries(instrumentTypes).map(([k,v])=>[v,k])
+    navigate(
+      Object.entries(instrumentTypes)
+        .reduce(
+          (switched, [key, value]) =>
+            ({
+              ...switched,
+              [value]: key,
+            }),
+          {},
     )[instrumentState])
   }
 
