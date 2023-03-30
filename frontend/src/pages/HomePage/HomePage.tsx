@@ -11,6 +11,11 @@ import { clsx } from 'clsx';
 
 export const HomePage = () => {
 
+  useEffect(() => {
+    dispatch(changeTime(timeTypes.bigBang))
+    dispatch(changeInstrument(instrumentTypes.video))
+  }, [])
+
   const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
@@ -19,8 +24,6 @@ export const HomePage = () => {
 
   const [activeTimeButton, setActiveTimeButton] = useState<Time | null>(timeTypes.bigBang)
   const [activeInstrumentButton, setActiveInstrumentButton] = useState<Instrument | null>(instrumentTypes.video)
-
-
 
 
   const onTimeButtonClick = (time: Time) => {
