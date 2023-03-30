@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
-import { BreadCrumbsProps } from '../../types/BreadCrumbsProps';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useAppSelector } from '../../hooks/redux'
 
-function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-  event.preventDefault();
-}
 
-export default function BreadcrumbsComponent(props: BreadCrumbsProps) {
+export default function BreadcrumbsComponent() {
+
+  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
+
   return (
     <div role="presentation" className="breadcrumbs-container">
       <Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
@@ -16,11 +16,11 @@ export default function BreadcrumbsComponent(props: BreadCrumbsProps) {
           Главная
         </Link>
         <Link underline="hover" color="white" href="/">
-          Время: {props.time}
+          Время: {time}
           <ExpandMoreIcon />
         </Link>
         <Link underline="hover" color="white" href="/">
-          Инструмент: {props.instrument}
+          Инструмент: {instrument}
           <ExpandMoreIcon />
         </Link>
       </Breadcrumbs>

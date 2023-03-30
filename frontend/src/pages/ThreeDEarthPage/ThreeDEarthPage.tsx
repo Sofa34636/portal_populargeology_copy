@@ -12,7 +12,7 @@ import {useGetArticleByIdQuery} from "../../services/ArticleService";
 import {instrumentTypes} from "../../types/timeline";
 
 
-export const ThreeDEarthPage = () => {
+export const  ThreeDEarthPage = () => {
 
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;

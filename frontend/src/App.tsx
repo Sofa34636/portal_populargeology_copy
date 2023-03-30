@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import './styles/app.scss';
 import { ArticleListPage } from './pages/ArticlePage/ArticleListPage';
@@ -9,6 +9,7 @@ import { ReliefPage } from './pages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Article } from './components/ToolComponents/Article/Article';
+import { useAppSelector } from './hooks/redux'
 
 
 export default function App() {
@@ -19,10 +20,16 @@ export default function App() {
     { path: '/article/:name', element: <Article /> },
     { path: '/video', element: <VideoPage /> },
     { path: '/gallery', element: <GalleryPage /> },
-    { path: '/threeDEarth', element: <ThreeDEarthPage /> },
+    { path: '/earth', element: <ThreeDEarthPage /> },
     { path: '/relief', element: <ReliefPage /> },
     { path: '/*', element: <NotFoundPage /> },
   ];
+
+  const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+
+  useEffect(() => {
+    console.log(timeState, instrumentState)
+  })
 
   return (
     <div className="App">

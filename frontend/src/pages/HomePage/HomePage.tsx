@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { useEffect, useState } from 'react'
@@ -15,14 +15,20 @@ export const HomePage = () => {
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
 
-  const [activeTimeButton, setActiveTimeButton] = useState<Time | null>(null)
-  const [activeInstrumentButton, setActiveInstrumentButton] = useState<Instrument | null>(null)
+  const navigate = useNavigate();
+
+  const [activeTimeButton, setActiveTimeButton] = useState<Time | null>(timeTypes.bigBang)
+  const [activeInstrumentButton, setActiveInstrumentButton] = useState<Instrument | null>(instrumentTypes.video)
+
+
+
 
   const onTimeButtonClick = (time: Time) => {
     dispatch(changeTime(time))
     setActiveTimeButton(time)
+
     if (time === activeTimeButton) {
-      dispatch(changeTime(null))
+      dispatch(changeTime(timeTypes.bigBang))
       setActiveTimeButton(null)
     }
   }
@@ -32,17 +38,16 @@ export const HomePage = () => {
     setActiveInstrumentButton(instrument)
 
     if (instrument === activeInstrumentButton) {
-      dispatch(changeInstrument(null))
+      dispatch(changeInstrument(instrumentTypes.video))
       setActiveInstrumentButton(null)
     }
   }
 
   const onLearnButtonClick = () => {
-    console.log(timeState, instrumentState)
+    navigate(Object.fromEntries(
+      Object.entries(instrumentTypes).map(([k,v])=>[v,k])
+    )[instrumentState])
   }
-
-  useEffect(() => {
-  })
 
   return (
     <>

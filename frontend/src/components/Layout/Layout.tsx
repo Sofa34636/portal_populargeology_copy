@@ -11,10 +11,7 @@ export const Layout = (props: { layoutProps: LayoutProps, children?: React.React
   return (
     <div>
       <header className="header">
-        <Header
-          time={props.layoutProps.time} 
-          instrument={props.layoutProps.instrument} 
-        />
+        <Header/>
       </header>
       <main>
         { props.children }
