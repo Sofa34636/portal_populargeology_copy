@@ -83,7 +83,7 @@ export const Article = () => {
         </div>
         <div className='article--goBackButton'>
           <Button onClick={() => navigate(-1)} variant="outlined">
-              НАЗАД
+              НАЗАД ТЕСТ
           </Button>
         </div>
       </div>
