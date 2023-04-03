@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IEarth} from '../models/IEarth';
+import { IEarth} from '../../types/models/IEarth';
 
 export const earthApi = createApi({
   reducerPath: 'earthApi',

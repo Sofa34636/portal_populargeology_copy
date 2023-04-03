@@ -5,7 +5,7 @@ import { Footer } from '../Footer/Footer';
 
 import '../../styles/app.scss';
 import { LayoutProps } from '../../types/LayoutProps';
-
+import './Layout.scss';
 
 export const Layout = (props: { layoutProps: LayoutProps, children?: React.ReactNode }) => {
   return (
