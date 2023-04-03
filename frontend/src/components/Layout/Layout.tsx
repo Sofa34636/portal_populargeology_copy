@@ -17,7 +17,7 @@ export const Layout = (props: { layoutProps: LayoutProps, children?: React.React
         { props.children }
       </main>
       <footer className='footer'>
-        <Footer isFooterButtonsLeft={props.layoutProps.isFooterButtonsLeft}/>
+        <Footer isFooterButtonsLeft={props.layoutProps.isFooterButtonsLeft} isDisplayed={props.layoutProps.isDisplayed}/>
       </footer>
     </div>
   );

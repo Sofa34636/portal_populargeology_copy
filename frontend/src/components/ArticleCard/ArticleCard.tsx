@@ -8,7 +8,7 @@ export const ArticleCard = (props: ArticleCardProps) => {
     const navigate = useNavigate()
 
     const handleClick = () => {
-        navigate(`${props.title.toLowerCase()}`);
+        navigate(`/article/${props.title.toLowerCase()}`);
     }
 
     return(

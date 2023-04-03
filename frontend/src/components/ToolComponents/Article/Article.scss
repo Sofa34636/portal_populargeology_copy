@@ -5,6 +5,7 @@
             "A A A A  A A A A  B B B B"
             "A A A A  A A A A  B B B B"
             "A A A A  A A A A  B B B B"
+            "C C C C  C C C C  B B B B"
             "C C C C  C C C C  B B B B";
     &--main {
         grid-area: A;
@@ -23,7 +24,8 @@
         &__sources {
             font-size: 14px;
             line-height: 20px;
-            padding-top: 44px;
+            padding-top: 24px;
+            padding-bottom: 20px;
             color: #B9B9B9;
         }
         &__content {
@@ -31,6 +33,8 @@
             line-height: 20px;
             padding-top: 32px;
             color: #B9B9B9;
+            overflow: auto;
+            height: 400px;
         }
     }
     &--articleVerticalList {
@@ -38,5 +42,6 @@
     }
     &--goBackButton {
         grid-area: C;
+        margin-top: 30px;
     }
 }

@@ -23,7 +23,7 @@ const renderCard = (props: ListChildComponentProps ) => {
 export const ArticleVerticalList = () => {
     return (
         <Box
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'black', justifyContent: 'center' }}
+            sx={{ width: '100%', maxWidth: 360, bgcolor: 'black' }}
         >
             <FixedSizeList
                 height={650}
