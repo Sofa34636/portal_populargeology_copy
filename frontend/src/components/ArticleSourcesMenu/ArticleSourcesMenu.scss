@@ -1,0 +1,44 @@
+
+
+// button
+#sources-button {
+  border: none;
+  padding: 0;
+  &:hover {
+    color: $white;
+  }
+}
+
+// ul
+#sources-menu {
+  .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
+    color: $white;
+    width: 600px;
+    border-radius: 20px;
+    .sources-menu_item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      &__ref {
+        a {
+          font-size: small;
+        }
+      }
+      &__journal {
+        font-size: small;
+        white-space: pre-wrap;
+      }
+      &__title {
+        h5 {
+          margin-top: 5px;
+          font-family: RSLight, serif;
+          padding-right: 10px;
+          line-height: 14px;
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

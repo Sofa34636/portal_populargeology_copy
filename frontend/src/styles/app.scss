@@ -4,17 +4,17 @@
 
 // COMPONENTS
 @import "../components/EarthTypeMenu/EarthTypeMenu.scss";
-
+@import "../components/ArticleSourcesMenu/ArticleSourcesMenu.scss";
 @import "../components/Breadcrumbs/Breadcrumbs.scss";
 @import "../components/ArticleCard/ArticleCard.scss";
 @import "../components/ToolComponents/Article/Article.scss";
+@import "../components/Footer/Footer.scss";
+
 
 // PAGES
 @import "../pages/HomePage/HomePage.scss";
 @import "../pages/ArticlePage/ArticleListPage.scss";
 @import "../pages/ThreeDEarthPage/ThreeDEarthPage.scss";
-
-@import "../components/Footer/Footer.scss";
 
 .App {
 
@@ -24,7 +24,7 @@
 	margin-right: 30px;
 
 	button {
-		font-family: RSRegular;
+		font-family: RSRegular, serif;
 		font-style: normal;
 		font-weight: 400;
 		font-size: 16px;
