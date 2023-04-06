@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Layout } from '../../components/Layout/Layout';
 import { ArticleCardProps } from '../../types/ArticleCardProps';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
-import { useGetArticleByIdQuery } from '../../store/services/ArticleService'
 import {useAppDispatch, useAppSelector} from '../../hooks/redux'
 import {useEffect} from "react";
 import {timeLineSlice} from "../../store/reducers/timeLineSlice";
@@ -46,6 +45,8 @@ export const ArticleListPage = () => {
       { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ16' },
     ]
   ]
+
+
 
   return (
     <div className='article_list'>

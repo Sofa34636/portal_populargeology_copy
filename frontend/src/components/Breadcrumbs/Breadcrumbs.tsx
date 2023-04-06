@@ -3,10 +3,12 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from "react-router-dom";
 import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { clsx } from 'clsx';
+import { useFetchAllArticlesQuery, useGetArticleByIdQuery } from '../../store/services/ArticleService'
+
 
 export default function BreadcrumbsComponent() {
 
@@ -53,6 +55,8 @@ export default function BreadcrumbsComponent() {
     // navigate(`../${path}`, { replace: true })
   };
 
+
+
   const changeBreadcrumbsInstrument = (instrument: Instrument) => {
     const prevIndex = availableInstruments.indexOf(instrument);
     setAvailableInstruments([
@@ -75,7 +79,6 @@ export default function BreadcrumbsComponent() {
       )[instrument];
     navigate(`../${path}`, { replace: true })
   };
-
 
 
   return (

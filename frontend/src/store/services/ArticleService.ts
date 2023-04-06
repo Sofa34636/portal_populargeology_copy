@@ -6,11 +6,8 @@ export const articleAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api' }),
   endpoints: (build) => ({
     fetchAllArticles: build.query<IArticle[], number>({
-      query: (limit: number = 6) => ({
-        url: `/article`,
-        params: {
-          _limit: limit,
-        },
+      query: (limit: number) => ({
+        url: `/article/?limit=${limit}`,
       }),
     }),
     getArticleById: build.query<IArticle, number>({

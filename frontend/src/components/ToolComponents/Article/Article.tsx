@@ -5,6 +5,7 @@ import { ArticleSourcesMenu } from '../../ArticleSourcesMenu/ArticleSourcesMenu'
 import { useAppSelector } from '../../../hooks/redux'
 import {ArticleVerticalList} from "../../ArticleVerticalList/ArticleVerticalList";
 import Button from "@mui/material/Button";
+import { useFetchAllArticlesQuery } from '../../../store/services/ArticleService'
 
 export const Article = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -26,12 +27,15 @@ export const Article = () => {
   //
   // console.log(params)
 
+  const {data, error, isLoading} = useFetchAllArticlesQuery(1)
+
+  console.log(data)
   return (
     <Layout layoutProps={{ time: timeState, instrument: instrumentState, isDisplayed: false}}>
       <div className="article">
         <div className='article--main'>
             <div className="article--main__subtitle">
-                <h4>Lorem, ipsum dolor.</h4>
+                <h4></h4>
             </div>
             <div className="article--main__title">
                 <h1>dasda</h1>

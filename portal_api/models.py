@@ -22,6 +22,7 @@ class Exhibit(models.Model):
     def __str__(self):
         return self.title
 
+
 class Video(models.Model):
     time_ago = models.CharField(max_length=100)
     video_source = models.CharField(max_length=100)
