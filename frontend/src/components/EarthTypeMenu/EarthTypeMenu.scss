@@ -1,4 +1,6 @@
 // menu
+@import '../../styles/_variables.scss';
+@import '../../styles/libs/normalize.scss';
 
 .MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
     background-color: $black;
@@ -7,16 +9,16 @@
 }
 
 
-button {
-    &:hover{
-        cursor: pointer;
-        color: $orange;
-        border-color: $orange;
-    }
-}
-
-li {
-    :hover {
-        color: $orange;
-    }
-}
+//button {
+//    &:hover{
+//        cursor: pointer;
+//        color: $orange;
+//        border-color: $orange;
+//    }
+//}
+//
+//li {
+//    :hover {
+//        color: $orange;
+//    }
+//}

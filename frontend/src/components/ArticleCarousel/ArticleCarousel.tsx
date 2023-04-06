@@ -5,10 +5,11 @@ import { ArticleCard } from '../ArticleCard/ArticleCard';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
+import './ArticleCarousel.scss'
 
 export const ArticleCarousel = (props: { articleCards: ArticleCardProps[][] }) => {
   return (
-    <div>
+    <>
       <Carousel
         className="article-carousel"
         NextIcon={<ArrowForwardIosRoundedIcon />}
@@ -48,6 +49,6 @@ export const ArticleCarousel = (props: { articleCards: ArticleCardProps[][] }) =
           );
         })}
       </Carousel>
-    </div>
+    </>
   );
 };

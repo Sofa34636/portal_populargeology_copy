@@ -6,6 +6,8 @@ import { historyOfEarth, instrumentTypes, Time, timeTypes } from '../../types/ti
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 
+import './EarthTypeMenu.scss'
+
 // BUGS:
 // TODO: При наведении на кнопку история земли, не работает ховер
 // TODO: Если навести на кнопку история земли и, не наводя на выплывающее меню убрать мышь - меню не убирается
@@ -37,7 +39,6 @@ export const EarthTypeMenu = ({onTimeButtonClick: onTimeButtonClick}) => {
   return (
     <div className='menu'>
       <Button
-        id='menu_button'
         variant='outlined'
         onMouseOver={handleClickMenuButton}
         className={selectedTime === timeState ? 'btn-selected' : ''}
@@ -45,24 +46,25 @@ export const EarthTypeMenu = ({onTimeButtonClick: onTimeButtonClick}) => {
         { selectedTime != timeState ? timeTypes.earthHistory : selectedTime }
       </Button
         >
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-        MenuListProps={{ onMouseLeave: handleClose }}
-        className='earth-type-menu'
-      >
-        {
-          Object.values(timeTypes).slice(4).map((time, index) => {
-            return (
-              <MenuItem
-                key={index}
-                onClick={(event) => handleClickMenuItem(event, time)}
-              ><span>{ time }</span></MenuItem>
-            )
-          })
-        }
-      </Menu>
+        <Menu
+          className='menu-items'
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          // open = {true}
+          onClose={handleClose}
+          MenuListProps={{ onMouseLeave: handleClose }}
+        >
+          {
+            Object.values(timeTypes).slice(4).map((time, index) => {
+              return (
+                <MenuItem
+                  key={index}
+                  onClick={(event) => handleClickMenuItem(event, time)}
+                ><span>{ time }</span></MenuItem>
+              )
+            })
+          }
+        </Menu>
     </div>
   );
 }

@@ -1,16 +1,121 @@
-.breadcrumbs-container {
-	.breadcrumbs {
+@import "../../styles/variables";
 
-		.MuiBreadcrumbs-separator {
-			color: #F4F4F4;
-		}
+.menu li {
+	position: relative;
+	z-index: 100;
+}
 
-		a {
-			display: flex;
-			align-items: center;
-		}
+.menu__list {
+	display: flex;
+}
+
+.menu__link {
+	&:hover {
+		color: $orange;
+		cursor: pointer;
+	}
+}
+
+.menu__list>li {
+	margin-right: 10px;
+
+}
+
+.sub-menu__list {
+	z-index: 100;
+	display: none;
+	position: absolute;
+	left:0;
+	background-color: transparent;
+	padding-bottom: 50px;
+}
+
+
+.sub-menu__list>li{
+	padding-top: 12px;
+	min-width: 110px;
+
+}
+
+.sub-sub-menu__list{
+	li:hover {
+		color: $orange;
+		cursor: pointer;
+	}
+}
+
+.sub-menu__link {
+	display: inline-block;
+	span:hover {
+		color: $orange;
+		cursor: pointer;
+
+	}
+	span:hover .svg{
+		-ms-transform: rotate(7deg); /* IE 9 */
+		-webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+		transform: rotate(7deg);
 	}
 
-	padding-bottom: 32px;
-	top: 32px;
 }
+
+
+.sub-sub-menu__list {
+	z-index: 100;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 105%;
+	min-width: 250px;
+	background-color: transparent;
+}
+
+.sub-sub-menu__list>li {
+	padding-top: 12px;
+}
+
+.sub-sub-menu__link {
+	display: inline-block;
+}
+
+.arrow-down {
+	position: relative;
+	bottom: 2px;
+	vertical-align: middle;
+}
+
+.separator {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.selected {
+	background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+	border-radius: 6px;
+}
+
+.MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters sub-menu__link no_select css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+	padding: 0;
+}
+
+.overlay {
+	z-index: 50;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	//transition: 0.2s;
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 90%;
+
+}
+
+//.overlay:active {
+//	opacity: 1;
+//}
+//
+//.overlay:not(:active) {
+//	opacity: 95%;
+//}
+//
