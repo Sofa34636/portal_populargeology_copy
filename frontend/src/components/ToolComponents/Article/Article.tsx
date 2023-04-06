@@ -28,8 +28,8 @@ export const Article = () => {
   // console.log(params)
 
   const {data, error, isLoading} = useFetchAllArticlesQuery(1)
-
   console.log(data)
+
   return (
     <Layout layoutProps={{ time: timeState, instrument: instrumentState, isDisplayed: false}}>
       <div className="article">

@@ -38,21 +38,70 @@ export default function BreadcrumbsComponent() {
     Object.values(instrumentTypes).filter((instrument) => instrument != breadcrumbsInstrument)
   )
 
+
   const changeBreadcrumbsTime = (time: Time) => {
 
+    const isCurrentEarthTime = availableEarthTimes.includes(breadcrumbsTime);
+    const isPickedEarthTime = availableEarthTimes.includes(time)
+
+    setAvailableTimes([
+      ...availableTimes.filter(i => i != time),
+    ])
+
+    setAvailableEarthTimes([
+      ...availableEarthTimes.filter(i => i != time)
+    ])
+    //
+    // if (!isCurrentEarthTime && !isPickedEarthTime) {
+    //   setAvailableTimes([
+    //     ...availableTimes.filter(i => i != time),
+    //     breadcrumbsTime
+    //   ])
+    // } else if (!isCurrentEarthTime && isPickedEarthTime) {
+    //   setAvailableTimes([
+    //     ...availableTimes.filter(i => i != time),
+    //     breadcrumbsTime
+    //   ])
+    //
+    // } else if (isCurrentEarthTime && !isPickedEarthTime) {
+    //   setAvailableEarthTimes([
+    //     ...availableEarthTimes.filter(i => i != time),
+    //     breadcrumbsTime
+    //   ])
+    //
+    // } else if (isCurrentEarthTime && isPickedEarthTime) {
+    //   setAvailableEarthTimes([
+    //     ...availableEarthTimes.filter(i => i != time),
+    //     breadcrumbsTime,
+    //   ])
+    // }
+
+    setBreadcrumbsTime(time)
+    dispatch(changeTime(time))
+    setIsTimeMenuOpen(false)
+    setIsOverlayShown(false)
 
 
+    const time_path = Object.entries(timeTypes)
+      .reduce(
+        (switched, [key, value]) =>
+          ({
+            ...switched,
+            [value]: key,
+          }),
+        {},
+      )[time];
 
-    // const path = Object.entries(timeTypes)
-    //   .reduce(
-    //     (switched, [key, value]) =>
-    //       ({
-    //         ...switched,
-    //         [value]: key,
-    //       }),
-    //     {},
-    //   )[time];
-    // navigate(`../${path}`, { replace: true })
+    const instrument_path = Object.entries(instrumentTypes)
+      .reduce(
+        (switched, [key, value]) =>
+          ({
+            ...switched,
+            [value]: key,
+          }),
+        {},
+      )[instrument];
+    navigate(`../${instrument_path}/${time_path}`, { replace: true })
   };
 
 
@@ -68,7 +117,18 @@ export default function BreadcrumbsComponent() {
     dispatch(changeInstrument(instrument))
     setIsInstrumentMenuOpen(false)
     setIsOverlayShown(false)
-    const path = Object.entries(instrumentTypes)
+
+    const time_path = Object.entries(timeTypes)
+      .reduce(
+        (switched, [key, value]) =>
+          ({
+            ...switched,
+            [value]: key,
+          }),
+        {},
+      )[time];
+
+    const instrument_path = Object.entries(instrumentTypes)
       .reduce(
         (switched, [key, value]) =>
           ({
@@ -77,7 +137,7 @@ export default function BreadcrumbsComponent() {
           }),
         {},
       )[instrument];
-    navigate(`../${path}`, { replace: true })
+    navigate(`../${instrument_path}/${time_path}`, { replace: true })
   };
 
 
@@ -110,7 +170,7 @@ export default function BreadcrumbsComponent() {
                   <ExpandMoreIcon className='arrow-down'/>
                 </span>
                 <span className='separator no_select'>/</span>
-                <ul className="sub-menu__list" style={isTimeMenuOpen?{display: 'block'}:null}>
+                <ul className="sub-menu__list left-menu" style={isTimeMenuOpen?{display: 'block'}:null}>
                     {
                       availableTimes.map((time, index) => {
 
