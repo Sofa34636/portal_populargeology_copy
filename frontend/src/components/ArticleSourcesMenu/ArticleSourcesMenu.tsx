@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess"
 
 export const ArticleSourcesMenu = (props) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -25,7 +26,7 @@ export const ArticleSourcesMenu = (props) => {
                 onClick={handleClick}
             >
                 <h5>Источники</h5>
-                {<ExpandMoreIcon/>}
+                {open ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
             </Button>
             <Menu
                 id="sources-menu"

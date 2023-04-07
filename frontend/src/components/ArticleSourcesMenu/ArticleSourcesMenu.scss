@@ -1,9 +1,9 @@
-
-
 // button
 #sources-button {
   border: none;
   padding: 0;
+  line-height: 20px;
+  font-size: 14px;
   &:hover {
     color: $white;
   }
@@ -13,7 +13,7 @@
 #sources-menu {
   .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
     color: $white;
-    width: 600px;
+    width: 900px;
     border-radius: 20px;
     .sources-menu_item {
       display: flex;
@@ -29,10 +29,14 @@
         white-space: pre-wrap;
       }
       &__title {
+        padding-right: 10px;
         h5 {
+          text-transform: none;
+          min-width: 82px;
+          text-align: left;
           margin-top: 5px;
           font-family: RSLight, serif;
-          padding-right: 10px;
+          margin-right: 10px;
           line-height: 14px;
           &:hover {
             color: $white;

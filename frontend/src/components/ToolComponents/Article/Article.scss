@@ -11,15 +11,21 @@
         grid-area: A;
         padding-bottom: 20px;
         &__subtitle {
-            font-size: 16px;
-            line-height: 16px;
-            padding-top: 50px;
-            color: #B9B9B9;
+            h4 {
+                font-size: 16px;
+                line-height: 16px;
+                padding-top: 50px;
+                color: #B9B9B9;
+                font-family: RSLight, serif;
+            }
         }
         &__title {
-            font-size: 24px;
-            line-height: 32px;
-            padding-top: 17px;
+            h1 {
+                font-size: 24px;
+                line-height: 32px;
+                padding-top: 17px;
+                font-family: RSRegular, serif;
+            }
         }
         &__sources {
             font-size: 14px;

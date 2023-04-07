@@ -1,17 +1,21 @@
 import * as React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { ArticleCardProps } from '../../types/ArticleCardProps';
 import { ArticleCard } from '../ArticleCard/ArticleCard';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import './ArticleCarousel.scss'
+import {IArticle} from "../../types/models/IArticle";
 
-export const ArticleCarousel = (props: { articleCards: ArticleCardProps[][] }) => {
+// https://github.com/Learus/react-material-ui-carousel
+
+export const ArticleCarousel = (props: { articleCards: IArticle[][] }) => {
   return (
     <>
       <Carousel
         className="article-carousel"
+        next={ (next, active) => console.log(`we left ${active}, and are now at ${next}`)}
+        prev={ (prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
         NextIcon={<ArrowForwardIosRoundedIcon />}
         PrevIcon={<ArrowBackIosRoundedIcon />}
         autoPlay={false}
@@ -20,27 +24,31 @@ export const ArticleCarousel = (props: { articleCards: ArticleCardProps[][] }) =
         cycleNavigation={false}
         swipe={false}
         animation={"slide"}
+        navButtonsWrapperProps={{
+            style: {
+                paddingTop: '75px',
+            }
+        }}
         navButtonsProps={{
           style: {
             background: 'none',
             border: 'none',
           },
         }}>
-        {props.articleCards.map((articleCardsRow: ArticleCardProps[], indexI) => {
+        {props.articleCards.map((articleCardsRow: IArticle[], indexI) => {
           return (
             <Grid
-              sx={{ width: '100%', paddingRight: '75px', paddingLeft: '90px' }}
+              sx={{ width: '100%', height: '572px', paddingRight: '75px', paddingLeft: '90px' }}
               container
               columns={3}
               spacing={2}
               key={indexI}>
-              {articleCardsRow.map((cardProps, indexJ) => {
+              {articleCardsRow.map((cardProps: IArticle, indexJ) => {
                 return (
                   <Grid item xs={1} key={indexJ}>
                     <ArticleCard
                       key={indexJ}
-                      photoPath={cardProps.photoPath}
-                      title={cardProps.title}
+                      {...cardProps}
                     />
                   </Grid>
                 );
