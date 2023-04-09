@@ -110,8 +110,20 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	opacity: 90%;
+	// opacity: 80%;
+	// transition: 0.3s;
+	animation:fadeIn 0.1s ease-in;
 
+}
+
+
+@keyframes fadeIn {
+    from { 
+      opacity:0;
+    }
+    to {
+      opacity:90%;
+    }
 }
 
 //.overlay:active {
