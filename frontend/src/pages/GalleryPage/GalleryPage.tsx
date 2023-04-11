@@ -17,9 +17,6 @@ export const GalleryPage = () => {
 
     const { isLoading, data, error } = useGetArticleByIdQuery(1)
 
-    useEffect(() => {
-        dispatch(changeInstrument(instrumentTypes.gallery))
-    })
 
     return (
         <div>

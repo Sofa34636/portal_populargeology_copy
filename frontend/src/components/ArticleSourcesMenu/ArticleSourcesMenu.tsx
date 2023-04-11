@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess"
+import { MenuItem } from '@mui/material';
+
 
 export const ArticleSourcesMenu = (props) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

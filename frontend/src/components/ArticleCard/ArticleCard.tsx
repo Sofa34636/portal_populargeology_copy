@@ -8,7 +8,7 @@ export const ArticleCard = (props: IArticle) => {
     const navigate = useNavigate()
 
     const handleClick = () => {
-        navigate(`/article/${props.id}`);
+        navigate(`/article/${props.id}`, { replace: true });
     }
 
     return(

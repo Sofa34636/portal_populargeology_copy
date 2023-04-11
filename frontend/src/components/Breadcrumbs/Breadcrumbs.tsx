@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom'
 import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { clsx } from 'clsx';
 import { useFetchAllArticlesQuery, useGetArticleByIdQuery } from '../../store/services/ArticleService'
+import { CHANGE_TIME, Redirect } from '../../types/redirect'
 
 
 export default function BreadcrumbsComponent() {
@@ -18,126 +19,90 @@ export default function BreadcrumbsComponent() {
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
 
-  const [breadcrumbsTime, setBreadcrumbsTime] = useState<Time>(time);
-  const [breadcrumbsInstrument, setBreadcrumbsInstrument] = useState<Instrument>(instrument);
   const [isOverlayShown, setIsOverlayShown] = useState(false);
 
   const [isTimeMenuOpen, setIsTimeMenuOpen] = useState(false);
   const [isTimeSubMenuOpen, setIsTimeSubMenuOpen] = useState(false);
   const [isInstrumentMenuOpen, setIsInstrumentMenuOpen] = useState(false);
 
-  const [availableTimes, setAvailableTimes] = useState<Time[]>(
-    Object.values(timeTypes).slice(0,4).filter((time) => time != breadcrumbsTime)
+  const [currentTimes, setCurrentTimes] = useState<Time[]>(
+    Object.values(timeTypes).slice(0,4).filter((i) => i != time)
   )
 
-  const [availableEarthTimes, setAvailableEarthTimes] = useState<Time[]>(
-    Object.values(timeTypes).slice(4).filter((time) => time != breadcrumbsTime)
+  const [currentEarthTimes, setCurrentEarthTimes] = useState<Time[]>(
+    Object.values(timeTypes).slice(4).filter((i) => i != time)
   )
 
-  const [availableInstruments, setAvailableInstruments] = useState<Instrument[]>(
-    Object.values(instrumentTypes).filter((instrument) => instrument != breadcrumbsInstrument)
+  const [currentInstruments, setCurrentInstruments] = useState<Instrument[]>(
+    Object.values(instrumentTypes).filter((i) => i != instrument)
   )
 
+  const sortByArray = (arr, sortArr) =>
+    [...arr].sort((a, b) => sortArr.indexOf(a) - sortArr.indexOf(b));
 
-  const changeBreadcrumbsTime = (time: Time) => {
+  const redirect = (redirect: Redirect) => {
 
-    const isCurrentEarthTime = availableEarthTimes.includes(breadcrumbsTime);
-    const isPickedEarthTime = availableEarthTimes.includes(time)
+    const time_path = Object.entries(timeTypes)
+          .reduce(
+            (switched, [key, value]) =>
+              ({
+                ...switched,
+                [value]: key,
+              }),
+            {},
+          )[redirect.type === "timeLine/changeTime" ? redirect.payload : time];
 
-    setAvailableTimes([
-      ...availableTimes.filter(i => i != time),
-    ])
+    const instrument_path = Object.entries(instrumentTypes)
+      .reduce(
+        (switched, [key, value]) =>
+          ({
+            ...switched,
+            [value]: key,
+          }),
+        {},
+      )[redirect.type === "timeLine/changeInstrument" ? redirect.payload : instrument];
 
-    setAvailableEarthTimes([
-      ...availableEarthTimes.filter(i => i != time)
-    ])
-    //
-    // if (!isCurrentEarthTime && !isPickedEarthTime) {
-    //   setAvailableTimes([
-    //     ...availableTimes.filter(i => i != time),
-    //     breadcrumbsTime
-    //   ])
-    // } else if (!isCurrentEarthTime && isPickedEarthTime) {
-    //   setAvailableTimes([
-    //     ...availableTimes.filter(i => i != time),
-    //     breadcrumbsTime
-    //   ])
-    //
-    // } else if (isCurrentEarthTime && !isPickedEarthTime) {
-    //   setAvailableEarthTimes([
-    //     ...availableEarthTimes.filter(i => i != time),
-    //     breadcrumbsTime
-    //   ])
-    //
-    // } else if (isCurrentEarthTime && isPickedEarthTime) {
-    //   setAvailableEarthTimes([
-    //     ...availableEarthTimes.filter(i => i != time),
-    //     breadcrumbsTime,
-    //   ])
-    // }
+    navigate(`../${instrument_path}/${time_path}`, { replace: true })
+  }
 
-    setBreadcrumbsTime(time)
-    dispatch(changeTime(time))
+
+  const changeBreadcrumbsTime = (pickedTime: Time) => {
+
+    setCurrentTimes(
+      sortByArray(
+        Object.values(timeTypes).slice(0,4).filter(i => i != pickedTime),
+        Object.values(timeTypes).slice(0,4)
+      )
+    )
+
+    setCurrentEarthTimes(
+      sortByArray(
+        Object.values(timeTypes).slice(4).filter(i => i != pickedTime),
+        Object.values(timeTypes).slice(4)
+      )
+    )
+
     setIsTimeMenuOpen(false)
     setIsOverlayShown(false)
 
-
-    const time_path = Object.entries(timeTypes)
-      .reduce(
-        (switched, [key, value]) =>
-          ({
-            ...switched,
-            [value]: key,
-          }),
-        {},
-      )[time];
-
-    const instrument_path = Object.entries(instrumentTypes)
-      .reduce(
-        (switched, [key, value]) =>
-          ({
-            ...switched,
-            [value]: key,
-          }),
-        {},
-      )[instrument];
-    navigate(`../${instrument_path}/${time_path}`, { replace: true })
+    redirect(dispatch(changeTime(pickedTime)))
   };
 
 
+  const changeBreadcrumbsInstrument = (pickedInstrument: Instrument) => {
 
-  const changeBreadcrumbsInstrument = (instrument: Instrument) => {
-    const prevIndex = availableInstruments.indexOf(instrument);
-    setAvailableInstruments([
-      ...availableInstruments.slice(0,prevIndex).filter(i => i != instrument),
-      breadcrumbsInstrument,
-      ...availableInstruments.slice(prevIndex).filter(i => i != instrument)
-    ])
-    setBreadcrumbsInstrument(instrument)
-    dispatch(changeInstrument(instrument))
+
+    setCurrentInstruments(
+      sortByArray(
+        Object.values(instrumentTypes).filter(i => i != pickedInstrument),
+        Object.values(instrumentTypes)
+      )
+    )
+
     setIsInstrumentMenuOpen(false)
     setIsOverlayShown(false)
 
-    const time_path = Object.entries(timeTypes)
-      .reduce(
-        (switched, [key, value]) =>
-          ({
-            ...switched,
-            [value]: key,
-          }),
-        {},
-      )[time];
-
-    const instrument_path = Object.entries(instrumentTypes)
-      .reduce(
-        (switched, [key, value]) =>
-          ({
-            ...switched,
-            [value]: key,
-          }),
-        {},
-      )[instrument];
-    navigate(`../${instrument_path}/${time_path}`, { replace: true })
+    redirect(dispatch(changeInstrument(pickedInstrument)))
   };
 
 
@@ -166,13 +131,13 @@ export default function BreadcrumbsComponent() {
                         setIsTimeMenuOpen(true)
                       }}
                 >
-                  {breadcrumbsTime}
+                  {time}
                   <ExpandMoreIcon className='arrow-down'/>
                 </span>
                 <span className='separator no_select'>/</span>
                 <ul className="sub-menu__list left-menu" style={isTimeMenuOpen?{display: 'block'}:null}>
                     {
-                      availableTimes.map((time, index) => {
+                      currentTimes.map((time, index) => {
 
                         return (
                           <>
@@ -181,7 +146,7 @@ export default function BreadcrumbsComponent() {
 
                                 ?
 
-                                <li className='sub-menu__link no_select'>
+                                <li className='sub-menu__link no_select' key={index}>
                                   <span
                                         onMouseEnter={(e) => {
                                           setIsTimeSubMenuOpen(true)
@@ -193,9 +158,9 @@ export default function BreadcrumbsComponent() {
 
                                   <ul className='sub-sub-menu__list' style={isTimeSubMenuOpen?{display: 'block'}:null}>
                                     {
-                                      availableEarthTimes.map((time, index) => {
+                                      currentEarthTimes.map((time, index) => {
                                         return (
-                                          <li>
+                                          <li key={index}>
                                             <span
                                               key = {index}
                                               className='sub-sub-menu__link no_select'
@@ -243,12 +208,12 @@ export default function BreadcrumbsComponent() {
                     setIsOverlayShown(true)
                   }}
                 >
-                  {breadcrumbsInstrument}
+                  {instrument}
                   <ExpandMoreIcon className='arrow-down'/>
                 </span>
                 <ul className={ clsx("sub-menu__list")} style={isInstrumentMenuOpen?{display: 'block'}:null}>
                   {
-                    availableInstruments.map((instrument, index) => {
+                    currentInstruments.map((instrument, index) => {
                       return (
                         <li
                             key = {index}
