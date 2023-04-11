@@ -45,6 +45,7 @@ export const instrumentTypes = {
   earth: '3д земля'
 } as const;
 
+
 type time_keys = keyof typeof timeTypes;
 export type Time = (typeof timeTypes)[time_keys]
 
@@ -55,5 +56,9 @@ export type Instrument = (typeof instrumentTypes)[instrument_keys]
 export interface TimeLineState {
   time: Time | null;
   instrument: Instrument | null;
+}
+
+export function getObjectKey(obj, value) {
+  return Object.keys(obj).find((key) => obj[key] === value);
 }
 

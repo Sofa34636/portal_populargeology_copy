@@ -15,10 +15,6 @@ export const VideoPage = () => {
 
     const { isLoading, data, error } = useGetArticleByIdQuery(1)
 
-    useEffect(() => {
-        dispatch(changeInstrument(instrumentTypes.video))
-    })
-
     return (
         <div>
             <Layout

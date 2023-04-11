@@ -14,11 +14,7 @@ export const ReliefPage = () => {
 
 
     const { isLoading, data, error } = useGetArticleByIdQuery(1)
-
-    useEffect(() => {
-        dispatch(changeInstrument(instrumentTypes.relief))
-    })
-
+    
     return (
         <div>
             <Layout

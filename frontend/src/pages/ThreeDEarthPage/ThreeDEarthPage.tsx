@@ -21,9 +21,6 @@ export const  ThreeDEarthPage = () => {
 
   const { isLoading, data, error } = useGetArticleByIdQuery(1)
 
-  useEffect(() => {
-    dispatch(changeInstrument(instrumentTypes.earth))
-  })
 
   return (
     <div>

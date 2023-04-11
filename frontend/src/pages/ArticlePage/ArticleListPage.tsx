@@ -16,10 +16,6 @@ export const ArticleListPage = () => {
 
   const { isLoading, fetchedArticles, error } = useFetchAllArticlesHook(10)
 
-  useEffect(() => {
-    dispatch(changeInstrument(instrumentTypes.article))
-  }, [])
-
   // const fetchedArticles: ArticleCardProps[][] = [
   //   [
   //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ1' },

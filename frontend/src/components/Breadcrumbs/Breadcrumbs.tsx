@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Link, useLocation } from 'react-router-dom'
-import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { Link} from 'react-router-dom'
+import { getObjectKey, Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
+import { useState } from 'react'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { clsx } from 'clsx';
-import { useFetchAllArticlesQuery, useGetArticleByIdQuery } from '../../store/services/ArticleService'
-import { CHANGE_TIME, Redirect } from '../../types/redirect'
+import { useNavigate } from "react-router-dom";
 
 
 export default function BreadcrumbsComponent() {
@@ -40,32 +38,6 @@ export default function BreadcrumbsComponent() {
   const sortByArray = (arr, sortArr) =>
     [...arr].sort((a, b) => sortArr.indexOf(a) - sortArr.indexOf(b));
 
-  const redirect = (redirect: Redirect) => {
-
-    const time_path = Object.entries(timeTypes)
-          .reduce(
-            (switched, [key, value]) =>
-              ({
-                ...switched,
-                [value]: key,
-              }),
-            {},
-          )[redirect.type === "timeLine/changeTime" ? redirect.payload : time];
-
-    const instrument_path = Object.entries(instrumentTypes)
-      .reduce(
-        (switched, [key, value]) =>
-          ({
-            ...switched,
-            [value]: key,
-          }),
-        {},
-      )[redirect.type === "timeLine/changeInstrument" ? redirect.payload : instrument];
-
-    navigate(`../${instrument_path}/${time_path}`, { replace: true })
-  }
-
-
   const changeBreadcrumbsTime = (pickedTime: Time) => {
 
     setCurrentTimes(
@@ -85,7 +57,8 @@ export default function BreadcrumbsComponent() {
     setIsTimeMenuOpen(false)
     setIsOverlayShown(false)
 
-    redirect(dispatch(changeTime(pickedTime)))
+    dispatch(changeTime(pickedTime))
+    navigate(`../${getObjectKey(instrumentTypes, instrument)}/${getObjectKey(timeTypes, pickedTime)}`, { replace: true })
   };
 
 
@@ -102,7 +75,8 @@ export default function BreadcrumbsComponent() {
     setIsInstrumentMenuOpen(false)
     setIsOverlayShown(false)
 
-    redirect(dispatch(changeInstrument(pickedInstrument)))
+    dispatch(changeInstrument(pickedInstrument))
+    navigate(`../${getObjectKey(instrumentTypes, pickedInstrument)}/${getObjectKey(timeTypes, time)}`, { replace: true })
   };
 
 
