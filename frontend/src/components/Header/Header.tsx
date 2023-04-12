@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import BreadcrumbsComponent from '../Breadcrumbs/Breadcrumbs';
 
 export const Header = () => {

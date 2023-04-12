@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link} from 'react-router-dom'

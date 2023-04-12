@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Layout } from '../../Layout/Layout';
 import { ArticleSourcesMenu } from '../../ArticleSourcesMenu/ArticleSourcesMenu'
@@ -17,7 +17,7 @@ export const Article = () => {
 
   const {isLoading, fetchedArticles, error} = useFetchAllArticlesGroupByHook(10, 10)
   const dataArticle = useGetArticleByIdQuery(state.id)
-  let thisArticle: IArticle = {
+  let thisArticle: IArticle = { // placeholder article
       id: 0,
       title: 'undefined',
       time_ago: 'undefined',

@@ -2,7 +2,7 @@
 
 require('file-loader?name=[name].[ext]!./index.html'); // ?
 
-import * as React from 'react';
+import React from 'react';
 
 import App from './App';
 

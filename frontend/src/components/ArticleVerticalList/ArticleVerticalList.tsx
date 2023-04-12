@@ -3,16 +3,6 @@ import ListItem from '@mui/material/ListItem';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import {ArticleCard} from "../ArticleCard/ArticleCard";
 import {IArticle} from "../../types/models/IArticle";
-import {useFetchAllArticlesQuery} from "../../store/services/ArticleService";
-import {useFetchAllArticlesGroupByHook} from "../../hooks/useFetchAllArticlesGroupByHook";
-
-// const ArticleList = [
-//     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ2' },
-//     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ3' },
-//     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ4' },
-//     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ5' },
-//     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ6' },
-// ]
 
 const renderCard = (props: ListChildComponentProps) => {
     const { index, style, data } = props;

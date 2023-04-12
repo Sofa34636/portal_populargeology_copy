@@ -1,4 +1,4 @@
-import { Instrument, instrumentTypes, Time, timeTypes } from './timeline'
+import { Instrument, Time } from './timeline'
 
 export type CHANGE_TIME = "timeLine/changeTime"
 export type CHANGE_INSTRUMENT = "timeLine/changeInstrument"

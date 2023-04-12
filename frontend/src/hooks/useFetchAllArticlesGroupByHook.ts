@@ -1,4 +1,4 @@
-import { useFetchAllArticlesQuery, useGetArticleByIdQuery } from '../store/services/ArticleService'
+import { useFetchAllArticlesQuery } from '../store/services/ArticleService'
 import {IArticle} from "../types/models/IArticle";
 
 export const useFetchAllArticlesGroupByHook = (n: number = 6, groupOf: number = 6) => {
@@ -10,7 +10,6 @@ export const useFetchAllArticlesGroupByHook = (n: number = 6, groupOf: number = 
         isLoading ? console.log('Loading...') : console.log(error)
     } else {
         if (data != undefined) {
-            // console.log(data['results'])
             data['results'].forEach((article: IArticle, index) => {
                 if (article != undefined) {
                     if ((index % groupOf) == 0) {

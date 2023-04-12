@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useRef } from 'react';
 
 import { useFrame, useLoader } from '@react-three/fiber';
@@ -6,9 +6,6 @@ import { TextureLoader } from 'three';
 import { OrbitControls, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { Mesh } from 'three';
-
-import Metallic from '../../../assets/textures/metallic.png';
-import Roughness from '../../../assets/textures/roughness.png';
 
 import EarthDayMap from '../../../assets/textures/Earth_Diffuse.jpg';
 import EarthNormalMap from '../../../assets/textures/Earth_Normal.jpg';

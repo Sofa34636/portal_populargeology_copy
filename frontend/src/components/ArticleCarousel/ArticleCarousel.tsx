@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import { ArticleCard } from '../ArticleCard/ArticleCard';
 import Grid from '@mui/material/Grid';
@@ -9,7 +9,7 @@ import {IArticle} from "../../types/models/IArticle";
 
 // https://github.com/Learus/react-material-ui-carousel
 
-export const ArticleCarousel = (props: { articleCards: IArticle[][] }) => {
+export const ArticleCarousel: React.FC<{articleCards: IArticle[][]}> = ({ articleCards }) => {
   return (
     <>
       <Carousel
@@ -33,7 +33,7 @@ export const ArticleCarousel = (props: { articleCards: IArticle[][] }) => {
             border: 'none',
           },
         }}>
-        {props.articleCards.map((articleCardsRow: IArticle[], indexI) => {
+        {articleCards.map((articleCardsRow: IArticle[], indexI) => {
           return (
             <Grid
               sx={{ width: '100%', height: '572px', paddingRight: '75px', paddingLeft: '90px' }}

@@ -1,12 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { Layout } from '../../components/Layout/Layout';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
-import {useAppDispatch, useAppSelector} from '../../hooks/redux'
-import {useEffect} from "react";
+import {useAppSelector} from '../../hooks/redux'
 import {timeLineSlice} from "../../store/reducers/timeLineSlice";
-import {instrumentTypes} from "../../types/timeline";
 import {useFetchAllArticlesGroupByHook} from "../../hooks/useFetchAllArticlesGroupByHook";
-import {useFetchAllArticlesQuery} from "../../store/services/ArticleService";
 
 
 export const ArticleListPage = () => {
@@ -15,32 +12,6 @@ export const ArticleListPage = () => {
   const { changeTime, changeInstrument } = timeLineSlice.actions;
 
   const { isLoading, fetchedArticles, error } = useFetchAllArticlesGroupByHook(10, 6)
-  // console.log(fetchedArticles)
-
-  // const fetchedArticles: ArticleCardProps[][] = [
-  //   [
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ1' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ2' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ3' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ4' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ5' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ6' },
-  //   ],
-  //   [
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ7' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ8' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ9' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ10' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ11' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ12' },
-  //   ],
-  //   [
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ13' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ14' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ15' },
-  //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ16' },
-  //   ]
-  // ]
 
   return (
     <div className='article_list'>
