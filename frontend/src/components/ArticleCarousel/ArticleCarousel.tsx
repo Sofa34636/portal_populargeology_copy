@@ -14,8 +14,6 @@ export const ArticleCarousel = (props: { articleCards: IArticle[][] }) => {
     <>
       <Carousel
         className="article-carousel"
-        next={ (next, active) => console.log(`we left ${active}, and are now at ${next}`)}
-        prev={ (prev, active) => console.log(`we left ${active}, and are now at ${prev}`)}
         NextIcon={<ArrowForwardIosRoundedIcon />}
         PrevIcon={<ArrowBackIosRoundedIcon />}
         autoPlay={false}

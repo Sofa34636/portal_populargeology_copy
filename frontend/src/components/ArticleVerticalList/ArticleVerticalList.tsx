@@ -3,7 +3,8 @@ import ListItem from '@mui/material/ListItem';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import {ArticleCard} from "../ArticleCard/ArticleCard";
 import {IArticle} from "../../types/models/IArticle";
-import {useFetchAllArticlesHook} from "../../hooks/useFetchAllArticlesHook";
+import {useFetchAllArticlesQuery} from "../../store/services/ArticleService";
+import {useFetchAllArticlesGroupByHook} from "../../hooks/useFetchAllArticlesGroupByHook";
 
 // const ArticleList = [
 //     { photoPath: '../../assets/img/planet.jpg', title: 'ЗЕМЛЯ2' },
@@ -23,15 +24,7 @@ const renderCard = (props: ListChildComponentProps) => {
     );
 }
 
-export const ArticleVerticalList = () => {
-
-    const { isLoading, fetchedArticles, error } = useFetchAllArticlesHook(10)
-    let fetchedArticlesList: IArticle[] = []
-    fetchedArticles.forEach((listOfArticles, index) => {
-        fetchedArticlesList = fetchedArticlesList.concat(listOfArticles);
-    })
-
-    console.log(fetchedArticlesList)
+export const ArticleVerticalList = (fetchedArticles: IArticle[]) => {
 
     return (
         <Box
@@ -43,7 +36,7 @@ export const ArticleVerticalList = () => {
                 itemSize={280}
                 itemCount={5}
                 overscanCount={5}
-                itemData={fetchedArticlesList}
+                itemData={fetchedArticles}
             >
                 {renderCard}
             </FixedSizeList>

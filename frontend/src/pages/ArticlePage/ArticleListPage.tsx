@@ -5,16 +5,17 @@ import {useAppDispatch, useAppSelector} from '../../hooks/redux'
 import {useEffect} from "react";
 import {timeLineSlice} from "../../store/reducers/timeLineSlice";
 import {instrumentTypes} from "../../types/timeline";
-import {useFetchAllArticlesHook} from "../../hooks/useFetchAllArticlesHook";
+import {useFetchAllArticlesGroupByHook} from "../../hooks/useFetchAllArticlesGroupByHook";
+import {useFetchAllArticlesQuery} from "../../store/services/ArticleService";
 
 
 export const ArticleListPage = () => {
 
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
-  const dispatch = useAppDispatch()
 
-  const { isLoading, fetchedArticles, error } = useFetchAllArticlesHook(10)
+  const { isLoading, fetchedArticles, error } = useFetchAllArticlesGroupByHook(10, 6)
+  // console.log(fetchedArticles)
 
   // const fetchedArticles: ArticleCardProps[][] = [
   //   [
@@ -45,7 +46,7 @@ export const ArticleListPage = () => {
     <div className='article_list'>
       <Layout layoutProps={{time: timeState, instrument: instrumentState}}>
         <div className='article_list__content'>
-          {isLoading ? <span>loading...</span> : <ArticleCarousel articleCards={fetchedArticles}/>}
+          {isLoading ? <span>Loading...</span> : <ArticleCarousel articleCards={fetchedArticles}/>}
         </div>
       </Layout>
     </div>
