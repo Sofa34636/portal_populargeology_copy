@@ -10,6 +10,14 @@ import { MenuItem } from '@mui/material';
 export const ArticleSourcesMenu: React.FC<{reference: string; magazine: string}> = ({ reference, magazine}) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+
+
+    const linkifyString = (link: string) => {
+        if (link.indexOf('https://') !== 0 && link.indexOf('http://') !== 0)
+            return `https://${link}`
+        return link
+    }
+
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -43,7 +51,7 @@ export const ArticleSourcesMenu: React.FC<{reference: string; magazine: string}>
                 <MenuItem className='sources-menu_item' onClick={handleClose}>
                     <div className='sources-menu_item__title'><h5>Статья:</h5></div>
                     <div className='sources-menu_item__ref' >
-                        <a  href="https://sciencedaily.com">{reference}</a>
+                        <a href={linkifyString(reference)}>{reference}</a>
                     </div>
                 </MenuItem>
                 <MenuItem className='sources-menu_item' onClick={handleClose}>

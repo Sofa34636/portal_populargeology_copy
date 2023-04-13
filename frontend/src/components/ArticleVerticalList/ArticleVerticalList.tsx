@@ -1,3 +1,4 @@
+import React from 'react';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
@@ -14,7 +15,7 @@ const renderCard = (props: ListChildComponentProps) => {
     );
 }
 
-export const ArticleVerticalList = (fetchedArticles: IArticle[]) => {
+export const ArticleVerticalList: React.FC<{ fetchedArticles: Array<IArticle>, numberOfArticles: number }> = ({ fetchedArticles, numberOfArticles }) => {
 
     return (
         <Box
@@ -24,7 +25,7 @@ export const ArticleVerticalList = (fetchedArticles: IArticle[]) => {
                 height={650}
                 width={360}
                 itemSize={280}
-                itemCount={5}
+                itemCount={numberOfArticles}
                 overscanCount={5}
                 itemData={fetchedArticles}
             >

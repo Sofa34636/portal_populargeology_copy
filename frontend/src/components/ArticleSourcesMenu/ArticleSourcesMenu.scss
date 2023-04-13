@@ -1,7 +1,7 @@
 // button
 #sources-button {
   border: none;
-  padding: 0;
+  padding: 0 0 0 10px;
   line-height: 20px;
   font-size: 14px;
   &:hover {
@@ -22,6 +22,7 @@
       &__ref {
         a {
           font-size: small;
+          text-decoration: underline;
         }
       }
       &__journal {

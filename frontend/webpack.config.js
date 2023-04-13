@@ -65,7 +65,8 @@ module.exports = {
   },
   output: {
     filename: 'index.bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.join(__dirname, 'public'),
+    publicPath: '/',
     // assetModuleFilename: 'assets/fonts/[name][ext]'
   },
   devServer: {

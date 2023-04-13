@@ -15,7 +15,7 @@ import { useAppSelector } from './hooks/redux'
 export default function App() {
 
   const routes = [
-    { path: '', element: <HomePage /> },
+    { path: '/', element: <HomePage /> },
     { path: '/article', element: <ArticleListPage /> },
     { path: '/article/:id', element: <Article /> },
     { path: '/video', element: <VideoPage /> },
