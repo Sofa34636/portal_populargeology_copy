@@ -81,7 +81,7 @@ export default function BreadcrumbsComponent() {
 
 
   return (
-        <div className="container">
+        <div className="breadcrumbs_container">
           <nav className='menu'>
             <ul className='menu__list'>
               <li>

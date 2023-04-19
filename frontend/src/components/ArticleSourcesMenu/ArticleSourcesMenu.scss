@@ -23,11 +23,17 @@
         a {
           font-size: small;
           text-decoration: underline;
+          &:hover {
+            color: $orange;
+          }
         }
       }
       &__journal {
         font-size: small;
         white-space: pre-wrap;
+        &:hover {
+          color: $orange;
+        }
       }
       &__title {
         padding-right: 10px;

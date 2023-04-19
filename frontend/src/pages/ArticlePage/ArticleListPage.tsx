@@ -11,7 +11,8 @@ export const ArticleListPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
 
-  const { isLoading, fetchedArticles, error } = useFetchAllArticlesGroupByHook(10, 6)
+  const { isLoading, fetchedArticles, error } = useFetchAllArticlesGroupByHook(10, 6, timeState)
+
 
   return (
     <div className='article_list'>

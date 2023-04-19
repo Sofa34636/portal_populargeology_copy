@@ -10,6 +10,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Article } from './components/ToolComponents/Article/Article';
 import { useAppSelector } from './hooks/redux'
+import {ArticleScientificPublications} from "./components/ArticleScientificPublications/ArticleScientificPublications";
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
   const routes = [
     { path: '/', element: <HomePage /> },
     { path: '/article', element: <ArticleListPage /> },
+    { path: '/article/0', element: <ArticleScientificPublications /> },
     { path: '/article/:id', element: <Article /> },
     { path: '/video', element: <VideoPage /> },
     { path: '/gallery', element: <GalleryPage /> },

@@ -4,5 +4,5 @@ export interface LayoutProps {
     time: Time
     instrument: Instrument
     isFooterButtonsLeft?: boolean
-    isDisplayed?: boolean
+    isFooterDisplayed?: boolean
 }

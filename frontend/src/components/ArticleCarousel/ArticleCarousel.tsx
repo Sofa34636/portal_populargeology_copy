@@ -24,7 +24,7 @@ export const ArticleCarousel: React.FC<{articleCards: IArticle[][]}> = ({ articl
         animation={"slide"}
         navButtonsWrapperProps={{
             style: {
-                paddingTop: '75px',
+                paddingTop: '10px',
             }
         }}
         navButtonsProps={{

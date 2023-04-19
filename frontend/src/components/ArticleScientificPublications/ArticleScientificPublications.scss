@@ -1,0 +1,25 @@
+.scientific_publications {
+  &__parent {
+    color: white;
+    &--leftContainer {
+
+    }
+    &--rightContainer {
+      &-subTitle {
+        padding-bottom: 40px;
+        h4 {
+          color: #B9B9B9;
+          font-size: 16px;
+          line-height: 16px;
+          font-family: RSLight, serif;
+        }
+      }
+      &-title {
+        h1 {
+          font-size: 24px;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+}

@@ -14,15 +14,17 @@ export const Article = () => {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
 
+  // Check for valid article ID
   if (isNaN(+id) || +id < 0) {
       navigate('/*')
   }
 
-  const {isLoading, fetchedArticles, error} = useFetchAllArticlesGroupByHook(10, 10)
+  const {isLoading, fetchedArticles, error} = useFetchAllArticlesGroupByHook(10, 10, timeState)
   const dataArticle = useGetArticleByIdQuery(+id)
 
-  let thisArticle: IArticle = { // placeholder article
-      id: 0,
+  // Placeholder article
+  let thisArticle: IArticle = {
+      id: 9999999,
       title: 'undefined',
       time_ago: 'undefined',
       image: 'undefined',
@@ -42,7 +44,7 @@ export const Article = () => {
   }
 
   return (
-    <Layout layoutProps={{ time: timeState, instrument: instrumentState, isDisplayed: false}}>
+    <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterDisplayed: false}}>
       <div className="article">
         <div className='article--main'>
             <div className="article--main__subtitle">

@@ -127,7 +127,7 @@ export const HomePage = () => {
           </Button>
         </div>
       </main>
-      <footer className="footer">
+      <footer className="footer_homepage">
         <Button>
           <a href="https://populargeology.ru/about/#">О проекте</a>
         </Button>
