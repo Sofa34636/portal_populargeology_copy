@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import './styles/app.scss';
 import { ArticleListPage } from './pages/ArticlePage/ArticleListPage';
@@ -10,24 +10,28 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Article } from './components/ToolComponents/Article/Article';
 import { useAppSelector } from './hooks/redux'
-import {ArticleScientificPublications} from "./components/ArticleScientificPublications/ArticleScientificPublications";
 
 
 export default function App() {
 
   const routes = [
     { path: '/', element: <HomePage /> },
-    { path: '/article', element: <ArticleListPage /> },
-    { path: '/article/0', element: <ArticleScientificPublications /> },
-    { path: '/article/:id', element: <Article /> },
-    { path: '/video', element: <VideoPage /> },
-    { path: '/gallery', element: <GalleryPage /> },
-    { path: '/earth', element: <ThreeDEarthPage /> },
-    { path: '/relief', element: <ReliefPage /> },
+    { path: '/:time/articles', element: <ArticleListPage /> },
+    { path: '/:time/articles/:id', element: <Article /> },
+    { path: '/:time/video', element: <VideoPage /> },
+    { path: '/:time/gallery', element: <GalleryPage /> },
+    // { path: '/:time/gallery/:id', element: <Gallery /> },
+    { path: '/:time/earth', element: <ThreeDEarthPage /> },
+    { path: '/:time/relief', element: <ReliefPage /> },
+    // { path: '/:time/relief/:id', element: <Relief /> },
     { path: '/*', element: <NotFoundPage /> },
   ];
 
   const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+
+  useEffect(() => {
+    console.log(timeState, instrumentState)
+  }, [])
 
   return (
     <div className="App">

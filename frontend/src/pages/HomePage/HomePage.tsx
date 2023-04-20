@@ -1,12 +1,13 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router';
 import { EarthTypeMenu } from '../../components/EarthTypeMenu/EarthTypeMenu'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { useEffect, useState } from 'react'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
 import { clsx } from 'clsx';
+import { Link } from 'react-router-dom'
+import { pageRedirect } from '../pageRedirect'
 
 
 export const HomePage = () => {
@@ -19,8 +20,6 @@ export const HomePage = () => {
   const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
-
-  const navigate = useNavigate();
 
   const [activeTimeButton, setActiveTimeButton] = useState<Time | null>(timeTypes.bigBang)
   const [activeInstrumentButton, setActiveInstrumentButton] = useState<Instrument | null>(instrumentTypes.video)
@@ -46,23 +45,15 @@ export const HomePage = () => {
     }
   }
 
-  const onLearnButtonClick = () => {
-    navigate(
-      Object.entries(instrumentTypes)
-        .reduce(
-          (switched, [key, value]) =>
-            ({
-              ...switched,
-              [value]: key,
-            }),
-          {},
-    )[instrumentState])
-  }
+
 
   return (
     <>
-      <div className="rect1"></div>
-      <div className="rect2"></div>
+      <div className="background">
+        <div className="rect1"></div>
+        <div className="rect2"></div>
+      </div>
+
       <header className="header">
           <div className="title no_select">
             <h1>история вселенной</h1>
@@ -122,9 +113,11 @@ export const HomePage = () => {
           </div>
         </div>
         <div className="learn">
-          <Button onClick={onLearnButtonClick} variant="outlined">
-            Изучать Вселенную
-          </Button>
+          <Link to={pageRedirect(timeState, instrumentState)}>
+            <Button variant="outlined">
+              Изучать Вселенную
+            </Button>
+          </Link>
         </div>
       </main>
       <footer className="footer_homepage">

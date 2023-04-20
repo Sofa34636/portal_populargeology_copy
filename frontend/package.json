@@ -40,6 +40,7 @@
     "eslint-plugin-react": "^7.32.2",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.7.2",
+    "node-sass": "^8.0.0",
     "react-material-ui-carousel": "^3.4.2",
     "react-redux": "^8.0.5",
     "react-window": "^1.8.8",

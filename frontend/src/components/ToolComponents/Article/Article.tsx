@@ -12,14 +12,14 @@ import {IArticle} from "../../../types/models/IArticle";
 export const Article = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const navigate = useNavigate()
-  const { id } = useParams<{ id: string }>()
+  const { id } = useParams()
 
   // Check for valid article ID
   if (isNaN(+id) || +id < 0) {
       navigate('/*')
   }
 
-  const {isLoading, fetchedArticles, error} = useFetchAllArticlesGroupByHook(10, 10, timeState)
+  const {isLoading, fetchedArticles } = useFetchAllArticlesGroupByHook(10, 10, timeState)
   const dataArticle = useGetArticleByIdQuery(+id)
 
   // Placeholder article

@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link} from 'react-router-dom'
-import { getObjectKey, Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
+import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
 import { useState } from 'react'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { clsx } from 'clsx';
 import { useNavigate } from "react-router-dom";
+import { pageRedirect } from '../../pages/pageRedirect'
 
 
 export default function BreadcrumbsComponent() {
-
-  const navigate = useNavigate();
 
   const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
@@ -58,7 +57,6 @@ export default function BreadcrumbsComponent() {
     setIsOverlayShown(false)
 
     dispatch(changeTime(pickedTime))
-    navigate(`../${getObjectKey(instrumentTypes, instrument)}/${getObjectKey(timeTypes, pickedTime)}`, { replace: true })
   };
 
 
@@ -76,8 +74,12 @@ export default function BreadcrumbsComponent() {
     setIsOverlayShown(false)
 
     dispatch(changeInstrument(pickedInstrument))
-    navigate(`../${getObjectKey(instrumentTypes, pickedInstrument)}/${getObjectKey(timeTypes, time)}`, { replace: true })
   };
+
+
+  useEffect(() => {
+    console.log(time, instrument)
+  }, [])
 
 
   return (
@@ -93,14 +95,14 @@ export default function BreadcrumbsComponent() {
               <li className='no_select'>
                 <span>Время: </span>
               </li>
-              <li onMouseLeave={(e) => {
+              <li onMouseLeave={() => {
                 setIsTimeMenuOpen(false)
                 setIsTimeSubMenuOpen(false)
                 setIsOverlayShown(false)
 
               }}>
                 <span className='menu__link no_select'
-                      onMouseEnter={(e) => {
+                      onMouseEnter={() => {
                         setIsOverlayShown(true)
                         setIsTimeMenuOpen(true)
                       }}
@@ -122,7 +124,7 @@ export default function BreadcrumbsComponent() {
 
                                 <li className='sub-menu__link no_select' key={index}>
                                   <span
-                                        onMouseEnter={(e) => {
+                                        onMouseEnter={() => {
                                           setIsTimeSubMenuOpen(true)
                                         }}
                                   >
@@ -134,7 +136,9 @@ export default function BreadcrumbsComponent() {
                                     {
                                       currentEarthTimes.map((time, index) => {
                                         return (
+
                                           <li key={index}>
+                                            <Link to = {`/${pageRedirect(time, instrument)}`}>
                                             <span
                                               key = {index}
                                               className='sub-sub-menu__link no_select'
@@ -142,7 +146,9 @@ export default function BreadcrumbsComponent() {
                                             >
                                               {time}
                                             </span>
+                                            </Link>
                                           </li>
+
                                         )
                                       })
                                     }
@@ -151,13 +157,15 @@ export default function BreadcrumbsComponent() {
 
                               :
                                 <li className='sub-menu__link no_select'>
+                                  <Link to = {`/${pageRedirect(time, instrument)}`}>
                                   <span
-                                    onMouseLeave={(e) => {
+                                    onMouseLeave={() => {
                                       setIsTimeSubMenuOpen(false)
                                     }}
                                     className='sub-menu__link no_select'
                                     onClick={() => changeBreadcrumbsTime(time)}
                                   >{time}</span>
+                                  </Link>
                                 </li>
                             }
                           </>
@@ -170,14 +178,14 @@ export default function BreadcrumbsComponent() {
                 <span>Инструмент: </span>
               </li>
               <li
-                onMouseLeave={(e) => {
+                onMouseLeave={() => {
                   setIsInstrumentMenuOpen(false)
                   setIsOverlayShown(false)
                 }}
               >
                 <span
                   className='menu__link no_select'
-                  onMouseEnter={(e) => {
+                  onMouseEnter={() => {
                     setIsInstrumentMenuOpen(true)
                     setIsOverlayShown(true)
                   }}
@@ -194,7 +202,9 @@ export default function BreadcrumbsComponent() {
 
                             className='sub-menu__link no_select'
                           >
-                            <span onClick={() => changeBreadcrumbsInstrument(instrument)}>{instrument}</span>
+                            <Link to = {`/${pageRedirect(time, instrument)}`}>
+                              <span onClick={() => changeBreadcrumbsInstrument(instrument)}>{instrument}</span>
+                            </Link>
                         </li>
                       )}
                     )}

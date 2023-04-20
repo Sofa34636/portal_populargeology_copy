@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 import { Layout } from '../../components/Layout/Layout';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
 import {useAppSelector} from '../../hooks/redux'
 import {timeLineSlice} from "../../store/reducers/timeLineSlice";
 import {useFetchAllArticlesGroupByHook} from "../../hooks/useFetchAllArticlesGroupByHook";
-
+import { useParams } from 'react-router-dom';
 
 export const ArticleListPage = () => {
 
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
-  const { changeTime, changeInstrument } = timeLineSlice.actions;
 
-  const { isLoading, fetchedArticles, error } = useFetchAllArticlesGroupByHook(10, 6, timeState)
+  const { isLoading, fetchedArticles } = useFetchAllArticlesGroupByHook(10, 6, timeState)
+
 
 
   return (
