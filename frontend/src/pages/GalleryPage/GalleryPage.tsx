@@ -18,9 +18,7 @@ export const GalleryPage = () => {
 
     return (
         <div>
-            <Layout
-              layoutProps={{time: timeState, instrument: instrumentState}}
-            />
+
         </div>
     )
 }

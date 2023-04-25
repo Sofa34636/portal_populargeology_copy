@@ -5,11 +5,19 @@ parent {
 	position: relative;
 }
 
+
+
 .left {
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
+
+	.contents {
+		max-height: 60vh;
+		overflow: auto;
+	}
+
 
 	.learn {
 		display: flex;
@@ -27,11 +35,11 @@ parent {
 }
 
 .right {
-	position: absolute; // delete
 	left: 50%;
 	right: 0;
 	top: 10%; // 0%
 	bottom: 10%; // 0%
+	height: 80vh;
 }
 
 h1 {
@@ -65,6 +73,3 @@ p {
 
 
 
-canvas {
-	//border: 1px solid $gray;
-}

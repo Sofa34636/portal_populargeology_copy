@@ -15,9 +15,6 @@ export const VideoPage = () => {
 
     return (
         <div>
-            <Layout
-                layoutProps={{time: timeState, instrument: instrumentState}}
-            />
         </div>
     )
 }
