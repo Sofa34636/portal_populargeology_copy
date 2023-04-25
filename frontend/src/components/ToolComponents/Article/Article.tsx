@@ -65,7 +65,7 @@ export const Article = () => {
                                                                          numberOfArticles={fetchedArticles[0].length ?? 0} />}
         </div>
         <div className='article--goBackButton'>
-          <Button onClick={() => navigate('/article')} variant="outlined">
+          <Button onClick={() => navigate(`/${timeState}/articles`)} variant="outlined">
               НАЗАД
           </Button>
         </div>

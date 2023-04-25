@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 
-parent {
+.parent {
 	position: relative;
 }
 
@@ -35,7 +35,7 @@ parent {
 }
 
 h1 {
-	font-family: RSRegular;
+	font-family: RSRegular, serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 24px;
@@ -44,7 +44,7 @@ h1 {
 }
 
 h2 {
-	font-family: RSRegular;
+	font-family: RSRegular, serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
@@ -53,7 +53,7 @@ h2 {
 }
 
 p {
-	font-family: RSLight;
+	font-family: RSLight, serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
