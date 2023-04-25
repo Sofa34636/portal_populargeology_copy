@@ -45,7 +45,7 @@ export const HomePage = () => {
   }
 
   return (
-    <>
+    <div className='wrapper_homepage'>
       <div className="background">
         <div className="rect1"></div>
         <div className="rect2"></div>
@@ -128,6 +128,6 @@ export const HomePage = () => {
           <a href="https://populargeology.ru/istochniki/">Источники</a>
         </Button>
       </footer>
-    </>
+    </div>
   );
 };

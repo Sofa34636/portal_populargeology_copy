@@ -19,6 +19,10 @@
 @import "../pages/ArticlePage/ArticleListPage.scss";
 @import "../pages/ThreeDEarthPage/ThreeDEarthPage.scss";
 
+html, body {
+	height: 100%;
+}
+
 .App {
 
 

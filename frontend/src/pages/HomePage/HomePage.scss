@@ -12,121 +12,126 @@
 		border-radius: 6px;
 		text-align: center;
 		color: $white;
-		border-color: $white;
-        &:hover {
-            color: $orange;
-            border-color: $orange;
-        }
-	}
-}
 
-
-.title {
-	padding-bottom: 48px;
-
-	h1 {
-		font-family: RSLight;
-		font-size: 32px;
-		font-weight: 250;
-		line-height: 60px;
-	}
-}
-
-.content {
-	h2 {
-		font-family: RSRegular;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 24px;
-		line-height: 32px;
-
-		padding-bottom: 45px;
-	}
-
-	.time_buttons {
-		margin-left: 78px;
-		padding-bottom: 96px;
-        display: flex;
-        flex-direction: row;
-
-
-		button {
-
-			font-family: RSRegular;
-			font-style: normal;
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 16px;
-			margin-right: 32px;
-            &.btn-selected {
-                background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
-                border-radius: 6px;
-            }
+		&:hover {
+			color: $orange;
+			border-color: $orange;
 		}
 	}
 
-	.instrument_buttons {
-		margin-left: 78px;
-		padding-bottom: 96px;
+	&_homepage {
 
-		button {
-			font-family: RSRegular;
-			font-style: normal;
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 16px;
-			margin-right: 32px;
-			margin-right: 32px;
-            &.btn-deactivated {
-                border: 1px solid #313131;
-                color: #313131;
-				cursor: default;
-            }
-			&.btn-selected {
-                background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
-                border-radius: 6px;
-            }
+		.title {
+			padding-bottom: 48px;
+
+			h1 {
+				font-family: RSLight, serif;
+				font-size: 32px;
+				font-weight: 250;
+				line-height: 60px;
+			}
 		}
-	}
 
-	.learn {
-		button {
-			font-family: RSBold;
-			font-weight: 600;
-			font-size: 20px;
-			height: 64px;
-			line-height: 20px;
-			padding: 24px 24px;
-			text-align: center;
+		.content {
+
+			h2 {
+				font-family: RSRegular, serif;
+				font-style: normal;
+				font-weight: 400;
+				font-size: 24px;
+				line-height: 32px;
+
+				padding-bottom: 45px;
+			}
+
+			.time_buttons {
+				margin-left: 78px;
+				padding-bottom: 96px;
+				display: flex;
+				flex-direction: row;
+
+
+				button {
+
+					font-family: RSRegular, serif;
+					font-style: normal;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 16px;
+					margin-right: 32px;
+
+					&.btn-selected {
+						background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+						border-radius: 6px;
+					}
+				}
+			}
+
+			.instrument_buttons {
+				margin-left: 78px;
+				padding-bottom: 96px;
+
+				button {
+					font-family: RSRegular, serif;
+					font-style: normal;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 16px;
+					margin-right: 32px;
+
+					&.btn-deactivated {
+						border: 1px solid #313131;
+						color: #313131;
+						cursor: default;
+					}
+
+					&.btn-selected {
+						background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+						border-radius: 6px;
+					}
+				}
+			}
+
+			.learn {
+				button {
+					font-family: RSBold, serif;
+					font-weight: 600;
+					font-size: 20px;
+					height: 64px;
+					line-height: 20px;
+					padding: 24px 24px;
+					text-align: center;
+				}
+			}
 		}
-	}
-}
 
 
-.footer_homepage {
+		.footer_homepage {
 
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+			position: fixed;
+			bottom: 0;
+			width: 95%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			height: 2.5rem;
 
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 2.5rem;
+			button {
+				border: none;
+				text-transform: none;
+				color: $white;
+				font-family: RSLight, serif;
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 14px;
+				text-align: center;
 
-	button {
-        border: none;
-		text-transform: none;
-		color: $white;
-		font-family: RSLight;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 14px;
-		text-align: center;
-		a {
-			text-transform: none;
-			color: #BBBBBB
+				a {
+					text-transform: none;
+					color: #BBBBBB
+				}
+			}
 		}
 	}
 }

@@ -9,11 +9,11 @@ import './Layout.scss';
 
 export const Layout = (props: { layoutProps: LayoutProps, children?: React.ReactNode }) => {
   return (
-    <div>
+    <div className='layout'>
       <header className="header">
         <Header/>
       </header>
-      <main>
+      <main className='content'>
         { props.children }
       </main>
       <footer className='footer'>
