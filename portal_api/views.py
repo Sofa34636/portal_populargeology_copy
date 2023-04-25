@@ -9,11 +9,13 @@ from .serializers import ArticleSerializer, EarthSerializer, LocationSerializer,
     ExhibitSerializer
 
 from rest_framework import viewsets, response, status
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class ArticleView(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    filterset_fields = ['time']
 
 
 class EarthView(viewsets.ModelViewSet):

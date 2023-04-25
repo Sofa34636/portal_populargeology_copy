@@ -10,7 +10,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Article } from './components/ToolComponents/Article/Article';
 import { useAppSelector } from './hooks/redux'
-
+import { Stars } from '@react-three/drei'
 
 export default function App() {
 
