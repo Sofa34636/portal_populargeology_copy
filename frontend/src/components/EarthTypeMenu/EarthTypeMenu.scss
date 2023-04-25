@@ -2,23 +2,34 @@
 @import '../../styles/_variables.scss';
 @import '../../styles/libs/normalize.scss';
 
-.MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
-    background-color: $black;
-    text-transform: uppercase;
-    font-family: RSRegular, serif;
+.earth-time-dropdown__btn {
+    font-size: 16px;
+    cursor: pointer;
 }
 
+.earth-time-dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-//button {
-//    &:hover{
-//        cursor: pointer;
-//        color: $orange;
-//        border-color: $orange;
-//    }
-//}
-//
-//li {
-//    :hover {
-//        color: $orange;
-//    }
-//}
+.earth-time-dropdown__content {
+    position: absolute;
+    background-color: $black;
+    min-width: 250px;
+    z-index: 1;
+    display: none;
+}
+
+.earth-time-dropdown__content span {
+    cursor: pointer;
+    color: $white;
+    text-decoration: none;
+}
+
+.earth-time-dropdown__content li {
+    padding-top: 12px;
+    padding-left: 24px;
+}
+
+.earth-time-dropdown__content span:hover {color: $orange}
+

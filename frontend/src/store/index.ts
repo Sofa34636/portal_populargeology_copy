@@ -23,7 +23,9 @@ export const setupStore = () => {
   return configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat([articleAPI.middleware, earthApi.middleware])
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }).concat([articleAPI.middleware, earthApi.middleware])
   });
 };
 

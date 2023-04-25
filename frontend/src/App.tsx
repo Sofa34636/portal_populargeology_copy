@@ -29,10 +29,6 @@ export default function App() {
 
   const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
-  useEffect(() => {
-    console.log(timeState, instrumentState)
-  }, [])
-
   return (
     <div className="App">
       <div className="wrapper">

@@ -45,34 +45,34 @@
 	.background {
 		background-size: cover;
 
-		.rect1 {
-			position: absolute;
-			z-index: -1;
-			width: 611.61px;
-			height: 155.68px;
-			left: calc(50% - 283.35px/2 - 819.09px);
-			top: calc(50% - 155.68px/2 - 280.43px);
-
-			background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(238, 45, 1, 0.8) 0%, rgba(238, 45, 1, 0.4) 51.04%, rgba(238, 45, 1, 0) 100%);
-			border-radius: 100px;
-
-			transform: rotate(-26.03deg);
-
-		}
-
-		.rect2 {
-			position: absolute;
-			z-index: -1;
-			width: 283.35px;
-			height: 155.68px;
-
-			left: calc(50% - 283.35px/2 - 769.09px);
-			top: calc(50% - 155.68px/2 + 31.43px);
-
-			background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(255, 92, 0, 0.8) 0%, rgba(238, 45, 1, 0) 99.99%, rgba(238, 45, 1, 0) 100%);
-			border-radius: 100px;
-			transform: rotate(-28.59deg);
-		}
+		//.rect1 {
+		//	position: absolute;
+		//	z-index: -1;
+		//	width: 611.61px;
+		//	height: 155.68px;
+		//	left: calc(50% - 283.35px/2 - 819.09px);
+		//	top: calc(50% - 155.68px/2 - 280.43px);
+		//
+		//	background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(238, 45, 1, 0.8) 0%, rgba(238, 45, 1, 0.4) 51.04%, rgba(238, 45, 1, 0) 100%);
+		//	border-radius: 100px;
+		//
+		//	transform: rotate(-26.03deg);
+		//
+		//}
+		//
+		//.rect2 {
+		//	position: absolute;
+		//	z-index: -1;
+		//	width: 283.35px;
+		//	height: 155.68px;
+		//
+		//	left: calc(50% - 283.35px/2 - 769.09px);
+		//	top: calc(50% - 155.68px/2 + 31.43px);
+		//
+		//	background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(255, 92, 0, 0.8) 0%, rgba(238, 45, 1, 0) 99.99%, rgba(238, 45, 1, 0) 100%);
+		//	border-radius: 100px;
+		//	transform: rotate(-28.59deg);
+		//}
 	}
 
 }

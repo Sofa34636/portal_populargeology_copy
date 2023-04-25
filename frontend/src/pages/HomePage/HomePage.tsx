@@ -9,7 +9,6 @@ import { clsx } from 'clsx';
 import { Link } from 'react-router-dom'
 import { pageRedirect } from '../pageRedirect'
 
-
 export const HomePage = () => {
 
   useEffect(() => {
@@ -44,8 +43,6 @@ export const HomePage = () => {
       setActiveInstrumentButton(null)
     }
   }
-
-
 
   return (
     <>
