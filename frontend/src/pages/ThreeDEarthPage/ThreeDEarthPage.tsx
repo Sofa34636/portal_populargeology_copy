@@ -10,16 +10,14 @@ import { useAppSelector} from '../../hooks/redux'
 import { Stars } from '@react-three/drei';
 
 import { useGetEarthByIdQuery } from '../../store/services/EarthService'
+import { getKeyByValue } from '../pageRedirect'
+import { historyOfEarth, timeTypes } from '../../types/timeline'
 
 
 export const  ThreeDEarthPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
-  const {
-    isLoading,
-    data,
-    isFetching
-  } = useGetEarthByIdQuery(1)
+  const { data } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1)
 
   const ProgressCircle = () => {
     return (
@@ -28,7 +26,6 @@ export const  ThreeDEarthPage = () => {
       </div>
     )
   }
-
 
   return (
         <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: true}}>

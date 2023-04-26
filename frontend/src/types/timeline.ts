@@ -5,7 +5,7 @@ export const mainTimeline  = [
   'История Земли',
 ]
 
-export const historyOfEarth = [
+export const  historyOfEarth  = [
   'черная земля',
   'голубая земля',
   'серая земля',

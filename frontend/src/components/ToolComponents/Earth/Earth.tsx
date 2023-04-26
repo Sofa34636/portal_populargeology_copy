@@ -25,6 +25,7 @@ export function Earth(data: IEarth) {
   const cloudsRef = useRef<Mesh>(null!);
   const earthRef = useRef<Mesh>(null!);
 
+
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
 
@@ -33,13 +34,15 @@ export function Earth(data: IEarth) {
   });
 
 
+
   return (
       <>
-      <ambientLight intensity={1} />
-      <pointLight color="#ffffde" position={[2, 0, 2]} intensity={3} />
+
+      <pointLight color="#ffffa3" position={[50, 50, 50]} intensity={10} />
+
       <mesh scale={[3,3,3]} ref={cloudsRef}>
         {/* clouds */}
-       <sphereGeometry args={[1.01, 32, 32]} />
+       <sphereGeometry args={[1.03, 32, 32]} />
        <meshPhongMaterial
          map={cloudsMap}
          opacity={0}
@@ -49,18 +52,19 @@ export function Earth(data: IEarth) {
        />
       </mesh>
       <mesh scale={[3,3,3]} ref={earthRef}>
-        <sphereGeometry args={[1, 64, 32]} />
+        <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial
           map={baseMap}
-          normalMap={normalMap}
-          metalnessMap={metallicMap}
-          displacementMap={heightMap}
-          bumpMap={heightMap}
-          displacementScale = {0.1}
           aoMap={aoMap}
+          bumpMap={heightMap}
           roughnessMap={roughnessMap}
+          roughness={0}
+          metalnessMap={metallicMap}
+          metalness={1}
+          normalMap={normalMap}
+          bumpScale={1}
         />
-        <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.10} />
+        <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.15} />
       </mesh>
       </>
   );
