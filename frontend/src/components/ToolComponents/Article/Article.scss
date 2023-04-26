@@ -1,57 +1,54 @@
 .article {
     color: $white;
-    display: grid;
-    grid-template-areas:
-            "A A A A  A A A A  B B B B"
-            "A A A A  A A A A  B B B B"
-            "A A A A  A A A A  B B B B"
-            "C C C C  C C C C  B B B B"
-            "C C C C  C C C C  B B B B";
-    &--main {
-        grid-area: A;
-        padding-bottom: 20px;
-        &__subtitle {
-            h4 {
-                font-size: 16px;
-                line-height: 16px;
-                padding-top: 50px;
-                color: #B9B9B9;
-                font-family: RSLight, serif;
-            }
-        }
-        &__title {
-            h1 {
-                font-size: 24px;
-                line-height: 32px;
-                padding-top: 17px;
-                font-family: RSRegular, serif;
-            }
-        }
-        &__sources {
-            font-size: 14px;
-            line-height: 20px;
-            padding-top: 24px;
+    &-grid {
+        &--main {
             padding-bottom: 20px;
-            color: #B9B9B9;
-            display: flex;
-            align-items: center;
+
+            &__subtitle {
+                h4 {
+                    font-size: 16px;
+                    line-height: 16px;
+                    padding-top: 50px;
+                    color: #B9B9B9;
+                    font-family: RSLight, serif;
+                }
+            }
+
+            &__title {
+                h1 {
+                    font-size: 24px;
+                    line-height: 32px;
+                    padding-top: 17px;
+                    font-family: RSRegular, serif;
+                }
+            }
+
+            &__sources {
+                font-size: 14px;
+                line-height: 20px;
+                padding-top: 24px;
+                padding-bottom: 20px;
+                color: #B9B9B9;
+                display: flex;
+                align-items: center;
+            }
+
+            &__content {
+                font-size: 14px;
+                line-height: 20px;
+                padding-top: 32px;
+                color: #B9B9B9;
+                white-space: normal;
+                overflow-y: auto;
+                height: 400px;
+                width: 950px;
+            }
         }
-        &__content {
-            font-size: 14px;
-            line-height: 20px;
-            padding-top: 32px;
-            color: #B9B9B9;
-            white-space: normal;
-            overflow-y: auto;
-            height: 400px;
-            width: 1020px;
-        }
-    }
-    &--articleVerticalList {
-        grid-area: B;
+
+        //&--articleVerticalList {
+        //}
     }
     &--goBackButton {
-        grid-area: C;
         margin-top: 30px;
     }
 }
