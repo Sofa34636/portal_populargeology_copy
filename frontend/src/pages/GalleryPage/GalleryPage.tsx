@@ -17,8 +17,8 @@ export const GalleryPage = () => {
 
 
     return (
-        <div>
-
-        </div>
+      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false}}>
+          <span>Gallery</span>
+      </Layout>
     )
 }

@@ -17,7 +17,15 @@ import { historyOfEarth, timeTypes } from '../../types/timeline'
 export const  ThreeDEarthPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
-  const { data } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1)
+  const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1)
+
+  if (error) {
+    return (
+      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: true}}>
+        <h1>Ошибка при загрузке! (((9</h1>
+      </Layout>
+    )
+  }
 
   const ProgressCircle = () => {
     return (
@@ -50,11 +58,11 @@ export const  ThreeDEarthPage = () => {
               {/* </div> */}
             </Grid>
             <Grid className="right" item xs={6}>
-              <Suspense fallback={<ProgressCircle/>}>
-                <Canvas>
-                    <Earth {...data}/>
-                </Canvas>
-              </Suspense>
+                <Suspense fallback={<ProgressCircle/>}>
+                  <Canvas>
+                      <Earth {...data}/>
+                  </Canvas>
+                </Suspense>
             </Grid>
           </Grid>
         </Layout>

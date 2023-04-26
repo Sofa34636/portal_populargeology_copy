@@ -17,9 +17,8 @@ export const VideoPage = () => {
     if (!data) return <h1>loading...</h1>
 
     return (
-        <div>
-
+      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false}}>
             <span>{JSON.stringify(data)}</span>
-        </div>
+      </Layout>
     )
 }

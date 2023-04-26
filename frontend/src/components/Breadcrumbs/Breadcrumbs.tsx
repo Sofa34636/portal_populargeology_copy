@@ -2,13 +2,12 @@ import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link} from 'react-router-dom'
-import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
+import { historyOfEarth, Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
 import { useState } from 'react'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { clsx } from 'clsx';
 import { useNavigate } from "react-router-dom";
 import { pageRedirect } from '../../pages/pageRedirect'
-
 
 export default function BreadcrumbsComponent() {
 
@@ -17,10 +16,13 @@ export default function BreadcrumbsComponent() {
   const dispatch = useAppDispatch()
 
   const [isOverlayShown, setIsOverlayShown] = useState(false);
-
   const [isTimeMenuOpen, setIsTimeMenuOpen] = useState(false);
   const [isTimeSubMenuOpen, setIsTimeSubMenuOpen] = useState(false);
   const [isInstrumentMenuOpen, setIsInstrumentMenuOpen] = useState(false);
+
+  const [ isEarthTimePicked, setIsEarthTimePicked] = useState(false)
+  const [ isEarthOrReliefPicked, setIsEarthOrReliefPicked] = useState(false)
+
 
   const [currentTimes, setCurrentTimes] = useState<Time[]>(
     Object.values(timeTypes).slice(0,4).filter((i) => i != time)
@@ -62,7 +64,6 @@ export default function BreadcrumbsComponent() {
 
   const changeBreadcrumbsInstrument = (pickedInstrument: Instrument) => {
 
-
     setCurrentInstruments(
       sortByArray(
         Object.values(instrumentTypes).filter(i => i != pickedInstrument),
@@ -75,6 +76,22 @@ export default function BreadcrumbsComponent() {
 
     dispatch(changeInstrument(pickedInstrument))
   };
+
+  useEffect(() => {
+    if (instrument === instrumentTypes.earth || instrument === instrumentTypes.relief) {
+      setIsEarthOrReliefPicked(true)
+    } else {
+      setIsEarthOrReliefPicked(false)
+    }
+
+    if (historyOfEarth.includes(time)) {
+      setIsEarthTimePicked(true)
+    } else {
+      setIsEarthTimePicked(false)
+    }
+
+  }, [time, instrument])
+
 
   return (
         <div className="breadcrumbs_container">
@@ -93,7 +110,6 @@ export default function BreadcrumbsComponent() {
                 setIsTimeMenuOpen(false)
                 setIsTimeSubMenuOpen(false)
                 setIsOverlayShown(false)
-
               }}>
                 <span className='menu__link no_select'
                       onMouseEnter={() => {
@@ -150,15 +166,15 @@ export default function BreadcrumbsComponent() {
                                 </li>
 
                               :
-                                <li className='sub-menu__link no_select'  key={index}>
+                                <li className={clsx('sub-menu__link', 'no_select', isEarthOrReliefPicked ? 'disabled' : '')} key={index}>
                                   <Link to = {`/${pageRedirect(time, instrument)}`}>
-                                  <span
-                                    onMouseLeave={() => {
-                                      setIsTimeSubMenuOpen(false)
-                                    }}
-                                    className='sub-menu__link no_select'
-                                    onClick={() => changeBreadcrumbsTime(time)}
-                                  >{time}</span>
+                                      <span
+                                        onMouseLeave={() => {
+                                          setIsTimeSubMenuOpen(false)
+                                        }}
+                                        className='sub-menu__link no_select'
+                                        onClick={() => changeBreadcrumbsTime(time)}
+                                      >{time}</span>
                                   </Link>
                                 </li>
                             }
@@ -194,7 +210,9 @@ export default function BreadcrumbsComponent() {
                         <li
                             key = {index}
 
-                            className='sub-menu__link no_select'
+                            className={clsx({'sub-menu__link': true, 'no_select': true,
+                            'disabled': (instrument === instrumentTypes.earth || instrument === instrumentTypes.relief) && (!isEarthTimePicked)
+                            })}
                           >
                             <Link to = {`/${pageRedirect(time, instrument)}`}>
                               <span onClick={() => changeBreadcrumbsInstrument(instrument)}>{instrument}</span>

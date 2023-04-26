@@ -100,6 +100,7 @@
 	padding: 0;
 }
 
+
 .overlay {
 	z-index: 50;
 	height: 100%;
@@ -113,6 +114,16 @@
 	// transition: 0.3s;
 	animation:fadeIn 0.2s ease-in-out;
 
+}
+
+.disabled {
+
+	cursor: default;
+	pointer-events: none;
+
+	span {
+		color: #313131;
+	}
 }
 
 

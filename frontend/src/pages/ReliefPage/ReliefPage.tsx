@@ -14,7 +14,8 @@ export const ReliefPage = () => {
     const { isLoading, data, error } = useGetArticleByIdQuery(1)
 
     return (
-        <div>
-        </div>
+      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false}}>
+          <span>rElief</span>
+      </Layout>
     )
 }
