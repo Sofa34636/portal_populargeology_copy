@@ -3,9 +3,9 @@ import { useRef } from 'react';
 
 import { useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
-import { OrbitControls, Stars } from '@react-three/drei';
+import { OrbitControls, Stars, CubeCamera, CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
-import { Mesh } from 'three';
+import { Mesh, PointLight} from 'three';
 
 import './Earth.scss'
 import { IEarth } from '../../../types/models/IEarth'
@@ -25,21 +25,17 @@ export function Earth(data: IEarth) {
   const cloudsRef = useRef<Mesh>(null!);
   const earthRef = useRef<Mesh>(null!);
 
-
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-
     earthRef.current.rotation.y = elapsedTime / 12;
     cloudsRef.current.rotation.y = elapsedTime / 12;
   });
 
 
-
   return (
-      <>
-
-      <pointLight color="#ffffa3" position={[50, 50, 50]} intensity={10} />
-
+    <>
+      <ambientLight intensity={1} />
+      <directionalLight position={[1, 1, 1]} intensity={0.8}  />
       <mesh scale={[3,3,3]} ref={cloudsRef}>
         {/* clouds */}
        <sphereGeometry args={[1.03, 32, 32]} />
@@ -66,6 +62,6 @@ export function Earth(data: IEarth) {
         />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.15} />
       </mesh>
-      </>
+    </>
   );
 }

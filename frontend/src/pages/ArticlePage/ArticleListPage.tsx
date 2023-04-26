@@ -12,7 +12,7 @@ export const ArticleListPage = () => {
 
   const { isLoading, fetchedArticles } = useFetchAllArticlesGroupByHook(15, 6, timeState)
 
-  const {data} = useFetchAllArticlesQuery({limit: 2, time: 'present'})
+  const {data} = useFetchAllArticlesQuery({limit: 2, time: 'present'}, {pollingInterval: 1000}) // remove for deploy
   console.log(data)
 
   return (

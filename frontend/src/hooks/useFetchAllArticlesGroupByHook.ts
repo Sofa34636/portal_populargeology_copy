@@ -8,7 +8,7 @@ export const useFetchAllArticlesGroupByHook = (n: number = 6, groupOf: number = 
         return historyOfEarth.findIndex(earthType => earthType == time_) != -1;
     }
 
-    const { isLoading, data, error } = useFetchAllArticlesQuery(n)
+    const { isLoading, data, error } = useFetchAllArticlesQuery(n, {pollingInterval: 1000}) // remove for deploy)
 
     const fetchedArticles: (IArticle | ScientificPublicationsProps)[][] = []
 

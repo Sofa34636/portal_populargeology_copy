@@ -17,7 +17,7 @@ import { historyOfEarth, timeTypes } from '../../types/timeline'
 export const  ThreeDEarthPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
-  const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1)
+  const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1, {pollingInterval: 1000}) // remove for deploy
 
   if (error) {
     return (
