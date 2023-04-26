@@ -3,6 +3,8 @@ import { Layout } from '../../components/Layout/Layout';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
 import {useAppSelector} from '../../hooks/redux'
 import {useFetchAllArticlesGroupByHook} from "../../hooks/useFetchAllArticlesGroupByHook";
+import { useFetchAllArticlesQuery } from '../../store/services/ArticleService'
+import { timeTypes } from '../../types/timeline'
 
 export const ArticleListPage = () => {
 
@@ -10,7 +12,8 @@ export const ArticleListPage = () => {
 
   const { isLoading, fetchedArticles } = useFetchAllArticlesGroupByHook(15, 6, timeState)
 
-
+  const {data} = useFetchAllArticlesQuery({limit: 2, time: 'present'})
+  console.log(data)
 
   return (
     <div className='article_list'>

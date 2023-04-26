@@ -7,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import './ThreeDEarthPage.scss';
 import { Earth } from '../../components/ToolComponents/Earth/Earth';
 import { useAppSelector} from '../../hooks/redux'
-
+import { Stars } from '@react-three/drei';
 
 import { useGetEarthByIdQuery } from '../../store/services/EarthService'
 
