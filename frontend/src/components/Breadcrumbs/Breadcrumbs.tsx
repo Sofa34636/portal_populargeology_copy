@@ -76,12 +76,6 @@ export default function BreadcrumbsComponent() {
     dispatch(changeInstrument(pickedInstrument))
   };
 
-
-  useEffect(() => {
-    console.log(time, instrument)
-  }, [])
-
-
   return (
         <div className="breadcrumbs_container">
           <nav className='menu'>
@@ -156,7 +150,7 @@ export default function BreadcrumbsComponent() {
                                 </li>
 
                               :
-                                <li className='sub-menu__link no_select'>
+                                <li className='sub-menu__link no_select'  key={index}>
                                   <Link to = {`/${pageRedirect(time, instrument)}`}>
                                   <span
                                     onMouseLeave={() => {

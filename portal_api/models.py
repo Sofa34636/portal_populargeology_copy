@@ -73,8 +73,14 @@ class Earth(models.Model):
     time_ago = models.CharField(max_length=100)
     text = models.TextField()
     time = models.CharField(max_length=13, choices=EARTH_TIMES)
-    textures = models.FileField(upload_to='textures',
-                                null=True, blank=True)
+
+    ambientMap = models.FileField(upload_to='textures', null=True, blank=True)
+    baseMap = models.FileField(upload_to='textures', null=True, blank=True)
+    heightMap = models.FileField(upload_to='textures', null=True, blank=True)
+    metallicMap = models.FileField(upload_to='textures', null=True, blank=True)
+    normalMap = models.FileField(upload_to='textures', null=True, blank=True)
+    roughnessMap = models.FileField(upload_to='textures', null=True, blank=True)
+    cloudMap = models.FileField(upload_to='textures', null=True, blank=True)
 
     def __str__(self):
         return self.title

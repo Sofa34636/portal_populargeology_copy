@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'
 import { useRef } from 'react';
 
 import { useFrame, useLoader } from '@react-three/fiber';
@@ -17,19 +17,26 @@ import roughness from '../../../assets/textures/blackEarth/roughness.png';
 import clouds from '../../../assets/textures/blackEarth/clouds/basecolor.png';
 
 import './Earth.scss'
+import { IEarth } from '../../../types/models/IEarth'
+import CircularProgress from '@mui/material/CircularProgress'
+import { useGetEarthByIdQuery } from '../../../store/services/EarthService'
 
-export function Earth(props) {
+export function Earth(data: IEarth) {
 
-  const [aoMap, baseMap, heightMap, metallicMap, normalMap, outputMap, roughnessMap, cloudsMap] = useLoader(TextureLoader, [
-    ao,
-    base,
-    height,
-    metallic,
-    normal,
-    output,
-    roughness,
-    clouds,
-  ]);
+  const map = useLoader(TextureLoader, data.baseMap)
+  const map1 = useLoader(TextureLoader, data.baseMap)
+  const map2 = useLoader(TextureLoader, data.baseMap)
+  const map3 = useLoader(TextureLoader, data.baseMap)
+
+  // const [aoMap, baseMap, heightMap, metallicMap, normalMap, roughnessMap, cloudsMap] = useLoader(TextureLoader, [
+  //   data.ambientMap,
+  //   data.baseMap,
+  //   data.heightMap,
+  //   data.metallicMap,
+  //   data.normalMap,
+  //   data.roughnessMap,d
+  //   data.cloudMap,
+  // ]);
 
   const cloudsRef = useRef<Mesh>(null!);
   const earthRef = useRef<Mesh>(null!);
@@ -41,6 +48,7 @@ export function Earth(props) {
     cloudsRef.current.rotation.y = elapsedTime / 12;
   });
 
+
   return (
       <>
       <ambientLight intensity={1} />
@@ -48,8 +56,8 @@ export function Earth(props) {
       <mesh scale={[3,3,3]} ref={cloudsRef}>
        <sphereGeometry args={[1.01, 32, 32]} />
        <meshPhongMaterial
-         map={cloudsMap}
-         opacity={0.2}
+         // map={data}
+         opacity={0}
          depthWrite={true}
          transparent={true}
          side={THREE.DoubleSide}
@@ -58,14 +66,14 @@ export function Earth(props) {
       <mesh scale={[3,3,3]} ref={earthRef}>
         <sphereGeometry args={[1, 64, 32]} />
         <meshStandardMaterial
-          map={baseMap}
-          normalMap={normalMap}
-          metalnessMap={metallicMap}
+          map={map}
+          // normalMap={normalMap}
+          // metalnessMap={metallicMap}
           // displacementMap={heightMap}
-          bumpMap={heightMap}
+          // bumpMap={heightMap}
           // displacementScale = {0.01}
-          aoMap={aoMap}
-          roughnessMap={roughnessMap}
+          // aoMap={aoMap}
+          // roughnessMap={roughnessMap}
         />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.15} />
       </mesh>

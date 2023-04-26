@@ -70,3 +70,13 @@ a {
 ::-webkit-scrollbar-thumb:hover {
 	background: #2b2b2b;
 }
+
+::-moz-selection { /* Code for Firefox */
+	color: $white;
+	background: $blue;
+}
+
+::selection {
+	color:  $white;
+	background: $blue;
+}

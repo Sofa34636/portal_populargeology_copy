@@ -8,6 +8,7 @@
 
 
 .left {
+	padding-top: 32px;
 	left: 0;
 	right: 0;
 	top: 0;
@@ -16,6 +17,9 @@
 	.contents {
 		max-height: 60vh;
 		overflow: auto;
+		p {
+			margin-right: 50px;
+		}
 	}
 
 
@@ -40,6 +44,18 @@
 	top: 10%; // 0%
 	bottom: 10%; // 0%
 	height: 80vh;
+
+	.progress-circle__container {
+		height: 100%;
+	}
+
+	.progress-circle {
+		position: relative;
+		top: 50%;
+		left: 50%;
+		z-index: 100;
+	}
+
 }
 
 h1 {
@@ -70,6 +86,4 @@ p {
 	padding-bottom: 16px;
 	text-transform: none;
 }
-
-
 
