@@ -10,6 +10,11 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class EarthSerializer(serializers.ModelSerializer):
+
+    def __init__(self, *args, **kwargs):
+        many = kwargs.pop('many', True)
+        super(EarthSerializer, self).__init__(many=many, *args, **kwargs)
+
     class Meta:
         model = Earth
         fields = '__all__'

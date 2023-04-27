@@ -61,7 +61,7 @@ class Exhibit(models.Model):
 
 class Video(models.Model):
     time_ago = models.CharField(max_length=100)
-    video_source = models.CharField(max_length=100)
+    video = models.FileField(upload_to='videos', null=True, blank=True)
     time = models.CharField(max_length=13, choices=ALL_TIMES)
 
     def __str__(self):

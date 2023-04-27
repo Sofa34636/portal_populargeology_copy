@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useRef } from 'react';
 
 import { useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
-import { OrbitControls, Stars, CubeCamera, CameraControls, Stage, Segments } from '@react-three/drei'
+import { OrbitControls, Stage } from '@react-three/drei'
 import * as THREE from 'three';
-import { Mesh, PointLight} from 'three';
+import { Mesh } from 'three';
 
 import './Earth.scss'
 import { IEarth } from '../../../types/models/IEarth'
@@ -31,11 +31,14 @@ export function Earth(data: IEarth) {
     pointLightRef.current.position.set(x,y,z)
   });
 
-
   return (
     <>
       <ambientLight intensity={0.5} />
-      <pointLight ref={pointLightRef} color='#fffec4' intensity={2}></pointLight>
+      <pointLight ref={pointLightRef}
+                  color='#fffec4'
+                  intensity={1}>
+
+      </pointLight>
       <Stage intensity={0} environment={null}>
         <mesh scale={[3,3,3]} ref={cloudsRef}>
           {/* clouds */}
@@ -61,40 +64,18 @@ export function Earth(data: IEarth) {
             metalnessMap={metallicMap}
             metalness={0.1}
             normalMap={normalMap}
-            bumpScale={0.005}
+            bumpScale={0.5}
           />
         </mesh>
       </Stage>
-      <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.15} autoRotate={true} autoRotateSpeed={0.15} />
-      {/* <ambientLight intensity={.5} /> */}
-      {/* <directionalLight position={[1, 1, 1]} intensity={0.8}  /> */}
-      {/* <mesh scale={[3,3,3]} ref={cloudsRef}> */}
-      {/*   /!* clouds *!/ */}
-      {/*  <sphereGeometry args={[1.03, 32, 32]} /> */}
-      {/*  <meshPhongMaterial */}
-      {/*    map={cloudsMap} */}
-      {/*    opacity={0} */}
-      {/*    depthWrite={true} */}
-      {/*    transparent={true} */}
-      {/*    side={THREE.DoubleSide} */}
-      {/*  /> */}
-      {/* </mesh> */}
-      {/* <mesh scale={[3,3,3]} ref={earthRef}> */}
-      {/*   <sphereGeometry args={[1, 32, 32]} /> */}
-      {/*   <meshStandardMaterial */}
-      {/*     map={baseMap} */}
-      {/*     aoMap={aoMap} */}
-      {/*     aoMapIntensity={0.5} */}
-      {/*     bumpMap={heightMap} */}
-      {/*     roughnessMap={roughnessMap} */}
-      {/*     roughness={0} */}
-      {/*     metalnessMap={metallicMap} */}
-      {/*     metalness={1} */}
-      {/*     normalMap={normalMap} */}
-      {/*     bumpScale={1} */}
-      {/*   /> */}
-      {/*   <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} rotateSpeed={0.15} /> */}
-      {/* </mesh> */}
+      <OrbitControls
+        enableZoom={false}
+        enablePan={false}
+        enableRotate={true}
+        rotateSpeed={0.15}
+        autoRotate={true}
+        autoRotateSpeed={0.15}
+      />
     </>
   );
 }
