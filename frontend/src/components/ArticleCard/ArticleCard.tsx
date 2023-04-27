@@ -9,14 +9,13 @@ export const ArticleCard: React.FC<IArticle> = (article) => {
     const {time: time, instrument: instrument } = useAppSelector((state) => state.timeLineReducer);
 
     const handleClick = () => {
-        console.log(article)
         navigate(`/${pageRedirect(time,instrument)}/${article.id}`)
     }
 
     return(
         <div className='article_card' onClick={handleClick}>
             <img className='photo' src={article.image} alt="planet" />
-            <div className='title'>{article.title.toUpperCase()}</div>
+            <div className='title'>{article.title?.toUpperCase()}</div>
         </div>
     )
 }

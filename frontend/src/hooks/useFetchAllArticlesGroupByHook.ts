@@ -8,8 +8,13 @@ export const useFetchAllArticlesGroupByHook = (n: number = 6, groupOf: number = 
         return historyOfEarth.findIndex(earthType => earthType == time_) != -1;
     }
 
-    const { isLoading, data, error } = useFetchAllArticlesQuery(n, {pollingInterval: 1000}) // remove for deploy)
+    const { isLoading, data, error } =
+        useFetchAllArticlesQuery({
+            limit: n,
+            time: time
+        })
 
+    const isLoadingArticles = isLoading
     const fetchedArticles: (IArticle | ScientificPublicationsProps)[][] = []
 
     if (error || isLoading) {
@@ -49,5 +54,5 @@ export const useFetchAllArticlesGroupByHook = (n: number = 6, groupOf: number = 
             console.log(`Fetched data is ${data}`)
         }
     }
-    return { isLoading, fetchedArticles, error }
+    return { isLoadingArticles, fetchedArticles }
 }

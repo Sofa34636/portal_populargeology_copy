@@ -1,17 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IArticle } from '../../types/models/IArticle';
-import { Time } from '../../types/timeline'
+import {Time, timeTypes} from '../../types/timeline'
+import {getKeyByValue} from "../../pages/pageRedirect";
+
 
 export const articleAPI = createApi({
   reducerPath: 'articleAPI',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api' }),
   endpoints: (build) => ({
     fetchAllArticles: build.query({
-      query: ({ string: limit, Time: time = null } ) => {
-        return {
-          url: `/article/?limit=${limit}&?time=${time}`
-        }
-      }
+      query: ( { limit, time = null }: {limit: number, time: Time} ) => ({
+        url: `/article?limit=${limit}&time=${getKeyByValue(timeTypes, time)}`,
+        method: 'GET',
+      })
     }),
     getArticleById: build.query<IArticle, number>({
       query: (id:number) => `/article/${id}`,

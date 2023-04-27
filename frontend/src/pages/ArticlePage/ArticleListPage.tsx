@@ -10,16 +10,15 @@ export const ArticleListPage = () => {
 
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
-  const { isLoading, fetchedArticles } = useFetchAllArticlesGroupByHook(15, 6, timeState)
+  const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesGroupByHook(15, 6, timeState)
 
-  const {data} = useFetchAllArticlesQuery({limit: 2, time: 'present'}, {pollingInterval: 1000}) // remove for deploy
-  console.log(data)
+  // const { data } = useFetchAllArticlesQuery({limit: 2, time: timeState}, {pollingInterval: 1000}) // remove for deploy
 
   return (
     <div className='article_list'>
       <Layout layoutProps={{time: timeState, instrument: instrumentState}}>
         <div className='article_list__content'>
-          {isLoading ? <span>Loading...</span> : <ArticleCarousel articleCards={fetchedArticles}/>}
+          {isLoadingArticles ? <span>Loading...</span> : <ArticleCarousel articleCards={fetchedArticles}/>}
         </div>
       </Layout>
     </div>

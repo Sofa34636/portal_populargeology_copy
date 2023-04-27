@@ -1,3 +1,5 @@
+import {Time} from "../timeline";
+
 export interface IArticle {
   id: number;
   title: string;
@@ -6,4 +8,5 @@ export interface IArticle {
   text: string;
   src_article: string;
   src_magazine: string;
+  time: Time;
 }

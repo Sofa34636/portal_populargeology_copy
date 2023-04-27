@@ -12,6 +12,7 @@ export const scientificPublicationsCardProps: ScientificPublicationsProps = {
     text: 'undefined',
     src_article: 'undefined',
     src_magazine: 'undefined',
+    time: 'черная земля',
 }
 
 const earthSciPub_Hierarchy = {

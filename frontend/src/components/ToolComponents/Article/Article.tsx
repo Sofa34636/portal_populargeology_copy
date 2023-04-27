@@ -9,20 +9,24 @@ import { useFetchAllArticlesGroupByHook } from "../../../hooks/useFetchAllArticl
 import {useGetArticleByIdQuery} from "../../../store/services/ArticleService";
 import {IArticle} from "../../../types/models/IArticle";
 import Grid from '@mui/material/Grid';
+import {getKeyByValue, pageRedirect} from "../../../pages/pageRedirect";
+import {useGetArticleByIdHook} from "../../../hooks/useGetArticleByIdHook";
 
 
 export const Article = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const navigate = useNavigate()
-  const { id } = useParams()
+  const { time, id } = useParams()
 
   // Check for valid article ID
   if (isNaN(+id) || +id < 0) {
       navigate('/*')
   }
 
-  const {isLoading, fetchedArticles } = useFetchAllArticlesGroupByHook(10, 10, timeState)
-  const dataArticle = useGetArticleByIdQuery(+id)
+  const { isLoadingArticle, dataArticle } = useGetArticleByIdHook(+id)
+
+  const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesGroupByHook(10, 10, timeState)
+
 
   // Placeholder article
   let thisArticle: IArticle = {
@@ -33,9 +37,10 @@ export const Article = () => {
       text: 'undefined',
       src_article: 'undefined',
       src_magazine: 'undefined',
+      time: 'большой взрыв'
   }
-  if (dataArticle['data'] != undefined) {
-      thisArticle = dataArticle['data']
+  if (dataArticle != undefined) {
+      thisArticle = dataArticle
   }
 
   if (fetchedArticles[0] != undefined) {
@@ -48,32 +53,33 @@ export const Article = () => {
   return (
     <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterDisplayed: false}}>
       <div className="article">
+          {isLoadingArticle ? <span>Loading...</span> :
           <Grid container spacing={10} className="article-grid">
               <Grid item xs={8} className='article-grid__left'>
-                    <div className='article-grid--main'>
-                        <div className="article-grid--main__subtitle">
+                    <div className='article-grid__left--main'>
+                        <div className="article-grid__left--main__subtitle">
                             <h4>{thisArticle.time_ago}</h4>
                         </div>
-                        <div className="article-grid--main__title">
+                        <div className="article-grid__left--main__title">
                             <h1>{thisArticle.title}</h1>
                         </div>
-                        <div className="article-grid--main__sources">
+                        <div className="article-grid__left--main__sources">
                             <ArticleSourcesMenu reference={thisArticle.src_article} magazine={thisArticle.src_magazine}/>
                         </div>
-                        <div className="article-grid--main__content">
+                        <div className="article-grid__left--main__content">
                             {thisArticle.text}
                         </div>
                     </div>
               </Grid>
-              <Grid item xs={4} className='article-grid__left'>
-                    <div className="article-grid--articleVerticalList">
-                        { isLoading ? <span>Loading...</span> : <ArticleVerticalList fetchedArticles={fetchedArticles[0] ?? []}
+              <Grid item xs={4} className='article-grid__right'>
+                    <div className="article-grid__right--articleVerticalList">
+                        { isLoadingArticles ? <span>Loading...</span> : <ArticleVerticalList fetchedArticles={fetchedArticles[0] ?? []}
                                                                                      numberOfArticles={fetchedArticles[0].length ?? 0} />}
                     </div>
               </Grid>
-          </Grid>
+          </Grid>}
         <div className='article--goBackButton'>
-          <Button onClick={() => navigate(`/${timeState}/articles`)} variant="outlined">
+          <Button onClick={() => navigate(`/${pageRedirect(thisArticle.time, instrumentState)}`)} variant="outlined">
               НАЗАД
           </Button>
         </div>

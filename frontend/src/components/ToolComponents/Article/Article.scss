@@ -1,52 +1,56 @@
 .article {
     color: $white;
     &-grid {
-        &--main {
-            padding-bottom: 20px;
-
-            &__subtitle {
-                h4 {
-                    font-size: 16px;
-                    line-height: 16px;
-                    padding-top: 50px;
-                    color: #B9B9B9;
-                    font-family: RSLight, serif;
-                }
-            }
-
-            &__title {
-                h1 {
-                    font-size: 24px;
-                    line-height: 32px;
-                    padding-top: 17px;
-                    font-family: RSRegular, serif;
-                }
-            }
-
-            &__sources {
-                font-size: 14px;
-                line-height: 20px;
-                padding-top: 24px;
+        &__left {
+            &--main {
                 padding-bottom: 20px;
-                color: #B9B9B9;
-                display: flex;
-                align-items: center;
-            }
 
-            &__content {
-                font-size: 14px;
-                line-height: 20px;
-                padding-top: 32px;
-                color: #B9B9B9;
-                white-space: normal;
-                overflow-y: auto;
-                height: 400px;
-                width: 950px;
+                &__subtitle {
+                    h4 {
+                        font-size: 16px;
+                        line-height: 16px;
+                        padding-top: 50px;
+                        color: #B9B9B9;
+                        font-family: RSLight, serif;
+                    }
+                }
+
+                &__title {
+                    h1 {
+                        font-size: 24px;
+                        line-height: 32px;
+                        padding-top: 17px;
+                        font-family: RSRegular, serif;
+                    }
+                }
+
+                &__sources {
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding-top: 24px;
+                    padding-bottom: 20px;
+                    color: #B9B9B9;
+                    display: flex;
+                    align-items: center;
+                }
+
+                &__content {
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding-top: 32px;
+                    color: #B9B9B9;
+                    white-space: normal;
+                    overflow-y: auto;
+                    height: 400px;
+                    width: 950px;
+                }
             }
         }
+        &__right {
 
-        //&--articleVerticalList {
-        //}
+            //&--articleVerticalList {
+            //}
+        }
     }
     &--goBackButton {
         margin-top: 30px;
