@@ -4,6 +4,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks/redux'
 import {timeLineSlice} from "../../store/reducers/timeLineSlice";
 import {useGetArticleByIdQuery} from "../../store/services/ArticleService";
 import { useGetEarthByIdQuery } from '../../store/services/EarthService'
+import VideoPlayer from '../../components/ToolComponents/VideoPlayer/VideoPlayer'
 
 export const VideoPage = () => {
 
@@ -18,7 +19,7 @@ export const VideoPage = () => {
 
     return (
       <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false}}>
-            <span>{JSON.stringify(data)}</span>
+            <VideoPlayer className='video-player' video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'} />
       </Layout>
     )
 }
