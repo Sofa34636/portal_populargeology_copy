@@ -1,23 +1,45 @@
+
+
 * {
-	padding: 0;
 	margin: 0;
+	padding: 0;
 	list-style: none;
 	outline: none;
 	font-family: RSRegular;
-	box-sizing: border-box;
 }
 
-html {
-	-ms-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
+
+
+html, root, .app, .wrapper, .layout {
+	height: 100vh;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	-ms-box-sizing:     border-box;
+	-o-box-sizing:      border-box;
+	box-sizing:         border-box;
 }
+
 
 body {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
+	min-height: 95vh;
 	background-color: $black;
-	height:100%;
+	box-sizing: border-box;
+
+
+	display: flex;
+	flex-direction: column;
+
+	overflow-x: hidden;
+
 }
+
+.wrapper {
+	padding: 32px;
+}
+
+
+
 
 
 a,

@@ -19,21 +19,8 @@
 @import "../pages/ArticlePage/ArticleListPage.scss";
 @import "../pages/ThreeDEarthPage/ThreeDEarthPage.scss";
 
-html, body {
-	height: 100%;
-}
 
 .App {
-
-
-	position: relative;
-	min-height: 100vh;
-	margin-left: 30px;
-	margin-right: 30px;
-
-	//.wrapper {
-	//	height: 100vh;
-	//}
 
 	button {
 		font-family: RSRegular, serif;
