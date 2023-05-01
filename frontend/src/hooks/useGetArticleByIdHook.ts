@@ -8,8 +8,6 @@ export const useGetArticleByIdHook = (id: number) => {
     const navigate = useNavigate()
 
 
-
-
     const {isLoading, data, error} = useGetArticleByIdQuery(id)
     let isLoadingArticle: boolean = isLoading
     const dataArticle: IArticle = data

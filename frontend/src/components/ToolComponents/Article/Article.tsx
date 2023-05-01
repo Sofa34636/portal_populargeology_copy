@@ -67,7 +67,13 @@ export const Article = () => {
                             <ArticleSourcesMenu reference={thisArticle.src_article} magazine={thisArticle.src_magazine}/>
                         </div>
                         <div className="article-grid__left--main__content">
-                            {thisArticle.text}
+                            {thisArticle.text.split('\r\n').map((paragraph, index) => {
+                                return (
+                                    <p key={index}>
+                                        {paragraph}
+                                    </p>
+                                )
+                            })}
                         </div>
                     </div>
               </Grid>
