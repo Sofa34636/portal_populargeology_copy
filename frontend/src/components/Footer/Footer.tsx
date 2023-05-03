@@ -2,17 +2,11 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 
-export const Footer: React.FC<{ isFooterDisplayed: boolean, isFooterButtonsLeft: boolean }> = ({ isFooterDisplayed, isFooterButtonsLeft }) => {
+export const Footer: React.FC<{ isFooterDisplayed: boolean}> = ({ isFooterDisplayed}) => {
 
-    const isFooterButtonsLeft_ = isFooterButtonsLeft ?? false
+
     const isFooterDisplayed_ = isFooterDisplayed ?? true
 
-    const isFooterButtonsLeftWidth = (isFooterButtonsLeftArg) => {
-        if (isFooterButtonsLeftArg) {
-            return "50%"
-        }
-        return "100%"
-    }
 
     const isFooterDisplayedStyle = (isFooterDisplayedArg) => {
         if (isFooterDisplayedArg) {
@@ -22,7 +16,6 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean, isFooterButtonsLeft:
     }
 
     const footerButtonsStyle = {
-        width: isFooterButtonsLeftWidth(isFooterButtonsLeft_),
         display: isFooterDisplayedStyle(isFooterDisplayed_),
     }
 

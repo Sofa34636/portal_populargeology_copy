@@ -1,15 +1,172 @@
+@import '../../styles/variables';
+
 .layout {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  min-height: 95vh;
+  height: 95vh;
 }
 
+header {
+}
 
 main {
   flex: 1 1 auto;
 }
 
-footer{
+footer {
+  .buttons {
+    width: 100%;
+  }
+}
 
+
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .layout {
+    button {
+      width: 200px;
+    }
+    .parent {
+      display: flex;
+      flex-direction: column;
+      .left, .right {
+        max-width: 100%;
+      }
+      .left {
+
+        .contents {
+          overflow: hidden;
+        }
+      }
+    }
+    }
+      footer {
+        .buttons {
+
+          width: 100%;
+        }
+    }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .layout {
+    button {
+      width: 150px;
+      font-size: 14px;
+    }
+    .parent {
+      display: flex;
+      flex-direction: column;
+      .left, .right {
+        max-width: 100%;
+      }
+      .left {
+
+        .contents {
+          overflow: hidden;
+        }
+      }
+    }
+    footer {
+      .buttons {
+        width: 100%;
+      }
+    }
+
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 830px) {
+
+  .layout {
+    header {
+      font-size: 14px;
+    }
+
+    .parent {
+      display: flex;
+      flex-direction: column;
+      .left, .right {
+        max-width: 100%;
+      }
+      .left {
+
+        .contents {
+          overflow: hidden;
+        }
+      }
+
+    }
+    footer {
+      .buttons {
+
+        width: 100%;
+      }
+    }
+
+
+
+    button {
+      width: 120px;
+      font-size: 10px;
+    }
+
+  }
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 670px) {
+  .layout {
+    header {
+      font-size: 14px;
+      .time-span, .instrument-span, .main {
+        display: none;
+      }
+
+    }
+
+    .parent {
+      display: flex;
+      flex-direction: column;
+      .left, .right {
+        max-width: 100%;
+      }
+      .left {
+
+        .contents {
+          overflow: hidden;
+        }
+      }
+    }
+    footer {
+      .buttons {
+        width: 100%;
+      }
+    }
+
+
+    button {
+      width: 120px;
+      font-size: 10px;
+    }
+
+    .sub-sub-menu__list {
+      padding-top: 40px;
+      left: 0;
+    }
+
+  }
 }

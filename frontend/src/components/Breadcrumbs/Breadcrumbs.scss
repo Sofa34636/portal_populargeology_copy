@@ -4,11 +4,36 @@
 	z-index: 100;
 }
 
+.main {
+	display: flex;
+	align-items: center;
+}
+
+.current-time {
+	display: flex;
+	align-items: center;
+
+}
+
+.current-instrument {
+	display: flex;
+	align-items: center;
+}
+
+svg {
+	padding-top: 3px;
+}
+
 .menu__list {
 	display: flex;
+	align-items: center;
+	align-items: center;
 }
 
 .menu__link {
+	display: flex;
+	align-items: center;
+
 	&:hover {
 		color: $orange;
 		cursor: pointer;
@@ -24,19 +49,25 @@
 	z-index: 100;
 	display: none;
 	position: absolute;
+	top: 20px;
 	left:0;
 	background-color: transparent;
-	padding-bottom: 50px;
 }
 
 .left-menu {
 	min-width: 250px;
 }
 
+
+
 .sub-menu__list>li{
 	padding-top: 12px;
 	min-width: 110px;
 
+}
+
+.sub-menu__list>li:last-child {
+	margin-bottom: 50px;
 }
 
 .sub-sub-menu__list{

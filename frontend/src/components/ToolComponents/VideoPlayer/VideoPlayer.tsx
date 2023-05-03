@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactPlayer from 'react-player'
 
+import './VideoPlayer.scss'
+
 export default function VideoPlayer(props) {
-  return <ReactPlayer
-    url={props.video_url}
-    width={'100%'}
-    height={'100%'}
-    playing={true}
-    muted={true}
-  />;
+
+  return (
+    <div className='video-container'>
+        <ReactPlayer
+        className='player'
+        url={props.video_url}
+        playing={true}
+        muted={true}
+      />
+    </div>
+  )
 }
 

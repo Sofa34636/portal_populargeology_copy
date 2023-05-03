@@ -19,14 +19,6 @@ export const  ThreeDEarthPage = () => {
 
   const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1, {pollingInterval: 1000}) // remove for deploy
 
-  if (error) {
-    return (
-      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: true}}>
-        <h1>Ошибка при загрузке! (((9</h1>
-      </Layout>
-    )
-  }
-
   const ProgressCircle = () => {
     return (
       <div className='progress-circle'>
@@ -58,11 +50,17 @@ export const  ThreeDEarthPage = () => {
               {/* </div> */}
             </Grid>
             <Grid className="right" item xs={6}>
+              <>
+                {
+                  error ? <h5 className='error-earth'>Произошла ошибка при загрузке Земли</h5> :
+
                 <Suspense fallback={<ProgressCircle/>}>
                   <Canvas>
                       <Earth {...data}/>
                   </Canvas>
                 </Suspense>
+                }
+              </>
             </Grid>
           </Grid>
         </Layout>

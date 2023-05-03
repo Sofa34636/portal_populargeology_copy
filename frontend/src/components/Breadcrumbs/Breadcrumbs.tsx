@@ -97,16 +97,18 @@ export default function BreadcrumbsComponent() {
         <div className="breadcrumbs_container">
           <nav className='menu'>
             <ul className='menu__list'>
-              <li>
+              <li className='main'>
                 <Link to={'/'} className='menu__link no_select'>
                   Главная
                 </Link>
                 <span className='separator no_select'>/</span>
               </li>
-              <li className='no_select'>
+              <li className='no_select time-span'>
                 <span>Время: </span>
               </li>
-              <li onMouseLeave={() => {
+              <li
+                className='current-time'
+                onMouseLeave={() => {
                 setIsTimeMenuOpen(false)
                 setIsTimeSubMenuOpen(false)
                 setIsOverlayShown(false)
@@ -184,10 +186,11 @@ export default function BreadcrumbsComponent() {
                     }
                   </ul>
               </li>
-              <li className='no_select'>
+              <li className='no_select instrument-span'>
                 <span>Инструмент: </span>
               </li>
               <li
+                className='current-instrument'
                 onMouseLeave={() => {
                   setIsInstrumentMenuOpen(false)
                   setIsOverlayShown(false)

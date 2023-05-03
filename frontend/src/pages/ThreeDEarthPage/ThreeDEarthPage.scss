@@ -8,6 +8,14 @@
 	top:14px;
 }
 
+footer {
+	.buttons {
+		width: 50%;
+	}
+
+
+}
+
 
 .left {
 	padding-top: 32px;
@@ -87,4 +95,10 @@ p {
 
 	padding-bottom: 16px;
 	text-transform: none;
+}
+
+.error-earth {
+	position: absolute;
+	top: 50%;
+	left: 65%;
 }
