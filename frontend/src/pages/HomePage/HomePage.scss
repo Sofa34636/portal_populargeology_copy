@@ -55,10 +55,10 @@
 
 			.time_buttons {
 				margin-left: 78px;
-				padding-bottom: 96px;
+				padding-bottom: 76px;
 				display: flex;
 				flex-direction: row;
-
+				flex-wrap: wrap;
 
 				button {
 
@@ -68,6 +68,7 @@
 					font-size: 16px;
 					line-height: 16px;
 					margin-right: 32px;
+					margin-bottom: 10px;
 
 					&.btn-selected {
 						background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
@@ -78,7 +79,11 @@
 
 			.instrument_buttons {
 				margin-left: 78px;
-				padding-bottom: 96px;
+				padding-bottom: 76px;
+
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
 
 				button {
 					font-family: RSRegular, serif;
@@ -87,6 +92,7 @@
 					font-size: 16px;
 					line-height: 16px;
 					margin-right: 32px;
+					margin-bottom: 10px;
 
 					&.btn-deactivated {
 						border: 1px solid #313131;
@@ -102,6 +108,8 @@
 			}
 
 			.learn {
+				display: flex;
+				justify-content: left;
 				button {
 					font-family: RSBold, serif;
 					font-weight: 600;
@@ -140,5 +148,215 @@
 				}
 			}
 		}
+
+		@media (min-width: 1300px) {
+			button {
+				color: lightgoldenrodyellow;
+				font-size: 14px !important;
+			}
+		}
+
+		@media (min-width: 1199px) and (max-width: 1299px) {
+			button {
+				color: #052DC9;
+				font-size: 14px !important;
+			}
+			.title {
+				padding-bottom: 24px;
+			}
+			.title h1 {
+				font-size: 24px;
+			}
+			.content h2 {
+				font-size: 16px;
+			}
+			.content .time_buttons {
+				padding-bottom: 38px;
+			}
+
+			.content .instrument_buttons {
+				padding-bottom: 38px;
+			}
+
+			.earth-time-dropdown__content {
+
+				li {
+					font-size: 12px;
+					padding-top: 10px;
+				}
+			}
+		}
+
+		/* Portrait tablets and medium desktops */
+		@media (min-width: 992px) and (max-width: 1199px) {
+			button{
+				width: 150px;
+				color: red;
+				font-size: 12px !important;
+			}
+
+			.title {
+				padding-bottom: 10px;
+			}
+			.title h1 {
+				font-size: 18px;
+			}
+			.content h2 {
+				font-size: 14px;
+			}
+			.content .time_buttons {
+				padding-bottom: 24px;
+			}
+
+			.content .instrument_buttons {
+				padding-bottom: 24px;
+			}
+
+			.content .learn {
+				button {
+					width: 250px;
+					height: 50px;
+				}
+			}
+			.earth-time-dropdown__content {
+				min-width: 150px;
+				li {
+					font-size: 10px;
+					padding-top: 8px;
+				}
+			}
+		}
+
+		/* Portrait tablets and small desktops */
+		@media (min-width: 768px) and (max-width: 991px) {
+
+			button {
+				color: darkolivegreen;
+				font-size: 10px !important;
+				width: 130px;
+			}
+
+			.title {
+				padding-bottom: 6px;
+			}
+			.title h1 {
+				font-size: 14px;
+				padding-bottom: 12px;
+			}
+			.content h2 {
+				font-size: 12px;
+				padding-bottom: 12px;
+			}
+			.content .time_buttons {
+				padding-bottom: 12px;
+			}
+
+			.content .instrument_buttons {
+				padding-bottom: 12px;
+			}
+
+			.content .learn {
+				button {
+					width: 250px;
+					height: 50px;
+				}
+			}
+			.earth-time-dropdown__content {
+				min-width: 100px;
+				li {
+					font-size: 8px;
+					padding-top: 6px;
+				}
+			}
+		}
+
+		/* Landscape phones and portrait tablets */
+		@media (max-width: 830px) {
+
+			button {
+				color: palegoldenrod;
+				font-size: 10px !important;
+				width: 120px;
+			}
+
+			.title {
+				padding-bottom: 6px;
+			}
+			.title h1 {
+				font-size: 14px;
+			}
+			.content h2 {
+				font-size: 12px;
+			}
+			.content .time_buttons {
+				padding-bottom: 12px;
+			}
+
+			.content .instrument_buttons {
+				padding-bottom: 12px;
+			}
+
+			.content .learn {
+				justify-content: center;
+				button {
+					width: 250px;
+					height: 50px;
+				}
+			}
+			.earth-time-dropdown__content {
+				min-width: 60px;
+				li {
+					font-size: 10px;
+					padding-top: 4px;
+				}
+			}
+
+
+		}
+
+		@media (max-width: 670px) {
+			button {
+				color: orange;
+				width: 100px;
+				font-size: 8px !important;
+			}
+
+			.title {
+				padding-bottom: 4px;
+			}
+			.title h1 {
+				font-size: 12px;
+				padding-bottom: 0;
+			}
+			.content h2 {
+				font-size: 10px;
+				padding-bottom: 0;
+			}
+			.content .time_buttons {
+				padding-bottom: 6px;
+			}
+
+			.content .instrument_buttons {
+				padding-bottom: 6px;
+			}
+
+			.content .learn {
+				justify-content: center;
+				button {
+					width: 150px;
+					height: 50px;
+				}
+			}
+			.earth-time-dropdown__content {
+				min-width: 60px;
+				li {
+					font-size: 10px;
+					padding-top: 4px;
+				}
+			}
+
+		}
+
+
 	}
 }
