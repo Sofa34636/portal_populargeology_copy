@@ -1,23 +1,23 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Layout } from '../../components/Layout/Layout';
 import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
 import {useAppSelector} from '../../hooks/redux'
-import {useFetchAllArticlesGroupByHook} from "../../hooks/useFetchAllArticlesGroupByHook";
+import {useFetchAllArticlesHook} from "../../hooks/useFetchAllArticlesHook";
+import { useFetchAllArticlesQuery } from '../../store/services/ArticleService'
+import { timeTypes } from '../../types/timeline'
+import {IArticle} from "../../types/models/IArticle";
 
 export const ArticleListPage = () => {
 
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
-  const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesGroupByHook(15, 6, timeState)
-
-  console.log(fetchedArticles)
-  // const { data } = useFetchAllArticlesQuery({limit: 2, time: timeState}, {pollingInterval: 1000}) // remove for deploy
+  const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesHook(6, timeState)
 
   return (
     <div className='article_list'>
       <Layout layoutProps={{time: timeState, instrument: instrumentState}}>
         <div className='article_list__content'>
-          {isLoadingArticles ? <span>Loading...</span> : <ArticleCarousel articleCards={fetchedArticles}/>}
+          { isLoadingArticles ? <span>Loading...</span> : <ArticleCarousel articleCards={fetchedArticles}/> }
         </div>
       </Layout>
     </div>

@@ -6,10 +6,11 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import './ArticleCarousel.scss'
 import {IArticle} from "../../types/models/IArticle";
+import {ScientificPublicationsProps} from "../../types/scientificPublications";
 
 // https://github.com/Learus/react-material-ui-carousel
 
-export const ArticleCarousel: React.FC<{articleCards: IArticle[][]}> = ({ articleCards }) => {
+export const ArticleCarousel: React.FC<{articleCards: (IArticle | ScientificPublicationsProps)[][]}> = ({ articleCards }) => {
   return (
     <>
       <Carousel

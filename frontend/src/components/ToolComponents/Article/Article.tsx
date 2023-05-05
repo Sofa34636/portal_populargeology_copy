@@ -5,7 +5,7 @@ import { ArticleSourcesMenu } from '../../ArticleSourcesMenu/ArticleSourcesMenu'
 import { useAppSelector } from '../../../hooks/redux'
 import {ArticleVerticalList} from "../../ArticleVerticalList/ArticleVerticalList";
 import Button from "@mui/material/Button";
-import { useFetchAllArticlesGroupByHook } from "../../../hooks/useFetchAllArticlesGroupByHook";
+import { useFetchAllArticlesHook } from "../../../hooks/useFetchAllArticlesHook";
 import {useGetArticleByIdQuery} from "../../../store/services/ArticleService";
 import {IArticle} from "../../../types/models/IArticle";
 import Grid from '@mui/material/Grid';
@@ -25,7 +25,7 @@ export const Article = () => {
 
   const { isLoadingArticle, dataArticle } = useGetArticleByIdHook(+id)
 
-  const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesGroupByHook(10, 10, timeState)
+  const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesHook(10, timeState, 10)
 
 
   // Placeholder article

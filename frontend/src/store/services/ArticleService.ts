@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IArticle } from '../../types/models/IArticle';
-import {Time, timeTypes} from '../../types/timeline'
+import { Time, timeTypes } from '../../types/timeline'
 import {getKeyByValue} from "../../pages/pageRedirect";
 
 
@@ -9,8 +9,8 @@ export const articleAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api' }),
   endpoints: (build) => ({
     fetchAllArticles: build.query({
-      query: ( { limit, time = null }: {limit: number, time: Time} ) => ({
-        url: `/article?limit=${limit}&time=${getKeyByValue(timeTypes, time)}`,
+      query: ( { limit, time }: {limit: number, time: Time} ) => ({
+        url: `/article/?limit=${limit}&time=${getKeyByValue(timeTypes, time)}`,
         method: 'GET',
       })
     }),
