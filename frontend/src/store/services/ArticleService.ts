@@ -14,8 +14,11 @@ export const articleAPI = createApi({
         method: 'GET',
       })
     }),
-    getArticleById: build.query<IArticle, number>({
-      query: (id:number) => `/article/${id}`,
+    getArticleById: build.query({
+      query: ( { id, time }: {id: number, time: Time} ) => ({
+        url: `/article/${id}/?time=${getKeyByValue(timeTypes, time)}`,
+        method: 'GET'
+      })
     }),
   }),
 });

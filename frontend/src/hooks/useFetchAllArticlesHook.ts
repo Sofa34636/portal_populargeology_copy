@@ -10,79 +10,86 @@ export const useFetchAllArticlesHook = (groupOf: number = 6, time: Time, limit: 
 
     const { isLoading, data, error } =
         useFetchAllArticlesQuery({
-            limit: limit,
-            time: time
+            limit,
+            time
         })
 
+    const fillEarthArticleList = (fetchedData, groupOf_: number) => {
+        const earthArticles: (IArticle | ScientificPublicationsProps)[][] = []
+
+        // loop for scientificPublications + 5 articles
+        earthArticles.push([scientificPublicationsCardProps])
+        for (let i = 0; i < groupOf_ - 1; i++) {
+            if (fetchedData[i]) {
+                earthArticles[0].push(fetchedData[i])
+            }
+        }
+        // rest articles
+        if ('results' in fetchedData) {
+            fetchedData?.results?.forEach((article: IArticle, index) => {
+                if (article != undefined) {
+                    if (index >= groupOf_ - 1) {
+                        if (((index + 1) % groupOf_) == 0) {
+                            earthArticles.push([article])
+                        } else {
+                            earthArticles[Math.floor((index + 1) / groupOf_)].push(article)
+                        }
+                    }
+                }
+            })
+        } else {
+            fetchedData?.forEach((article: IArticle, index) => {
+                if (article != undefined) {
+                    if (index >= groupOf_ - 1) {
+                        if (((index + 1) % groupOf_) == 0) {
+                            earthArticles.push([article])
+                        } else {
+                            earthArticles[Math.floor((index + 1) / groupOf_)].push(article)
+                        }
+                    }
+                }
+            })
+        }
+        return earthArticles
+    }
+
+    const fillArticleList = (fetchedData, groupOf_: number) => {
+        const articles: (IArticle | ScientificPublicationsProps)[][] = []
+
+        if ('results' in fetchedData) {
+            fetchedData?.results?.forEach((article: IArticle, index) => {
+                if (article != undefined) {
+                    if ((index % groupOf_) == 0) {
+                        articles.push([article])
+                    } else {
+                        articles[Math.floor(index / groupOf_)].push(article)
+                    }
+                }
+            })
+        } else {
+            fetchedData?.forEach((article: IArticle, index) => {
+                if (article != undefined) {
+                    if ((index % groupOf_) == 0) {
+                        articles.push([article])
+                    } else {
+                        articles[Math.floor(index / groupOf_)].push(article)
+                    }
+                }
+            })
+        }
+
+        return articles
+    }
+
     const isLoadingArticles = isLoading
-    const fetchedArticles: (IArticle | ScientificPublicationsProps)[][] = []
+    let fetchedArticles: (IArticle | ScientificPublicationsProps)[][] = []
 
 
     if (error || isLoading) {
         isLoading ? console.log('Loading...') : console.log(error)
     }
     else {
-        if (timeIsEarth(time)) {
-            // loop for scientificPublications + 5 articles
-            fetchedArticles.push([scientificPublicationsCardProps])
-            for (let i = 0; i < groupOf - 1; i++) {
-                if (data[i]) {
-                    fetchedArticles[0].push(data[i])
-                }
-            }
-            // rest articles
-            if ('results' in data) {
-                data?.results?.forEach((article: IArticle, index) => {
-                    if (article != undefined) {
-                        if (index >= groupOf - 1) {
-                            if (((index + 1) % groupOf) == 0) {
-                                fetchedArticles.push([article])
-                            } else {
-                                fetchedArticles[Math.floor((index + 1) / groupOf)].push(article)
-                            }
-                        }
-                    }
-                })
-            }
-            else {
-                data?.forEach((article: IArticle, index) => {
-                    if (article != undefined) {
-                        if (index >= groupOf - 1) {
-                            if (((index + 1) % groupOf) == 0) {
-                                fetchedArticles.push([article])
-                            } else {
-                                fetchedArticles[Math.floor((index + 1) / groupOf)].push(article)
-                            }
-                        }
-                    }
-                })
-            }
-
-
-        } else {
-            if ('results' in data) {
-                data?.results?.forEach((article: IArticle, index) => {
-                    if (article != undefined) {
-                        if ((index % groupOf) == 0) {
-                            fetchedArticles.push([article])
-                        } else {
-                            fetchedArticles[Math.floor(index / groupOf)].push(article)
-                        }
-                    }
-                })
-            }
-            else {
-                data?.forEach((article: IArticle, index) => {
-                    if (article != undefined) {
-                        if ((index % groupOf) == 0) {
-                            fetchedArticles.push([article])
-                        } else {
-                            fetchedArticles[Math.floor(index / groupOf)].push(article)
-                        }
-                    }
-                })
-            }
-        }
+        fetchedArticles = timeIsEarth(time) ? fillEarthArticleList(data, groupOf) : fillArticleList(data, groupOf)
     }
     return { isLoadingArticles, fetchedArticles }
 }

@@ -13,7 +13,11 @@ export const GalleryPage = () => {
     const dispatch = useAppDispatch()
 
 
-    const { isLoading, data, error } = useGetArticleByIdQuery(1)
+    const { isLoading, data, error } =
+        useGetArticleByIdQuery({
+            id: 1,
+            time: timeState
+        })
 
 
     return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { Layout } from '../../Layout/Layout';
 import { ArticleSourcesMenu } from '../../ArticleSourcesMenu/ArticleSourcesMenu'
@@ -11,6 +11,7 @@ import {IArticle} from "../../../types/models/IArticle";
 import Grid from '@mui/material/Grid';
 import {getKeyByValue, pageRedirect} from "../../../pages/pageRedirect";
 import {useGetArticleByIdHook} from "../../../hooks/useGetArticleByIdHook";
+import {timeTypes} from "../../../types/timeline";
 
 
 export const Article = () => {
@@ -18,32 +19,18 @@ export const Article = () => {
   const navigate = useNavigate()
   const { time, id } = useParams()
 
-  // Check for valid article ID
-  if (isNaN(+id) || +id < 0) {
-      navigate('/*')
-  }
+  const { isLoadingArticle, dataArticle } = useGetArticleByIdHook(+id, timeState)
 
-  const { isLoadingArticle, dataArticle } = useGetArticleByIdHook(+id)
+  useEffect(() => {
+        if (dataArticle == undefined && !isLoadingArticle) {
+            navigate('/*')
+        }
+  }, [dataArticle])
 
   const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesHook(10, timeState, 10)
 
 
-  // Placeholder article
-  let thisArticle: IArticle = {
-      id: 9999999,
-      title: 'undefined',
-      time_ago: 'undefined',
-      image: 'undefined',
-      text: 'undefined',
-      src_article: 'undefined',
-      src_magazine: 'undefined',
-      time: 'большой взрыв'
-  }
-  if (dataArticle != undefined) {
-      thisArticle = dataArticle
-  }
-
-  if (fetchedArticles[0] != undefined) {
+    if (fetchedArticles[0] != undefined) {
       const indexOfThisArticle = fetchedArticles[0].findIndex(article => article.id === +id)
       if (indexOfThisArticle > -1) {
           fetchedArticles[0].splice(indexOfThisArticle, 1)
@@ -58,16 +45,16 @@ export const Article = () => {
               <Grid item xs={8} className='article-grid__left'>
                     <div className='article-grid__left--main'>
                         <div className="article-grid__left--main__subtitle">
-                            <h4>{thisArticle.time_ago}</h4>
+                            <h4>{dataArticle?.time_ago}</h4>
                         </div>
                         <div className="article-grid__left--main__title">
-                            <h1>{thisArticle.title}</h1>
+                            <h1>{dataArticle?.title}</h1>
                         </div>
                         <div className="article-grid__left--main__sources">
-                            <ArticleSourcesMenu reference={thisArticle.src_article} magazine={thisArticle.src_magazine}/>
+                            <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/>
                         </div>
                         <div className="article-grid__left--main__content">
-                            {thisArticle.text.split('\r\n').map((paragraph, index) => {
+                            {dataArticle?.text.split('\r\n').map((paragraph, index) => {
                                 return (
                                     <p key={index}>
                                         {paragraph}
@@ -85,7 +72,7 @@ export const Article = () => {
               </Grid>
           </Grid>}
         <div className='article--goBackButton'>
-          <Button onClick={() => navigate(`/${pageRedirect(thisArticle.time, instrumentState)}`)} variant="outlined">
+          <Button onClick={() => navigate(`/${pageRedirect(dataArticle?.time, instrumentState)}`)} variant="outlined">
               НАЗАД
           </Button>
         </div>

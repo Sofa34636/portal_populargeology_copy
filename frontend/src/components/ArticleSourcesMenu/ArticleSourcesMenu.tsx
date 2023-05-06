@@ -13,7 +13,7 @@ export const ArticleSourcesMenu: React.FC<{reference: string; magazine: string}>
 
 
     const linkifyString = (link: string) => {
-        if (link.indexOf('https://') !== 0 && link.indexOf('http://') !== 0)
+        if (link?.indexOf('https://') !== 0 && link?.indexOf('http://') !== 0)
             return `https://${link}`
         return link
     }

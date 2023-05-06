@@ -11,7 +11,11 @@ export const ReliefPage = () => {
     const dispatch = useAppDispatch()
 
 
-    const { isLoading, data, error } = useGetArticleByIdQuery(1)
+    const { isLoading, data, error } =
+        useGetArticleByIdQuery({
+            id: 1,
+            time: timeState
+        })
 
     return (
       <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false}}>
