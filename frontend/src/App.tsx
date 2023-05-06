@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import './styles/app.scss';
-import { ArticleListPage } from './pages/ArticlePage/ArticleListPage';
+import { ArticleListPage } from './pages/ArticlePages/ArticleListPage/ArticleListPage';
 import { VideoPage } from './pages/VideoPage/VideoPage';
 import { GalleryPage } from './pages/GalleryPage/GalleryPage';
 import { ThreeDEarthPage } from './pages/ThreeDEarthPage/ThreeDEarthPage';
 import { ReliefPage } from './pages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { Article } from './components/ToolComponents/Article/Article';
+import { ArticlePage } from './pages/ArticlePages/ArticlePage/ArticlePage';
 import { useAppSelector } from './hooks/redux'
 import { Stars } from '@react-three/drei'
 
@@ -17,7 +17,7 @@ export default function App() {
   const routes = [
     { path: '/', element: <HomePage /> },
     { path: '/:time/articles', element: <ArticleListPage /> },
-    { path: '/:time/articles/:id', element: <Article /> },
+    { path: '/:time/articles/:id', element: <ArticlePage /> },
     { path: '/:time/video', element: <VideoPage /> },
     { path: '/:time/gallery', element: <GalleryPage /> },
     // { path: '/:time/gallery/:id', element: <Gallery /> },

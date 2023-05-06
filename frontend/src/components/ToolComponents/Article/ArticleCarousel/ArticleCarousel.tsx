@@ -5,8 +5,8 @@ import Grid from '@mui/material/Grid';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import './ArticleCarousel.scss'
-import {IArticle} from "../../types/models/IArticle";
-import {ScientificPublicationsProps} from "../../types/scientificPublications";
+import {IArticle} from "../../../../types/models/IArticle";
+import {ScientificPublicationsProps} from "../../../../types/scientificPublications";
 
 // https://github.com/Learus/react-material-ui-carousel
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {IArticle} from "../../types/models/IArticle";
-import { pageRedirect } from '../../pages/pageRedirect'
-import { useAppSelector } from '../../hooks/redux'
+import {IArticle} from "../../../../types/models/IArticle";
+import { pageRedirect } from '../../../../pages/pageRedirect'
+import { useAppSelector } from '../../../../hooks/redux'
 import { useLocation } from 'react-router-dom'
 export const ArticleCard: React.FC<IArticle> = (article) => {
     const navigate = useNavigate()

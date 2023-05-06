@@ -14,6 +14,5 @@ export const useGetArticleByIdHook = (id: number, time: Time) => {
     let isLoadingArticle: boolean = isLoading
     const dataArticle: IArticle = data
 
-
     return { isLoadingArticle, dataArticle }
 }

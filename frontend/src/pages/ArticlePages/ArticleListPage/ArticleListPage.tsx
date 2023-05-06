@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import { Layout } from '../../components/Layout/Layout';
-import { ArticleCarousel } from '../../components/ArticleCarousel/ArticleCarousel';
-import {useAppSelector} from '../../hooks/redux'
-import {useFetchAllArticlesHook} from "../../hooks/useFetchAllArticlesHook";
-import { useFetchAllArticlesQuery } from '../../store/services/ArticleService'
-import { timeTypes } from '../../types/timeline'
-import {IArticle} from "../../types/models/IArticle";
+import { Layout } from '../../../components/Layout/Layout';
+import { ArticleCarousel } from '../../../components/ToolComponents/Article/ArticleCarousel/ArticleCarousel';
+import {useAppSelector} from '../../../hooks/redux'
+import {useFetchAllArticlesHook} from "../../../hooks/useFetchAllArticlesHook";
+import { useFetchAllArticlesQuery } from '../../../store/services/ArticleService'
+import { timeTypes } from '../../../types/timeline'
+import {IArticle} from "../../../types/models/IArticle";
 
 export const ArticleListPage = () => {
 

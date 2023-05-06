@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
-import { Layout } from '../../Layout/Layout';
-import { ArticleSourcesMenu } from '../../ArticleSourcesMenu/ArticleSourcesMenu'
+import { Layout } from '../../../components/Layout/Layout';
+import { ArticleSourcesMenu } from '../../../components/ToolComponents/Article/ArticleSourcesMenu/ArticleSourcesMenu'
 import { useAppSelector } from '../../../hooks/redux'
-import {ArticleVerticalList} from "../../ArticleVerticalList/ArticleVerticalList";
+import {ArticleVerticalList} from "../../../components/ToolComponents/Article/ArticleVerticalList/ArticleVerticalList";
 import Button from "@mui/material/Button";
 import { useFetchAllArticlesHook } from "../../../hooks/useFetchAllArticlesHook";
-import {useGetArticleByIdQuery} from "../../../store/services/ArticleService";
-import {IArticle} from "../../../types/models/IArticle";
 import Grid from '@mui/material/Grid';
-import {getKeyByValue, pageRedirect} from "../../../pages/pageRedirect";
+import {getKeyByValue, pageRedirect} from "../../pageRedirect";
 import {useGetArticleByIdHook} from "../../../hooks/useGetArticleByIdHook";
-import {timeTypes} from "../../../types/timeline";
 
 
-export const Article = () => {
+export const ArticlePage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const navigate = useNavigate()
   const { time, id } = useParams()

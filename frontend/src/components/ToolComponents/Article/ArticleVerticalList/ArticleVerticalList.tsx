@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import {ArticleCard} from "../ArticleCard/ArticleCard";
-import {IArticle} from "../../types/models/IArticle";
+import {IArticle} from "../../../../types/models/IArticle";
 
 const renderCard = (props: ListChildComponentProps) => {
     const { index, style, data } = props;

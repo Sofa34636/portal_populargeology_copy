@@ -5,18 +5,18 @@
 // COMPONENTS
 @import "../components/EarthTypeMenu/EarthTypeMenu.scss";
 
-@import "../components/ArticleSourcesMenu/ArticleSourcesMenu.scss";
-@import "../components/ArticleVerticalList/ArticleVerticalList.scss";
-@import "../components/ArticleCard/ArticleCard.scss";
-@import "../components/ToolComponents/Article/Article.scss";
-@import "../components/ArticleScientificPublications/ArticleScientificPublications.scss";
+@import "../components/ToolComponents/Article/ArticleSourcesMenu/ArticleSourcesMenu.scss";
+@import "../components/ToolComponents/Article/ArticleVerticalList/ArticleVerticalList.scss";
+@import "../components/ToolComponents/Article/ArticleCard/ArticleCard.scss";
+@import "../components/ToolComponents/Article/ArticleScientificPublications/ArticleScientificPublications.scss";
 
 @import "../components/Footer/Footer.scss";
 
 @import "../components/Breadcrumbs/Breadcrumbs.scss";
 // PAGES
 @import "../pages/HomePage/HomePage.scss";
-@import "../pages/ArticlePage/ArticleListPage.scss";
+@import "../pages/ArticlePages/ArticlePage/ArticlePage";
+@import "../pages/ArticlePages/ArticleListPage/ArticleListPage";
 @import "../pages/ThreeDEarthPage/ThreeDEarthPage.scss";
 
 
