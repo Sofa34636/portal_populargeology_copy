@@ -11,6 +11,9 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ArticlePage } from './pages/ArticlePages/ArticlePage/ArticlePage';
 import { useAppSelector } from './hooks/redux'
 import { Stars } from '@react-three/drei'
+import {
+  ArticleScientificPublications
+} from "./pages/ArticlePages/ArticleScientificPublicationsPage/ArticleScientificPublications";
 
 export default function App() {
 
@@ -18,6 +21,7 @@ export default function App() {
     { path: '/', element: <HomePage /> },
     { path: '/:time/articles', element: <ArticleListPage /> },
     { path: '/:time/articles/:id', element: <ArticlePage /> },
+    { path: '/:time/articles/scientificPublications', element: <ArticleScientificPublications /> },
     { path: '/:time/video', element: <VideoPage /> },
     { path: '/:time/gallery', element: <GalleryPage /> },
     // { path: '/:time/gallery/:id', element: <Gallery /> },

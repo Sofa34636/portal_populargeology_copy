@@ -63,8 +63,9 @@ export const ArticlePage = () => {
               </Grid>
               <Grid item xs={4} className='article-grid__right'>
                     <div className="article-grid__right--articleVerticalList">
-                        { isLoadingArticles ? <span>Loading...</span> : <ArticleVerticalList fetchedArticles={fetchedArticles[0] ?? []}
-                                                                                     numberOfArticles={fetchedArticles[0].length ?? 0} />}
+                        { isLoadingArticles ? <span>Loading...</span> :
+                            <ArticleVerticalList fetchedArticles={fetchedArticles[0] ?? []}
+                                                         numberOfArticles={fetchedArticles[0]?.length ?? 0} />}
                     </div>
               </Grid>
           </Grid>}

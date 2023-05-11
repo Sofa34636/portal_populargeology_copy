@@ -2,22 +2,24 @@
 @import "./libs/normalize.scss";
 @import "./libs/fonts.scss";
 
+// PAGES
+@import "../pages/HomePage/HomePage.scss";
+@import "../pages/ArticlePages/ArticlePage/ArticlePage";
+@import "../pages/ArticlePages/ArticleListPage/ArticleListPage";
+@import "../pages/ArticlePages/ArticleScientificPublicationsPage/ArticleScientificPublicationsPagePage";
+@import "../pages/ThreeDEarthPage/ThreeDEarthPage.scss";
+
 // COMPONENTS
 @import "../components/EarthTypeMenu/EarthTypeMenu.scss";
 
 @import "../components/ToolComponents/Article/ArticleSourcesMenu/ArticleSourcesMenu.scss";
 @import "../components/ToolComponents/Article/ArticleVerticalList/ArticleVerticalList.scss";
 @import "../components/ToolComponents/Article/ArticleCard/ArticleCard.scss";
-@import "../components/ToolComponents/Article/ArticleScientificPublications/ArticleScientificPublications.scss";
-
+@import "../components/ToolComponents/Article/ArticleScientificPublicationsHierarchyMenu/ArticleScientificPublicationsHierarchyMenu";
 @import "../components/Footer/Footer.scss";
 
 @import "../components/Breadcrumbs/Breadcrumbs.scss";
-// PAGES
-@import "../pages/HomePage/HomePage.scss";
-@import "../pages/ArticlePages/ArticlePage/ArticlePage";
-@import "../pages/ArticlePages/ArticleListPage/ArticleListPage";
-@import "../pages/ThreeDEarthPage/ThreeDEarthPage.scss";
+
 
 
 .App {

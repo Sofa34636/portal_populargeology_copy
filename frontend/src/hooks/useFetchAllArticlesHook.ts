@@ -11,21 +11,23 @@ export const useFetchAllArticlesHook = (groupOf: number = 6, time: Time, limit: 
     const { isLoading, data, error } =
         useFetchAllArticlesQuery({
             limit,
-            time
-        })
+            time,
+        }, {pollingInterval: 1000})
 
+    // console.log(data)
     const fillEarthArticleList = (fetchedData, groupOf_: number) => {
         const earthArticles: (IArticle | ScientificPublicationsProps)[][] = []
 
-        // loop for scientificPublications + 5 articles
-        earthArticles.push([scientificPublicationsCardProps])
-        for (let i = 0; i < groupOf_ - 1; i++) {
-            if (fetchedData[i]) {
-                earthArticles[0].push(fetchedData[i])
-            }
-        }
         // rest articles
         if ('results' in fetchedData) {
+            // loop for scientificPublications + *groupOf* articles
+            earthArticles.push([scientificPublicationsCardProps])
+            for (let i = 0; i < groupOf_ - 1; i++) {
+                if (fetchedData?.results[i]) {
+                    earthArticles[0].push(fetchedData?.results[i])
+                }
+            }
+
             fetchedData?.results?.forEach((article: IArticle, index) => {
                 if (article != undefined) {
                     if (index >= groupOf_ - 1) {
@@ -38,6 +40,14 @@ export const useFetchAllArticlesHook = (groupOf: number = 6, time: Time, limit: 
                 }
             })
         } else {
+            // loop for scientificPublications + *groupOf* articles
+            earthArticles.push([scientificPublicationsCardProps])
+            for (let i = 0; i < groupOf_ - 1; i++) {
+                if (fetchedData[i]) {
+                    earthArticles[0].push(fetchedData[i])
+                }
+            }
+
             fetchedData?.forEach((article: IArticle, index) => {
                 if (article != undefined) {
                     if (index >= groupOf_ - 1) {

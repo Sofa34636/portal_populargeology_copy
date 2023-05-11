@@ -4,6 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import {ArticleCard} from "../ArticleCard/ArticleCard";
 import {IArticle} from "../../../../types/models/IArticle";
+import {ScientificPublicationsProps} from "../../../../types/scientificPublications";
 
 const renderCard = (props: ListChildComponentProps) => {
     const { index, style, data } = props;
@@ -15,7 +16,7 @@ const renderCard = (props: ListChildComponentProps) => {
     );
 }
 
-export const ArticleVerticalList: React.FC<{ fetchedArticles: Array<IArticle>, numberOfArticles: number }> = ({ fetchedArticles, numberOfArticles }) => {
+export const ArticleVerticalList: React.FC<{ fetchedArticles: Array<IArticle | ScientificPublicationsProps>, numberOfArticles: number }> = ({ fetchedArticles, numberOfArticles }) => {
 
     return (
         <Box

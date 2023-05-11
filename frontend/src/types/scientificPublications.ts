@@ -2,17 +2,19 @@ import scientificPublicationImage from '../assets/img/ScientificPublications.png
 import {IArticle} from "./models/IArticle";
 
 
-export interface ScientificPublicationsProps extends IArticle {}
+export interface ScientificPublicationsProps extends Omit<IArticle, 'id'> {
+    id: string,
+}
 
 export const scientificPublicationsCardProps: ScientificPublicationsProps = {
-    id: 0,
+    id: 'scientificPublications',
     title: 'научные публикации',
     time_ago: 'undefined',
     image: scientificPublicationImage,
     text: 'undefined',
     src_article: 'undefined',
     src_magazine: 'undefined',
-    time: 'черная земля',
+    time: null,
 }
 
 const earthSciPub_Hierarchy = {

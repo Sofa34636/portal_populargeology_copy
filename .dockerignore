@@ -1,0 +1,9 @@
+venv
+env
+.env
+.git
+.idea
+frontend
+README.md
+desktop.ini
+docker-compose.yaml

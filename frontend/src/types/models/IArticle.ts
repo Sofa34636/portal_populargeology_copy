@@ -8,5 +8,5 @@ export interface IArticle {
   text: string;
   src_article: string;
   src_magazine: string;
-  time: Time;
+  time: Time | null;
 }

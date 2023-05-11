@@ -10,7 +10,7 @@ export const useGetArticleByIdHook = (id: number, time: Time) => {
         useGetArticleByIdQuery({
             id,
             time
-        })
+        }, {pollingInterval: 1000})
     let isLoadingArticle: boolean = isLoading
     const dataArticle: IArticle = data
 
