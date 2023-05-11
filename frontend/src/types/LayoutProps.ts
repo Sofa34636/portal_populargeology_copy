@@ -5,4 +5,5 @@ export interface LayoutProps {
     instrument: Instrument
     isFooterButtonsLeft?: boolean
     isFooterDisplayed?: boolean
+    isHeaderDisplayed?:boolean
 }

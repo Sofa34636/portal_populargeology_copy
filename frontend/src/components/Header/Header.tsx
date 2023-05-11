@@ -1,8 +1,26 @@
 import React from 'react';
 import BreadcrumbsComponent from '../Breadcrumbs/Breadcrumbs';
 
-export const Header = () => {
+export const Header: React.FC<{ isHeaderDisplayed: boolean}> = ({ isHeaderDisplayed})  => {
+
+  const isHeaderDisplayed_ = isHeaderDisplayed ?? true
+
+
+  const isHeaderDisplayedStyle = (isHeaderDisplayedArg) => {
+    if (isHeaderDisplayedArg) {
+      return "flex"
+    }
+    return "none"
+  }
+
+  const headerStyle = {
+    display: isHeaderDisplayedStyle(isHeaderDisplayed_),
+  }
+
   return (
-    <BreadcrumbsComponent />
+    <div className='breadcrumbs' style={headerStyle}>
+      <BreadcrumbsComponent />
+    </div>
+
   );
 };

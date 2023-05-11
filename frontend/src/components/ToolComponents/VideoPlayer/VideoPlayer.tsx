@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
-
+import useThrottle from '../../../hooks/useThrottle'
 
 import './VideoPlayer.scss'
 
@@ -11,11 +11,32 @@ import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 
 export default function VideoPlayer(props) {
 
-  return (
+  const [isControlsShown, setIsControlsShown] = useState(true);
 
+  const show = () => {
+    setIsControlsShown(true)
+    props.handleLayoutDisplay(true)
+  }
+
+  const hide = () => {
+    setIsControlsShown(false)
+    props.handleLayoutDisplay(false)
+  }
+
+  let timeout;
+  document.onmousemove = function(){
+    show()
+    clearTimeout(timeout);
+    timeout = setTimeout( () => {
+      hide()
+    }, 3000);
+  }
+
+
+  return (
     <div className='video-container'>
       <div className='video-container__body'>
-        <div className='video-container__controls'>
+        <div className='video-container__controls' style={ isControlsShown? null : {display: 'none'}}>
           <div className={'video-container__controls__left-buttons'}>
             <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.25 38.75L1.5 20L20.25 1.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -50,8 +71,6 @@ export default function VideoPlayer(props) {
           muted={true}
         />
     </div>
-
-
   )
 }
 

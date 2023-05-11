@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout } from '../../components/Layout/Layout'
 import {useAppDispatch, useAppSelector} from '../../hooks/redux'
 import {timeLineSlice} from "../../store/reducers/timeLineSlice";
@@ -15,11 +15,16 @@ export const VideoPage = () => {
 
     const { isLoading, data, isFetching } = useGetEarthByIdQuery(1)
 
+    const [isLayoutDisplayed, setIsLayoutDisplayed] = useState(true);
+
+    const handleLayoutDisplay = (isDisplayed) =>  setIsLayoutDisplayed(isDisplayed)
+
+
     if (!data) return <h1>loading...</h1>
 
     return (
-      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false}}>
-            <VideoPlayer className='video-player' video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'} />
+      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false, isHeaderDisplayed:isLayoutDisplayed, isFooterDisplayed:isLayoutDisplayed}}>
+            <VideoPlayer className='video-player' video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'} handleLayoutDisplay={handleLayoutDisplay}/>
       </Layout>
     )
 }

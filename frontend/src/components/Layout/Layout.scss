@@ -21,6 +21,11 @@ footer {
   }
 }
 
+.dont-show-header-footer {
+   header, footer {
+     display: none;
+   }
+}
 
 @media (min-width: 1200px) {
 

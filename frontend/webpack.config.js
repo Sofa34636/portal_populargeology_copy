@@ -1,5 +1,7 @@
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -8,33 +10,33 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: ['babel-loader']
       },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ["ts-loader"],
+        use: ['ts-loader']
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader',
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
-            },
-          },
-        ],
+              sourceMap: true
+            }
+          }
+        ]
       },
       // {
       //   test: /\.ttf$/i,
@@ -51,32 +53,35 @@ module.exports = {
       // },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',  //<-- Assets module - asset/resource
+        type: 'asset/resource', // <-- Assets module - asset/resource
         generator: {
           filename: 'assets/images/[hash][ext][query]'
         }
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset',   // <-- Assets module - asset
+        type: 'asset', // <-- Assets module - asset
         parser: {
           dataUrlCondition: {
             maxSize: 8 * 1024 // 8kb
           }
         },
-        generator: {  //If emitting file, the file path is
+        generator: { // If emitting file, the file path is
           filename: 'assets/fonts/[hash][ext][query]'
         }
       }
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'],
+    fallback: {
+      fs: false
+    }
   },
   output: {
     filename: 'index.bundle.js',
     path: path.join(__dirname, 'public'),
-    publicPath: '/',
+    publicPath: '/'
     // assetModuleFilename: 'assets/fonts/[name][ext]'
   },
   devServer: {
@@ -87,6 +92,8 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new NodePolyfillPlugin(),
+    new Dotenv()
   ]
 }

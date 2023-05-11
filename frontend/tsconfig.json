@@ -1,13 +1,13 @@
- {
-   "compilerOptions": {
-     "jsx": "react-jsx",
-     "allowSyntheticDefaultImports": true,
-     "outDir": "./public/",
-     "module": "es6",
-     "target": "es6",
-     "allowJs": true,
-     "moduleResolution": "node"
-   },
-   "include": ["src/**/*", "index.d.ts"],
-   "exclude": ["node_modules", "build"]
- }
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./public/",
+    "module": "es6",
+    "target": "es6",
+    "allowJs": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*", "index.d.ts"],
+  "exclude": ["node_modules", "build"]
+}
