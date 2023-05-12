@@ -1,46 +1,53 @@
-import React, { useEffect, useRef, useState } from 'react'
-import ReactPlayer from 'react-player'
-import useThrottle from '../../../hooks/useThrottle'
+import React, { useEffect, useRef, useState } from 'react';
+import ReactPlayer from 'react-player';
+import useThrottle from '../../../hooks/useThrottle';
 
-import './VideoPlayer.scss'
-
+import './VideoPlayer.scss';
 
 import KeyboardDoubleArrowLeftSharpIcon from '@mui/icons-material/KeyboardDoubleArrowLeftSharp';
 import KeyboardDoubleArrowRightSharpIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 
 export default function VideoPlayer(props) {
-
   const [isControlsShown, setIsControlsShown] = useState(true);
+  const lastMouseMoveTimeRef = useRef(Date.now());
 
-  const show = () => {
-    setIsControlsShown(true)
-    props.handleLayoutDisplay(true)
-  }
+  const handleMouseMove = useThrottle(() => {
+    setIsControlsShown(true);
+    lastMouseMoveTimeRef.current = Date.now();
+  }, 100);
 
-  const hide = () => {
-    setIsControlsShown(false)
-    props.handleLayoutDisplay(false)
-  }
-
-  let timeout;
-  document.onmousemove = function(){
-    show()
-    clearTimeout(timeout);
-    timeout = setTimeout( () => {
-      hide()
-    }, 3000);
-  }
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Date.now() - lastMouseMoveTimeRef.current > 3000) {
+        setIsControlsShown(false);
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className='video-container'>
-      <div className='video-container__body'>
-        <div className='video-container__controls' style={ isControlsShown? null : {display: 'none'}}>
+    <div
+      className="video-container"
+      onMouseMove={handleMouseMove}
+      style={{ cursor: isControlsShown ? 'default' : 'none' }}
+    >
+      <div className="video-container__body">
+        <div
+          className="video-container__controls"
+          style={isControlsShown ? null : { display: 'none' }}
+        >
           <div className={'video-container__controls__left-buttons'}>
-            <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.25 38.75L1.5 20L20.25 1.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg width='22' height='40' viewBox='0 0 22 40' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path
+                d='M20.25 38.75L1.5 20L20.25 1.25'
+                stroke='white'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
             </svg>
+
 
             <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.25 38.75L1.5 20L20.25 1.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

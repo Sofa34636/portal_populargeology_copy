@@ -93,6 +93,7 @@ export default function BreadcrumbsComponent() {
   }, [time, instrument])
 
 
+
   return (
         <div className="breadcrumbs_container">
           <nav className='menu'>
@@ -227,7 +228,7 @@ export default function BreadcrumbsComponent() {
               </li>
             </ul>
           </nav>
-          <div className = {isOverlayShown ? 'overlay' : ''}></div>
+          <div className={clsx('overlay', isOverlayShown?'active':null)}></div>
         </div>
   );
 }
