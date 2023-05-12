@@ -12,6 +12,26 @@ export default function VideoPlayer(props) {
   const [isControlsShown, setIsControlsShown] = useState(true);
   const controlsRef = useRef(null);
 
+  const [videoState, setVideoState] = useState({
+    playing: false,
+    muted: false,
+    volume: 0.5,
+  });
+
+  const pausePlayer = () => {
+    setVideoState({
+      ...videoState,
+      playing: false
+    })
+  }
+
+  const playPlayer = () => {
+    setVideoState({
+      ...videoState,
+      playing: true
+    })
+  }
+
   useEffect(() => {
     const hideControlsTimer = setTimeout(() => {
       setIsControlsShown(false);
@@ -39,10 +59,12 @@ export default function VideoPlayer(props) {
   };
 
 
-  return (
-    <div className='video-container' style={isControlsShown ? null : {cursor: 'none'}} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
 
-      <div className='video-container__body'>
+
+  return (
+    <div className='video-player__wrapper' >
+    <div className='video-container' style={isControlsShown ? null : {cursor: 'none'}} >
+      <div className='video-container__body' onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
         <div className='video-container__controls' ref={controlsRef} style={isControlsShown ? null : { display: 'none' }}>
           <div className={'video-container__controls__left-buttons'}>
             <svg width='22' height='40' viewBox='0 0 22 40' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -81,9 +103,10 @@ export default function VideoPlayer(props) {
           className='video-container__video'
           width="100%"
           url={props.video_url}
-          playing={true}
+          playing={videoState.playing}
           muted={true}
         />
+    </div>
     </div>
   )
 }

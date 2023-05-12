@@ -10,7 +10,6 @@ import { clsx } from 'clsx';
 
 export const Layout = (props: { layoutProps: LayoutProps, children?: React.ReactNode }) => {
 
-
   return (
     <div className='layout'>
         <header className="header">

@@ -6,6 +6,7 @@ import {useGetArticleByIdQuery} from "../../store/services/ArticleService";
 import { useGetEarthByIdQuery } from '../../store/services/EarthService'
 import VideoPlayer from '../../components/ToolComponents/VideoPlayer/VideoPlayer'
 
+
 export const VideoPage = () => {
 
     const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -22,9 +23,15 @@ export const VideoPage = () => {
 
     if (!data) return <h1>loading...</h1>
 
+
     return (
       <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false, isHeaderDisplayed:isLayoutDisplayed, isFooterDisplayed:isLayoutDisplayed}}>
-            <VideoPlayer className='video-player' video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'} layoutDisplay={displayLayout} layoutHide={hideLayout}/>
+          <VideoPlayer className='video-player'
+                       video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'}
+                       layoutDisplay={displayLayout}
+                       layoutHide={hideLayout}
+
+          />
       </Layout>
     )
 }
