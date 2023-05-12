@@ -9,7 +9,6 @@ const getApiUrl = () =>
     .filter((e, i) => i != 2)
     .join(':') + `:${process.env.API_PORT}/api`;
 
-console.log(getApiUrl())
 export const articleAPI = createApi({
   reducerPath: 'articleAPI',
   baseQuery: fetchBaseQuery({ baseUrl: getApiUrl() }),

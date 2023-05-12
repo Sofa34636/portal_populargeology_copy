@@ -17,14 +17,14 @@ export const VideoPage = () => {
 
     const [isLayoutDisplayed, setIsLayoutDisplayed] = useState(true);
 
-    const handleLayoutDisplay = (isDisplayed) =>  setIsLayoutDisplayed(isDisplayed)
-
+    const displayLayout = () => setIsLayoutDisplayed(true)
+    const hideLayout = () => setIsLayoutDisplayed(false)
 
     if (!data) return <h1>loading...</h1>
 
     return (
       <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false, isHeaderDisplayed:isLayoutDisplayed, isFooterDisplayed:isLayoutDisplayed}}>
-            <VideoPlayer className='video-player' video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'} handleLayoutDisplay={handleLayoutDisplay}/>
+            <VideoPlayer className='video-player' video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'} layoutDisplay={displayLayout} layoutHide={hideLayout}/>
       </Layout>
     )
 }

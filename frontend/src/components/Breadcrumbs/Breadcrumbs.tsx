@@ -228,7 +228,7 @@ export default function BreadcrumbsComponent() {
               </li>
             </ul>
           </nav>
-          <div className={clsx('overlay', isOverlayShown?'active':null)}></div>
+          <div className={`overlay ${isOverlayShown ? 'active' : ''}`}></div>
         </div>
   );
 }
