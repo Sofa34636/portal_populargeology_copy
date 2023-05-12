@@ -7,8 +7,9 @@ const getApiUrl = () =>
   window.location.origin
     .split(':')
     .filter((e, i) => i != 2)
-    .join(':') + `:{${process.env.API_PORT}}`;
+    .join(':') + `:${process.env.API_PORT}`;
 
+console.log(getApiUrl())
 export const articleAPI = createApi({
   reducerPath: 'articleAPI',
   baseQuery: fetchBaseQuery({ baseUrl: getApiUrl() }),
