@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 
 import Button from '@mui/material/Button';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { instrumentTypes, timeTypes } from '../../types/timeline'
 
+
+import './Footer.scss'
 export const Footer: React.FC<{ isFooterDisplayed: boolean}> = ({ isFooterDisplayed}) => {
 
     const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
     const { changeTime } = timeLineSlice.actions;
     const dispatch = useAppDispatch()
+
+
+    const [prevButtonDisabled, setPrevButtonDisabled] = useState(false)
+    const [nextButtonDisabled, setNextButtonDisabled] = useState(false)
+
+
 
     const isFooterDisplayed_ = isFooterDisplayed ?? true
 
@@ -45,8 +53,8 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean}> = ({ isFooterDispla
 
   return (
     <div className='buttons' style={footerButtonsStyle}>
-      <Button className="prevBtn" onClick={prevTime}>Что было раньше?</Button>
-      <Button className="nextBtn" onClick={nextTime}>Что было дальше?</Button>
+      <Button className={prevButtonDisabled?'btn-deactivated':''} onClick={prevTime}>Что было раньше?</Button>
+      <Button className={nextButtonDisabled?'btn-deactivated':''} onClick={nextTime}>Что было дальше?</Button>
     </div>
   );
 };

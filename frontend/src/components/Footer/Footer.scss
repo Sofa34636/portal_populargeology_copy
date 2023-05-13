@@ -7,6 +7,11 @@
 		border: 1px solid $gray;
 		font-family: RSRegular;
 		text-transform: uppercase;
+
+		&.btn-deactivated {
+			border: 1px solid #313131;
+			color: #313131;
+			cursor: default;
+		}
 	}
 }
-

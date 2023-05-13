@@ -2,12 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IArticle } from '../../types/models/IArticle';
 import { Time, timeTypes } from '../../types/timeline';
 import { getKeyByValue } from '../../pages/pageRedirect';
+import { getApiUrl } from './getApiUrl'
 
-const getApiUrl = () =>
-  window.location.origin
-    .split(':')
-    .filter((e, i) => i != 2)
-    .join(':') + `:${process.env.API_PORT}/api`;
 
 export const articleAPI = createApi({
   reducerPath: 'articleAPI',
