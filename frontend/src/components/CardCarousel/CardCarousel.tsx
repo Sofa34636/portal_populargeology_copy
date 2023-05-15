@@ -1,20 +1,21 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { ArticleCard } from '../ArticleCard/ArticleCard';
+import { CardPreview } from '../CardPreview/CardPreview';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
-import './ArticleCarousel.scss'
-import {IArticle} from "../../../../types/models/IArticle";
-import {ScientificPublicationsProps} from "../../../../types/scientificPublications";
+import './CardCarousel.scss'
+import {IArticle} from "../../types/models/IArticle";
+import {ScientificPublicationsProps} from "../../types/scientificPublications";
+import {IExhibit} from "../../types/models/IExhibit";
 
 // https://github.com/Learus/react-material-ui-carousel
 
-export const ArticleCarousel: React.FC<{articleCards: (IArticle | ScientificPublicationsProps)[][]}> = ({ articleCards }) => {
+export const CardCarousel: React.FC<{cards: (IArticle | ScientificPublicationsProps)[][] | IExhibit[][]}> = ({ cards }) => {
   return (
     <>
       <Carousel
-        className="article-carousel"
+        className="card-carousel"
         NextIcon={<ArrowForwardIosRoundedIcon />}
         PrevIcon={<ArrowBackIosRoundedIcon />}
         autoPlay={false}
@@ -34,7 +35,7 @@ export const ArticleCarousel: React.FC<{articleCards: (IArticle | ScientificPubl
             border: 'none',
           },
         }}>
-        {articleCards.map((articleCardsRow: IArticle[], indexI) => {
+        {cards.map((cardsRow: (IArticle | ScientificPublicationsProps)[] | IExhibit[], indexI) => {
           return (
             <Grid
               sx={{ width: '100%', height: '572px', paddingRight: '75px', paddingLeft: '90px' }}
@@ -42,10 +43,10 @@ export const ArticleCarousel: React.FC<{articleCards: (IArticle | ScientificPubl
               columns={3}
               spacing={2}
               key={indexI}>
-              {articleCardsRow.map((cardProps: IArticle, indexJ) => {
+              {cardsRow.map((cardProps: (IArticle | ScientificPublicationsProps) | IExhibit, indexJ) => {
                 return (
                   <Grid item xs={1} key={indexJ}>
-                    <ArticleCard
+                    <CardPreview
                       key={indexJ}
                       {...cardProps}
                     />

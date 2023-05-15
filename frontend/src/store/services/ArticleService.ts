@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IArticle } from '../../types/models/IArticle';
 import { Time, timeTypes } from '../../types/timeline';
 import { getKeyByValue } from '../../pages/pageRedirect';
 import { getApiUrl } from './getApiUrl'
@@ -24,4 +23,4 @@ export const articleAPI = createApi({
   }),
 });
 
-export const { useFetchAllArticlesQuery, useGetArticleByIdQuery } = articleAPI;
+export const { useFetchAllArticlesQuery, useGetArticleByIdQuery} = articleAPI;

@@ -2,21 +2,22 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
-import {ArticleCard} from "../ArticleCard/ArticleCard";
-import {IArticle} from "../../../../types/models/IArticle";
-import {ScientificPublicationsProps} from "../../../../types/scientificPublications";
+import {CardPreview} from "../CardPreview/CardPreview";
+import {IArticle} from "../../types/models/IArticle";
+import {ScientificPublicationsProps} from "../../types/scientificPublications";
+import {IExhibit} from "../../types/models/IExhibit";
 
 const renderCard = (props: ListChildComponentProps) => {
     const { index, style, data } = props;
 
     return (
         <ListItem style={style} key={index} component="div" className='article--verticalList__container__item'>
-            <ArticleCard {...data[index]}/>
+            <CardPreview {...data[index]}/>
         </ListItem>
     );
 }
 
-export const ArticleVerticalList: React.FC<{ fetchedArticles: Array<IArticle | ScientificPublicationsProps>, numberOfArticles: number }> = ({ fetchedArticles, numberOfArticles }) => {
+export const CardVerticalList: React.FC<{ cards: Array<(IArticle | ScientificPublicationsProps) | IExhibit>, numberOfCards: number }> = ({ cards, numberOfCards }) => {
 
     return (
         <Box
@@ -26,9 +27,9 @@ export const ArticleVerticalList: React.FC<{ fetchedArticles: Array<IArticle | S
                 height={650}
                 width={360}
                 itemSize={280}
-                itemCount={numberOfArticles}
+                itemCount={numberOfCards}
                 overscanCount={5}
-                itemData={fetchedArticles}
+                itemData={cards}
             >
                 {renderCard}
             </FixedSizeList>

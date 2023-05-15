@@ -40,7 +40,7 @@ export const timeTypes = {
 export const instrumentTypes = {
   video: 'видео',
   articles: 'статьи',
-  gallery: 'галерея',
+  exhibits: 'галерея',
   relief: 'рельеф',
   earth: '3д земля'
 } as const;

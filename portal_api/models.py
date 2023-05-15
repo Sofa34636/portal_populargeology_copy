@@ -53,6 +53,7 @@ class Exhibit(models.Model):
     time_ago = models.CharField(max_length=100)
     image = models.ImageField(upload_to='exhibits', null=True, blank=True)
     text = models.TextField()
+    src_article = models.CharField(max_length=100)
     time = models.CharField(max_length=13, choices=ALL_TIMES)
 
     def __str__(self):

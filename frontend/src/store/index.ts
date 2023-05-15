@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { articleAPI } from './services/ArticleService';
 import { earthApi } from './services/EarthService'
+import { exhibitAPI } from "./services/ExhibitService";
 import timeLineReducer from './reducers/timeLineSlice';
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist"
+
 
 const persistConfig = {
   key: 'root',
@@ -15,6 +17,7 @@ const rootReducer = combineReducers({
   timeLineReducer,
   [articleAPI.reducerPath]: articleAPI.reducer,
   [earthApi.reducerPath]: earthApi.reducer,
+  [exhibitAPI.reducerPath]: exhibitAPI.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -25,7 +28,7 @@ export const setupStore = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
-      }).concat([articleAPI.middleware, earthApi.middleware])
+      }).concat([articleAPI.middleware, earthApi.middleware, exhibitAPI.middleware])
   });
 };
 

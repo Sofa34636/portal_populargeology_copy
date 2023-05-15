@@ -3,7 +3,7 @@ import {IArticle} from "../types/models/IArticle";
 import {historyOfEarth, Time} from "../types/timeline";
 import {ScientificPublicationsProps, scientificPublicationsCardProps} from "../types/scientificPublications";
 
-export const useFetchAllArticlesHook = (groupOf: number = 6, time: Time, limit: number = 0) => {
+export const useFetchAllArticles = (groupOf: number = 6, time: Time, limit: number = 0) => {
     const timeIsEarth = (time_: Time) => {
         return historyOfEarth.findIndex(earthType => earthType == time_) != -1;
     }
@@ -14,7 +14,6 @@ export const useFetchAllArticlesHook = (groupOf: number = 6, time: Time, limit: 
             time,
         }, {pollingInterval: 1000})
 
-    // console.log(data)
     const fillEarthArticleList = (fetchedData, groupOf_: number) => {
         const earthArticles: (IArticle | ScientificPublicationsProps)[][] = []
 

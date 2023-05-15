@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import './styles/app.scss';
 import { ArticleListPage } from './pages/ArticlePages/ArticleListPage/ArticleListPage';
 import { VideoPage } from './pages/VideoPage/VideoPage';
-import { GalleryPage } from './pages/GalleryPage/GalleryPage';
+import { ExhibitListPage } from './pages/GalleryPages/ExhibitListPage/ExhibitListPage';
+import {ExhibitPage} from "./pages/GalleryPages/ExhibitPage/ExhibitPage";
 import { ThreeDEarthPage } from './pages/ThreeDEarthPage/ThreeDEarthPage';
 import { ReliefPage } from './pages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
@@ -23,8 +24,8 @@ export default function App() {
     { path: '/:time/articles/:id', element: <ArticlePage /> },
     { path: '/:time/articles/scientificPublications', element: <ArticleScientificPublications /> },
     { path: '/:time/video', element: <VideoPage /> },
-    { path: '/:time/gallery', element: <GalleryPage /> },
-    // { path: '/:time/gallery/:id', element: <Gallery /> },
+    { path: '/:time/exhibits', element: <ExhibitListPage /> },
+    { path: '/:time/exhibits/:id', element: <ExhibitPage /> },
     { path: '/:time/earth', element: <ThreeDEarthPage /> },
     { path: '/:time/relief', element: <ReliefPage /> },
     // { path: '/:time/relief/:id', element: <Relief /> },

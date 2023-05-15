@@ -41,3 +41,4 @@ class VideoView(viewsets.ModelViewSet):
 class ExhibitView(viewsets.ModelViewSet):
     queryset = Exhibit.objects.all()
     serializer_class = ExhibitSerializer
+    filterset_fields = ['time']

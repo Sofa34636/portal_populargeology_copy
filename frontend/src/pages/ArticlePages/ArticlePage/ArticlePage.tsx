@@ -3,12 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Layout } from '../../../components/Layout/Layout';
 import { ArticleSourcesMenu } from '../../../components/ToolComponents/Article/ArticleSourcesMenu/ArticleSourcesMenu'
 import { useAppSelector } from '../../../hooks/redux'
-import {ArticleVerticalList} from "../../../components/ToolComponents/Article/ArticleVerticalList/ArticleVerticalList";
+import {CardVerticalList} from "../../../components/CardVerticalList/CardVerticalList";
 import Button from "@mui/material/Button";
-import { useFetchAllArticlesHook } from "../../../hooks/useFetchAllArticlesHook";
+import { useFetchAllArticles } from "../../../hooks/useFetchAllArticles";
 import Grid from '@mui/material/Grid';
 import {getKeyByValue, pageRedirect} from "../../pageRedirect";
-import {useGetArticleByIdHook} from "../../../hooks/useGetArticleByIdHook";
+import {useGetArticleById} from "../../../hooks/useGetArticleById";
 
 
 export const ArticlePage = () => {
@@ -16,7 +16,7 @@ export const ArticlePage = () => {
   const navigate = useNavigate()
   const { time, id } = useParams()
 
-  const { isLoadingArticle, dataArticle } = useGetArticleByIdHook(+id, timeState)
+  const { isLoadingArticle, dataArticle } = useGetArticleById(+id, timeState)
 
   useEffect(() => {
         if (dataArticle == undefined && !isLoadingArticle) {
@@ -24,7 +24,7 @@ export const ArticlePage = () => {
         }
   }, [dataArticle])
 
-  const { isLoadingArticles, fetchedArticles } = useFetchAllArticlesHook(10, timeState, 10)
+  const { isLoadingArticles, fetchedArticles } = useFetchAllArticles(10, timeState, 10)
 
 
     if (fetchedArticles[0] != undefined) {
@@ -62,10 +62,10 @@ export const ArticlePage = () => {
                     </div>
               </Grid>
               <Grid item xs={4} className='article-grid__right'>
-                    <div className="article-grid__right--articleVerticalList">
+                    <div className="article-grid__right--cardVerticalList">
                         { isLoadingArticles ? <span>Loading...</span> :
-                            <ArticleVerticalList fetchedArticles={fetchedArticles[0] ?? []}
-                                                         numberOfArticles={fetchedArticles[0]?.length ?? 0} />}
+                            <CardVerticalList cards={fetchedArticles[0] ?? []}
+                                              numberOfCards={fetchedArticles[0]?.length ?? 0} />}
                     </div>
               </Grid>
           </Grid>}
