@@ -13,7 +13,7 @@ export default function VideoPlayer(props) {
   const controlsRef = useRef(null);
 
   const [videoState, setVideoState] = useState({
-    playing: false,
+    playing: true,
     muted: false,
     volume: 0.5,
   });
@@ -28,7 +28,7 @@ export default function VideoPlayer(props) {
 
   useEffect(() => {
     const hideControlsTimer = setTimeout(() => {
-      console.log('Leave!')
+
       setIsControlsShown(false);
       props.layoutHide()
     }, 4500);
@@ -39,7 +39,7 @@ export default function VideoPlayer(props) {
   }, [isControlsShown]);
 
   const handleMouseMove = () => {
-    console.log('Move!')
+
     setIsControlsShown(true);
     props.layoutDisplay()
   };
@@ -102,7 +102,7 @@ export default function VideoPlayer(props) {
           width="100%"
           url={props.video_url}
           playing={videoState.playing}
-          muted={true}
+          muted={false}
         />
     </div>
     </div>
