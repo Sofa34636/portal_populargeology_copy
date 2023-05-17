@@ -4,10 +4,10 @@ import useThrottle from '../../../hooks/useThrottle'
 
 import './VideoPlayer.scss'
 
-import KeyboardDoubleArrowLeftSharpIcon from '@mui/icons-material/KeyboardDoubleArrowLeftSharp';
-import KeyboardDoubleArrowRightSharpIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
-import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
-
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeftSharp';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
+import PlayArrowIcon from '@mui/icons-material/PlayArrowOutlined';
+import PauseIcon from '@mui/icons-material/PauseOutlined';
 export default function VideoPlayer(props) {
   const [isControlsShown, setIsControlsShown] = useState(true);
   const controlsRef = useRef(null);
@@ -18,22 +18,17 @@ export default function VideoPlayer(props) {
     volume: 0.5,
   });
 
-  const pausePlayer = () => {
+  const togglePlaying = () => {
+    const isPlaying = videoState.playing
     setVideoState({
       ...videoState,
-      playing: false
-    })
-  }
-
-  const playPlayer = () => {
-    setVideoState({
-      ...videoState,
-      playing: true
+      playing: !isPlaying
     })
   }
 
   useEffect(() => {
     const hideControlsTimer = setTimeout(() => {
+      console.log('Leave!')
       setIsControlsShown(false);
       props.layoutHide()
     }, 4500);
@@ -44,11 +39,13 @@ export default function VideoPlayer(props) {
   }, [isControlsShown]);
 
   const handleMouseMove = () => {
+    console.log('Move!')
     setIsControlsShown(true);
     props.layoutDisplay()
   };
 
   const handleMouseLeave = () => {
+
     const hideControlsTimer = setTimeout(() => {
       setIsControlsShown(false);
       props.layoutHide()
@@ -59,43 +56,44 @@ export default function VideoPlayer(props) {
   };
 
 
-
-
   return (
     <div className='video-player__wrapper' >
     <div className='video-container' style={isControlsShown ? null : {cursor: 'none'}} >
       <div className='video-container__body' onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
         <div className='video-container__controls' ref={controlsRef} style={isControlsShown ? null : { display: 'none' }}>
           <div className={'video-container__controls__left-buttons'}>
-            <svg width='22' height='40' viewBox='0 0 22 40' fill='none' xmlns='http://www.w3.org/2000/svg'>
-              <path
-                d='M20.25 38.75L1.5 20L20.25 1.25'
-                stroke='white'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-
-
-            <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.25 38.75L1.5 20L20.25 1.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M41.25 63.75L22.5 45L41.25 26.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M67.5 63.75L48.75 45L67.5 26.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
 
-          <div className={'video-container__controls__play-button'}>
-            <svg width="50" height="62" viewBox="0 0 50 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.66797 1L48.3346 31L1.66797 61V1Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
+          {
+            videoState.playing ?
+
+              <div className={'video-container__controls__pause-button'} onClick={togglePlaying}>
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M33.3333 13.3333H20V66.6666H33.3333V13.3333Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M60.0013 13.3335H46.668V66.6668H60.0013V13.3335Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              </div>
+
+            :
+              <div className={'video-container__controls__play-button'} onClick={togglePlaying}>
+                <svg width="50" height="62" viewBox="0 0 50 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.66797 1L48.3346 31L1.66797 61V1Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+          }
+
+
           <div className={'video-container__controls__right-buttons'}>
-            <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.75 38.75L20.5 20L1.75 1.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.5 38.75L20.25 20L1.5 1.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M48.75 63.75L67.5 45L48.75 26.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22.5 63.75L41.25 45L22.5 26.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
+
         </div>
       </div>
         <div  className={`video-container__overlay ${isControlsShown ? 'active' : ''}`}></div>
