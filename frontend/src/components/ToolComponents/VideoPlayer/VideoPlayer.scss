@@ -37,7 +37,7 @@ html {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 35%;
 
 
   svg {
@@ -49,15 +49,34 @@ html {
 
 .video-container__controls > div {
   padding: 10px;
+  svg {
+    cursor: pointer;
+
+      &:hover {
+        path {
+          color: $orange;
+          stroke: $orange;
+        }
+      }
+    }
+
 }
 
-.video-container__controls__left-buttons:hover,
-.video-container__controls__play-button:hover,
-.video-container__controls__right-buttons:hover {
-  svg path {
-    stroke: $orange;
-  }
-}
+
+
+
+//.video-container__controls
+//.video-container__controls__left-buttons:hover,
+//.video-container__controls__play-button:hover,
+//.video-container__controls__right-buttons:hover {
+//  svg path {
+//    stroke: $orange;
+//
+//  }
+//  svg {
+//    color: $orange;
+//  }
+//}
 
 .video-player__wrapper {
 
@@ -80,7 +99,7 @@ html {
 }
 
 .video-container__overlay.active {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.6);
   opacity: 1;
   visibility: visible;
 }

@@ -14,6 +14,7 @@ export const VideoPage = () => {
     const dispatch = useAppDispatch()
 
 
+
     const { isLoading, data, isFetching } = useGetEarthByIdQuery(1)
 
     const [isLayoutDisplayed, setIsLayoutDisplayed] = useState(true);
@@ -26,7 +27,9 @@ export const VideoPage = () => {
 
     return (
       <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false, isHeaderDisplayed:isLayoutDisplayed, isFooterDisplayed:isLayoutDisplayed}}>
-          <VideoPlayer className='video-player'
+          <VideoPlayer
+
+                       className='video-player'
                        video_url = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'}
                        layoutDisplay={displayLayout}
                        layoutHide={hideLayout}
