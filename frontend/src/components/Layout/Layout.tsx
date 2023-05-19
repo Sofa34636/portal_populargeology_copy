@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
@@ -8,18 +8,28 @@ import { LayoutProps } from '../../types/LayoutProps';
 import './Layout.scss';
 import { clsx } from 'clsx';
 
-export const Layout = (props: { layoutProps: LayoutProps, children?: React.ReactNode }) => {
+interface ILayoutProps {
+  layoutProps: LayoutProps;
+  children?: React.ReactNode;
+  breadCrumbsFirstCrumb?: string;
+  breadCrumbsSecondCrumb?: string;
+}
+
+export const Layout: FC<ILayoutProps> = (props) => {
+
+  const { layoutProps, children, breadCrumbsFirstCrumb, breadCrumbsSecondCrumb } = props
+
 
   return (
     <div className='layout'>
         <header className="header">
-          <Header isHeaderDisplayed={props.layoutProps.isHeaderDisplayed}/>
+          <Header isHeaderDisplayed={layoutProps.isHeaderDisplayed} firstCrumb={breadCrumbsFirstCrumb} secondCrumb={breadCrumbsSecondCrumb}/>
         </header>
         <main className='content'>
-          { props.children }
+          { children }
         </main>
       <footer className='footer'>
-        <Footer isFooterDisplayed={props.layoutProps.isFooterDisplayed}/>
+        <Footer isFooterDisplayed={layoutProps.isFooterDisplayed}/>
       </footer>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link} from 'react-router-dom'
@@ -9,9 +9,15 @@ import { clsx } from 'clsx';
 import { useNavigate } from "react-router-dom";
 import { pageRedirect } from '../../pages/pageRedirect'
 
-export default function BreadcrumbsComponent() {
+interface IBreadcrumbsComponentProps {
+  firstCrumb?: string;
+  secondCrumb?: string;
+}
 
-  const {time, instrument} = useAppSelector((state) => state.timeLineReducer);
+export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
+
+  const {firstCrumb, secondCrumb} = props
+  const {time, instrument } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
 
@@ -92,6 +98,9 @@ export default function BreadcrumbsComponent() {
 
   }, [time, instrument])
 
+  useEffect(() => {
+    console.log(firstCrumb, secondCrumb)
+  }, [])
 
 
   return (
@@ -129,7 +138,7 @@ export default function BreadcrumbsComponent() {
                       currentTimes.map((time, index) => {
 
                         return (
-                          <>
+                          <React.Fragment key={time}>
                             {
                               time === timeTypes.earthHistory
 
@@ -181,7 +190,7 @@ export default function BreadcrumbsComponent() {
                                   </Link>
                                 </li>
                             }
-                          </>
+                          </React.Fragment>
                         )
                       })
                     }
@@ -226,6 +235,11 @@ export default function BreadcrumbsComponent() {
                     )}
                 </ul>
               </li>
+              <span className='separator no_select'>/</span>
+              <li className={'current-instance no_select'}>
+                <span>{firstCrumb}</span>
+              </li>
+
             </ul>
           </nav>
           <div className={`overlay ${isOverlayShown ? 'active' : ''}`}></div>

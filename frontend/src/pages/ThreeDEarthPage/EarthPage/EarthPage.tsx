@@ -1,23 +1,29 @@
 import React, { useEffect } from 'react'
-import { Layout } from '../../components/Layout/Layout';
+import { Layout } from '../../../components/Layout/Layout';
 import Grid from '@mui/material/Grid';
 import { Canvas } from '@react-three/fiber';
 import {Suspense} from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import './ThreeDEarthPage.scss';
-import { Earth } from '../../components/ToolComponents/Earth/Earth';
-import { useAppSelector} from '../../hooks/redux'
+import './EarthPage.scss';
+import { Earth } from '../../../components/ToolComponents/Earth/Earth';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
 import { Stars } from '@react-three/drei';
 
-import { useGetEarthByIdQuery } from '../../store/services/EarthService'
-import { getKeyByValue } from '../pageRedirect'
-import { historyOfEarth, timeTypes } from '../../types/timeline'
+import { useGetEarthByIdQuery } from '../../../store/services/EarthService'
+import { getKeyByValue, pageRedirect } from '../../pageRedirect'
+import { historyOfEarth, timeTypes } from '../../../types/timeline'
+import Button from '@mui/material/Button'
+import { timeLineSlice } from '../../../store/reducers/timeLineSlice'
 
+import { useNavigate } from 'react-router-dom'
 
-export const  ThreeDEarthPage = () => {
+export const  EarthPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
-  const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1, {pollingInterval: 1000}) // remove for deploy
+
+
+  const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1)
+  const navigate = useNavigate()
 
   const ProgressCircle = () => {
     return (
@@ -25,6 +31,11 @@ export const  ThreeDEarthPage = () => {
         <CircularProgress size="5rem" color="inherit"/>
       </div>
     )
+  }
+
+  const learnMoreButtonClick = () => {
+
+    navigate(`/${pageRedirect(timeState, instrumentState)}/more`)
   }
 
   return (
@@ -45,9 +56,9 @@ export const  ThreeDEarthPage = () => {
                 }
               </div>
 
-              {/* <div className='learn'> */}
-              {/*  <Button className="learn-btn">Узнать больше</Button> */}
-              {/* </div> */}
+              <div className='learn'>
+               <Button className="learn-btn" onClick={learnMoreButtonClick}>Узнать больше</Button>
+              </div>
             </Grid>
             <Grid className="right" item xs={6}>
               <>

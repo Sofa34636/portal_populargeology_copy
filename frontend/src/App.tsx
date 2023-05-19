@@ -5,7 +5,7 @@ import { ArticleListPage } from './pages/ArticlePages/ArticleListPage/ArticleLis
 import { VideoPage } from './pages/VideoPage/VideoPage';
 import { ExhibitListPage } from './pages/GalleryPages/ExhibitListPage/ExhibitListPage';
 import {ExhibitPage} from "./pages/GalleryPages/ExhibitPage/ExhibitPage";
-import { ThreeDEarthPage } from './pages/ThreeDEarthPage/ThreeDEarthPage';
+import { EarthPage } from './pages/ThreeDEarthPage/EarthPage/EarthPage';
 import { ReliefPage } from './pages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
@@ -15,6 +15,7 @@ import { Stars } from '@react-three/drei'
 import {
   ArticleScientificPublications
 } from "./pages/ArticlePages/ArticleScientificPublicationsPage/ArticleScientificPublications";
+import { EarthMorePage } from './pages/ThreeDEarthPage/EarthMorePage/EarthMorePage'
 
 export default function App() {
 
@@ -26,13 +27,15 @@ export default function App() {
     { path: '/:time/video', element: <VideoPage /> },
     { path: '/:time/exhibits', element: <ExhibitListPage /> },
     { path: '/:time/exhibits/:id', element: <ExhibitPage /> },
-    { path: '/:time/earth', element: <ThreeDEarthPage /> },
+    { path: '/:time/earth', element: <EarthPage /> },
+    { path: '/:time/earth/more', element: <EarthMorePage /> },
     { path: '/:time/relief', element: <ReliefPage /> },
     // { path: '/:time/relief/:id', element: <Relief /> },
     { path: '/*', element: <NotFoundPage /> },
   ];
 
-  const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+  const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+
 
   return (
     <div className="App">

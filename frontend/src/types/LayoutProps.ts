@@ -6,5 +6,7 @@ export interface LayoutProps {
     isFooterButtonsLeft?: boolean
     isFooterDisplayed?: boolean
     isHeaderDisplayed?:boolean
+    firstCrumb?: string;
+    secondCrumb?: string;
 
 }

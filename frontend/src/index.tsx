@@ -1,6 +1,6 @@
 // require('file-loader?name=[name].[ext]!./index.html'); // ?
 
-import React from 'react';
+import React, { useEffect } from 'react'
 
 import App from './App';
 
@@ -13,6 +13,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
+import { useAppSelector } from './hooks/redux'
 
 const store = setupStore();
 const root = createRoot(document.getElementById('root') as HTMLElement);

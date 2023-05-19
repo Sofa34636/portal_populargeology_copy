@@ -6,6 +6,9 @@ import { timeLineSlice } from '../../store/reducers/timeLineSlice';
 import { instrumentTypes, timeTypes } from '../../types/timeline';
 
 import './Footer.scss';
+
+import { useNavigate } from 'react-router-dom'
+import { pageRedirect } from '../../pages/pageRedirect'
 export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDisplayed }) => {
   const { time: timeState, instrument: instrumentState } = useAppSelector(
     (state) => state.timeLineReducer,
@@ -18,6 +21,8 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
   const [nextButtonDisabled, setNextButtonDisabled] = useState(false);
 
   const isFooterDisplayed_ = isFooterDisplayed ?? true;
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     const isReliefOrEarth = instrumentState === instrumentTypes.relief || instrumentState === instrumentTypes.earth
@@ -42,7 +47,10 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
     } else {
        prevTimeIndex = currentTimeIndex ? currentTimeIndex - 1 : currentTimeIndex;
     }
-    dispatch(changeTime(Object.values(timeTypes)[prevTimeIndex]));
+    const newTime = Object.values(timeTypes)[prevTimeIndex]
+
+    dispatch(changeTime(newTime));
+    navigate(`/${pageRedirect(newTime, instrumentState)}`)
   };
 
   const nextTime = () => {
@@ -50,7 +58,10 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
         currentTimeIndex === Object.values(timeTypes).length - 1
           ? currentTimeIndex
           : currentTimeIndex + 1;
-    dispatch(changeTime(Object.values(timeTypes)[nextTimeIndex]));
+    const newTime = Object.values(timeTypes)[nextTimeIndex]
+
+    dispatch(changeTime(newTime));
+    navigate(`/${pageRedirect(newTime, instrumentState)}`)
   };
 
   const isFooterDisplayedStyle = (isFooterDisplayedArg) => {
@@ -66,12 +77,15 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
 
   return (
     <div className="buttons" style={footerButtonsStyle}>
+
       <Button className={prevButtonDisabled ? 'btn-deactivated' : ''} disableRipple={prevButtonDisabled} onClick={prevTime}>
         Что было раньше?
       </Button>
+
       <Button className={nextButtonDisabled ? 'btn-deactivated' : ''} disableRipple={nextButtonDisabled} onClick={nextTime}>
         Что было дальше?
       </Button>
+
     </div>
   );
 };

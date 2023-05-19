@@ -24,7 +24,7 @@ export const ExhibitPage = () => {
     }, [dataExhibit])
 
     const { isLoadingExhibits, fetchedExhibits } = useFetchAllExhibits(10, timeState, 10)
-    console.log(fetchedExhibits)
+    console.log(dataExhibit?.title)
 
 
     if (fetchedExhibits[0] != undefined) {

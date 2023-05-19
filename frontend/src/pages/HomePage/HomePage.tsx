@@ -10,12 +10,6 @@ import { Link } from 'react-router-dom'
 import { pageRedirect } from '../pageRedirect'
 
 export const HomePage = () => {
-
-  useEffect(() => {
-    dispatch(changeTime(timeTypes.bigBang))
-    dispatch(changeInstrument(instrumentTypes.video))
-  }, [])
-
   const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
