@@ -17,7 +17,10 @@ export const ExhibitListPage = () => {
         <div className='exhibit_list'>
             <Layout layoutProps={{ time: timeState, instrument: instrumentState }}>
                 <div className='exhibit_list__content'>
-                    { isLoadingExhibits ? <span>Loading...</span> : <CardCarousel cards={fetchedExhibits}/> }
+                    {isLoadingExhibits ? <span>Загрузка...</span> :
+                        fetchedExhibits.length == 0 ? <span>Нет статей</span> :
+                            <CardCarousel cards={fetchedExhibits}/>
+                    }
                 </div>
             </Layout>
         </div>

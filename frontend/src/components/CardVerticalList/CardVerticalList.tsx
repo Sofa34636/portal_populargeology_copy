@@ -11,7 +11,7 @@ const renderCard = (props: ListChildComponentProps) => {
     const { index, style, data } = props;
 
     return (
-        <ListItem style={style} key={index} component="div" className='article--verticalList__container__item'>
+        <ListItem style={style} key={index} component="div" className='card--verticalList__container__item'>
             <CardPreview {...data[index]}/>
         </ListItem>
     );
@@ -21,7 +21,7 @@ export const CardVerticalList: React.FC<{ cards: Array<(IArticle | ScientificPub
 
     return (
         <Box
-            className='article--verticalList__container'
+            className='card--verticalList__container'
         >
             <FixedSizeList
                 height={650}

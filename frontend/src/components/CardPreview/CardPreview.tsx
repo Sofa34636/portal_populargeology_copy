@@ -15,8 +15,8 @@ export const CardPreview: React.FC<IArticle | ScientificPublicationsProps | IExh
     }
 
     return(
-        <div className='article_card' onClick={handleClick}>
-            <img className='photo' src={card?.image} alt="article" />
+        <div className='card_preview' onClick={handleClick}>
+            <img className='photo' src={card?.image} alt="card" />
             <div className='title'>{card?.title?.toUpperCase()}</div>
         </div>
     )

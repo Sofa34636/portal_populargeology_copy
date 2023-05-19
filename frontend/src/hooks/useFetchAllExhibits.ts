@@ -13,8 +13,6 @@ export const useFetchAllExhibits = (groupOf: number = 6, time: Time, limit: numb
 
     let isLoadingExhibits: boolean = isLoading
 
-    console.log(data)
-
     const fillExhibitsList = (fetchedData, groupOf_: number) => {
         const exhibits: IExhibit[][] = []
 

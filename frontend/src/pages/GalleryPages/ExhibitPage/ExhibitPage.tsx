@@ -24,6 +24,7 @@ export const ExhibitPage = () => {
     }, [dataExhibit])
 
     const { isLoadingExhibits, fetchedExhibits } = useFetchAllExhibits(10, timeState, 10)
+    console.log(fetchedExhibits)
 
 
     if (fetchedExhibits[0] != undefined) {
@@ -36,40 +37,50 @@ export const ExhibitPage = () => {
     return (
         <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterDisplayed: false}}>
             <div className="exhibit">
-                {isLoadingExhibit ? <span>Loading...</span> :
-                    <Grid container spacing={10} className="exhibit-grid">
-                        <Grid item xs={8} className='exhibit-grid__left'>
-                            <div className='exhibit-grid__left--main'>
-                                <img className='exhibit-grid__left--main__image' src={dataExhibit?.image} alt='exhibit'/>
-                                <div className="exhibit-grid__left--main__title">
+                {isLoadingExhibit ? <span>Загрузка...</span> :
+                    <Grid container spacing={1} className='grid'>
+                        <Grid item xs={3.8} className='imageSourcesGrid'>
+                            <div className='container'>
+                                <div className='imageContainer'>
+                                    <img className='image' src={dataExhibit?.image} alt='exhibit'/>
+                                </div>
+                                <div className='sourcesContainer'>
+                                    <h5>Источник:</h5>
+                                    <span className='sources'>{dataExhibit?.src_article}</span>
+                                </div>
+                            </div>
+                        </Grid>
+                        <Grid item xs={5} className='middleGrid'>
+                            <div className='container'>
+                                <div className='title'>
                                     <h1>{dataExhibit?.title}</h1>
                                 </div>
-                                <div className="exhibit-grid__left--main__subtitle">
+                                <div className='subtitle'>
                                     <h4>{dataExhibit?.time_ago}</h4>
                                 </div>
-                                <div className="exhibit-grid__left--main__sources">
-                                    {dataExhibit?.src_article}
-                                </div>
-                                <div className="article-grid__left--main__content">
-                                    {dataExhibit?.text.split('\r\n').map((paragraph, index) => {
-                                        return (
-                                            <p key={index}>
-                                                {paragraph}
-                                            </p>
-                                        )
+                                <div className='content'>
+                                    {
+                                        dataExhibit?.text?.replace(/\r/g, '')?.split(/\n/g)?.map((paragraph, index) => {
+                                            if (paragraph != '') {
+                                                return (
+                                                    <p key={index}>
+                                                        {paragraph}
+                                                    </p>
+                                                )
+                                            }
                                     })}
                                 </div>
                             </div>
                         </Grid>
-                        <Grid item xs={4} className='exhibit-grid__right'>
-                            <div className="exhibit-grid__right--cardVerticalList">
-                                { isLoadingExhibits ? <span>Loading...</span> :
+                        <Grid item xs={3.2} className='cardVerticalListGrid'>
+                            <div className="container">
+                                { isLoadingExhibits ? <span>Загрузка...</span> :
                                     <CardVerticalList cards={fetchedExhibits[0] ?? []}
                                                       numberOfCards={fetchedExhibits[0]?.length ?? 0} />}
                             </div>
                         </Grid>
                     </Grid>}
-                <div className='exhibit--goBackButton'>
+                <div className='goBackButton'>
                     <Button onClick={() => navigate(`/${pageRedirect(dataExhibit?.time, instrumentState)}`)} variant="outlined">
                         НАЗАД
                     </Button>
