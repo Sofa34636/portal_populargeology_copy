@@ -10,7 +10,6 @@ export const ArticleListPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
   const { isLoadingArticles, fetchedArticles } = useFetchAllArticles(6, timeState)
-    console.log(fetchedArticles)
   return (
     <div className='article_list'>
       <Layout layoutProps={{time: timeState, instrument: instrumentState}}>

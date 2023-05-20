@@ -38,6 +38,12 @@ export const HomePage = () => {
     }
   }
 
+  useEffect(() => {
+    dispatch(changeTime(timeTypes.bigBang))
+    dispatch(changeInstrument(instrumentTypes.video))
+  }, [])
+
+
   return (
     <div className='wrapper_homepage'>
       <div className="background">
