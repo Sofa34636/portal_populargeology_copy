@@ -1,13 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
-import useThrottle from '../../../hooks/useThrottle'
-
 import './VideoPlayer.scss'
-
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeftSharp';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
-import PlayArrowIcon from '@mui/icons-material/PlayArrowOutlined';
-import PauseIcon from '@mui/icons-material/PauseOutlined';
 export default function VideoPlayer(props) {
   const [isControlsShown, setIsControlsShown] = useState(true);
   const controlsRef = useRef(null);
