@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 
 
 export const ArticleScientificPublicationsHierarchyMenu = () => {
-    const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+    const { time: timeState } = useAppSelector((state) => state.timeLineReducer);
 
     const hierarchy = earthSciPub_Hierarchy[getKeyByValue(timeTypes, timeState)]
 

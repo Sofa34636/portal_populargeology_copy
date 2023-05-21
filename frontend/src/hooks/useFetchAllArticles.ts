@@ -3,7 +3,7 @@ import {IArticle} from "../types/models/IArticle";
 import {historyOfEarth, Time} from "../types/timeline";
 import {ScientificPublicationsProps, scientificPublicationsCardProps} from "../types/scientificPublications";
 
-export const useFetchAllArticles = (groupOf: number = 6, time: Time, limit: number = 0) => {
+export const useFetchAllArticles = (groupOf = 6, time: Time, limit = 0) => {
     const timeIsEarth = (time_: Time) => {
         return historyOfEarth.findIndex(earthType => earthType == time_) != -1;
     }

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
@@ -6,7 +6,6 @@ import { Footer } from '../Footer/Footer';
 import '../../styles/app.scss';
 import { LayoutProps } from '../../types/LayoutProps';
 import './Layout.scss';
-import { clsx } from 'clsx';
 
 interface ILayoutProps {
   layoutProps: LayoutProps;

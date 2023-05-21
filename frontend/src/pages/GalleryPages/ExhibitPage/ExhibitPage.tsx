@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { Layout } from '../../../components/Layout/Layout';
 import { useAppSelector } from '../../../hooks/redux'
-import {CardVerticalList} from "../../../components/CardVerticalList/CardVerticalList";
+import { CardVerticalList } from "../../../components/CardVerticalList/CardVerticalList";
 import Button from "@mui/material/Button";
 import Grid from '@mui/material/Grid';
-import {getKeyByValue, pageRedirect} from "../../pageRedirect";
-import {useGetExhibitById} from "../../../hooks/useGetExhibitById";
-import {useFetchAllExhibits} from "../../../hooks/useFetchAllExhibits";
+import { pageRedirect } from "../../pageRedirect";
+import { useGetExhibitById } from "../../../hooks/useGetExhibitById";
+import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
 
 
 export const ExhibitPage = () => {
     const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
     const navigate = useNavigate()
-    const { time, id } = useParams()
+    const { id } = useParams()
 
     const { isLoadingExhibit, dataExhibit } = useGetExhibitById(+id, timeState)
 

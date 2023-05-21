@@ -1,7 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 import './VideoPlayer.scss'
-export default function VideoPlayer(props) {
+
+interface IVideoPlayerProps {
+  layoutHide: () => void;
+  layoutDisplay: () => void;
+  videoUrl: string;
+
+}
+export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
+
+  const {videoUrl, layoutHide, layoutDisplay} = props;
   const [isControlsShown, setIsControlsShown] = useState(true);
   const controlsRef = useRef(null);
 
@@ -23,7 +32,7 @@ export default function VideoPlayer(props) {
     const hideControlsTimer = setTimeout(() => {
 
       setIsControlsShown(false);
-      props.layoutHide()
+      layoutHide()
     }, 4500);
 
     return () => {
@@ -34,14 +43,14 @@ export default function VideoPlayer(props) {
   const handleMouseMove = () => {
 
     setIsControlsShown(true);
-    props.layoutDisplay()
+    layoutDisplay()
   };
 
   const handleMouseLeave = () => {
 
     const hideControlsTimer = setTimeout(() => {
       setIsControlsShown(false);
-      props.layoutHide()
+      layoutHide()
     }, 4000);
     return () => {
       clearTimeout(hideControlsTimer);
@@ -93,7 +102,7 @@ export default function VideoPlayer(props) {
         <ReactPlayer
           className='video-container__video'
           width="100%"
-          url={props.video_url}
+          url={videoUrl}
           playing={videoState.playing}
           muted={false}
         />

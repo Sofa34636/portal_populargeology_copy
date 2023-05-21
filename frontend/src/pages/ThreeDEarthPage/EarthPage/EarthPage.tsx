@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Layout } from '../../../components/Layout/Layout';
 import Grid from '@mui/material/Grid';
-import { Canvas } from '@react-three/fiber';
+import { Canvas,   } from '@react-three/fiber';
 import {Suspense} from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import './EarthPage.scss';
 import { Earth } from '../../../components/ToolComponents/Earth/Earth';
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
-import { Stars } from '@react-three/drei';
+import { useAppSelector } from '../../../hooks/redux'
+
 
 import { useGetEarthByIdQuery } from '../../../store/services/EarthService'
-import { getKeyByValue, pageRedirect } from '../../pageRedirect'
-import { historyOfEarth, timeTypes } from '../../../types/timeline'
+import { pageRedirect } from '../../pageRedirect'
+import { historyOfEarth } from '../../../types/timeline'
 import Button from '@mui/material/Button'
-import { timeLineSlice } from '../../../store/reducers/timeLineSlice'
+
 
 import { useNavigate } from 'react-router-dom'
+
 
 export const  EarthPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -54,11 +55,11 @@ export const  EarthPage = () => {
                     )
                   })
                 }
+                <div className='learn'>
+                  <Button className="learn-btn" onClick={learnMoreButtonClick}>Узнать больше</Button>
+                </div>
               </div>
 
-              <div className='learn'>
-               <Button className="learn-btn" onClick={learnMoreButtonClick}>Узнать больше</Button>
-              </div>
             </Grid>
             <Grid className="right" item xs={6}>
               <>

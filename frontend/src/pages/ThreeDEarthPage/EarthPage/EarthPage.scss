@@ -30,17 +30,24 @@ footer {
 		p {
 			margin-right: 50px;
 		}
+		button {
+			margin-top: 25px;
+			margin-right: 100px;
+		}
 	}
 
 
 	.learn {
 		display: flex;
 		flex-direction: row;
-		justify-content: start;
+		justify-content: flex-end;
 		//padding-top: 6px;
 
 		.learn-btn {
-			border: none;
+			width: 200px;
+			height: 25px;
+			font-size: 10px;
+			//border: none;
 			//text-transform: none;
 
 		}

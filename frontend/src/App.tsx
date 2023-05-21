@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 import './styles/app.scss';
 import { ArticleListPage } from './pages/ArticlePages/ArticleListPage/ArticleListPage';
@@ -10,8 +10,7 @@ import { ReliefPage } from './pages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ArticlePage } from './pages/ArticlePages/ArticlePage/ArticlePage';
-import { useAppSelector } from './hooks/redux'
-import { Stars } from '@react-three/drei'
+
 import {
   ArticleScientificPublications
 } from "./pages/ArticlePages/ArticleScientificPublicationsPage/ArticleScientificPublications";
@@ -33,9 +32,6 @@ export default function App() {
     // { path: '/:time/relief/:id', element: <Relief /> },
     { path: '/*', element: <NotFoundPage /> },
   ];
-
-  const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
-
 
   return (
     <div className="App">

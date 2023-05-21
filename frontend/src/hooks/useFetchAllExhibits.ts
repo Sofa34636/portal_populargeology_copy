@@ -3,15 +3,15 @@ import {Time} from "../types/timeline";
 import {IExhibit} from "../types/models/IExhibit";
 
 
-export const useFetchAllExhibits = (groupOf: number = 6, time: Time, limit: number = 0) => {
+export const useFetchAllExhibits = (groupOf = 6, time: Time, limit = 0) => {
 
-    const {isLoading, data, error} =
+    const {isLoading, data } =
         useFetchAllExhibitsQuery({
             limit,
             time
         }, {pollingInterval: 1000})
 
-    let isLoadingExhibits: boolean = isLoading
+    const isLoadingExhibits: boolean = isLoading
 
     const fillExhibitsList = (fetchedData, groupOf_: number) => {
         const exhibits: IExhibit[][] = []

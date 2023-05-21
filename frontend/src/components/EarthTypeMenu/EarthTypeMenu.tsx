@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react'
 import Button from '@mui/material/Button';
 import { Time, timeTypes } from '../../types/timeline'
 import { useAppSelector } from '../../hooks/redux'
 import './EarthTypeMenu.scss'
 import { clsx } from 'clsx'
 
-export const EarthTypeMenu = ({onTimeButtonClick: onTimeButtonClick}) => {
+interface IEarthTypeMenuProps {
+  onTimeButtonClick: (earthTime: Time) => void;
+}
+
+export const EarthTypeMenu:FC<IEarthTypeMenuProps> = (props) => {
+
+  const { onTimeButtonClick } = props
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedTime, setSelectedTime] = useState<Time>(timeTypes.earthHistory)

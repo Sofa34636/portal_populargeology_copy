@@ -26,7 +26,7 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
 
   useEffect(() => {
     const isReliefOrEarth = instrumentState === instrumentTypes.relief || instrumentState === instrumentTypes.earth
-    let startIndex = isReliefOrEarth ? 4 : 0;
+    const startIndex = isReliefOrEarth ? 4 : 0;
 
     if (currentTimeIndex !== startIndex && currentTimeIndex !== Object.values(timeTypes).length - 1) {
       setNextButtonDisabled(false)
@@ -54,7 +54,7 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
   };
 
   const nextTime = () => {
-    let nextTimeIndex =
+    const nextTimeIndex =
         currentTimeIndex === Object.values(timeTypes).length - 1
           ? currentTimeIndex
           : currentTimeIndex + 1;

@@ -7,14 +7,14 @@ import {CardVerticalList} from "../../../components/CardVerticalList/CardVertica
 import Button from "@mui/material/Button";
 import { useFetchAllArticles } from "../../../hooks/useFetchAllArticles";
 import Grid from '@mui/material/Grid';
-import {getKeyByValue, pageRedirect} from "../../pageRedirect";
+import { pageRedirect} from "../../pageRedirect";
 import {useGetArticleById} from "../../../hooks/useGetArticleById";
 
 
 export const ArticlePage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const navigate = useNavigate()
-  const { time, id } = useParams()
+  const { id } = useParams()
 
   const { isLoadingArticle, dataArticle } = useGetArticleById(+id, timeState)
 

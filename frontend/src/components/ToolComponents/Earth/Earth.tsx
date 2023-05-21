@@ -22,9 +22,9 @@ export function Earth(data: IEarth) {
     data.cloudMap,
   ]);
 
-  const cloudsRef = useRef<Mesh>(null!);
-  const earthRef = useRef<Mesh>(null!);
-  const pointLightRef = useRef<THREE.PointLight>(null!);
+  const cloudsRef = useRef<Mesh>(null);
+  const earthRef = useRef<Mesh>(null);
+  const pointLightRef = useRef<THREE.PointLight>(null);
 
   useFrame(( state , ) => {
     const {x, y, z} = state.camera.position;

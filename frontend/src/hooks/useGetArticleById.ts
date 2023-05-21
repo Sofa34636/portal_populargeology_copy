@@ -5,7 +5,7 @@ import {Time} from "../types/timeline";
 
 export const useGetArticleById = (id: number, time: Time) => {
 
-    const {isLoading, data, error} =
+    const {isLoading, data } =
         useGetArticleByIdQuery({
             id,
             time

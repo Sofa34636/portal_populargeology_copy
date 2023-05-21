@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Layout } from '../../../components/Layout/Layout';
-import {useAppDispatch, useAppSelector} from '../../../hooks/redux'
-import {timeLineSlice} from "../../../store/reducers/timeLineSlice";
+import { useAppSelector } from '../../../hooks/redux'
 import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
 import {CardCarousel} from "../../../components/CardCarousel/CardCarousel";
 

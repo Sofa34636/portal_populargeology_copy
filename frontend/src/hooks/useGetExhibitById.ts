@@ -5,7 +5,7 @@ import {Time} from "../types/timeline";
 
 export const useGetExhibitById = (id: number, time: Time) => {
 
-    const {isLoading, data, error} =
+    const {isLoading, data } =
         useGetExhibitByIdQuery({
             id,
             time

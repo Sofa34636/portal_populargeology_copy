@@ -6,7 +6,6 @@ import { historyOfEarth, Instrument, instrumentTypes, Time, timeTypes } from '..
 import { useState } from 'react'
 import { timeLineSlice } from '../../store/reducers/timeLineSlice'
 import { clsx } from 'clsx';
-import { useNavigate } from "react-router-dom";
 import { pageRedirect } from '../../pages/pageRedirect'
 
 interface IBreadcrumbsComponentProps {
