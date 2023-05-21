@@ -33,7 +33,7 @@ export const ArticlePage = () => {
   }
 
   return (
-    <Layout time={timeState} instrument={instrumentState} headerDisplayStyle={'default'} footerDisplayStyle={'default'}>
+    <Layout time={timeState} instrument={instrumentState} headerDisplayStyle={'default'} footerDisplayStyle={'back'}>
       <Grid className="article-page" container spacing={0}>
         <Grid className="article-page__left" item xs={9}>
             <div className="article-page__left--subtitle">

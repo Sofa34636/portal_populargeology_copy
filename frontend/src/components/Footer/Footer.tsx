@@ -110,7 +110,7 @@ export const Footer: React.FC<IFooterProps> = (props) => {
     case 'back':
       return (
         <div className={"footer-back"}>
-          <Button color={'inherit'} onClick={() => navigate(-1)} variant="outlined">
+          <Button color={'inherit'} onClick={() => navigate(`/${pageRedirect(timeState, instrumentState)}`)} variant="outlined">
             НАЗАД
           </Button>
         </div>
