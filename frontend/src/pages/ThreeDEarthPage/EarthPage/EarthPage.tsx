@@ -35,7 +35,6 @@ export const  EarthPage = () => {
   }
 
   const learnMoreButtonClick = () => {
-
     navigate(`/${pageRedirect(timeState, instrumentState)}/more`)
   }
 

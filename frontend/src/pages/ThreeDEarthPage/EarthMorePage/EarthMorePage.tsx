@@ -18,7 +18,7 @@ export const  EarthMorePage = () => {
     <Layout time={timeState}
             instrument={instrumentState}
             breadCrumbsFirstCrumb={'Узнать больше'}
-            footerDisplayStyle={'default'}
+            footerDisplayStyle={'back'}
             headerDisplayStyle={'default'}>
       <Grid className="parent" container spacing={0}>
         <Grid className="left" item xs={6}>

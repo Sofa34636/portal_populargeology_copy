@@ -13,17 +13,18 @@ header {
 
 main {
   flex: 1 1 auto;
+  margin-bottom: 40px;
 }
 
 footer {
   .footer-default {
     width: 100%;
   }
-  //background-color: black;
+  background-color: black;
   position: fixed;
   padding-top: 16px;
+  padding-bottom: 10px;
   bottom: 0;
-  height: 40px;
   width: 95%;
 }
 

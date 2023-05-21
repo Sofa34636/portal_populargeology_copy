@@ -3,7 +3,7 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-
+	padding-bottom: 40px;
 	button {
 		padding: 12px 24px;
 		height: 40px;
@@ -139,199 +139,217 @@
 
 
 
-//@media (min-width: 1300px) {
-//	button {
-//		font-size: 14px !important;
-//	}
-//}
-//
-//@media (min-width: 1199px) and (max-width: 1299px) {
-//	button {
-//		font-size: 14px !important;
-//	}
-//	.title {
-//		padding-bottom: 24px;
-//	}
-//	.title h1 {
-//		font-size: 24px;
-//	}
-//	.content h2 {
-//		font-size: 16px;
-//	}
-//	.content .time_buttons {
-//		padding-bottom: 38px;
-//	}
-//
-//	.content .instrument_buttons {
-//		padding-bottom: 38px;
-//	}
-//
-//	.earth-time-dropdown__content {
-//
-//		li {
-//			font-size: 12px;
-//			padding-top: 10px;
-//		}
-//	}
-//}
-//
-///* Portrait tablets and medium desktops */
-//@media (min-width: 992px) and (max-width: 1199px) {
-//	button{
-//		width: 150px;
-//		font-size: 12px !important;
-//	}
-//
-//	.title {
-//		padding-bottom: 10px;
-//	}
-//	.title h1 {
-//		font-size: 18px;
-//	}
-//	.content h2 {
-//		font-size: 14px;
-//	}
-//	.content .time_buttons {
-//		padding-bottom: 24px;
-//	}
-//
-//	.content .instrument_buttons {
-//		padding-bottom: 24px;
-//	}
-//
-//	.content .learn {
-//		button {
-//			width: 250px;
-//			height: 50px;
-//		}
-//	}
-//	.earth-time-dropdown__content {
-//		min-width: 150px;
-//		li {
-//			font-size: 10px;
-//			padding-top: 8px;
-//		}
-//	}
-//}
-//
-///* Portrait tablets and small desktops */
-//@media (min-width: 768px) and (max-width: 991px) {
-//
-//	button {
-//		font-size: 10px !important;
-//		width: 130px;
-//	}
-//
+@media (min-width: 1300px) {
+	.home-page {
 
-//	.content h2 {
-//		font-size: 12px;
-//		padding-bottom: 12px;
-//	}
-//	.content .time_buttons {
-//		padding-bottom: 12px;
-//	}
-//
-//	.content .instrument_buttons {
-//		padding-bottom: 12px;
-//	}
-//
-//	.content .learn {
-//		button {
-//			width: 250px;
-//			height: 50px;
-//		}
-//	}
-//	.earth-time-dropdown__content {
-//		min-width: 100px;
-//		li {
-//			font-size: 8px;
-//			padding-top: 6px;
-//		}
-//	}
-//}
-//
-///* Landscape phones and portrait tablets */
-//@media (max-width: 830px) {
-//
-//	button {
-//		font-size: 10px !important;
-//		width: 120px;
-//	}
-//
-//	.title {
-//		padding-bottom: 6px;
-//	}
-//	.title h1 {
-//		font-size: 14px;
-//	}
-//	.content h2 {
-//		font-size: 12px;
-//	}
-//	.content .time_buttons {
-//		padding-bottom: 12px;
-//	}
-//
-//	.content .instrument_buttons {
-//		padding-bottom: 12px;
-//	}
-//
-//	.content .learn {
-//		justify-content: center;
-//		button {
-//			width: 250px;
-//			height: 50px;
-//		}
-//	}
-//	.earth-time-dropdown__content {
-//		min-width: 60px;
-//		li {
-//			font-size: 10px;
-//			padding-top: 4px;
-//		}
-//	}
-//
-//
-//}
-//
-//@media (max-width: 670px) {
-//	button {
-//		width: 100px;
-//		font-size: 8px !important;
-//	}
-//
-//	.title {
-//		padding-bottom: 4px;
-//	}
-//	.title h1 {
-//		font-size: 12px;
-//		padding-bottom: 0;
-//	}
-//	.content h2 {
-//		font-size: 10px;
-//		padding-bottom: 0;
-//	}
-//	.content .time_buttons {
-//		padding-bottom: 6px;
-//	}
-//
-//	.content .instrument_buttons {
-//		padding-bottom: 6px;
-//	}
-//
-//	.content .learn {
-//		justify-content: center;
-//		button {
-//			width: 150px;
-//			height: 50px;
-//		}
-//	}
-//	.earth-time-dropdown__content {
-//		min-width: 60px;
-//		li {
-//			font-size: 10px;
-//			padding-top: 4px;
-//		}
-//	}
-//
-//}
+	}
+
+	button {
+		font-size: 14px !important;
+	}
+}
+
+@media (min-width: 1199px) and (max-width: 1299px) {
+	.home-page {
+
+	}
+	button {
+		font-size: 14px !important;
+	}
+	.title {
+		padding-bottom: 24px;
+	}
+	.title h1 {
+		font-size: 24px;
+	}
+	.content h2 {
+		font-size: 16px;
+	}
+	.content .time_buttons {
+		padding-bottom: 38px;
+	}
+
+	.content .instrument_buttons {
+		padding-bottom: 38px;
+	}
+
+	.earth-time-dropdown__content {
+
+		li {
+			font-size: 12px;
+			padding-top: 10px;
+		}
+	}
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.home-page {
+
+	}
+	button{
+		width: 150px;
+		font-size: 12px !important;
+	}
+
+	.title {
+		padding-bottom: 10px;
+	}
+	.title h1 {
+		font-size: 18px;
+	}
+	.content h2 {
+		font-size: 14px;
+	}
+	.content .time_buttons {
+		padding-bottom: 24px;
+	}
+
+	.content .instrument_buttons {
+		padding-bottom: 24px;
+	}
+
+	.content .learn {
+		button {
+			width: 250px;
+			height: 50px;
+		}
+	}
+	.earth-time-dropdown__content {
+		min-width: 150px;
+		li {
+			font-size: 10px;
+			padding-top: 8px;
+		}
+	}
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+	.home-page {
+
+	}
+
+	button {
+		font-size: 10px !important;
+		width: 130px;
+	}
+
+
+	.content h2 {
+		font-size: 12px;
+		padding-bottom: 12px;
+	}
+	.content .time_buttons {
+		padding-bottom: 12px;
+	}
+
+	.content .instrument_buttons {
+		padding-bottom: 12px;
+	}
+
+	.content .learn {
+		button {
+			width: 250px;
+			height: 50px;
+		}
+	}
+	.earth-time-dropdown__content {
+		min-width: 100px;
+		li {
+			font-size: 8px;
+			padding-top: 6px;
+		}
+	}
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 830px) {
+	.home-page {
+
+	}
+	button {
+		font-size: 10px !important;
+		width: 120px;
+	}
+
+	.title {
+		padding-bottom: 6px;
+	}
+	.title h1 {
+		font-size: 14px;
+	}
+	.content h2 {
+		font-size: 12px;
+	}
+	.content .time_buttons {
+		padding-bottom: 12px;
+	}
+
+	.content .instrument_buttons {
+		padding-bottom: 12px;
+	}
+
+	.content .learn {
+		justify-content: center;
+		button {
+			width: 250px;
+			height: 50px;
+		}
+	}
+	.earth-time-dropdown__content {
+		min-width: 60px;
+		li {
+			font-size: 10px;
+			padding-top: 4px;
+		}
+	}
+
+
+}
+
+@media (max-width: 670px) {
+	.home-page {
+
+	}
+	button {
+		width: 100px;
+		font-size: 8px !important;
+	}
+
+	.title {
+		padding-bottom: 4px;
+	}
+	.title h1 {
+		font-size: 12px;
+		padding-bottom: 0;
+	}
+	.content h2 {
+		font-size: 10px;
+		padding-bottom: 0;
+	}
+	.content .time_buttons {
+		padding-bottom: 6px;
+	}
+
+	.content .instrument_buttons {
+		padding-bottom: 6px;
+	}
+
+	.content .learn {
+		justify-content: center;
+		button {
+			width: 150px;
+			height: 50px;
+		}
+	}
+	.earth-time-dropdown__content {
+		min-width: 60px;
+		li {
+			font-size: 10px;
+			padding-top: 4px;
+		}
+	}
+
+}
 

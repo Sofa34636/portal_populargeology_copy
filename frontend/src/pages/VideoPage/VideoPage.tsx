@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks/redux'
 
 import { useGetEarthByIdQuery } from '../../store/services/EarthService'
 import { VideoPlayer } from '../../components/ToolComponents/VideoPlayer/VideoPlayer'
-
+import './VideoPage.scss'
 
 export const VideoPage = () => {
 
