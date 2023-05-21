@@ -9,16 +9,16 @@ import {
 import {pageRedirect} from "../../pageRedirect";
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
-
+import './ArticleScientificPublicationsPagePage.scss'
 
 // id = 0
-export const ArticleScientificPublications = () => {
+export const ArticleScientificPublicationsPage = () => {
     const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
     const navigate = useNavigate()
 
     return(
-        <Layout layoutProps={{time: timeState, instrument: instrumentState, isFooterDisplayed: false}}>
+        <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'default'} headerDisplayStyle={'default'}>
             <div className='scientific_publications'>
                 <Grid className="scientific_publications__parent" container spacing={0}>
                     <Grid className="scientific_publications__parent--leftContainer" item xs={4}>

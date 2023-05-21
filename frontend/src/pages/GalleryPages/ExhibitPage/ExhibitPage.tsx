@@ -3,9 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Layout } from '../../../components/Layout/Layout';
 import { useAppSelector } from '../../../hooks/redux'
 import { CardVerticalList } from "../../../components/CardVerticalList/CardVerticalList";
-import Button from "@mui/material/Button";
 import Grid from '@mui/material/Grid';
-import { pageRedirect } from "../../pageRedirect";
 import { useGetExhibitById } from "../../../hooks/useGetExhibitById";
 import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
 
@@ -35,7 +33,7 @@ export const ExhibitPage = () => {
     }
 
     return (
-        <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterDisplayed: false}}>
+        <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'back'} headerDisplayStyle={'default'}>
             <div className="exhibit">
                 {isLoadingExhibit ? <span>Загрузка...</span> :
                     <Grid container spacing={1} className='grid'>
@@ -80,11 +78,6 @@ export const ExhibitPage = () => {
                             </div>
                         </Grid>
                     </Grid>}
-                <div className='goBackButton'>
-                    <Button onClick={() => navigate(`/${pageRedirect(dataExhibit?.time, instrumentState)}`)} variant="outlined">
-                        НАЗАД
-                    </Button>
-                </div>
             </div>
         </Layout>
     );

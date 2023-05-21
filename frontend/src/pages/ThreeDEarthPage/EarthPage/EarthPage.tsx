@@ -40,12 +40,12 @@ export const  EarthPage = () => {
   }
 
   return (
-        <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: true}}>
-          <Grid className="parent" container spacing={0}>
-            <Grid className="left" item xs={6}>
+        <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'default'} headerDisplayStyle={'default'}>
+          <Grid className="earth-page" container spacing={0}>
+            <Grid className="earth-page__left" item xs={6}>
               <h1>{data?.title}</h1>
               <h2>{data?.time_ago}</h2>
-              <div className='contents'>
+              <div className='earth-page__left--contents'>
                 {
                   data?.text.split('\r\n').map((paragraph, index) => {
                     return (
@@ -61,7 +61,7 @@ export const  EarthPage = () => {
               </div>
 
             </Grid>
-            <Grid className="right" item xs={6}>
+            <Grid className="earth-page__right" item xs={6}>
               <>
                 {
                   error ? <h5 className='error-earth'>Произошла ошибка при загрузке Земли</h5> :

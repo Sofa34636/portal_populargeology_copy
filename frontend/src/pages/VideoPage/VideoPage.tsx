@@ -22,7 +22,7 @@ export const VideoPage = () => {
 
 
     return (
-      <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterButtonsLeft: false, isHeaderDisplayed:isLayoutDisplayed, isFooterDisplayed:isLayoutDisplayed}}>
+      <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={isLayoutDisplayed?'default':'hide'} headerDisplayStyle={isLayoutDisplayed?'default':'hide'}>
           <VideoPlayer
                        videoUrl = {'http://localhost:8000/media/videos/Big_Bang_2.mp4'}
                        layoutDisplay={displayLayout}

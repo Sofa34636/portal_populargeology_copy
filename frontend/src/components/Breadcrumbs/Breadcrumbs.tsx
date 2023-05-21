@@ -234,10 +234,15 @@ export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
                     )}
                 </ul>
               </li>
-              <span className='separator no_select'>/</span>
-              <li className={'current-instance no_select'}>
-                <span>{firstCrumb}</span>
-              </li>
+              {
+                firstCrumb &&
+                <>
+                  <span className='separator no_select'>/</span>
+                  <li className={'current-instance no_select'}>
+                  <span>{firstCrumb}</span>
+                  </li>
+                </>
+              }
 
             </ul>
           </nav>

@@ -4,31 +4,42 @@ import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
 import '../../styles/app.scss';
-import { LayoutProps } from '../../types/LayoutProps';
 import './Layout.scss';
+import { Instrument, Time } from '../../types/timeline'
+import { footerDisplayStyles, headerDisplayStyles } from '../../types/layoutStyles'
 
 interface ILayoutProps {
-  layoutProps: LayoutProps;
+  time: Time;
+  instrument: Instrument;
   children?: React.ReactNode;
   breadCrumbsFirstCrumb?: string;
   breadCrumbsSecondCrumb?: string;
+  footerDisplayStyle: footerDisplayStyles;
+  headerDisplayStyle: headerDisplayStyles;
+
 }
 
 export const Layout: FC<ILayoutProps> = (props) => {
 
-  const { layoutProps, children, breadCrumbsFirstCrumb, breadCrumbsSecondCrumb } = props
+  const {
+    children,
+    breadCrumbsFirstCrumb,
+    breadCrumbsSecondCrumb,
+    footerDisplayStyle,
+    headerDisplayStyle,
+  } = props
 
 
   return (
     <div className='layout'>
         <header className="header">
-          <Header isHeaderDisplayed={layoutProps.isHeaderDisplayed} firstCrumb={breadCrumbsFirstCrumb} secondCrumb={breadCrumbsSecondCrumb}/>
+          <Header headerDisplayStyle={headerDisplayStyle} firstCrumb={breadCrumbsFirstCrumb} secondCrumb={breadCrumbsSecondCrumb}/>
         </header>
         <main className='content'>
           { children }
         </main>
       <footer className='footer'>
-        <Footer isFooterDisplayed={layoutProps.isFooterDisplayed}/>
+        <Footer footerDisplayStyle={footerDisplayStyle}/>
       </footer>
     </div>
   );

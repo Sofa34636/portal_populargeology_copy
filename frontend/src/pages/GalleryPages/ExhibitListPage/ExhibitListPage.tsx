@@ -14,7 +14,7 @@ export const ExhibitListPage = () => {
 
     return (
         <div className='exhibit_list'>
-            <Layout layoutProps={{ time: timeState, instrument: instrumentState }}>
+            <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'default'} headerDisplayStyle={'default'}>
                 <div className='exhibit_list__content'>
                     {isLoadingExhibits ? <span>Загрузка...</span> :
                         fetchedExhibits.length == 0 ? <span>Нет статей</span> :

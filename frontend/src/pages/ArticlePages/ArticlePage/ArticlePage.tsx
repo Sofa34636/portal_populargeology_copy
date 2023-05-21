@@ -4,12 +4,10 @@ import { Layout } from '../../../components/Layout/Layout';
 import { ArticleSourcesMenu } from '../../../components/ToolComponents/Article/ArticleSourcesMenu/ArticleSourcesMenu'
 import { useAppSelector } from '../../../hooks/redux'
 import {CardVerticalList} from "../../../components/CardVerticalList/CardVerticalList";
-import Button from "@mui/material/Button";
 import { useFetchAllArticles } from "../../../hooks/useFetchAllArticles";
 import Grid from '@mui/material/Grid';
-import { pageRedirect} from "../../pageRedirect";
 import {useGetArticleById} from "../../../hooks/useGetArticleById";
-
+import './ArticlePage.scss'
 
 export const ArticlePage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -35,46 +33,74 @@ export const ArticlePage = () => {
   }
 
   return (
-    <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterDisplayed: false}}>
-      <div className="article">
-          {isLoadingArticle ? <span>Загрузка...</span> :
-          <Grid container spacing={10} className="article-grid">
-              <Grid item xs={8} className='article-grid__left'>
-                    <div className='article-grid__left--main'>
-                        <div className="article-grid__left--main__subtitle">
-                            <h4>{dataArticle?.time_ago}</h4>
-                        </div>
-                        <div className="article-grid__left--main__title">
-                            <h1>{dataArticle?.title}</h1>
-                        </div>
-                        <div className="article-grid__left--main__sources">
-                            <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/>
-                        </div>
-                        <div className="article-grid__left--main__content">
-                            {dataArticle?.text?.replace(/\r/g, '')?.split(/\n/)?.map((paragraph, index) => {
-                                return (
-                                    <p key={index}>
-                                        {paragraph}
-                                    </p>
-                                )
-                            })}
-                        </div>
-                    </div>
-              </Grid>
-              <Grid item xs={4} className='article-grid__right'>
-                    <div className="article-grid__right--cardVerticalList">
-                        { isLoadingArticles ? <span>Загрузка...</span> :
-                            <CardVerticalList cards={fetchedArticles[0] ?? []}
-                                              numberOfCards={fetchedArticles[0]?.length ?? 0} />}
-                    </div>
-              </Grid>
-          </Grid>}
-        <div className='article--goBackButton'>
-          <Button onClick={() => navigate(`/${pageRedirect(dataArticle?.time, instrumentState)}`)} variant="outlined">
-              НАЗАД
-          </Button>
-        </div>
-      </div>
+    <Layout time={timeState} instrument={instrumentState} headerDisplayStyle={'default'} footerDisplayStyle={'default'}>
+      <Grid className="article-page" container spacing={0}>
+        <Grid className="article-page__left" item xs={9}>
+            <div className="article-page__left--subtitle">
+                <h4>{dataArticle?.time_ago}</h4>
+            </div>
+            <div className="article-page__left--title">
+                <h1>{dataArticle?.title}</h1>
+            </div>
+            <div className="article-page__left--sources">
+                <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/>
+            </div>
+            <div className="article-page__left--content">
+                {dataArticle?.text?.replace(/\r/g, '')?.split(/\n/)?.map((paragraph, index) => {
+                    return (
+                        <p key={index}>
+                            {paragraph}
+                        </p>
+                    )
+                })}
+            </div>
+        </Grid>
+        <Grid className="article-page__right" item xs={3}>
+             { isLoadingArticles ? <span>Загрузка...</span> :
+                <CardVerticalList cards={fetchedArticles[0] ?? []}
+                                  numberOfCards={fetchedArticles[0]?.length ?? 0} />
+             }
+        </Grid>
+      </Grid>
+      {/* <div className="article"> */}
+      {/*     {isLoadingArticle ? <span>Загрузка...</span> : */}
+      {/*     <Grid container spacing={10} className="article-grid"> */}
+      {/*         <Grid item xs={8} className='article-grid__left'> */}
+      {/*               <div className='article-grid__left--main'> */}
+      {/*                   <div className="article-grid__left--main__subtitle"> */}
+      {/*                       <h4>{dataArticle?.time_ago}</h4> */}
+      {/*                   </div> */}
+      {/*                   <div className="article-grid__left--main__title"> */}
+      {/*                       <h1>{dataArticle?.title}</h1> */}
+      {/*                   </div> */}
+      {/*                   <div className="article-grid__left--main__sources"> */}
+      {/*                       <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/> */}
+      {/*                   </div> */}
+      {/*                   <div className="article-grid__left--main__content"> */}
+      {/*                       {dataArticle?.text?.replace(/\r/g, '')?.split(/\n/)?.map((paragraph, index) => { */}
+      {/*                           return ( */}
+      {/*                               <p key={index}> */}
+      {/*                                   {paragraph} */}
+      {/*                               </p> */}
+      {/*                           ) */}
+      {/*                       })} */}
+      {/*                   </div> */}
+      {/*               </div> */}
+      {/*         </Grid> */}
+      {/*         <Grid item xs={4} className='article-grid__right'> */}
+      {/*               <div className="article-grid__right--cardVerticalList"> */}
+      {/*                   { isLoadingArticles ? <span>Загрузка...</span> : */}
+      {/*                       <CardVerticalList cards={fetchedArticles[0] ?? []} */}
+      {/*                                         numberOfCards={fetchedArticles[0]?.length ?? 0} />} */}
+      {/*               </div> */}
+      {/*         </Grid> */}
+      {/*     </Grid>} */}
+      {/*   <div className='article--goBackButton'> */}
+      {/*     <Button onClick={() => navigate(`/${pageRedirect(dataArticle?.time, instrumentState)}`)} variant="outlined"> */}
+      {/*         НАЗАД */}
+      {/*     </Button> */}
+      {/*   </div> */}
+      {/* </div> */}
     </Layout>
   );
 };

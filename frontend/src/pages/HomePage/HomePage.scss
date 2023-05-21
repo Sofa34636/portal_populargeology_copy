@@ -1,14 +1,8 @@
-
-.wrapper {
-	text-transform: uppercase;
+.home-page {
 
 	display: flex;
 	flex-direction: column;
-
-	main {
-		flex: 1 1 auto;
-	}
-
+	height: 100%;
 
 	button {
 		padding: 12px 24px;
@@ -24,333 +18,320 @@
 		}
 	}
 
-	&_homepage {
+	h2 {
+		font-family: RSRegular, serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 32px;
+		text-transform: uppercase;
+		padding-bottom: 45px;
+	}
 
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
+	&__background {
+		background-size: cover;
 
-		.title {
-			padding-bottom: 48px;
+		.rect1 {
+			position: absolute;
+			z-index: -1;
+			width: 611.61px;
+			height: 155.68px;
+			left: calc(50% - 283.35px/2 - 819.09px);
+			top: calc(50% - 155.68px/2 - 280.43px);
 
-			h1 {
-				font-family: RSLight, serif;
-				font-size: 32px;
-				font-weight: 250;
-				line-height: 60px;
-			}
+			background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(238, 45, 1, 0.8) 0%, rgba(238, 45, 1, 0.4) 51.04%, rgba(238, 45, 1, 0) 100%);
+			border-radius: 100px;
+
+			transform: rotate(-26.03deg);
+
 		}
 
-		.content {
+		.rect2 {
+			position: absolute;
+			z-index: -1;
+			width: 283.35px;
+			height: 155.68px;
 
-			h2 {
+			left: calc(50% - 283.35px/2 - 769.09px);
+			top: calc(50% - 155.68px/2 + 31.43px);
+
+			background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(255, 92, 0, 0.8) 0%, rgba(238, 45, 1, 0) 99.99%, rgba(238, 45, 1, 0) 100%);
+			border-radius: 100px;
+			transform: rotate(-28.59deg);
+		}
+	}
+
+	&__time {
+		.time_buttons {
+			margin-left: 78px;
+			padding-bottom: 76px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			button {
+
 				font-family: RSRegular, serif;
 				font-style: normal;
 				font-weight: 400;
-				font-size: 24px;
-				line-height: 32px;
+				font-size: 16px;
+				line-height: 16px;
+				margin-right: 32px;
+				margin-bottom: 10px;
 
-				padding-bottom: 45px;
-			}
-
-			.time_buttons {
-				margin-left: 78px;
-				padding-bottom: 76px;
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-
-				button {
-
-					font-family: RSRegular, serif;
-					font-style: normal;
-					font-weight: 400;
-					font-size: 16px;
-					line-height: 16px;
-					margin-right: 32px;
-					margin-bottom: 10px;
-
-					&.btn-selected {
-						background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
-						border-radius: 6px;
-					}
-				}
-			}
-
-			.instrument_buttons {
-				margin-left: 78px;
-				padding-bottom: 76px;
-
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-
-				button {
-					font-family: RSRegular, serif;
-					font-style: normal;
-					font-weight: 400;
-					font-size: 16px;
-					line-height: 16px;
-					margin-right: 32px;
-					margin-bottom: 10px;
-
-					&.btn-deactivated {
-						border: 1px solid #313131;
-						color: #313131;
-						cursor: default;
-					}
-
-					&.btn-selected {
-						background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
-						border-radius: 6px;
-					}
-				}
-			}
-
-			.learn {
-				display: flex;
-				justify-content: left;
-				button {
-					font-family: RSBold, serif;
-					font-weight: 600;
-					font-size: 20px;
-					height: 64px;
-					line-height: 20px;
-					padding: 24px 24px;
-					text-align: center;
+				&.btn-selected {
+					background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+					border-radius: 6px;
 				}
 			}
 		}
+	}
 
+	&__instrument {
+		.instrument_buttons {
+			margin-left: 78px;
+			padding-bottom: 76px;
 
-		.footer_homepage {
-
-			//width: 100%;
 			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
-			height: 2.5rem;
+			flex-wrap: wrap;
 
 			button {
-				border: none;
-				text-transform: none;
-				color: $white;
-				font-family: RSLight, serif;
+				font-family: RSRegular, serif;
 				font-style: normal;
 				font-weight: 400;
-				font-size: 14px;
-				line-height: 14px;
-				text-align: center;
-
-				a {
-					text-transform: none;
-					color: #BBBBBB
-				}
-			}
-		}
-
-		@media (min-width: 1300px) {
-			button {
-				font-size: 14px !important;
-			}
-		}
-
-		@media (min-width: 1199px) and (max-width: 1299px) {
-			button {
-				font-size: 14px !important;
-			}
-			.title {
-				padding-bottom: 24px;
-			}
-			.title h1 {
-				font-size: 24px;
-			}
-			.content h2 {
 				font-size: 16px;
-			}
-			.content .time_buttons {
-				padding-bottom: 38px;
-			}
+				line-height: 16px;
+				margin-right: 32px;
+				margin-bottom: 10px;
 
-			.content .instrument_buttons {
-				padding-bottom: 38px;
-			}
+				&.btn-deactivated {
+					border: 1px solid #313131;
+					color: #313131;
+					cursor: default;
+				}
 
-			.earth-time-dropdown__content {
-
-				li {
-					font-size: 12px;
-					padding-top: 10px;
+				&.btn-selected {
+					background: radial-gradient(50% 50% at 50% 50%, #052DC9 0%, rgba(5, 45, 201, 0.5) 57.08%, rgba(238, 45, 1, 0.01) 100%);
+					border-radius: 6px;
 				}
 			}
 		}
-
-		/* Portrait tablets and medium desktops */
-		@media (min-width: 992px) and (max-width: 1199px) {
-			button{
-				width: 150px;
-				font-size: 12px !important;
-			}
-
-			.title {
-				padding-bottom: 10px;
-			}
-			.title h1 {
-				font-size: 18px;
-			}
-			.content h2 {
-				font-size: 14px;
-			}
-			.content .time_buttons {
-				padding-bottom: 24px;
-			}
-
-			.content .instrument_buttons {
-				padding-bottom: 24px;
-			}
-
-			.content .learn {
-				button {
-					width: 250px;
-					height: 50px;
-				}
-			}
-			.earth-time-dropdown__content {
-				min-width: 150px;
-				li {
-					font-size: 10px;
-					padding-top: 8px;
-				}
-			}
-		}
-
-		/* Portrait tablets and small desktops */
-		@media (min-width: 768px) and (max-width: 991px) {
-
-			button {
-				font-size: 10px !important;
-				width: 130px;
-			}
-
-			.title {
-				padding-bottom: 6px;
-			}
-			.title h1 {
-				font-size: 14px;
-				padding-bottom: 12px;
-			}
-			.content h2 {
-				font-size: 12px;
-				padding-bottom: 12px;
-			}
-			.content .time_buttons {
-				padding-bottom: 12px;
-			}
-
-			.content .instrument_buttons {
-				padding-bottom: 12px;
-			}
-
-			.content .learn {
-				button {
-					width: 250px;
-					height: 50px;
-				}
-			}
-			.earth-time-dropdown__content {
-				min-width: 100px;
-				li {
-					font-size: 8px;
-					padding-top: 6px;
-				}
-			}
-		}
-
-		/* Landscape phones and portrait tablets */
-		@media (max-width: 830px) {
-
-			button {
-				font-size: 10px !important;
-				width: 120px;
-			}
-
-			.title {
-				padding-bottom: 6px;
-			}
-			.title h1 {
-				font-size: 14px;
-			}
-			.content h2 {
-				font-size: 12px;
-			}
-			.content .time_buttons {
-				padding-bottom: 12px;
-			}
-
-			.content .instrument_buttons {
-				padding-bottom: 12px;
-			}
-
-			.content .learn {
-				justify-content: center;
-				button {
-					width: 250px;
-					height: 50px;
-				}
-			}
-			.earth-time-dropdown__content {
-				min-width: 60px;
-				li {
-					font-size: 10px;
-					padding-top: 4px;
-				}
-			}
-
-
-		}
-
-		@media (max-width: 670px) {
-			button {
-				width: 100px;
-				font-size: 8px !important;
-			}
-
-			.title {
-				padding-bottom: 4px;
-			}
-			.title h1 {
-				font-size: 12px;
-				padding-bottom: 0;
-			}
-			.content h2 {
-				font-size: 10px;
-				padding-bottom: 0;
-			}
-			.content .time_buttons {
-				padding-bottom: 6px;
-			}
-
-			.content .instrument_buttons {
-				padding-bottom: 6px;
-			}
-
-			.content .learn {
-				justify-content: center;
-				button {
-					width: 150px;
-					height: 50px;
-				}
-			}
-			.earth-time-dropdown__content {
-				min-width: 60px;
-				li {
-					font-size: 10px;
-					padding-top: 4px;
-				}
-			}
-
-		}
-
-
 	}
+
+	&__learn {
+		display: flex;
+		justify-content: left;
+
+		button {
+			font-family: RSBold, serif;
+			font-weight: 600;
+			font-size: 20px;
+			height: 64px;
+			line-height: 20px;
+			padding: 24px 24px;
+			text-align: center;
+		}
+	}
+
+
 }
+
+
+
+//@media (min-width: 1300px) {
+//	button {
+//		font-size: 14px !important;
+//	}
+//}
+//
+//@media (min-width: 1199px) and (max-width: 1299px) {
+//	button {
+//		font-size: 14px !important;
+//	}
+//	.title {
+//		padding-bottom: 24px;
+//	}
+//	.title h1 {
+//		font-size: 24px;
+//	}
+//	.content h2 {
+//		font-size: 16px;
+//	}
+//	.content .time_buttons {
+//		padding-bottom: 38px;
+//	}
+//
+//	.content .instrument_buttons {
+//		padding-bottom: 38px;
+//	}
+//
+//	.earth-time-dropdown__content {
+//
+//		li {
+//			font-size: 12px;
+//			padding-top: 10px;
+//		}
+//	}
+//}
+//
+///* Portrait tablets and medium desktops */
+//@media (min-width: 992px) and (max-width: 1199px) {
+//	button{
+//		width: 150px;
+//		font-size: 12px !important;
+//	}
+//
+//	.title {
+//		padding-bottom: 10px;
+//	}
+//	.title h1 {
+//		font-size: 18px;
+//	}
+//	.content h2 {
+//		font-size: 14px;
+//	}
+//	.content .time_buttons {
+//		padding-bottom: 24px;
+//	}
+//
+//	.content .instrument_buttons {
+//		padding-bottom: 24px;
+//	}
+//
+//	.content .learn {
+//		button {
+//			width: 250px;
+//			height: 50px;
+//		}
+//	}
+//	.earth-time-dropdown__content {
+//		min-width: 150px;
+//		li {
+//			font-size: 10px;
+//			padding-top: 8px;
+//		}
+//	}
+//}
+//
+///* Portrait tablets and small desktops */
+//@media (min-width: 768px) and (max-width: 991px) {
+//
+//	button {
+//		font-size: 10px !important;
+//		width: 130px;
+//	}
+//
+
+//	.content h2 {
+//		font-size: 12px;
+//		padding-bottom: 12px;
+//	}
+//	.content .time_buttons {
+//		padding-bottom: 12px;
+//	}
+//
+//	.content .instrument_buttons {
+//		padding-bottom: 12px;
+//	}
+//
+//	.content .learn {
+//		button {
+//			width: 250px;
+//			height: 50px;
+//		}
+//	}
+//	.earth-time-dropdown__content {
+//		min-width: 100px;
+//		li {
+//			font-size: 8px;
+//			padding-top: 6px;
+//		}
+//	}
+//}
+//
+///* Landscape phones and portrait tablets */
+//@media (max-width: 830px) {
+//
+//	button {
+//		font-size: 10px !important;
+//		width: 120px;
+//	}
+//
+//	.title {
+//		padding-bottom: 6px;
+//	}
+//	.title h1 {
+//		font-size: 14px;
+//	}
+//	.content h2 {
+//		font-size: 12px;
+//	}
+//	.content .time_buttons {
+//		padding-bottom: 12px;
+//	}
+//
+//	.content .instrument_buttons {
+//		padding-bottom: 12px;
+//	}
+//
+//	.content .learn {
+//		justify-content: center;
+//		button {
+//			width: 250px;
+//			height: 50px;
+//		}
+//	}
+//	.earth-time-dropdown__content {
+//		min-width: 60px;
+//		li {
+//			font-size: 10px;
+//			padding-top: 4px;
+//		}
+//	}
+//
+//
+//}
+//
+//@media (max-width: 670px) {
+//	button {
+//		width: 100px;
+//		font-size: 8px !important;
+//	}
+//
+//	.title {
+//		padding-bottom: 4px;
+//	}
+//	.title h1 {
+//		font-size: 12px;
+//		padding-bottom: 0;
+//	}
+//	.content h2 {
+//		font-size: 10px;
+//		padding-bottom: 0;
+//	}
+//	.content .time_buttons {
+//		padding-bottom: 6px;
+//	}
+//
+//	.content .instrument_buttons {
+//		padding-bottom: 6px;
+//	}
+//
+//	.content .learn {
+//		justify-content: center;
+//		button {
+//			width: 150px;
+//			height: 50px;
+//		}
+//	}
+//	.earth-time-dropdown__content {
+//		min-width: 60px;
+//		li {
+//			font-size: 10px;
+//			padding-top: 4px;
+//		}
+//	}
+//
+//}
+

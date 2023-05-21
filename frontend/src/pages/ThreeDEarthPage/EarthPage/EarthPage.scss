@@ -1,79 +1,71 @@
 @import "../../../styles/variables";
 
-
-.parent {
+.earth-page {
 	position: relative;
 	z-index:0;
-	left:11px;
-	top:14px;
+	&__left {
+		padding-top: 32px;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+
+		&--contents {
+			max-height: 60vh;
+			overflow: auto;
+			p {
+				margin-right: 50px;
+			}
+			button {
+				margin-top: 25px;
+				margin-right: 100px;
+			}
+		}
+
+
+		.learn {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			//padding-top: 6px;
+
+			.learn-btn {
+				width: 200px;
+				height: 25px;
+				font-size: 10px;
+				//border: none;
+				//text-transform: none;
+
+			}
+		}
+	}
+
+	&__right {
+		left: 50%;
+		right: 0;
+		top: 10%; // 0%
+		bottom: 10%; // 0%
+		height: 80vh;
+
+		.progress-circle__container {
+			height: 100%;
+		}
+
+		.progress-circle {
+			position: relative;
+			top: 50%;
+			left: 50%;
+			z-index: 100;
+		}
+	}
 }
 
 footer {
 	.buttons {
 		width: 50%;
 	}
-
-
 }
 
-
-.left {
-	padding-top: 32px;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-
-	.contents {
-		max-height: 60vh;
-		overflow: auto;
-		p {
-			margin-right: 50px;
-		}
-		button {
-			margin-top: 25px;
-			margin-right: 100px;
-		}
-	}
-
-
-	.learn {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-		//padding-top: 6px;
-
-		.learn-btn {
-			width: 200px;
-			height: 25px;
-			font-size: 10px;
-			//border: none;
-			//text-transform: none;
-
-		}
-	}
-
-}
-
-.right {
-	left: 50%;
-	right: 0;
-	top: 10%; // 0%
-	bottom: 10%; // 0%
-	height: 80vh;
-
-	.progress-circle__container {
-		height: 100%;
-	}
-
-	.progress-circle {
-		position: relative;
-		top: 50%;
-		left: 50%;
-		z-index: 100;
-	}
-
-}
 
 h1 {
 	font-family: RSRegular, serif;

@@ -1,34 +1,38 @@
 import React, {FC} from 'react';
 import { BreadcrumbsComponent } from '../Breadcrumbs/Breadcrumbs';
+import { headerDisplayStyles } from '../../types/layoutStyles'
+import './Header.scss'
 
 interface IHeaderProps {
-  isHeaderDisplayed: boolean;
+  headerDisplayStyle: headerDisplayStyles;
   firstCrumb?: string;
   secondCrumb?: string
 }
 
 export const Header: FC<IHeaderProps> = (props)  => {
 
-  const { isHeaderDisplayed, firstCrumb, secondCrumb} = props;
-
-  const isHeaderDisplayed_ = isHeaderDisplayed ?? true
+  const { headerDisplayStyle, firstCrumb, secondCrumb} = props;
 
 
-  const isHeaderDisplayedStyle = (isHeaderDisplayedArg) => {
-    if (isHeaderDisplayedArg) {
-      return "flex"
-    }
-    return "none"
+  switch (headerDisplayStyle) {
+    case 'hide':
+      return null
+
+    case 'default':
+      return (
+        <div className='breadcrumbs'>
+          <BreadcrumbsComponent firstCrumb={firstCrumb} secondCrumb={secondCrumb}/>
+        </div>
+      );
+
+    case 'home':
+      return (
+          <div className="title no_select">
+            <h1>история вселенной</h1>
+          </div>
+      );
   }
 
-  const headerStyle = {
-    display: isHeaderDisplayedStyle(isHeaderDisplayed_),
-  }
 
-  return (
-    <div className='breadcrumbs' style={headerStyle}>
-      <BreadcrumbsComponent firstCrumb={firstCrumb} secondCrumb={secondCrumb}/>
-    </div>
 
-  );
-};
+}

@@ -15,7 +15,11 @@ export const  EarthMorePage = () => {
 
 
   return (
-    <Layout layoutProps={{ time: timeState, instrument: instrumentState, isFooterDisplayed: false}} breadCrumbsFirstCrumb={'Узнать больше'}>
+    <Layout time={timeState}
+            instrument={instrumentState}
+            breadCrumbsFirstCrumb={'Узнать больше'}
+            footerDisplayStyle={'default'}
+            headerDisplayStyle={'default'}>
       <Grid className="parent" container spacing={0}>
         <Grid className="left" item xs={6}>
           <h1>тут будет узнать больше {data?.title}</h1>

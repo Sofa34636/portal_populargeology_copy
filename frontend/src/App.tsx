@@ -12,8 +12,8 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ArticlePage } from './pages/ArticlePages/ArticlePage/ArticlePage';
 
 import {
-  ArticleScientificPublications
-} from "./pages/ArticlePages/ArticleScientificPublicationsPage/ArticleScientificPublications";
+  ArticleScientificPublicationsPage
+} from "./pages/ArticlePages/ArticleScientificPublicationsPage/ArticleScientificPublicationsPage";
 import { EarthMorePage } from './pages/ThreeDEarthPage/EarthMorePage/EarthMorePage'
 
 export default function App() {
@@ -22,7 +22,7 @@ export default function App() {
     { path: '/', element: <HomePage /> },
     { path: '/:time/articles', element: <ArticleListPage /> },
     { path: '/:time/articles/:id', element: <ArticlePage /> },
-    { path: '/:time/articles/scientificPublications', element: <ArticleScientificPublications /> },
+    { path: '/:time/articles/scientificPublications', element: <ArticleScientificPublicationsPage /> },
     { path: '/:time/video', element: <VideoPage /> },
     { path: '/:time/exhibits', element: <ExhibitListPage /> },
     { path: '/:time/exhibits/:id', element: <ExhibitPage /> },

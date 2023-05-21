@@ -8,6 +8,7 @@ import { Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeli
 import { clsx } from 'clsx';
 import { Link } from 'react-router-dom'
 import { pageRedirect } from '../pageRedirect'
+import { Layout } from '../../components/Layout/Layout'
 
 export const HomePage = () => {
   const {time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -45,19 +46,15 @@ export const HomePage = () => {
 
 
   return (
-    <div className='wrapper_homepage'>
-      <div className="background">
-        <div className="rect1"></div>
-        <div className="rect2"></div>
-      </div>
 
-      <header className="header">
-          <div className="title no_select">
-            <h1>история вселенной</h1>
-          </div>
-      </header>
-      <main className="content">
-        <div className="time">
+
+    <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'home'} headerDisplayStyle={'home'}>
+      <div className={'home-page'}>
+        <div className="home-page__background">
+          <div className="rect1"></div>
+          <div className="rect2"></div>
+        </div>
+        <div className="home-page__time">
           <h2>Выбирайте время</h2>
           <div className="time_buttons">
             {
@@ -77,7 +74,7 @@ export const HomePage = () => {
             <EarthTypeMenu onTimeButtonClick={onTimeButtonClick} />
           </div>
         </div>
-        <div className="instrument">
+        <div className="home-page__instrument">
           <h2>Выбирайте инструмент</h2>
           <div className="instrument_buttons">
             {
@@ -109,25 +106,16 @@ export const HomePage = () => {
             }
           </div>
         </div>
-        <div className="learn">
+        <div className="home-page__learn">
           <Link to={pageRedirect(timeState, instrumentState)}>
             <Button variant="outlined">
               Изучать Вселенную
             </Button>
           </Link>
         </div>
-      </main>
-      <footer className="footer_homepage">
-        <Button>
-          <a href="https://populargeology.ru/about/#">О проекте</a>
-        </Button>
-        <Button>
-          <a href="https://populargeology.ru/about/#">Участники</a>
-        </Button>
-        <Button>
-          <a href="https://populargeology.ru/istochniki/">Источники</a>
-        </Button>
-      </footer>
-    </div>
+      </div>
+    </Layout>
   );
 };
+
+

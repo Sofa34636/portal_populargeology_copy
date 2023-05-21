@@ -9,7 +9,16 @@ import './Footer.scss';
 
 import { useNavigate } from 'react-router-dom'
 import { pageRedirect } from '../../pages/pageRedirect'
-export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDisplayed }) => {
+import { footerDisplayStyles } from '../../types/layoutStyles'
+
+interface IFooterProps {
+  footerDisplayStyle: footerDisplayStyles
+}
+
+export const Footer: React.FC<IFooterProps> = (props) => {
+
+  const { footerDisplayStyle } = props;
+
   const { time: timeState, instrument: instrumentState } = useAppSelector(
     (state) => state.timeLineReducer,
   );
@@ -20,7 +29,6 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
   const [prevButtonDisabled, setPrevButtonDisabled] = useState(false);
   const [nextButtonDisabled, setNextButtonDisabled] = useState(false);
 
-  const isFooterDisplayed_ = isFooterDisplayed ?? true;
   const navigate = useNavigate()
 
 
@@ -64,28 +72,50 @@ export const Footer: React.FC<{ isFooterDisplayed: boolean }> = ({ isFooterDispl
     navigate(`/${pageRedirect(newTime, instrumentState)}`)
   };
 
-  const isFooterDisplayedStyle = (isFooterDisplayedArg) => {
-    if (isFooterDisplayedArg) {
-      return 'flex';
-    }
-    return 'none';
-  };
 
-  const footerButtonsStyle = {
-    display: isFooterDisplayedStyle(isFooterDisplayed_),
-  };
+  switch (footerDisplayStyle) {
 
-  return (
-    <div className="buttons" style={footerButtonsStyle}>
+    case 'hide':
+      return null
 
-      <Button className={prevButtonDisabled ? 'btn-deactivated' : ''} disableRipple={prevButtonDisabled} onClick={prevTime}>
-        Что было раньше?
-      </Button>
+    case 'default':
+      return (
+        <div className={"footer-default"}>
+          <Button color={'inherit'} className={prevButtonDisabled ? 'btn-deactivated' : ''} disableRipple={prevButtonDisabled} onClick={prevTime}>
+            Что было раньше?
+          </Button>
 
-      <Button className={nextButtonDisabled ? 'btn-deactivated' : ''} disableRipple={nextButtonDisabled} onClick={nextTime}>
-        Что было дальше?
-      </Button>
+          <Button color={'inherit'} className={nextButtonDisabled ? 'btn-deactivated' : ''} disableRipple={nextButtonDisabled} onClick={nextTime}>
+            Что было дальше?
+          </Button>
 
-    </div>
-  );
+        </div>
+      );
+
+    case 'home':
+      return (
+        <div className={"footer-home"}>
+          <Button>
+           <a href="https://populargeology.ru/about/#">О проекте</a>
+         </Button>
+         <Button>
+           <a href="https://populargeology.ru/about/#">Участники</a>
+         </Button>
+         <Button>
+           <a href="https://populargeology.ru/istochniki/">Источники</a>
+         </Button>
+        </div>
+    );
+
+    case 'back':
+      return (
+        <div className={"footer-back"}>
+          <Button color={'inherit'} onClick={() => navigate(-1)} variant="outlined">
+            НАЗАД
+          </Button>
+        </div>
+      )
+  }
+
+
 };
