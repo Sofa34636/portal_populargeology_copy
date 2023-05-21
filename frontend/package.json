@@ -53,7 +53,7 @@
     "lint-staged": "^13.2.2",
     "mini-css-extract-plugin": "^2.7.2",
     "node-polyfill-webpack-plugin": "^2.0.1",
-    "node-sass": "^9.0.0",
+    "node-sass": "^8.0.0",
     "react-headless-accordion": "^1.0.2",
     "react-material-ui-carousel": "^3.4.2",
     "react-player": "^2.12.0",

@@ -141,87 +141,88 @@
 
 @media (min-width: 1300px) {
 	.home-page {
-
+		button {
+			font-size: 14px !important;
+		}
 	}
 
-	button {
-		font-size: 14px !important;
-	}
+
 }
 
 @media (min-width: 1199px) and (max-width: 1299px) {
 	.home-page {
+		button {
+			font-size: 14px !important;
+		}
+		.title {
+			padding-bottom: 24px;
 
-	}
-	button {
-		font-size: 14px !important;
-	}
-	.title {
-		padding-bottom: 24px;
-	}
-	.title h1 {
-		font-size: 24px;
-	}
-	.content h2 {
-		font-size: 16px;
-	}
-	.content .time_buttons {
-		padding-bottom: 38px;
-	}
+			h1 {
+				font-size: 24px;
+			}
+		}
+		.content h2 {
+			font-size: 16px;
+		}
+		.content .time_buttons {
+			padding-bottom: 38px;
+		}
 
-	.content .instrument_buttons {
-		padding-bottom: 38px;
-	}
+		.content .instrument_buttons {
+			padding-bottom: 38px;
+		}
 
-	.earth-time-dropdown__content {
+		.earth-time-dropdown__content {
 
-		li {
-			font-size: 12px;
-			padding-top: 10px;
+			li {
+				font-size: 12px;
+				padding-top: 10px;
+			}
 		}
 	}
+
 }
 
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
 	.home-page {
+		button{
+			width: 150px;
+			font-size: 12px !important;
+		}
 
-	}
-	button{
-		width: 150px;
-		font-size: 12px !important;
-	}
+		.title {
+			padding-bottom: 10px;
+		}
+		.title h1 {
+			font-size: 18px;
+		}
+		.content h2 {
+			font-size: 14px;
+		}
+		.content .time_buttons {
+			padding-bottom: 24px;
+		}
 
-	.title {
-		padding-bottom: 10px;
-	}
-	.title h1 {
-		font-size: 18px;
-	}
-	.content h2 {
-		font-size: 14px;
-	}
-	.content .time_buttons {
-		padding-bottom: 24px;
-	}
+		.content .instrument_buttons {
+			padding-bottom: 24px;
+		}
 
-	.content .instrument_buttons {
-		padding-bottom: 24px;
-	}
-
-	.content .learn {
-		button {
-			width: 250px;
-			height: 50px;
+		.content .learn {
+			button {
+				width: 250px;
+				height: 50px;
+			}
+		}
+		.earth-time-dropdown__content {
+			min-width: 150px;
+			li {
+				font-size: 10px;
+				padding-top: 8px;
+			}
 		}
 	}
-	.earth-time-dropdown__content {
-		min-width: 150px;
-		li {
-			font-size: 10px;
-			padding-top: 8px;
-		}
-	}
+
 }
 
 /* Portrait tablets and small desktops */
@@ -251,7 +252,7 @@
 	.content .learn {
 		button {
 			width: 250px;
-			height: 50px;
+			height: 30px;
 		}
 	}
 	.earth-time-dropdown__content {
@@ -294,7 +295,7 @@
 		justify-content: center;
 		button {
 			width: 250px;
-			height: 50px;
+			height: 30px;
 		}
 	}
 	.earth-time-dropdown__content {
@@ -340,7 +341,7 @@
 		justify-content: center;
 		button {
 			width: 150px;
-			height: 50px;
+			height: 30px;
 		}
 	}
 	.earth-time-dropdown__content {
