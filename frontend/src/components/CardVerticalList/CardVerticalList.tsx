@@ -17,7 +17,7 @@ const renderCard = (props: ListChildComponentProps) => {
     );
 }
 
-export const CardVerticalList: React.FC<{ cards: Array<(IArticle | ScientificPublicationsProps) | IExhibit>, numberOfCards: number, height: number, width: number }> = ({ cards, numberOfCards, height, width }) => {
+export const CardVerticalList: React.FC<{ cards: Array<(IArticle | ScientificPublicationsProps) | IExhibit>, numberOfCards: number, height: number, width: number, itemSize: number }> = ({ cards, numberOfCards, height, width, itemSize }) => {
 
     return (
         <Box
@@ -26,7 +26,7 @@ export const CardVerticalList: React.FC<{ cards: Array<(IArticle | ScientificPub
             <FixedSizeList
                 height={height}
                 width={width}
-                itemSize={280}
+                itemSize={itemSize}
                 itemCount={numberOfCards}
                 overscanCount={5}
                 itemData={cards}

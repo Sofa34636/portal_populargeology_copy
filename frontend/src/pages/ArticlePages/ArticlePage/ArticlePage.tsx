@@ -5,7 +5,6 @@ import { ArticleSourcesMenu } from '../../../components/ToolComponents/Article/A
 import { useAppSelector } from '../../../hooks/redux'
 import {CardVerticalList} from "../../../components/CardVerticalList/CardVerticalList";
 import { useFetchAllArticles } from "../../../hooks/useFetchAllArticles";
-import Grid from '@mui/material/Grid';
 import {useGetArticleById} from "../../../hooks/useGetArticleById";
 import './ArticlePage.scss'
 
@@ -59,8 +58,9 @@ export const ArticlePage = () => {
                 { isLoadingArticles ? <span>Загрузка...</span> :
                     <CardVerticalList cards={fetchedArticles[0] ?? []}
                                       numberOfCards={fetchedArticles[0]?.length ?? 0}
-                                      height={660}
-                                      width={360}/>
+                                      height={6600}
+                                      width={360}
+                                      itemSize={280}/>
                 }
             </div>
         </div>

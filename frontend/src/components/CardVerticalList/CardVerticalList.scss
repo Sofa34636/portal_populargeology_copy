@@ -2,11 +2,87 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 100%;
+  //min-width: 100%;
 
   &__item {
     .card_preview {
-      width: 315px;
+      width: 300px;
     }
   }
+}
+
+@media (min-width: 1300px) {
+  .card--verticalList__container {
+    &__item {
+      .card_preview {
+        width: 300px;
+        .photo {
+          width: 300px;
+          height: 220px;
+          //CardVerticalList width: 330
+          //CardVerticalList itemSize: 280
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1199px) and (max-width: 1299px) {
+  .card--verticalList__container {
+    &__item {
+      .card_preview {
+        height: 230px;
+        width: 230px;
+        .photo {
+          width: 230px;
+          height: 190px;
+          //CardVerticalList width: 270
+          //CardVerticalList itemSize: 240
+        }
+      }
+    }
+  }
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .card--verticalList__container {
+    &__item {
+      .card_preview {
+        height: 230px;
+        width: 230px;
+        .photo {
+          width: 230px;
+          height: 190px;
+          //CardVerticalList width: 270
+          //CardVerticalList itemSize: 240
+        }
+      }
+    }
+  }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 831px) and (max-width: 991px) {
+  .card--verticalList__container {
+    &__item {
+      .card_preview {
+        height: 190px;
+        width: 150px;
+        .photo {
+          width: 150px;
+          height: 150px;
+          //CardVerticalList width: 190
+          //CardVerticalList itemSize: 200
+        }
+      }
+    }
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 830px) {
+}
+
+@media (max-width: 670px) {
 }

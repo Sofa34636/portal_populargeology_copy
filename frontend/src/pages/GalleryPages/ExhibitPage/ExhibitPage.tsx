@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { Layout } from '../../../components/Layout/Layout';
 import { useAppSelector } from '../../../hooks/redux'
@@ -6,22 +6,42 @@ import { CardVerticalList } from "../../../components/CardVerticalList/CardVerti
 import { useGetExhibitById } from "../../../hooks/useGetExhibitById";
 import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
 
+const cardVerticalListAdaptiveStyle = (width: number) => {
+    if (width <= 670) {
+        return {verticalListWidth: 330, verticalListItemSize: 280}
+    } else if (width > 670 && width <= 830) {
+        return {verticalListWidth: 330, verticalListItemSize: 280}
+    } else if (width > 831 && width <= 991) {
+        return {verticalListWidth: 190, verticalListItemSize: 200}
+    } else if (width > 991 && width <= 1199) {
+        return {verticalListWidth: 270, verticalListItemSize: 240}
+    } else if (width > 1199 && width <= 1299) {
+        return {verticalListWidth: 270, verticalListItemSize: 240}
+    } else {
+        return {verticalListWidth: 330, verticalListItemSize: 280}
+    }
+}
+
 
 export const ExhibitPage = () => {
     const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
     const navigate = useNavigate()
     const { id } = useParams()
 
+    const [verticalListAdaptiveStyle, setVerticalListAdaptiveStyle] =
+        useState<{verticalListWidth: number, verticalListItemSize: number}>({verticalListWidth: 330,
+                                                                                      verticalListItemSize: 80})
     const { isLoadingExhibit, dataExhibit } = useGetExhibitById(+id, timeState)
 
     useEffect(() => {
         if (dataExhibit == undefined && !isLoadingExhibit) {
             navigate('/*')
         }
-    }, [dataExhibit])
+        setVerticalListAdaptiveStyle(cardVerticalListAdaptiveStyle(window.innerWidth))
+    }, [dataExhibit, window.innerWidth])
+
 
     const { isLoadingExhibits, fetchedExhibits } = useFetchAllExhibits(10, timeState, 10)
-    console.log(dataExhibit?.title)
 
 
     if (fetchedExhibits[0] != undefined) {
@@ -30,6 +50,7 @@ export const ExhibitPage = () => {
             fetchedExhibits[0].splice(indexOfThisExhibit, 1)
         }
     }
+
 
     return (
         <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'back'} headerDisplayStyle={'default'}>
@@ -70,7 +91,8 @@ export const ExhibitPage = () => {
                                 <CardVerticalList cards={fetchedExhibits[0] ?? []}
                                                   numberOfCards={fetchedExhibits[0]?.length ?? 0}
                                                   height={700}
-                                                  width={360}/>}
+                                                  width={verticalListAdaptiveStyle.verticalListWidth}
+                                                  itemSize={verticalListAdaptiveStyle.verticalListItemSize}/>}
                         </div>
                     </div>}
             </div>

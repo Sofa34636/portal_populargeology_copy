@@ -83,3 +83,106 @@
     }
   }
 }
+
+@media (min-width: 1300px) {
+  .exhibit {
+    .mainContainer {
+      padding-right: 5px;
+      .imageSourcesContainer {
+        .imageContainer {
+          .image {
+
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1199px) and (max-width: 1299px) {
+  .exhibit {
+    .mainContainer {
+      padding-right: 5px;
+      .imageSourcesContainer {
+        .imageContainer {
+          .image {
+            width: 300px;
+            height: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .exhibit {
+    .mainContainer {
+      padding-right: 5px;
+      .imageSourcesContainer {
+        .imageContainer {
+          .image {
+            width: 250px;
+            height: 250px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 831px) and (max-width: 991px) {
+  .exhibit {
+    .mainContainer {
+      padding-right: 5px;
+      .imageSourcesContainer {
+        .imageContainer {
+          .image {
+            width: 200px;
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 830px) {
+  .exhibit {
+    .mainContainer {
+      flex-direction: column;
+      padding-right: 5px;
+      .imageSourcesContainer {
+        .imageContainer {
+          display: flex;
+          justify-content: center;
+          .image {
+            width: 350px;
+            height: 350px;
+          }
+        }
+        .sourcesContainer {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .exhibit {
+    .mainContainer {
+      .imageSourcesContainer {
+        .imageContainer {
+          .image {
+            width: 300px;
+            height: 300px;
+          }
+        }
+      }
+    }
+  }
+}
