@@ -1,10 +1,12 @@
 .exhibit {
   color: $white;
-  .grid {
+  .mainContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
     padding-top: 25px;
     padding-bottom: 20px;
-    .imageSourcesGrid {
-      .container {
+    .imageSourcesContainer {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -20,7 +22,7 @@
           padding-right: 20px;
           display: flex;
           flex-direction: row;
-          align-items: center;
+          align-items: baseline;
           gap: 20px;
           h5 {
             font-size: 14px;
@@ -38,16 +40,16 @@
           }
         }
       }
-    }
-    .middleGrid {
-      .container {
+    .middleContainer {
         display: flex;
         flex-direction: column;
         gap: 20px;
-        .title {
-          white-space: normal;
-          overflow: auto;
+        .exhibitTitle {
+          height: 60px;
+          word-break: break-word;
+          overflow-y: auto;
           h1 {
+            text-transform: uppercase;
             font-size: 24px;
             line-height: 32px;
             font-family: RSRegular, serif;
@@ -56,6 +58,7 @@
 
         .subtitle {
           h4 {
+            text-transform: uppercase;
             font-size: 16px;
             line-height: 16px;
             color: #B9B9B9;
@@ -66,24 +69,17 @@
         .content {
           white-space: normal;
           overflow: auto;
-
           p {
             color: #B9B9B9;
             font-size: 14px;
             line-height: 20px;
+            word-break: break-word;
             white-space: normal;
-            overflow: auto;
           }
+          max-height: 580px;
         }
       }
+    .cardVerticalListContainer {
     }
-    .cardVerticalListGrid {
-      .container {
-
-      }
-    }
-  }
-  .goBackButton {
-
   }
 }
