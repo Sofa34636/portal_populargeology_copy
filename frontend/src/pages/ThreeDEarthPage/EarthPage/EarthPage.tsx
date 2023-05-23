@@ -29,6 +29,7 @@ export const  EarthPage = () => {
   useEffect(() => {
     dispatch(changeTime(timeTypes[timeParam]))
     dispatch(changeInstrument(instrumentTypes.earth))
+    restoreContext()
   }, [])
 
 
@@ -47,9 +48,6 @@ export const  EarthPage = () => {
     );
   }
 
-  useEffect( () =>
-    () => restoreContext()
-  ,[]);
 
   const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeTypes[timeParam])+1)
   const navigate = useNavigate()
