@@ -75,6 +75,13 @@ class Earth(models.Model):
     text = models.TextField()
     time = models.CharField(max_length=13, choices=EARTH_TIMES)
 
+    # more about Earth
+    text_more = models.TextField(blank=True)
+    image_more = models.ImageField(upload_to='exhibits', null=True, blank=True)
+    src_article = models.CharField(max_length=100, blank=True)
+    src_magazine = models.CharField(max_length=500, blank=True)
+
+    # textures
     ambientMap = models.FileField(upload_to='textures', null=True, blank=True)
     baseMap = models.FileField(upload_to='textures', null=True, blank=True)
     heightMap = models.FileField(upload_to='textures', null=True, blank=True)
