@@ -15,7 +15,7 @@ interface IBreadcrumbsComponentProps {
 
 export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
 
-  const {firstCrumb, secondCrumb} = props
+  const {firstCrumb} = props
   const {time, instrument } = useAppSelector((state) => state.timeLineReducer);
   const { changeTime, changeInstrument } = timeLineSlice.actions;
   const dispatch = useAppDispatch()
@@ -96,11 +96,6 @@ export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
     }
 
   }, [time, instrument])
-
-  useEffect(() => {
-    console.log(firstCrumb, secondCrumb)
-  }, [])
-
 
   return (
         <div className="breadcrumbs_container">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Layout } from '../../../components/Layout/Layout';
 import Grid from '@mui/material/Grid';
 import { Canvas,   } from '@react-three/fiber';
@@ -6,25 +6,54 @@ import {Suspense} from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import './EarthPage.scss';
 import { Earth } from '../../../components/ToolComponents/Earth/Earth';
-import { useAppSelector } from '../../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
 
 
 import { useGetEarthByIdQuery } from '../../../store/services/EarthService'
 import { pageRedirect } from '../../pageRedirect'
-import { historyOfEarth } from '../../../types/timeline'
+import { historyOfEarth, instrumentTypes, timeTypes } from '../../../types/timeline'
 import Button from '@mui/material/Button'
+import { WebGLRenderer } from 'three';
 
-
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { timeLineSlice } from '../../../store/reducers/timeLineSlice'
 
 
 export const  EarthPage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
+  const { time: timeParam } = useParams()
+  const { changeTime, changeInstrument } = timeLineSlice.actions;
+  const dispatch = useAppDispatch()
 
 
+  useEffect(() => {
+    dispatch(changeTime(timeTypes[timeParam]))
+    dispatch(changeInstrument(instrumentTypes.earth))
+  }, [])
 
-  const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeState)+1)
+
+  const renderer = new WebGLRenderer({ powerPreference: 'high-performance' });
+  const restoreContext = () => {
+    const canvas = renderer.domElement;
+    canvas.addEventListener(
+      'webglcontextlost',
+      function (event) {
+        event.preventDefault();
+        setTimeout(function () {
+          renderer.forceContextRestore();
+        }, 1);
+      },
+      false
+    );
+  }
+
+  useEffect( () =>
+    () => restoreContext()
+  ,[]);
+
+  const { data, error } = useGetEarthByIdQuery(historyOfEarth.indexOf(timeTypes[timeParam])+1)
   const navigate = useNavigate()
+
 
   const ProgressCircle = () => {
     return (

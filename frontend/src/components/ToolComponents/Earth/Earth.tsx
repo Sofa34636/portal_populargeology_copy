@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRef } from 'react';
 
 import { useFrame, useLoader } from '@react-three/fiber';
@@ -30,6 +30,30 @@ export function Earth(data: IEarth) {
     const {x, y, z} = state.camera.position;
     pointLightRef.current.position.set(x,y,z)
   });
+
+  useEffect(() => {
+    const cloudsMesh = cloudsRef.current;
+    const earthMesh = earthRef.current;
+
+    return () => {
+
+      aoMap.dispose();
+      baseMap.dispose();
+      heightMap.dispose();
+      metallicMap.dispose();
+      normalMap.dispose();
+      roughnessMap.dispose();
+      cloudsMap.dispose();
+
+
+      cloudsMesh.material = null;
+      earthMesh.material = null;
+
+      cloudsRef.current = null;
+      earthRef.current = null;
+      pointLightRef.current = null;
+    };
+  }, []);
 
   return (
     <>
@@ -72,7 +96,7 @@ export function Earth(data: IEarth) {
         enableZoom={false}
         enablePan={false}
         enableRotate={true}
-        rotateSpeed={0.15}
+        rotateSpeed={0.1}
         autoRotate={true}
         autoRotateSpeed={0.15}
       />
