@@ -1,97 +1,95 @@
 .exhibit {
   color: $white;
   .mainContainer {
+    height: 75vh;
     display: flex;
     flex-direction: row;
     gap: 20px;
     padding-top: 25px;
     padding-bottom: 20px;
-    .imageSourcesContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
 
-        .imageContainer {
-          .image {
-            width: 400px;
-            height: 350px;
-          }
-        }
-
-        .sourcesContainer {
-          padding-right: 20px;
-          display: flex;
-          flex-direction: row;
-          align-items: baseline;
-          gap: 20px;
-          h5 {
-            font-size: 14px;
-            line-height: 20px;
-            text-transform: none;
-            font-family: RSLight, serif;
-            color: #B9B9B9;
-          }
-          .sources {
-            font-size: 14px;
-            line-height: 14px;
-            text-transform: none;
-            font-family: RSLight, serif;
-            color: #B9B9B9;
-          }
+    .leftContainer {
+      overflow-y: auto;
+      padding-right: 5px;
+      .imageContainer {
+        float: left;
+        padding-right: 25px;
+        .image {
+          width: 391px;
+          height: 363px;
         }
       }
-    .middleContainer {
+    }
+
+    .content {
+
+      .exhibitTitle {
+        max-height: 60px;
+        word-break: break-word;
+        overflow-y: auto;
+        margin-bottom: 20px;
+
+        h1 {
+          text-transform: uppercase;
+          font-size: 24px;
+          line-height: 32px;
+          font-family: RSRegular, serif;
+        }
+      }
+
+      .subtitle {
+        padding-bottom: 20px;
+        h4 {
+          text-transform: uppercase;
+          font-size: 16px;
+          line-height: 16px;
+          color: #B9B9B9;
+          font-family: RSLight, serif;
+        }
+      }
+      p {
+        color: #B9B9B9;
+        font-size: 14px;
+        line-height: 20px;
+        word-break: break-word;
+        white-space: normal;
+        //overflow: auto; // ломает float
+      }
+      .sourcesContainer {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: baseline;
         gap: 20px;
-        .exhibitTitle {
-          height: 60px;
-          word-break: break-word;
-          overflow-y: auto;
-          h1 {
-            text-transform: uppercase;
-            font-size: 24px;
-            line-height: 32px;
-            font-family: RSRegular, serif;
-          }
+        h5 {
+          font-size: 14px;
+          line-height: 20px;
+          text-transform: none;
+          font-family: RSLight, serif;
+          color: #B9B9B9;
         }
 
-        .subtitle {
-          h4 {
-            text-transform: uppercase;
-            font-size: 16px;
-            line-height: 16px;
-            color: #B9B9B9;
-            font-family: RSLight, serif;
-          }
-        }
-
-        .content {
+        .sources {
+          font-size: 14px;
+          line-height: 14px;
+          text-transform: none;
           white-space: normal;
-          overflow: auto;
-          p {
-            color: #B9B9B9;
-            font-size: 14px;
-            line-height: 20px;
-            word-break: break-word;
-            white-space: normal;
-          }
-          max-height: 580px;
+          font-family: RSLight, serif;
+          color: #B9B9B9;
         }
       }
+    }
+
     .cardVerticalListContainer {
     }
   }
 }
 
-@media (min-width: 1300px) {
+@media screen and (min-width: 1300px) {
   .exhibit {
     .mainContainer {
-      padding-right: 5px;
-      .imageSourcesContainer {
+      .leftContainer {
         .imageContainer {
           .image {
-
           }
         }
       }
@@ -99,11 +97,10 @@
   }
 }
 
-@media (min-width: 1199px) and (max-width: 1299px) {
+@media screen and (min-width: 1199px) and (max-width: 1299px) {
   .exhibit {
     .mainContainer {
-      padding-right: 5px;
-      .imageSourcesContainer {
+      .leftContainer {
         .imageContainer {
           .image {
             width: 300px;
@@ -119,8 +116,7 @@
 @media (min-width: 992px) and (max-width: 1199px) {
   .exhibit {
     .mainContainer {
-      padding-right: 5px;
-      .imageSourcesContainer {
+      .leftContainer {
         .imageContainer {
           .image {
             width: 250px;
@@ -133,11 +129,10 @@
 }
 
 /* Portrait tablets and small desktops */
-@media (min-width: 831px) and (max-width: 991px) {
+@media screen and (min-width: 831px) and (max-width: 991px) {
   .exhibit {
     .mainContainer {
-      padding-right: 5px;
-      .imageSourcesContainer {
+      .leftContainer {
         .imageContainer {
           .image {
             width: 200px;
@@ -150,12 +145,17 @@
 }
 
 /* Landscape phones and portrait tablets */
-@media (max-width: 830px) {
+@media screen and (max-width: 830px) {
   .exhibit {
     .mainContainer {
+      height: inherit;
       flex-direction: column;
       padding-right: 5px;
-      .imageSourcesContainer {
+      .leftContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        float: none;
         .imageContainer {
           display: flex;
           justify-content: center;
@@ -164,22 +164,66 @@
             height: 350px;
           }
         }
-        .sourcesContainer {
-          justify-content: center;
+        .content {
+          .sourcesContainer {
+            justify-content: center;
+          }
         }
       }
     }
   }
 }
 
-@media (max-width: 670px) {
+@media screen and (min-width: 472px) and (max-width: 670px) {
   .exhibit {
     .mainContainer {
-      .imageSourcesContainer {
+      .leftContainer {
         .imageContainer {
           .image {
             width: 300px;
             height: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 471px) {
+  .exhibit {
+    .mainContainer {
+      .leftContainer {
+        .imageContainer {
+          .image {
+            width: 200px;
+            height: 200px;
+          }
+        }
+        .content {
+          .sourcesContainer {
+            h5 {
+              font-size: 12px;
+            }
+
+            .sources {
+              font-size: 12px;
+            }
+          }
+          .exhibitTitle {
+            h1 {
+              font-size: 18px;
+              line-height: 26px;
+            }
+          }
+          .subtitle {
+            h4 {
+              font-size: 12px;
+              line-height: 12px;
+            }
+          }
+          p {
+            font-size: 10px;
+            line-height: 18px;
           }
         }
       }
