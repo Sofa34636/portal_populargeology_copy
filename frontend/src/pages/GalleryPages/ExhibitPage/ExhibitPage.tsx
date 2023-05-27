@@ -5,25 +5,7 @@ import { useAppSelector } from '../../../hooks/redux'
 import { CardVerticalList } from "../../../components/CardVerticalList/CardVerticalList";
 import { useGetExhibitById } from "../../../hooks/useGetExhibitById";
 import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
-
-const cardVerticalListAdaptiveStyle = (width: number) => {
-    if (width <= 471) {
-        return {verticalListWidth: 220, verticalListItemSize: 215}
-    }
-    if (width > 471 && width <= 670) {
-        return {verticalListWidth: 335, verticalListItemSize: 280}
-    } else if (width > 670 && width <= 830) {
-        return {verticalListWidth: 335, verticalListItemSize: 280}
-    } else if (width > 831 && width <= 991) {
-        return {verticalListWidth: 190, verticalListItemSize: 200}
-    } else if (width > 991 && width <= 1199) {
-        return {verticalListWidth: 270, verticalListItemSize: 240}
-    } else if (width > 1199 && width <= 1299) {
-        return {verticalListWidth: 270, verticalListItemSize: 240}
-    } else {
-        return {verticalListWidth: 335, verticalListItemSize: 280}
-    }
-}
+import { cardVerticalListResponsiveStyle } from "../../../utils/cardVerticalListResponsiveStyle";
 
 
 export const ExhibitPage = () => {
@@ -32,7 +14,7 @@ export const ExhibitPage = () => {
     const { id } = useParams()
     const [contentSize, setContentSize] =
         useState<{width: number, height: number} | null>(null)
-    const [verticalListAdaptiveStyle, setVerticalListAdaptiveStyle] =
+    const [verticalListResponsiveStyle, setVerticalListResponsiveStyle] =
         useState<{verticalListWidth: number, verticalListItemSize: number}>({verticalListWidth: 330,
                                                                                       verticalListItemSize: 80})
     const { isLoadingExhibit, dataExhibit } = useGetExhibitById(+id, timeState)
@@ -43,12 +25,12 @@ export const ExhibitPage = () => {
         }
         const contentContainer = document.querySelector('.content')
         setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
-        setVerticalListAdaptiveStyle(cardVerticalListAdaptiveStyle(window.innerWidth))
+        setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
 
 
         const handleContentResize = () => {
             setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
-            setVerticalListAdaptiveStyle(cardVerticalListAdaptiveStyle(window.innerWidth))
+            setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
         }
         window.addEventListener('resize', handleContentResize)
 
@@ -91,7 +73,6 @@ export const ExhibitPage = () => {
                                 {
                                     dataExhibit?.text?.replace(/\r/g, '')?.split(/\n/g)?.map((paragraph, index) => {
                                         if (paragraph != '') {
-                                            // console.log(contentSize)
                                             return (
                                                 <p key={index}>
                                                     {paragraph}
@@ -106,16 +87,21 @@ export const ExhibitPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='cardVerticalListContainer'>
-                            { isLoadingExhibits ? <span>Загрузка...</span> :
-                                <CardVerticalList cards={fetchedExhibits[0] ?? []}
-                                                  numberOfCards={fetchedExhibits[0]?.length ?? 0}
-                                                  height={isNaN(contentSize?.height) || contentSize?.width <= 830 ?
-                                                      660 :
-                                                      contentSize?.height}
-                                                  width={verticalListAdaptiveStyle.verticalListWidth}
-                                                  itemSize={verticalListAdaptiveStyle.verticalListItemSize}/>}
-                        </div>
+                        {
+                            isLoadingExhibits ?
+                                <div>Загрузка...</div> :
+                                    fetchedExhibits[0]?.length != 0 ?
+                                        <div className='cardVerticalListContainer'>
+                                            <CardVerticalList cards={fetchedExhibits[0] ?? []}
+                                                              numberOfCards={fetchedExhibits[0]?.length ?? 0}
+                                                              height={isNaN(contentSize?.height) || contentSize?.width <= 830 ?
+                                                                  660 :
+                                                                  contentSize?.height}
+                                                              width={verticalListResponsiveStyle.verticalListWidth}
+                                                              itemSize={verticalListResponsiveStyle.verticalListItemSize}/>
+                                        </div> :
+                                            <></>
+                        }
                     </div>}
             </div>
         </Layout>

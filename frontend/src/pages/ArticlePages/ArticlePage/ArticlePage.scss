@@ -5,13 +5,13 @@
     padding-top: 30px;
     display: flex;
     flex-direction: row;
-
+    gap: 20px;
+    max-height: 75vh;
     .leftContainer {
         display: flex;
         flex-direction: column;
         padding-top: 32px;
-        padding-right: 5%;
-        width: 70%;
+        padding-right: 5px;
 
         .subtitle {
             h4 {
@@ -32,33 +32,273 @@
         }
 
         .sources {
-            font-size: 14px;
-            line-height: 20px;
             padding-bottom: 20px;
-            color: #B9B9B9;
-            display: flex;
-            align-items: center;
         }
 
         .content {
 
-            word-wrap: break-word;
-            font-size: 14px;
-            line-height: 20px;
+
             padding-top: 32px;
-            color: #B9B9B9;
-            white-space: normal;
-            padding-right: 6px;
-            max-height: 50vh;
-            overflow-y: auto;
+
+            padding-right: 5px;
+            overflow: auto;
+            p {
+                color: #B9B9B9;
+                white-space: normal;
+                word-break: break-word;
+                font-size: 14px;
+                line-height: 20px;
+            }
         }
     }
 
     .rightContainer {
-        left: 50%;
-        right: 0;
-        top: 10%;
-        bottom: 10%;
-        max-height: 100vh;
+
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .article {
+        .leftContainer {
+
+            .subtitle {
+                h4 {
+                    font-size: 28px;
+                    line-height: 28px;
+                }
+            }
+
+            .title {
+                h1 {
+                    font-size: 30px;
+                    line-height: 40px;
+                }
+            }
+
+            .sources {
+            }
+
+            .content {
+                p {
+                    font-size: 24px;
+                    line-height: 30px;
+                }
+            }
+        }
+
+        .rightContainer {
+
+        }
+    }
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1919px) {
+    .article {
+        .leftContainer {
+
+            //.subtitle {
+            //    h4 {
+            //        font-size: 28px;
+            //        line-height: 28px;
+            //    }
+            //}
+            //
+            //.title {
+            //    h1 {
+            //        font-size: 30px;
+            //        line-height: 40px;
+            //    }
+            //}
+            //
+            //.sources {
+            //}
+            //
+            //.content {
+            //    p {
+            //        font-size: 24px;
+            //        line-height: 26px;
+            //    }
+            //}
+        }
+
+        .rightContainer {
+
+        }
+    }
+}
+
+@media screen and (min-width: 1199px) and (max-width: 1299px) {
+    .article {
+        .leftContainer {
+
+            .subtitle {
+                h4 {
+                }
+            }
+
+            .title {
+                h1 {
+                }
+            }
+
+            .sources {
+                padding-bottom: 16px;
+            }
+
+            .content {
+
+            }
+        }
+
+        .rightContainer {
+
+        }
+    }
+}
+
+/* Portrait tablets and medium desktops */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .article {
+        .leftContainer {
+
+            .subtitle {
+                h4 {
+                }
+            }
+
+            .title {
+                padding-bottom: 14px;
+                h1 {
+                }
+            }
+
+            .sources {
+            }
+
+            .content {
+
+            }
+        }
+
+        .rightContainer {
+
+        }
+    }
+}
+
+/* Portrait tablets and small desktops */
+@media screen and (min-width: 831px) and (max-width: 991px) {
+    .article {
+        .leftContainer {
+
+            .subtitle {
+                h4 {
+                }
+            }
+
+            .title {
+                padding-bottom: 12px;
+                h1 {
+                }
+            }
+
+            .sources {
+            }
+
+            .content {
+
+            }
+        }
+
+        .rightContainer {
+
+        }
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media screen and (max-width: 830px) {
+    .article {
+        flex-direction: column;
+        .leftContainer {
+            justify-content: center;
+            .subtitle {
+                h4 {
+                }
+            }
+
+            .title {
+                padding-bottom: 8px;
+                h1 {
+                }
+            }
+
+            .sources {
+            }
+
+            .content {
+
+            }
+        }
+
+        .rightContainer {
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (min-width: 472px) and (max-width: 670px) {
+    .article {
+        .leftContainer {
+
+            .subtitle {
+                h4 {
+                }
+            }
+
+            .title {
+                h1 {
+                }
+            }
+
+            .sources {
+            }
+
+            .content {
+
+            }
+        }
+
+        .rightContainer {
+
+        }
+    }
+}
+
+@media screen and (max-width: 471px) {
+    .article {
+        .leftContainer {
+
+            .subtitle {
+                h4 {
+                }
+            }
+
+            .title {
+                h1 {
+                }
+            }
+
+            .sources {
+            }
+
+            .content {
+
+            }
+        }
+
+        .rightContainer {
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { Layout } from '../../../components/Layout/Layout';
 import { ArticleSourcesMenu } from '../../../components/ToolComponents/Article/ArticleSourcesMenu/ArticleSourcesMenu'
@@ -6,12 +6,17 @@ import { useAppSelector } from '../../../hooks/redux'
 import {CardVerticalList} from "../../../components/CardVerticalList/CardVerticalList";
 import { useFetchAllArticles } from "../../../hooks/useFetchAllArticles";
 import {useGetArticleById} from "../../../hooks/useGetArticleById";
-import './ArticlePage.scss'
+import {cardVerticalListResponsiveStyle} from "../../../utils/cardVerticalListResponsiveStyle";
 
 export const ArticlePage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
   const navigate = useNavigate()
   const { id } = useParams()
+    const [contentSize, setContentSize] =
+        useState<{width: number, height: number} | null>(null)
+    const [verticalListResponsiveStyle, setVerticalListResponsiveStyle] =
+        useState<{verticalListWidth: number, verticalListItemSize: number}>({verticalListWidth: 330,
+            verticalListItemSize: 280})
 
   const { isLoadingArticle, dataArticle } = useGetArticleById(+id, timeState)
 
@@ -19,6 +24,20 @@ export const ArticlePage = () => {
         if (dataArticle == undefined && !isLoadingArticle) {
             navigate('/*')
         }
+      const contentContainer = document.querySelector('.content')
+      setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
+      setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
+
+
+      const handleContentResize = () => {
+          setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
+          setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
+      }
+      window.addEventListener('resize', handleContentResize)
+
+      return () => {
+          window?.removeEventListener('resize', handleContentResize)
+      }
   }, [dataArticle])
 
   const { isLoadingArticles, fetchedArticles } = useFetchAllArticles(10, timeState, 10)
@@ -44,7 +63,9 @@ export const ArticlePage = () => {
                 <div className="sources">
                     <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/>
                 </div>
-                <div className="content">
+                <div className="content" style={{maxHeight: isNaN(contentSize?.height) || contentSize?.width <= 830 ?
+                                                            660 :
+                                                            contentSize?.height}}>
                     {dataArticle?.text?.replace(/\r/g, '')?.split(/\n/)?.map((paragraph, index) => {
                         return (
                             <p key={index}>
@@ -55,43 +76,23 @@ export const ArticlePage = () => {
                 </div>
             </div>
             <div className="rightContainer">
-                { isLoadingArticles ? <span>Загрузка...</span> :
-                    <CardVerticalList cards={fetchedArticles[0] ?? []}
-                                      numberOfCards={fetchedArticles[0]?.length ?? 0}
-                                      height={6600}
-                                      width={360}
-                                      itemSize={280}/>
+                {
+                    isLoadingArticles ?
+                        <div>Загрузка...</div> :
+                        fetchedArticles[0]?.length != 0 ?
+                            <div className='cardVerticalListContainer'>
+                                <CardVerticalList cards={fetchedArticles[0] ?? []}
+                                                  numberOfCards={fetchedArticles[0]?.length ?? 0}
+                                                  height={isNaN(contentSize?.height) || contentSize?.width <= 830 ?
+                                                      660 :
+                                                      contentSize?.height}
+                                                  width={verticalListResponsiveStyle.verticalListWidth}
+                                                  itemSize={verticalListResponsiveStyle.verticalListItemSize}/>
+                            </div> :
+                            <></>
                 }
             </div>
         </div>
-      {/*<Grid className="article" container spacing={0}>*/}
-      {/*  <Grid className="leftContainer" item xs={9}>*/}
-      {/*      <div className="subtitle">*/}
-      {/*          <h4>{dataArticle?.time_ago}</h4>*/}
-      {/*      </div>*/}
-      {/*      <div className="title">*/}
-      {/*          <h1>{dataArticle?.title}</h1>*/}
-      {/*      </div>*/}
-      {/*      <div className="sources">*/}
-      {/*          <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/>*/}
-      {/*      </div>*/}
-      {/*      <div className="content">*/}
-      {/*          {dataArticle?.text?.replace(/\r/g, '')?.split(/\n/)?.map((paragraph, index) => {*/}
-      {/*              return (*/}
-      {/*                  <p key={index}>*/}
-      {/*                      {paragraph}*/}
-      {/*                  </p>*/}
-      {/*              )*/}
-      {/*          })}*/}
-      {/*      </div>*/}
-      {/*  </Grid>*/}
-      {/*  <Grid className="rightContainer" item xs={3}>*/}
-      {/*       { isLoadingArticles ? <span>Загрузка...</span> :*/}
-      {/*          <CardVerticalList cards={fetchedArticles[0] ?? []}*/}
-      {/*                            numberOfCards={fetchedArticles[0]?.length ?? 0} />*/}
-      {/*       }*/}
-      {/*  </Grid>*/}
-      {/*</Grid>*/}
     </Layout>
   );
 };
