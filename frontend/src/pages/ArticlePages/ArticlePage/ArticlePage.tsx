@@ -7,7 +7,6 @@ import {CardVerticalList} from "../../../components/CardVerticalList/CardVertica
 import { useFetchAllArticles } from "../../../hooks/useFetchAllArticles";
 import {useGetArticleById} from "../../../hooks/useGetArticleById";
 import {cardVerticalListResponsiveStyle} from "../../../utils/cardVerticalListResponsiveStyle";
-import Linkify from "linkify-react";
 
 export const ArticlePage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -69,9 +68,7 @@ export const ArticlePage = () => {
                                                             contentSize?.height}}>
                     {dataArticle?.text?.replace(/\r/g, '')?.split(/\n/)?.map((paragraph, index) => {
                         return (
-                            <Linkify as='p' key={index} options={{target: '_blank'}}>
-                                {paragraph}
-                            </Linkify>
+                            <p key={index} dangerouslySetInnerHTML={{__html: paragraph}} />
                         )
                     })}
                 </div>

@@ -50,13 +50,11 @@ export const ArticleSourcesMenu: React.FC<{reference: string; magazine: string}>
             >
                 <MenuItem className='sources-menu_item' onClick={handleClose}>
                     <div className='sources-menu_item__title'><h5>Статья:</h5></div>
-                    <div className='sources-menu_item__ref' >
-                        <a href={linkifyString(reference)} rel="noreferrer" target="_blank">{reference}</a>
-                    </div>
+                    <div className='sources-menu_item__ref' dangerouslySetInnerHTML={{__html: reference}} />
                 </MenuItem>
                 <MenuItem className='sources-menu_item' onClick={handleClose}>
                     <div className='sources-menu_item__title'><h5>Журнал:</h5></div>
-                    <div className='sources-menu_item__journal'>{magazine}</div>
+                    <div className='sources-menu_item__journal' dangerouslySetInnerHTML={{__html: magazine}}></div>
                 </MenuItem>
             </Menu>
         </div>

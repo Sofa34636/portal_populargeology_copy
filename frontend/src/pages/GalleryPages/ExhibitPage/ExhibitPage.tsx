@@ -6,7 +6,6 @@ import { CardVerticalList } from "../../../components/CardVerticalList/CardVerti
 import { useGetExhibitById } from "../../../hooks/useGetExhibitById";
 import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
 import { cardVerticalListResponsiveStyle } from "../../../utils/cardVerticalListResponsiveStyle";
-import Linkify from "linkify-react";
 
 
 export const ExhibitPage = () => {
@@ -75,16 +74,14 @@ export const ExhibitPage = () => {
                                     dataExhibit?.text?.replace(/\r/g, '')?.split(/\n/g)?.map((paragraph, index) => {
                                         if (paragraph != '') {
                                             return (
-                                                <Linkify as='p' key={index} options={{target: '_blank'}}>
-                                                    {paragraph}
-                                                </Linkify>
+                                                <p key={index} dangerouslySetInnerHTML={{__html: paragraph}} />
                                             )
                                         }
                                     })
                                 }
                                 <div className='sourcesContainer'>
                                     <h5>Источник:</h5>
-                                    <span className='sources'>{dataExhibit?.src_article}</span>
+                                    <span className='sources' dangerouslySetInnerHTML={{__html: dataExhibit?.src_article}}></span>
                                 </div>
                             </div>
                         </div>

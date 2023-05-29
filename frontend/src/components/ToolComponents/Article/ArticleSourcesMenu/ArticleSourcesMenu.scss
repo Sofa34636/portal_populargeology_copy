@@ -33,10 +33,14 @@
       flex-direction: row;
       align-items: flex-start;
       &__ref {
+        color: #B9B9B9;
+        font-size: small;
+        &:hover {
+          color: $orange;
+        }
         a {
           color: #B9B9B9;
           font-size: small;
-          text-decoration: underline;
           &:hover {
             color: $orange;
           }
@@ -49,6 +53,15 @@
         word-break: normal;
         &:hover {
           color: $orange;
+        }
+        a {
+          color: #B9B9B9;
+          font-size: small;
+          white-space: pre-wrap;
+          word-break: normal;
+          &:hover {
+            color: $orange;
+          }
         }
       }
       &__title {

@@ -82,6 +82,11 @@
             white-space: normal;
             font-family: RSLight, serif;
             color: #B9B9B9;
+            a {
+              &:hover {
+                color: $orange;
+              }
+            }
           }
         }
       }
