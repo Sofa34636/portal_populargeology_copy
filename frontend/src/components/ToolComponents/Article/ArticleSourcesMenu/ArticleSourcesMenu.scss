@@ -27,7 +27,7 @@
 #sources-menu {
   .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
     color: $white;
-    max-width: 1500px;
+    max-width: 70vw;
     .sources-menu_item {
       display: flex;
       flex-direction: row;
@@ -46,6 +46,7 @@
         color: #B9B9B9;
         font-size: small;
         white-space: pre-wrap;
+        word-break: normal;
         &:hover {
           color: $orange;
         }
@@ -78,7 +79,6 @@
   }
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 900px;
       .sources-menu_item {
         &__ref {
           a {
@@ -104,7 +104,6 @@
 @media screen and (min-width: 1300px) and (max-width: 1919px) {
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 900px;
       .sources-menu_item {
         &__ref {
           a {
@@ -124,7 +123,6 @@
 @media screen and (min-width: 1199px) and (max-width: 1299px) {
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 860px;
       .sources-menu_item {
         &__ref {
           a {
@@ -145,7 +143,7 @@
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 650px;
+      max-width: 60vw;
       .sources-menu_item {
         &__ref {
           a {
@@ -166,7 +164,7 @@
 @media screen and (min-width: 831px) and (max-width: 991px) {
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 590px;
+      max-width: 60vw;
       .sources-menu_item {
         &__ref {
           a {
@@ -187,7 +185,6 @@
 @media screen and (max-width: 830px) {
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 600px;
       .sources-menu_item {
         &__ref {
           a {
@@ -207,7 +204,6 @@
 @media screen and (min-width: 472px) and (max-width: 670px) {
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 300px;
       .sources-menu_item {
         &__ref {
           a {
@@ -227,13 +223,17 @@
 @media screen and (max-width: 471px) {
   #sources-menu {
     .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
-      max-width: 200px;
+      max-width: 75vw;
       .sources-menu_item {
         &__ref {
           a {
+            font-size: 16px;
+            line-height: 20px;
           }
         }
         &__journal {
+          font-size: 10px;
+          line-height: 16px;
         }
         &__title {
           h5 {

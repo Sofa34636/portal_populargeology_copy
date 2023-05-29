@@ -6,6 +6,7 @@ import { CardVerticalList } from "../../../components/CardVerticalList/CardVerti
 import { useGetExhibitById } from "../../../hooks/useGetExhibitById";
 import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
 import { cardVerticalListResponsiveStyle } from "../../../utils/cardVerticalListResponsiveStyle";
+import Linkify from "linkify-react";
 
 
 export const ExhibitPage = () => {
@@ -58,7 +59,7 @@ export const ExhibitPage = () => {
                 {isLoadingExhibit ? <span>Загрузка...</span> :
                     <div className='mainContainer'>
                         <div className='leftContainer' style={{maxHeight: isNaN(contentSize?.height) || contentSize?.width <= 830 ?
-                                                                          660 :
+                                                                          '80vh' :
                                                                           contentSize?.height}}>
                             <div className='imageContainer'>
                                 <img className='image' src={dataExhibit?.image} alt='exhibit'/>
@@ -74,9 +75,9 @@ export const ExhibitPage = () => {
                                     dataExhibit?.text?.replace(/\r/g, '')?.split(/\n/g)?.map((paragraph, index) => {
                                         if (paragraph != '') {
                                             return (
-                                                <p key={index}>
+                                                <Linkify as='p' key={index} options={{target: '_blank'}}>
                                                     {paragraph}
-                                                </p>
+                                                </Linkify>
                                             )
                                         }
                                     })
@@ -95,7 +96,7 @@ export const ExhibitPage = () => {
                                             <CardVerticalList cards={fetchedExhibits[0] ?? []}
                                                               numberOfCards={fetchedExhibits[0]?.length ?? 0}
                                                               height={isNaN(contentSize?.height) || contentSize?.width <= 830 ?
-                                                                  660 :
+                                                                  560 :
                                                                   contentSize?.height}
                                                               width={verticalListResponsiveStyle.verticalListWidth}
                                                               itemSize={verticalListResponsiveStyle.verticalListItemSize}/>

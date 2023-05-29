@@ -7,6 +7,7 @@ import {CardVerticalList} from "../../../components/CardVerticalList/CardVertica
 import { useFetchAllArticles } from "../../../hooks/useFetchAllArticles";
 import {useGetArticleById} from "../../../hooks/useGetArticleById";
 import {cardVerticalListResponsiveStyle} from "../../../utils/cardVerticalListResponsiveStyle";
+import Linkify from "linkify-react";
 
 export const ArticlePage = () => {
   const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
@@ -64,13 +65,13 @@ export const ArticlePage = () => {
                     <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/>
                 </div>
                 <div className="content" style={{maxHeight: isNaN(contentSize?.height) || contentSize?.width <= 830 ?
-                                                            660 :
+                                                            '80vh' :
                                                             contentSize?.height}}>
                     {dataArticle?.text?.replace(/\r/g, '')?.split(/\n/)?.map((paragraph, index) => {
                         return (
-                            <p key={index}>
+                            <Linkify as='p' key={index} options={{target: '_blank'}}>
                                 {paragraph}
-                            </p>
+                            </Linkify>
                         )
                     })}
                 </div>
@@ -84,7 +85,7 @@ export const ArticlePage = () => {
                                 <CardVerticalList cards={fetchedArticles[0] ?? []}
                                                   numberOfCards={fetchedArticles[0]?.length ?? 0}
                                                   height={isNaN(contentSize?.height) || contentSize?.width <= 830 ?
-                                                      660 :
+                                                      560 :
                                                       contentSize?.height}
                                                   width={verticalListResponsiveStyle.verticalListWidth}
                                                   itemSize={verticalListResponsiveStyle.verticalListItemSize}/>

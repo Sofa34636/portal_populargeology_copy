@@ -83,7 +83,7 @@ export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
   };
 
   useEffect(() => {
-    if (instrument === instrumentTypes.earth || instrument === instrumentTypes.relief) {
+    if (instrument === instrumentTypes.earth || instrument === instrumentTypes.reconstruction) {
       setIsEarthOrReliefPicked(true)
     } else {
       setIsEarthOrReliefPicked(false)
@@ -218,7 +218,7 @@ export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
                             key = {index}
 
                             className={clsx({'sub-menu__link': true, 'no_select': true,
-                            'disabled': (instrument === instrumentTypes.earth || instrument === instrumentTypes.relief) && (!isEarthTimePicked)
+                            'disabled': (instrument === instrumentTypes.earth || instrument === instrumentTypes.reconstruction) && (!isEarthTimePicked)
                             })}
                           >
                             <Link to = {`/${pageRedirect(time, instrument)}`}>

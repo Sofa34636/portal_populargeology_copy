@@ -6,7 +6,7 @@ import { VideoPage } from './pages/VideoPage/VideoPage';
 import { ExhibitListPage } from './pages/GalleryPages/ExhibitListPage/ExhibitListPage';
 import {ExhibitPage} from "./pages/GalleryPages/ExhibitPage/ExhibitPage";
 import { EarthPage } from './pages/ThreeDEarthPage/EarthPage/EarthPage';
-import { ReliefPage } from './pages/ReliefPage/ReliefPage';
+import { ReliefPage } from './pages/ReliefPages/ReliefPage/ReliefPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ArticlePage } from './pages/ArticlePages/ArticlePage/ArticlePage';
@@ -28,7 +28,7 @@ export default function App() {
     { path: '/:time/exhibits/:id', element: <ExhibitPage /> },
     { path: '/:time/earth', element: <EarthPage /> },
     { path: '/:time/earth/more', element: <EarthMorePage /> },
-    { path: '/:time/relief', element: <ReliefPage /> },
+    { path: '/:time/reconstruction', element: <ReliefPage /> },
     // { path: '/:time/relief/:id', element: <Relief /> },
     { path: '/*', element: <NotFoundPage /> },
   ];

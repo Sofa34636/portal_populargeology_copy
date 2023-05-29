@@ -41,7 +41,7 @@ export const instrumentTypes = {
   video: 'видео',
   articles: 'статьи',
   exhibits: 'галерея',
-  relief: 'рельеф',
+  reconstruction: 'реконструкция',
   earth: '3д земля'
 } as const;
 

@@ -50,6 +50,8 @@
     "eslint-plugin-react": "^7.32.2",
     "file-loader": "^6.2.0",
     "husky": "^8.0.3",
+    "linkify-react": "^4.1.1",
+    "linkifyjs": "^4.1.1",
     "lint-staged": "^13.2.2",
     "mini-css-extract-plugin": "^2.7.2",
     "node-polyfill-webpack-plugin": "^2.0.1",

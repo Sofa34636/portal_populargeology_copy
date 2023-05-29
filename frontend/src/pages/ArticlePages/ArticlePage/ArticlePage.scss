@@ -7,12 +7,13 @@
     flex-direction: row;
     gap: 20px;
     max-height: 75vh;
+
     .leftContainer {
         display: flex;
         flex-direction: column;
         padding-top: 32px;
         padding-right: 5px;
-
+        min-width: 70vw;
         .subtitle {
             h4 {
                 font-size: 16px;
@@ -190,7 +191,6 @@
 @media screen and (min-width: 831px) and (max-width: 991px) {
     .article {
         .leftContainer {
-
             .subtitle {
                 h4 {
                 }
@@ -221,7 +221,9 @@
     .article {
         flex-direction: column;
         .leftContainer {
+            padding-top: 0;
             justify-content: center;
+            max-height: 80vh;
             .subtitle {
                 h4 {
                 }
@@ -278,7 +280,6 @@
 @media screen and (max-width: 471px) {
     .article {
         .leftContainer {
-
             .subtitle {
                 h4 {
                 }

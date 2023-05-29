@@ -79,7 +79,7 @@ export const HomePage = () => {
           <div className="instrument_buttons">
             {
               Object.values(instrumentTypes).map((instrument, index) => {
-                let isNonActive = ( instrument === instrumentTypes.relief ||
+                let isNonActive = ( instrument === instrumentTypes.reconstruction ||
                                              instrument === instrumentTypes.earth ?
                                              'btn-deactivated':'' );
                 let isSelected = instrument === activeInstrumentButton ? 'btn-selected' : '';

@@ -33,7 +33,7 @@ export const Footer: React.FC<IFooterProps> = (props) => {
 
 
   useEffect(() => {
-    const isReliefOrEarth = instrumentState === instrumentTypes.relief || instrumentState === instrumentTypes.earth
+    const isReliefOrEarth = instrumentState === instrumentTypes.reconstruction || instrumentState === instrumentTypes.earth
     const startIndex = isReliefOrEarth ? 4 : 0;
 
     if (currentTimeIndex !== startIndex && currentTimeIndex !== Object.values(timeTypes).length - 1) {
@@ -50,7 +50,7 @@ export const Footer: React.FC<IFooterProps> = (props) => {
 
   const prevTime = () => {
     let prevTimeIndex;
-    if (instrumentState === instrumentTypes.relief || instrumentState === instrumentTypes.earth) {
+    if (instrumentState === instrumentTypes.reconstruction || instrumentState === instrumentTypes.earth) {
        prevTimeIndex = currentTimeIndex === 4 ? 4 : currentTimeIndex - 1;
     } else {
        prevTimeIndex = currentTimeIndex ? currentTimeIndex - 1 : currentTimeIndex;
