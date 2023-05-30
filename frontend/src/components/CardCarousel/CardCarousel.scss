@@ -1,5 +1,63 @@
 .card-carousel {
   padding-top: 25px;
+  height: 75vh;
+
+  .arrow {
+    .arrow--disabled {
+      display: none;
+    }
+  }
+
+  .cardsContainer {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+    .card_preview {
+      //width: 25%;
+      //height: 70%;
+      .photo {
+        //height: 85%;
+        //width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1919px) {
+
+}
+
+@media screen and (min-width: 1199px) and (max-width: 1299px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media screen and (min-width: 831px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media screen and (max-width: 830px) {
+
+}
+
+@media screen and (min-width: 472px) and (max-width: 670px) {
+
+}
+
+@media screen and (max-width: 471px) {
+
 }
 
 [class^="number-slide"],
