@@ -32,7 +32,11 @@ module.exports = {
         use: ['ts-loader']
       },
       {
-        test: /\.scss$/,
+        test: /\.min\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test:/\.(s*)css$/,
         exclude: /node_modules/,
         use: [
           {
@@ -52,19 +56,6 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.ttf$/i,
-      //   type: 'asset/resource'
-      // },
-      // {
-      //   test: /\.(jpg|png|svg)/,
-      //   use: {
-      //     loader: 'url-loader',
-      //     options: {
-      //       limit: 50000
-      //     }
-      //   }
-      // },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource', // <-- Assets module - asset/resource
