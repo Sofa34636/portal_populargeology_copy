@@ -34,6 +34,7 @@ export const  EarthPage = () => {
 
 
   const renderer = new WebGLRenderer({ powerPreference: 'high-performance' });
+
   const restoreContext = () => {
     const canvas = renderer.domElement;
     canvas.addEventListener(

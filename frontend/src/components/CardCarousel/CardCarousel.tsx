@@ -36,8 +36,9 @@ export const CardCarousel: React.FC<{cards: (IArticle | ScientificPublicationsPr
 
 
     const [currentSlide, setCurrentSlide] = React.useState(0)
-      const [loaded, setLoaded] = useState(false)
-      const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    const [loaded, setLoaded] = useState(false)
+
+    const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
       initial: 0,
       slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
@@ -46,6 +47,7 @@ export const CardCarousel: React.FC<{cards: (IArticle | ScientificPublicationsPr
       setLoaded(true)
     },
     })
+
       return (
       <>
         <div className="navigation-wrapper">
