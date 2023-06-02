@@ -36,9 +36,11 @@ class ReliefView(viewsets.ModelViewSet):
 class VideoView(viewsets.ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
+    filterset_fields = ['time']
 
 
 class ExhibitView(viewsets.ModelViewSet):
     queryset = Exhibit.objects.all()
     serializer_class = ExhibitSerializer
     filterset_fields = ['time']
+
