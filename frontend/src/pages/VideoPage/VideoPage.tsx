@@ -31,8 +31,14 @@ export const VideoPage = () => {
 
     if (!data) return <h1>loading...</h1>
 
+
     return (
-      <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={isLayoutDisplayed?'video':'hide'} headerDisplayStyle={isLayoutDisplayed?'default':'hide'} videoTimeAgo={data.time_ago}>
+      <Layout
+        time={timeState}
+        instrument={instrumentState}
+        footerDisplayStyle={isLayoutDisplayed?'video':'hide'}
+        headerDisplayStyle={isLayoutDisplayed?'default':'hide'}
+        videoTimeAgo={data.time_ago}>
           <VideoPlayer
                        videoUrl = {data[0].video}
                        layoutDisplay={displayLayout}
