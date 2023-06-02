@@ -73,7 +73,6 @@ export const Footer: React.FC<IFooterProps> = (props) => {
     navigate(`/${pageRedirect(newTime, instrumentState)}`)
   };
 
-
   switch (footerDisplayStyle) {
 
     case 'hide':
@@ -120,13 +119,21 @@ export const Footer: React.FC<IFooterProps> = (props) => {
     case 'video':
       return (
         <div className={"footer-video"}>
-          <Button color={'inherit'} className={prevButtonDisabled ? 'btn-deactivated' : ''} disableRipple={prevButtonDisabled} onClick={prevTime}>
+          <Button
+                  color={'inherit'}
+                  className={prevButtonDisabled ? 'btn-deactivated' : ''}
+                  disableRipple={prevButtonDisabled} onClick={prevTime}>
             Что было раньше?
           </Button>
-          <div className={'video-container__footer-title'}>
+          <div
+               className={'video-container__footer-title'}>
             <span>{videoTimeAgo}</span>
           </div>
-          <Button color={'inherit'} className={nextButtonDisabled ? 'btn-deactivated' : ''} disableRipple={nextButtonDisabled} onClick={nextTime}>
+          <Button
+                  color={'inherit'}
+                  className={nextButtonDisabled ? 'btn-deactivated' : ''}
+                  disableRipple={nextButtonDisabled}
+                  onClick={nextTime}>
             Что было дальше?
           </Button>
         </div>
