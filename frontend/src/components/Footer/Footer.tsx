@@ -13,11 +13,12 @@ import { footerDisplayStyles } from '../../types/layoutStyles'
 
 interface IFooterProps {
   footerDisplayStyle: footerDisplayStyles
+  videoTimeAgo?: string;
 }
 
 export const Footer: React.FC<IFooterProps> = (props) => {
 
-  const { footerDisplayStyle } = props;
+  const { videoTimeAgo, footerDisplayStyle } = props;
 
   const { time: timeState, instrument: instrumentState } = useAppSelector(
     (state) => state.timeLineReducer,
@@ -115,6 +116,22 @@ export const Footer: React.FC<IFooterProps> = (props) => {
           </Button>
         </div>
       )
+
+    case 'video':
+      return (
+        <div className={"footer-video"}>
+          <Button color={'inherit'} className={prevButtonDisabled ? 'btn-deactivated' : ''} disableRipple={prevButtonDisabled} onClick={prevTime}>
+            Что было раньше?
+          </Button>
+          <div className={'video-container__footer-title'}>
+            <span>{videoTimeAgo}</span>
+          </div>
+          <Button color={'inherit'} className={nextButtonDisabled ? 'btn-deactivated' : ''} disableRipple={nextButtonDisabled} onClick={nextTime}>
+            Что было дальше?
+          </Button>
+        </div>
+      )
+
   }
 
 

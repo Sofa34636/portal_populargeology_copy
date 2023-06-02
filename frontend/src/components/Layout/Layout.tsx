@@ -16,7 +16,7 @@ interface ILayoutProps {
   breadCrumbsSecondCrumb?: string;
   footerDisplayStyle: footerDisplayStyles;
   headerDisplayStyle: headerDisplayStyles;
-
+  videoTimeAgo?: string;
 }
 
 export const Layout: FC<ILayoutProps> = (props) => {
@@ -27,6 +27,7 @@ export const Layout: FC<ILayoutProps> = (props) => {
     breadCrumbsSecondCrumb,
     footerDisplayStyle,
     headerDisplayStyle,
+    videoTimeAgo,
   } = props
 
 
@@ -39,7 +40,7 @@ export const Layout: FC<ILayoutProps> = (props) => {
           { children }
         </main>
       <footer className='footer'>
-        <Footer footerDisplayStyle={footerDisplayStyle}/>
+        <Footer footerDisplayStyle={footerDisplayStyle} videoTimeAgo={videoTimeAgo}/>
       </footer>
     </div>
   );

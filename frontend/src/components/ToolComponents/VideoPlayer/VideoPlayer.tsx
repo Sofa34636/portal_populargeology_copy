@@ -1,18 +1,19 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 import './VideoPlayer.scss'
+import { Time } from '../../../types/timeline'
 
 interface IVideoPlayerProps {
   layoutHide: () => void;
   layoutDisplay: () => void;
   videoUrl: string;
-
 }
 export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
 
   const {videoUrl, layoutHide, layoutDisplay} = props;
   const [isControlsShown, setIsControlsShown] = useState(true);
   const controlsRef = useRef(null);
+  const playerRef = useRef(null);
 
   const [videoState, setVideoState] = useState({
     playing: true,
@@ -41,21 +42,29 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
   }, [isControlsShown]);
 
   const handleMouseMove = () => {
-
+    console.log('MouseMove')
     setIsControlsShown(true);
     layoutDisplay()
   };
 
   const handleMouseLeave = () => {
-
+    console.log('MouseLeave')
     const hideControlsTimer = setTimeout(() => {
       setIsControlsShown(false);
       layoutHide()
-    }, 4000);
+    }, 4000000);
     return () => {
       clearTimeout(hideControlsTimer);
     };
   };
+
+  const handlePlayBack = () => {
+    playerRef.current.seekTo(playerRef.current.getCurrentTime()-5)
+  }
+
+  const handlePlayForward = () => {
+    playerRef.current.seekTo(playerRef.current.getCurrentTime()+5)
+  }
 
 
   return (
@@ -63,7 +72,7 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
     <div className='video-container' style={isControlsShown ? null : {cursor: 'none'}} >
       <div className='video-container__body' onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
         <div className='video-container__controls' ref={controlsRef} style={isControlsShown ? null : { display: 'none' }}>
-          <div className={'video-container__controls__left-buttons'}>
+          <div className={'video-container__controls__left-buttons'} onClick={handlePlayBack}>
             <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M41.25 63.75L22.5 45L41.25 26.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M67.5 63.75L48.75 45L67.5 26.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -89,19 +98,22 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
           }
 
 
-          <div className={'video-container__controls__right-buttons'}>
+          <div className={'video-container__controls__right-buttons'} onClick={handlePlayForward}>
             <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M48.75 63.75L67.5 45L48.75 26.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M22.5 63.75L41.25 45L22.5 26.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
 
+
         </div>
       </div>
         <div  className={`video-container__overlay ${isControlsShown ? 'active' : ''}`}></div>
         <ReactPlayer
-          className='video-container__video'
+          ref={playerRef}
+          height="100%"
           width="100%"
+          className='video-container__video'
           url={videoUrl}
           playing={videoState.playing}
           muted={false}

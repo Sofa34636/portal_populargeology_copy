@@ -5,6 +5,7 @@ import { exhibitAPI } from "./services/ExhibitService";
 import timeLineReducer from './reducers/timeLineSlice';
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist"
+import { videoApi } from './services/VideoService'
 
 
 const persistConfig = {
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   [articleAPI.reducerPath]: articleAPI.reducer,
   [earthApi.reducerPath]: earthApi.reducer,
   [exhibitAPI.reducerPath]: exhibitAPI.reducer,
+  [videoApi.reducerPath]: videoApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -28,7 +30,7 @@ export const setupStore = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
-      }).concat([articleAPI.middleware, earthApi.middleware, exhibitAPI.middleware])
+      }).concat([articleAPI.middleware, earthApi.middleware, exhibitAPI.middleware, videoApi.middleware])
   });
 };
 

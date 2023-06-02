@@ -53,3 +53,21 @@
 	}
 
 }
+
+.footer-video {
+	display: flex;
+	justify-content: space-between;
+
+	button {
+		border: 1px solid $gray;
+		font-family: RSRegular, 'serif';
+		text-transform: uppercase;
+		width: 250px;
+		height: 30px;
+		&.btn-deactivated {
+			border: 1px solid #313131;
+			color: #313131;
+			cursor: default;
+		}
+	}
+}
