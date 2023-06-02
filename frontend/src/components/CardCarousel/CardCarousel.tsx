@@ -11,9 +11,6 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import {useLocation} from "react-router-dom";
 
-// https://github.com/Learus/react-material-ui-carousel
-
-
 function Arrow(props: {
   disabled: boolean
   left?: boolean
@@ -59,10 +56,9 @@ export const CardCarousel: React.FC<{cards: (IArticle | ScientificPublicationsPr
                     <Arrow
                         left
                         onClick={(e) =>
-                        {
-                            e.stopPropagation() || instanceRef.current?.prev()
-                            // console.log(instanceRef?.current?.container?.children)
-                        }
+                            {
+                                e.stopPropagation() || instanceRef.current?.prev()
+                            }
                         }
                         disabled={currentSlide === 0}
                     />
@@ -82,20 +78,19 @@ export const CardCarousel: React.FC<{cards: (IArticle | ScientificPublicationsPr
               })}
             </div>
             <div className='arrow--right__container'>
-            {loaded && instanceRef.current && (
-              <Arrow
-                onClick={(e) =>
-                  {
-                    e.stopPropagation() || instanceRef.current?.next()
-                    // console.log(instanceRef?.current?.container?.children)
-                  }
-                }
-                disabled={
-                    currentSlide ===
-                    cards?.length - 1
-                }
-              />
-            )}
+                {loaded && instanceRef.current && (
+                  <Arrow
+                    onClick={(e) =>
+                      {
+                        e.stopPropagation() || instanceRef.current?.next()
+                      }
+                    }
+                    disabled={
+                        currentSlide ===
+                        cards?.length - 1
+                    }
+                  />
+                )}
             </div>
         </div>
         {/*{loaded && instanceRef.current && (*/}

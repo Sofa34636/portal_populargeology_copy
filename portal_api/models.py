@@ -108,13 +108,13 @@ class Location(models.Model):
         return self.title
 
 
-class Relief(models.Model):
+class Reconstruction(models.Model):
     title = models.CharField(max_length=100)
     time_ago = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='reliefs', null=True, blank=True)
+    image = models.ImageField(upload_to='reconstructions', null=True, blank=True)
     text = models.TextField()
-    time = models.CharField(max_length=13, choices=ALL_TIMES)
+    location = models.ForeignKey('Location', null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.title

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Article, Earth, Location, Relief, Video, Exhibit
+from .models import Article, Earth, Location, Reconstruction, Video, Exhibit
 
 
 class ArticleSerializer(serializers.ModelSerializer):
@@ -52,9 +52,9 @@ class LocationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ReliefSerializer(serializers.ModelSerializer):
+class ReconstructionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Relief
+        model = Reconstruction
         fields = '__all__'
 
 

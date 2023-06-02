@@ -4,8 +4,8 @@ from h11 import Response
 
 # Create your views here.
 
-from .models import Article, Earth, Location, Relief, Video, Exhibit
-from .serializers import ArticleSerializer, EarthSerializer, LocationSerializer, ReliefSerializer, VideoSerializer, \
+from .models import Article, Earth, Location, Reconstruction, Video, Exhibit
+from .serializers import ArticleSerializer, EarthSerializer, LocationSerializer, ReconstructionSerializer, VideoSerializer, \
     ExhibitSerializer
 
 from rest_framework import viewsets, response, status
@@ -28,9 +28,9 @@ class LocationView(viewsets.ModelViewSet):
     serializer_class = LocationSerializer
 
 
-class ReliefView(viewsets.ModelViewSet):
-    queryset = Relief.objects.all()
-    serializer_class = ReliefSerializer
+class ReconstructionView(viewsets.ModelViewSet):
+    queryset = Reconstruction.objects.all()
+    serializer_class = ReconstructionSerializer
 
 
 class VideoView(viewsets.ModelViewSet):
