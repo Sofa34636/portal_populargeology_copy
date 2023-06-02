@@ -28,7 +28,6 @@ export const ArticlePage = () => {
       setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
       setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
 
-
       const handleContentResize = () => {
           setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
           setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))

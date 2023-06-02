@@ -9,7 +9,9 @@ export const useGetArticleById = (id: number, time: Time) => {
         useGetArticleByIdQuery({
             id,
             time
-        }, {pollingInterval: 1000})
+        }
+        // , {pollingInterval: 1000}
+        )
     const isLoadingArticle: boolean = isLoading
     const dataArticle: IArticle = data
 

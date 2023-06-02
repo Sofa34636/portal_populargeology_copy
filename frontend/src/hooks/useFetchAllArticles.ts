@@ -12,7 +12,9 @@ export const useFetchAllArticles = (groupOf = 6, time: Time, limit = 0) => {
         useFetchAllArticlesQuery({
             limit,
             time,
-        }, {pollingInterval: 1000})
+        }
+        // , {pollingInterval: 1000}
+        )
 
     const fillEarthArticleList = (fetchedData, groupOf_: number) => {
         const earthArticles: (IArticle | ScientificPublicationsProps)[][] = []

@@ -9,7 +9,9 @@ export const useFetchAllExhibits = (groupOf = 6, time: Time, limit = 0) => {
         useFetchAllExhibitsQuery({
             limit,
             time
-        }, {pollingInterval: 1000})
+        }
+        // , {pollingInterval: 1000}
+        )
 
     const isLoadingExhibits: boolean = isLoading
 
