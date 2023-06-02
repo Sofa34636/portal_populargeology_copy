@@ -21,7 +21,7 @@ export const ExhibitListPage = () => {
 
     useEffect(() => {
         dispatch(changeTime(timeTypes[timeParam]))
-        dispatch(changeInstrument(instrumentTypes.video))
+        dispatch(changeInstrument(instrumentTypes.exhibits))
     }, [])
 
     return (

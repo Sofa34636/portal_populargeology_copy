@@ -20,7 +20,7 @@ export const ArticleListPage = () => {
 
     useEffect(() => {
         dispatch(changeTime(timeTypes[timeParam]))
-        dispatch(changeInstrument(instrumentTypes.video))
+        dispatch(changeInstrument(instrumentTypes.articles))
     }, [])
 
   return (
