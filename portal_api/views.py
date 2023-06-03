@@ -26,11 +26,13 @@ class EarthView(viewsets.ModelViewSet):
 class LocationView(viewsets.ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+    filterset_fields = ['time']
 
 
 class ReconstructionView(viewsets.ModelViewSet):
     queryset = Reconstruction.objects.all()
     serializer_class = ReconstructionSerializer
+    filterset_fields = ['location']
 
 
 class VideoView(viewsets.ModelViewSet):

@@ -102,7 +102,7 @@ class Earth(models.Model):
 class Location(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='locations', null=True, blank=True)
-    time = models.CharField(max_length=13, choices=ALL_TIMES)
+    time = models.CharField(max_length=13, choices=EARTH_TIMES)
 
     def __str__(self):
         return self.title
@@ -111,7 +111,8 @@ class Location(models.Model):
 class Reconstruction(models.Model):
     title = models.CharField(max_length=100)
     time_ago = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
+    position = models.CharField(max_length=100, null=True, blank=True)
+    coordinates = models.CharField(max_length=100, null=True, blank=True)
     image = models.ImageField(upload_to='reconstructions', null=True, blank=True)
     text = models.TextField()
     location = models.ForeignKey('Location', null=True, on_delete=models.SET_NULL)
