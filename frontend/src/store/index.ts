@@ -2,10 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { articleAPI } from './services/ArticleService';
 import { earthApi } from './services/EarthService'
 import { exhibitAPI } from "./services/ExhibitService";
+import { videoApi } from './services/VideoService'
+import { locationAPI } from "./services/LocationService";
+import {reconstructionAPI} from "./services/ReconstructionService";
 import timeLineReducer from './reducers/timeLineSlice';
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist"
-import { videoApi } from './services/VideoService'
 
 
 const persistConfig = {
@@ -20,6 +22,8 @@ const rootReducer = combineReducers({
   [earthApi.reducerPath]: earthApi.reducer,
   [exhibitAPI.reducerPath]: exhibitAPI.reducer,
   [videoApi.reducerPath]: videoApi.reducer,
+  [locationAPI.reducerPath]: locationAPI.reducer,
+  [reconstructionAPI.reducerPath]: reconstructionAPI.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -30,7 +34,13 @@ export const setupStore = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
-      }).concat([articleAPI.middleware, earthApi.middleware, exhibitAPI.middleware, videoApi.middleware])
+      }).concat([articleAPI.middleware,
+        earthApi.middleware,
+        exhibitAPI.middleware,
+        videoApi.middleware,
+        locationAPI.middleware,
+        reconstructionAPI.middleware,
+      ])
   });
 };
 

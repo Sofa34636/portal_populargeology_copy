@@ -6,7 +6,7 @@ import { VideoPage } from './pages/VideoPage/VideoPage';
 import { ExhibitListPage } from './pages/GalleryPages/ExhibitListPage/ExhibitListPage';
 import {ExhibitPage} from "./pages/GalleryPages/ExhibitPage/ExhibitPage";
 import { EarthPage } from './pages/ThreeDEarthPage/EarthPage/EarthPage';
-import { ReconstructionPage } from './pages/ReconstructionPages/ReconstructionPage/ReconstructionPage';
+import { LocationListPage } from './pages/ReconstructionPages/LocationListPage/LocationListPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ArticlePage } from './pages/ArticlePages/ArticlePage/ArticlePage';
@@ -15,6 +15,8 @@ import {
   ArticleScientificPublicationsPage
 } from "./pages/ArticlePages/ArticleScientificPublicationsPage/ArticleScientificPublicationsPage";
 import { EarthMorePage } from './pages/ThreeDEarthPage/EarthMorePage/EarthMorePage'
+import {ReconstructionListPage} from "./pages/ReconstructionPages/ReconstructionListPage/ReconstructionListPage";
+import {ReconstructionPage} from "./pages/ReconstructionPages/ReconstructionPage/ReconstructionPage";
 
 export default function App() {
 
@@ -28,8 +30,9 @@ export default function App() {
     { path: '/:time/exhibits/:id', element: <ExhibitPage /> },
     { path: '/:time/earth', element: <EarthPage /> },
     { path: '/:time/earth/more', element: <EarthMorePage /> },
-    { path: '/:time/reconstruction', element: <ReconstructionPage /> },
-    // { path: '/:time/relief/:id', element: <Relief /> },
+    { path: '/:time/reconstruction', element: <LocationListPage /> },
+    { path: '/:time/reconstruction/:locationId', element: <ReconstructionListPage /> },
+    { path: '/:time/reconstruction/:locationId/:id', element: <ReconstructionPage /> },
     { path: '/*', element: <NotFoundPage /> },
   ];
 
