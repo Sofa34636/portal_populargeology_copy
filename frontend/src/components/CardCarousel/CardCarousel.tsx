@@ -10,6 +10,8 @@ import "./CardCarousel.scss"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import {useLocation} from "react-router-dom";
+import {ILocation} from "../../types/models/ILocation";
+import {IReconstruction} from "../../types/models/IReconstruction";
 
 function Arrow(props: {
   disabled: boolean
@@ -28,7 +30,7 @@ function Arrow(props: {
   )
 }
 
-export const CardCarousel: React.FC<{cards: (IArticle | ScientificPublicationsProps)[][] | IExhibit[][]}> = ({ cards }) => {
+export const CardCarousel: React.FC<{cards: (IArticle | ScientificPublicationsProps)[][] | IExhibit[][] | ILocation[][] | IReconstruction[][]}> = ({ cards }) => {
 
     const location = useLocation()
     const [currentSlide, setCurrentSlide] = React.useState(0)

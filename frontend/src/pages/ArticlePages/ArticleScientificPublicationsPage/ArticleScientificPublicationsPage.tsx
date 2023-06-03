@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Layout} from "../../../components/Layout/Layout";
-import {useAppSelector} from "../../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import Grid from "@mui/material/Grid";
 import scientificPublicationLeftImage from '../../../assets/img/ScientificPublicationsLeft.png'
 import {
@@ -8,14 +8,26 @@ import {
 } from "../../../components/ToolComponents/Article/ArticleScientificPublicationsHierarchyMenu/ArticleScientificPublicationsHierarchyMenu";
 import {pageRedirect} from "../../pageRedirect";
 import Button from "@mui/material/Button";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import './ArticleScientificPublicationsPagePage.scss'
+import {timeLineSlice} from "../../../store/reducers/timeLineSlice";
+import {instrumentTypes, timeTypes} from "../../../types/timeline";
 
 // id = 0
 export const ArticleScientificPublicationsPage = () => {
     const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
 
     const navigate = useNavigate()
+
+    const { time: timeParam } = useParams()
+    const { changeTime, changeInstrument } = timeLineSlice.actions;
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(changeTime(timeTypes[timeParam]))
+        dispatch(changeInstrument(instrumentTypes.articles))
+    }, [])
+
 
     return(
         <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'default'} headerDisplayStyle={'default'}>

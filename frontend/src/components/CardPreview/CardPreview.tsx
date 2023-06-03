@@ -5,13 +5,19 @@ import { pageRedirect } from '../../pages/pageRedirect'
 import { useAppSelector } from '../../hooks/redux'
 import {ScientificPublicationsProps} from "../../types/scientificPublications";
 import {IExhibit} from "../../types/models/IExhibit";
+import {ILocation} from "../../types/models/ILocation";
+import {IReconstruction} from "../../types/models/IReconstruction";
 
-export const CardPreview: React.FC<IArticle | ScientificPublicationsProps | IExhibit> = (card) => {
+export const CardPreview: React.FC<IArticle | ScientificPublicationsProps | IExhibit | ILocation | IReconstruction> = (card) => {
     const navigate = useNavigate()
     const {time: time, instrument: instrument } = useAppSelector((state) => state.timeLineReducer);
 
     const handleClick = () => {
-        navigate(`/${pageRedirect(time,instrument)}/${card?.id}`)
+        if ('location' in card) {
+            navigate(`/${pageRedirect(time,instrument)}/${card?.location}/${card?.id}`)
+        } else {
+            navigate(`/${pageRedirect(time, instrument)}/${card?.id}`)
+        }
     }
 
     return(

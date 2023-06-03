@@ -1,28 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { Layout } from '../../../components/Layout/Layout';
-import { useAppSelector } from '../../../hooks/redux'
+import {useAppDispatch, useAppSelector} from '../../../hooks/redux'
 import { CardVerticalList } from "../../../components/CardVerticalList/CardVerticalList";
 import { useGetExhibitById } from "../../../hooks/useGetExhibitById";
 import { useFetchAllExhibits } from "../../../hooks/useFetchAllExhibits";
 import { cardVerticalListResponsiveStyle } from "../../../utils/cardVerticalListResponsiveStyle";
+import {timeLineSlice} from "../../../store/reducers/timeLineSlice";
+import {instrumentTypes, timeTypes} from "../../../types/timeline";
 
 
 export const ExhibitPage = () => {
     const { time: timeState, instrument: instrumentState } = useAppSelector((state) => state.timeLineReducer);
     const navigate = useNavigate()
-    const { id } = useParams()
+    const { time: timeParam, id } = useParams()
     const [contentSize, setContentSize] =
         useState<{width: number, height: number} | null>(null)
     const [verticalListResponsiveStyle, setVerticalListResponsiveStyle] =
         useState<{verticalListWidth: number, verticalListItemSize: number}>({verticalListWidth: 330,
                                                                                       verticalListItemSize: 80})
     const { isLoadingExhibit, dataExhibit } = useGetExhibitById(+id, timeState)
+    const { changeTime, changeInstrument } = timeLineSlice.actions;
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         if (dataExhibit == undefined && !isLoadingExhibit) {
             navigate('/*')
         }
+
+        dispatch(changeTime(timeTypes[timeParam]))
+        dispatch(changeInstrument(instrumentTypes.exhibits))
+
+
         const contentContainer = document.querySelector('.content')
         setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
         setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))

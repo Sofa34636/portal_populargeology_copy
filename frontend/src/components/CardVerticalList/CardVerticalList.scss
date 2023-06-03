@@ -15,9 +15,9 @@
   .card--verticalList__container {
     &__item {
       .card_preview {
-        width: 300px;
+        width: 280px;
         .photo {
-          width: 300px;
+          width: 280px;
           height: 220px;
           //CardVerticalList width: 335
           //CardVerticalList itemSize: 280
@@ -49,11 +49,11 @@
   .card--verticalList__container {
     &__item {
       .card_preview {
-        height: 230px;
-        width: 230px;
+        height: 14em;
+        width: 11.5em;
         .photo {
-          width: 230px;
-          height: 190px;
+          width: 11.5em;
+          height: 12em;
           //CardVerticalList width: 270
           //CardVerticalList itemSize: 240
         }

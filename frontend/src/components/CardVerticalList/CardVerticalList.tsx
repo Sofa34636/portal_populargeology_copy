@@ -6,6 +6,7 @@ import {CardPreview} from "../CardPreview/CardPreview";
 import {IArticle} from "../../types/models/IArticle";
 import {ScientificPublicationsProps} from "../../types/scientificPublications";
 import {IExhibit} from "../../types/models/IExhibit";
+import {IReconstruction} from "../../types/models/IReconstruction";
 
 const renderCard = (props: ListChildComponentProps) => {
     const { index, style, data } = props;
@@ -17,7 +18,7 @@ const renderCard = (props: ListChildComponentProps) => {
     );
 }
 
-export const CardVerticalList: React.FC<{ cards: Array<(IArticle | ScientificPublicationsProps) | IExhibit>, numberOfCards: number, height: number, width: number, itemSize: number }> = ({ cards, numberOfCards, height, width, itemSize }) => {
+export const CardVerticalList: React.FC<{ cards: Array<(IArticle | ScientificPublicationsProps) | IExhibit | IReconstruction>, numberOfCards: number, height: number, width: number, itemSize: number }> = ({ cards, numberOfCards, height, width, itemSize }) => {
 
     return (
         <Box
