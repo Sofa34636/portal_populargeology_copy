@@ -10,7 +10,7 @@ export const useFetchAllLocations = (groupOf = 6, time: Time, limit = 0) => {
                 limit,
                 time
             }
-            , {pollingInterval: 1000}
+            // , {pollingInterval: 1000}
         )
 
     const isLoadingLocations: boolean = isLoading

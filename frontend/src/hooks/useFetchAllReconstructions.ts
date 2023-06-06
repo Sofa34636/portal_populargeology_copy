@@ -9,7 +9,7 @@ export const useFetchAllReconstructions = (groupOf = 6, locationId: number, limi
                 limit,
                 locationId
             }
-            , {pollingInterval: 1000}
+            // , {pollingInterval: 1000}
         )
 
     const isLoadingReconstructions: boolean = isLoading

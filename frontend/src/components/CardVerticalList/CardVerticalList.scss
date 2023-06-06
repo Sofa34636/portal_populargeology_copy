@@ -39,6 +39,9 @@
           //CardVerticalList width: 270
           //CardVerticalList itemSize: 240
         }
+        .title {
+          padding: 5px 10px 25px;
+        }
       }
     }
   }
@@ -57,6 +60,10 @@
           //CardVerticalList width: 270
           //CardVerticalList itemSize: 240
         }
+        .title {
+          font-size: 1.2em;
+          padding: 5px 10px 25px;
+        }
       }
     }
   }
@@ -74,6 +81,10 @@
           height: 150px;
           //CardVerticalList width: 190
           //CardVerticalList itemSize: 200
+        }
+        .title {
+          font-size: 1.05em;
+          padding: 5px 10px 25px;
         }
       }
     }
