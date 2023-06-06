@@ -1,5 +1,5 @@
 .navigation-wrapper {
-  padding-top: 25px;
+  padding-top: 3em;
 
   display: flex;
   flex-direction: row;
@@ -46,8 +46,9 @@
       .card_preview {
         height: 38vh;
         .photo {
-          //height: 85%;
-          //width: 100%;
+          object-fit: cover;
+          height: 85%;
+          width: 100%;
         }
       }
     }
@@ -65,6 +66,9 @@
       //grid-row-gap: 0.5em;
       .card_preview {
         .photo {
+        }
+        .title {
+
         }
       }
     }
@@ -174,7 +178,12 @@
       //grid-column-gap: 0.5em;
       //grid-row-gap: 0.5em;
       .card_preview {
+        height: 25vh;
         .photo {
+        }
+        .title {
+          font-size: 1em;
+          line-height: 1.3em;
         }
       }
     }
@@ -182,16 +191,22 @@
 }
 
 @media screen and (max-width: 471px) {
-  .card-carousel {
-    //height: 75vh;
-    .cardsContainer {
-      //height: 100%;
-      //display: grid;
-      //grid-template-columns: repeat(3, minmax(0, 1fr));
-      //grid-column-gap: 0.5em;
-      //grid-row-gap: 0.5em;
-      .card_preview {
-        .photo {
+  .navigation-wrapper {
+    .card-carousel {
+      height: 75vh;
+      .cardsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        overflow: auto !important;
+        .card_preview {
+          height: 25vh;
+          .photo {
+          }
+          .title {
+            font-size: 0.75em;
+            padding-top: 0.5em;
+          }
         }
       }
     }
