@@ -10,7 +10,7 @@ export const  EarthMorePage = () => {
 
 
   return (
-    <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'back'} headerDisplayStyle={'default'}>
+    <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'back'} headerDisplayStyle={'default'} breadCrumbsFirstCrumb={'Узнать больше'}>
 
     </Layout>
   );

@@ -9,14 +9,14 @@ export const locationAPI = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: getApiUrl() }),
     endpoints: (build) => ({
         fetchAllLocations: build.query({
-            query: ({ limit, time }: { limit: number, time: Time }) => ({
-                url: `/location/?limit=${limit}&time=${getKeyByValue(timeTypes, time)}`,
+            query: (limit:number) => ({
+                url: `/location/?limit=${limit}`,
                 method: 'GET',
             })
         }),
         getLocationById: build.query({
-            query: ({ id, time }: { id: number, time: Time }) => ({
-                url: `/location/${id}/?time=${getKeyByValue(timeTypes, time)}`,
+            query: (id:number) => ({
+                url: `/location/${id}`,
                 method: 'GET'
             })
         })

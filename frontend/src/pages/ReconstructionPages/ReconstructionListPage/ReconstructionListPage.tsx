@@ -6,6 +6,7 @@ import {instrumentTypes, timeTypes} from "../../../types/timeline";
 import {useParams} from "react-router-dom";
 import {timeLineSlice} from "../../../store/reducers/timeLineSlice";
 import {useFetchAllReconstructions} from "../../../hooks/useFetchAllReconstructions";
+import { useGetLocationByIdQuery } from '../../../store/services/LocationService'
 
 
 export const ReconstructionListPage = () => {
@@ -16,6 +17,8 @@ export const ReconstructionListPage = () => {
     const { changeTime, changeInstrument } = timeLineSlice.actions;
     const dispatch = useAppDispatch()
 
+    const {data: locationName} = useGetLocationByIdQuery(+locationId)
+
     const { isLoadingReconstructions, fetchedReconstructions } = useFetchAllReconstructions(6, +locationId)
 
     useEffect(() => {
@@ -24,7 +27,7 @@ export const ReconstructionListPage = () => {
     }, [])
 
     return (
-        <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'default'} headerDisplayStyle={'default'}>
+        <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'default'} headerDisplayStyle={'default'} breadCrumbsFirstCrumb={locationName?.title}>
             <div className='reconstruction_list__content'>
                 {isLoadingReconstructions ? <span>Загрузка...</span> :
                     fetchedReconstructions?.length == 0 ? <span>Нет реконструкций</span> :
