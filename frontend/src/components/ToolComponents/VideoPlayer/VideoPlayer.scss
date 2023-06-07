@@ -50,9 +50,21 @@ html {
 
 
 
-
 .video-container__controls > div {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   padding: 100px;
+
+  span {
+
+    font-size: 12px;
+    border: 1px solid $white;
+    border-radius: 6px;
+    padding: 10px;
+  }
 
   svg {
     cursor: pointer;

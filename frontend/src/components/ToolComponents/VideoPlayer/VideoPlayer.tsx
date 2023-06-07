@@ -87,7 +87,9 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
         <div className='video-container__body'>
           <div className='video-container__controls' ref={controlsRef} style={isControlsShown ? null : { display: 'none' }}>
             <div className='video-container__controls__left-buttons'>
+              <span className={'clueLeft'}>-5 сек.</span>
               <svg
+                className={'left'}
                 onClick={handlePlayBack}
                 onMouseOver={handleMouseOverControls}
                 onMouseLeave={handleMouseLeaveControls}
@@ -117,7 +119,9 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
             )}
 
             <div className='video-container__controls__right-buttons'>
+              <span className={'clueRight'}>+5 сек.</span>
               <svg
+                className={'right'}
                 onClick={handlePlayForward}
                 onMouseOver={handleMouseOverControls}
                 onMouseLeave={handleMouseLeaveControls}
