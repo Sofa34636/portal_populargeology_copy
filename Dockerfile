@@ -9,7 +9,7 @@ COPY ./manage.py /portal/manage.py
 COPY ./geo_portal /portal/geo_portal
 COPY ./media /portal/media
 COPY ./portal_api /portal/portal_api
-COPY ./db.sqlite3 /portal/db.sqlite3
+#COPY ./db.sqlite3 /portal/db.sqlite3
 
 RUN pip install --no-cache-dir --upgrade -r /portal/requirements.txt
 
