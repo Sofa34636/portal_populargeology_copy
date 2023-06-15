@@ -80,24 +80,28 @@ export const HomePage = () => {
             {
               Object.values(instrumentTypes).map((instrument, index) => {
                 let isNonActive = ( instrument === instrumentTypes.reconstruction ||
-                                             instrument === instrumentTypes.earth ?
-                                             'btn-deactivated':'' );
-                let isSelected = instrument === activeInstrumentButton ? 'btn-selected' : '';
+                                             instrument === instrumentTypes.earth );
+                let isSelected = instrument === activeInstrumentButton;
 
                 if (Object.values(timeTypes).splice(4).includes(timeState)) {
-                  isNonActive = '';
+                  isNonActive = false;
                 }
 
                 if (isNonActive) {
-                  isSelected = ''
+                  isSelected = false
                 }
 
                 return (
                   <Button
+                    disabled={isNonActive}
                     key = {index}
                     onClick={() => onInstrumentButtonClick(instrument)}
                     variant="outlined"
-                    className={ clsx(isNonActive, isSelected) }
+                    className={ clsx(
+                      isNonActive ?
+                      'btn-deactivated' : '',
+                      isSelected ? 'btn-selected' : '')
+                  }
                   >
                     {instrument}
                   </Button>
