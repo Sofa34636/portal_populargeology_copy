@@ -1,7 +1,8 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import './VideoPlayer.scss';
-
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 interface IVideoPlayerProps {
   layoutHide: () => void;
   layoutDisplay: () => void;
@@ -11,12 +12,15 @@ interface IVideoPlayerProps {
 export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
   const { videoUrl, layoutHide, layoutDisplay } = props;
   const [isControlsShown, setIsControlsShown] = useState(true);
-  const controlsRef = useRef(null);
-  const playerRef = useRef(null);
-  const timeoutRef = useRef(null);
+  const controlsRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<ReactPlayer>(null);
+  const timeoutRef = useRef<number | null>(null);
+
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const [isPlayerPaused, setIsPlayerPaused] = useState(true);
-  const [isMouseOverControls, setIsMouseOverControls ]= useState(false);
+  const [isMouseOverControls, setIsMouseOverControls] = useState(false);
 
   const [videoState, setVideoState] = useState({
     playing: true,
@@ -32,41 +36,69 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
   }, []);
 
   const togglePlaying = () => {
-    const isPlaying = videoState.playing;
-    setVideoState({
-      ...videoState,
-      playing: !isPlaying
-    });
+    setVideoState((prevState) => ({
+      ...prevState,
+      playing: !prevState.playing
+    }));
+  };
+
+  const toggleFullscreen = () => {
+    if (isFullscreen) {
+      exitFullscreen();
+    } else {
+      enterFullscreen();
+    }
+  };
+
+
+  const enterFullscreen = () => {
+    const videoContainer = document.querySelector('.video-container');
+    if (videoContainer && videoContainer.requestFullscreen) {
+      videoContainer.requestFullscreen();
+      setIsFullscreen(true);
+    }
+  };
+
+
+  const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
   };
 
   const handlePlayBack = () => {
     if (playerRef.current) {
-      const currentTime = playerRef.current.getCurrentTime();
-      playerRef.current.seekTo(currentTime - 5);
+      const newTime = playerRef.current.getCurrentTime() - 5;
+      playerRef.current.seekTo(newTime, 'seconds');
     }
   };
 
   const handlePlayForward = () => {
     if (playerRef.current) {
-      const currentTime = playerRef.current.getCurrentTime();
-      playerRef.current.seekTo(currentTime + 5);
+      const newTime = playerRef.current.getCurrentTime() + 5;
+      playerRef.current.seekTo(newTime, 'seconds');
     }
+  };
+
+  const handleProgress = (progress: { playedSeconds: number }) => {
+    setCurrentTime(progress.playedSeconds);
   };
 
   const handleMouseMove = () => {
     clearTimeout(timeoutRef.current);
     layoutDisplay();
     setIsControlsShown(true);
-    timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       if (!isPlayerPaused && !isMouseOverControls) {
         layoutHide();
         setIsControlsShown(false);
       }
-    }, 3000);
+    }, 2000);
   };
 
   const handlePause = () => {
-    setIsPlayerPaused(true)
+    setIsPlayerPaused(true);
   };
 
   const handlePlay = () => {
@@ -81,15 +113,40 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
     setIsMouseOverControls(false);
   };
 
+
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.code === 'Space') {
+      e.preventDefault(); // Prevent the default behavior of the spacebar
+      togglePlaying(); // Toggle the playing state of the video
+    } else if (e.code === 'ArrowRight') {
+      e.preventDefault();
+      handlePlayForward();
+    } else if (e.code === 'ArrowLeft') {
+      e.preventDefault();
+      handlePlayBack();
+    }
+  };
+
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown, true);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown, true);
+    };
+  }, []);
+
+
+
   return (
-    <div className='video-player__wrapper'>
+    <div className='video-player__wrapper no_select '>
       <div className='video-container' style={isControlsShown ? null : { cursor: 'none' }} onMouseMove={handleMouseMove}>
         <div className='video-container__body'>
-          <div className='video-container__controls' ref={controlsRef} style={isControlsShown ? null : { display: 'none' }}>
+          <div className='video-container__controls' tabIndex={0} ref={controlsRef} style={isControlsShown ? null : { display: 'none' }}>
             <div className='video-container__controls__left-buttons'>
-              <span className={'clueLeft'}>-5 сек.</span>
+              <span className='clueLeft'>-5 сек.</span>
               <svg
-                className={'left'}
+                className='left'
                 onClick={handlePlayBack}
                 onMouseOver={handleMouseOverControls}
                 onMouseLeave={handleMouseLeaveControls}
@@ -100,7 +157,7 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
             </div>
 
             {videoState.playing ? (
-              <div className='video-container__controls__pause-button' >
+              <div className='video-container__controls__pause-button'>
                 <svg
                   onClick={togglePlaying}
                   onMouseOver={handleMouseOverControls}
@@ -119,9 +176,9 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
             )}
 
             <div className='video-container__controls__right-buttons'>
-              <span className={'clueRight'}>+5 сек.</span>
+              <span className='clueRight'>+5 сек.</span>
               <svg
-                className={'right'}
+                className='right'
                 onClick={handlePlayForward}
                 onMouseOver={handleMouseOverControls}
                 onMouseLeave={handleMouseLeaveControls}
@@ -129,7 +186,28 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
                 <path d='M48.75 63.75L67.5 45L48.75 26.25' stroke='white' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
                 <path d='M22.5 63.75L41.25 45L22.5 26.25' stroke='white' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
               </svg>
+              <div
+                className={`fullscreen-button ${isFullscreen ? 'active' : ''}`}
+                onClick={toggleFullscreen}
+                onMouseOver={handleMouseOverControls}
+                onMouseLeave={handleMouseLeaveControls}
+              >
+                {isFullscreen ? (
+                    <FullscreenExitIcon/>
+
+                ) : (
+                  <FullscreenIcon/>
+                )}
+              </div>
+              <div className={`fullscreen-button ${isFullscreen ? 'active' : ''}`} onClick={toggleFullscreen} onMouseOver={handleMouseOverControls} onMouseLeave={handleMouseLeaveControls}>
+              {isFullscreen ? (
+                <FullscreenExitIcon />
+              ) : (
+                <FullscreenIcon />
+              )}
             </div>
+            </div>
+
           </div>
         </div>
         <div className={`video-container__overlay ${isControlsShown ? 'active' : ''}`}></div>
@@ -144,7 +222,10 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
           loop={true}
           onPause={handlePause}
           onPlay={handlePlay}
+          onProgress={handleProgress}
         />
+
+
       </div>
     </div>
   );
