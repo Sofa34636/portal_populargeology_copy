@@ -26,6 +26,7 @@ class EarthView(viewsets.ModelViewSet):
 class LocationView(viewsets.ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+    filterset_fields = ['time']
 
 
 class ReconstructionView(viewsets.ModelViewSet):

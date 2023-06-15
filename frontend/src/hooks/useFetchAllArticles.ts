@@ -13,7 +13,7 @@ export const useFetchAllArticles = (groupOf = 6, time: Time, limit = 0) => {
             limit,
             time,
         }
-        // , {pollingInterval: 1000}
+        , {pollingInterval: 60000}
         )
 
     const fillEarthArticleList = (fetchedData, groupOf_: number) => {

@@ -15,7 +15,6 @@ export const ArticleListPage = () => {
     const { time: timeParam } = useParams()
     const { changeTime, changeInstrument } = timeLineSlice.actions;
     const dispatch = useAppDispatch()
-
   const { isLoadingArticles, fetchedArticles } = useFetchAllArticles(6, timeState)
 
     useEffect(() => {

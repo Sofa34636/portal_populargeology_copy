@@ -11,6 +11,7 @@
         color: $orange;
     }
     .photo {
+        object-fit: cover;
         min-height: 85%;
         width: 100%;
     }

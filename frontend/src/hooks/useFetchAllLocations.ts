@@ -3,9 +3,15 @@ import {Time} from "../types/timeline";
 import {ILocation} from "../types/models/ILocation";
 
 
-export const useFetchAllLocations = (groupOf = 6, limit = 0) => {
+export const useFetchAllLocations = (groupOf = 6, time: Time, limit = 0) => {
 
-    const {isLoading, data } = useFetchAllLocationsQuery(limit)
+    const {isLoading, data } =
+        useFetchAllLocationsQuery({
+                limit,
+                time,
+            }
+            , {pollingInterval: 60000}
+        )
 
     const isLoadingLocations: boolean = isLoading
 

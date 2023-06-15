@@ -103,8 +103,8 @@ class Earth(models.Model):
 
 class Location(models.Model):
     title = models.CharField(max_length=100)
-    title_en = models.CharField(max_length=100)
     image = models.ImageField(upload_to='locations', null=True, blank=True)
+    time = models.CharField(max_length=13, choices=EARTH_TIMES, blank=True)
 
 
     def __str__(self):

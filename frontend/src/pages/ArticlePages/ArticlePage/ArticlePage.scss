@@ -282,11 +282,15 @@
         .leftContainer {
             .subtitle {
                 h4 {
+                    font-size: 12px;
+                    line-height: 12px;
                 }
             }
 
             .title {
                 h1 {
+                    font-size: 18px;
+                    line-height: 26px;
                 }
             }
 
@@ -294,7 +298,10 @@
             }
 
             .content {
-
+                p {
+                    font-size: 10px;
+                    line-height: 18px;
+                }
             }
         }
 

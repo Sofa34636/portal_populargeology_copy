@@ -14,7 +14,7 @@ export const CardPreview: React.FC<IArticle | ScientificPublicationsProps | IExh
 
     const handleClick = () => {
         if ('location' in card) {
-            navigate(`/${pageRedirect(time,instrument)}/${card?.location}/${card?.id}`)
+            navigate(`/${pageRedirect(time, instrument)}/${card?.location}/${card?.id}`)
         } else {
             navigate(`/${pageRedirect(time, instrument)}/${card?.id}`)
         }

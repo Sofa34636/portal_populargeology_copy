@@ -10,7 +10,7 @@ export const useGetExhibitById = (id: number, time: Time) => {
             id,
             time
         }
-        // , {pollingInterval: 1000}
+        , {pollingInterval: 60000}
         )
     const isLoadingExhibit: boolean = isLoading
     const dataExhibit: IExhibit = data

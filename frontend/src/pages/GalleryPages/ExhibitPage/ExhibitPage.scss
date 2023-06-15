@@ -1,9 +1,10 @@
 .exhibit {
   color: $white;
   .mainContainer {
-    height: 85vh;
+    max-height: 75vh;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 20px;
     padding-top: 25px;
     padding-bottom: 20px;
@@ -206,6 +207,7 @@
 @media screen and (max-width: 830px) {
   .exhibit {
     .mainContainer {
+      max-height: none;
       height: inherit;
       flex-direction: column;
       padding-right: 5px;

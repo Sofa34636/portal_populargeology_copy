@@ -1,5 +1,6 @@
 .scientific_publications {
   &__parent {
+    height: 75vh;
     padding-top: 75px;
     color: white;
     &--leftContainer {
@@ -22,10 +23,50 @@
         }
       }
       &-menu {
-        height: 525px;
+        height: 61vh;
       }
       &-goBackButton {
 
+        button {
+          border: 1px solid #F4F4F4;
+          &:hover {
+            color: #FF5C00;
+            border-color: #FF5C00;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .scientific_publications {
+    &__parent {
+      &--leftContainer {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 619px) {
+  .scientific_publications {
+    &__parent {
+      &--rightContainer {
+        &-menu {
+          height: 57vh;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 419px) {
+  .scientific_publications {
+    &__parent {
+      &--rightContainer {
+        &-menu {
+          height: 55vh;
+        }
       }
     }
   }

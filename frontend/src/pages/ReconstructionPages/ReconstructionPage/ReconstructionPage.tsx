@@ -6,7 +6,7 @@ import { CardVerticalList } from "../../../components/CardVerticalList/CardVerti
 import { cardVerticalListResponsiveStyle } from "../../../utils/cardVerticalListResponsiveStyle";
 import {timeLineSlice} from "../../../store/reducers/timeLineSlice";
 import {instrumentTypes, timeTypes} from "../../../types/timeline";
-import {useGetReconstructionById} from "../../../hooks/useFetchReconstructionById";
+import {useGetReconstructionById} from "../../../hooks/useGetReconstructionById";
 import {useFetchAllReconstructions} from "../../../hooks/useFetchAllReconstructions";
 
 

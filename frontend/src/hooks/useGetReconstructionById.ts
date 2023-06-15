@@ -9,7 +9,7 @@ export const useGetReconstructionById = (id: number, locationId: number) => {
                 id,
                 locationId
             }
-            // , {pollingInterval: 1000}
+            , {pollingInterval: 60000}
         )
     const isLoadingReconstruction: boolean = isLoading
     const dataReconstruction: IReconstruction = data

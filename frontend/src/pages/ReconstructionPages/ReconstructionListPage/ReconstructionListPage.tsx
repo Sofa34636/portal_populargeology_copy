@@ -6,7 +6,7 @@ import {instrumentTypes, timeTypes} from "../../../types/timeline";
 import {useParams} from "react-router-dom";
 import {timeLineSlice} from "../../../store/reducers/timeLineSlice";
 import {useFetchAllReconstructions} from "../../../hooks/useFetchAllReconstructions";
-import { useGetLocationByIdQuery } from '../../../store/services/LocationService'
+import { useGetLocationById } from "../../../hooks/useGetLocationById"
 
 
 export const ReconstructionListPage = () => {
@@ -17,7 +17,7 @@ export const ReconstructionListPage = () => {
     const { changeTime, changeInstrument } = timeLineSlice.actions;
     const dispatch = useAppDispatch()
 
-    const {data: locationName} = useGetLocationByIdQuery(+locationId)
+    const {dataLocation: locationName} = useGetLocationById(+locationId)
 
     const { isLoadingReconstructions, fetchedReconstructions } = useFetchAllReconstructions(6, +locationId)
 

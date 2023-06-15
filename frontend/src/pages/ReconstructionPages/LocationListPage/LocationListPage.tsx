@@ -16,7 +16,8 @@ export const LocationListPage = () => {
     const { changeTime, changeInstrument } = timeLineSlice.actions;
     const dispatch = useAppDispatch()
 
-    const { isLoadingLocations, fetchedLocations } = useFetchAllLocations(6)
+    console.log(timeState)
+    const { isLoadingLocations, fetchedLocations } = useFetchAllLocations(6, timeState)
 
     useEffect(() => {
         dispatch(changeTime(timeTypes[timeParam]))
