@@ -38,7 +38,7 @@ export const VideoPage = () => {
         instrument={instrumentState}
         footerDisplayStyle={isLayoutDisplayed?'video':'hide'}
         headerDisplayStyle={isLayoutDisplayed?'default':'hide'}
-        videoTimeAgo={data.time_ago}>
+        videoTimeAgo={data[0].time_ago}>
           <VideoPlayer
                        videoUrl = {data[0].video}
                        layoutDisplay={displayLayout}

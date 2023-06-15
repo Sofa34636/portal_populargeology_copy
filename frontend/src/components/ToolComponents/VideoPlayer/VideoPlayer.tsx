@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import './VideoPlayer.scss';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
+
 interface IVideoPlayerProps {
   layoutHide: () => void;
   layoutDisplay: () => void;
@@ -18,27 +19,19 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
 
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-
   const [isPlayerPaused, setIsPlayerPaused] = useState(true);
   const [isMouseOverControls, setIsMouseOverControls] = useState(false);
 
-  const [videoState, setVideoState] = useState({
-    playing: true,
+  const [videoState, setVideoState] = useState(() => ({
+    playing: false,
     muted: false,
     volume: 1,
-  });
-
-  useEffect(() => {
-    setVideoState({
-      ...videoState,
-      playing: false
-    });
-  }, []);
+  }));
 
   const togglePlaying = () => {
     setVideoState((prevState) => ({
       ...prevState,
-      playing: !prevState.playing
+      playing: !prevState.playing,
     }));
   };
 
@@ -49,7 +42,6 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
       enterFullscreen();
     }
   };
-//
 
   const enterFullscreen = () => {
     const videoContainer = document.querySelector('.video-container');
@@ -58,7 +50,6 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
       setIsFullscreen(true);
     }
   };
-
 
   const exitFullscreen = () => {
     if (document.exitFullscreen) {
@@ -69,15 +60,19 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
 
   const handlePlayBack = () => {
     if (playerRef.current) {
+
       const newTime = playerRef.current.getCurrentTime() - 5;
       playerRef.current.seekTo(newTime, 'seconds');
+
     }
   };
 
   const handlePlayForward = () => {
     if (playerRef.current) {
+
       const newTime = playerRef.current.getCurrentTime() + 5;
       playerRef.current.seekTo(newTime, 'seconds');
+
     }
   };
 
@@ -113,8 +108,6 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
     setIsMouseOverControls(false);
   };
 
-
-
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.code === 'Space') {
       e.preventDefault(); // Prevent the default behavior of the spacebar
@@ -129,8 +122,16 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
   };
 
 
+
   useEffect(() => {
+
     document.addEventListener('keydown', handleKeyDown, true);
+
+    setVideoState({
+      ...videoState,
+      playing: false
+    });
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown, true);
     };

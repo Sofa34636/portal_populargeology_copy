@@ -6,6 +6,13 @@
   overflow-x: hidden;
   overflow-y: auto;
   height: 100%;
+
+  button {
+    &:hover {
+      color: $orange;
+      border-color: $orange;
+    }
+  }
 }
 
 header {
@@ -22,6 +29,7 @@ footer {
   .footer-default {
     width: 100%;
   }
+
   background-color: black;
   position: fixed;
   padding-top: 16px;

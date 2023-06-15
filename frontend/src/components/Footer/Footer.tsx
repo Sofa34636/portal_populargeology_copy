@@ -19,7 +19,7 @@ interface IFooterProps {
 export const Footer: React.FC<IFooterProps> = (props) => {
 
   const { videoTimeAgo, footerDisplayStyle } = props;
-
+  console.log(videoTimeAgo)
   const { time: timeState, instrument: instrumentState } = useAppSelector(
     (state) => state.timeLineReducer,
   );
@@ -126,7 +126,7 @@ export const Footer: React.FC<IFooterProps> = (props) => {
             Что было раньше?
           </Button>
           <div
-               className={'video-container__footer-title'}>
+               className={'video-container__footer-title no_select'}>
             <span>{videoTimeAgo}</span>
           </div>
           <Button

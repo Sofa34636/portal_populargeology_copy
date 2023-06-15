@@ -37,6 +37,7 @@ export const timeTypes = {
   future: 'будущее'
 } as const;
 
+
 export const instrumentTypes = {
   video: 'видео',
   articles: 'статьи',
