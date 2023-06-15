@@ -17,6 +17,26 @@ html {
 
 }
 
+.fullscreen-button {
+  position: absolute;
+  bottom: 10px;
+
+  right: 10px;
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+
 .video-container__body {
   position: absolute;
   top: 0;
@@ -77,6 +97,13 @@ html {
       }
     }
 
+
+}
+
+video-container__controls__play-button, video-container__controls__pause-button {
+  .svg {
+    margin-top: 50px
+  }
 }
 
 

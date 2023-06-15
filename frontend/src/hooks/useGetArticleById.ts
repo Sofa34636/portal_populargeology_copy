@@ -10,7 +10,7 @@ export const useGetArticleById = (id: number, time: Time) => {
             id,
             time
         }
-        , {pollingInterval: 60000}
+         , {pollingInterval: 60000}
         )
     const isLoadingArticle: boolean = isLoading
     const dataArticle: IArticle = data
