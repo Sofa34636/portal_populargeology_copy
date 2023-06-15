@@ -49,7 +49,7 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
       enterFullscreen();
     }
   };
-
+//
 
   const enterFullscreen = () => {
     const videoContainer = document.querySelector('.video-container');
