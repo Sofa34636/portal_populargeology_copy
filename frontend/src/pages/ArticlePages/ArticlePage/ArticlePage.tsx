@@ -66,7 +66,7 @@ export const ArticlePage = () => {
                     <h4>{dataArticle?.time_ago}</h4>
                 </div>
                 <div className="title">
-                    <h1>{dataArticle?.title}</h1>
+                    <h1 title={dataArticle?.title}>{dataArticle?.title}</h1>
                 </div>
                 <div className="sources">
                     <ArticleSourcesMenu reference={dataArticle?.src_article} magazine={dataArticle?.src_magazine}/>

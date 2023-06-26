@@ -25,6 +25,9 @@
         }
 
         .title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             h1 {
                 font-size: 2em;
                 line-height: 1.2em;

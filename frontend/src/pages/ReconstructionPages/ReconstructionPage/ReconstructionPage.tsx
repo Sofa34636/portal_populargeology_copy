@@ -74,7 +74,7 @@ export const ReconstructionPage = () => {
                             </div>
                             <div className='content'>
                                 <div className='reconstructionTitle'>
-                                    <h1>{dataReconstruction?.title}</h1>
+                                    <h1 title={dataReconstruction?.title}>{dataReconstruction?.title}</h1>
                                 </div>
                                 <div className='subtitle'>
                                     <h4>{dataReconstruction?.time_ago}</h4>

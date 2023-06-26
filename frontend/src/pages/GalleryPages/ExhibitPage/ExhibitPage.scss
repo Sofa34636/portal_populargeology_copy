@@ -19,6 +19,7 @@
         padding-right: 25px;
 
         .image {
+          object-fit: cover;
           width: 391px;
           height: 363px;
         }
@@ -28,9 +29,9 @@
       .content {
 
         .exhibitTitle {
-          max-height: 60px;
-          word-break: break-word;
-          overflow-y: auto;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
           margin-bottom: 20px;
 
           h1 {

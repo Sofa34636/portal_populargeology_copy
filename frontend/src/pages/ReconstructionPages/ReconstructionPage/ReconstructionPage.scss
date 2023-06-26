@@ -18,6 +18,7 @@
         padding-right: 25px;
 
         .image {
+          object-fit: cover;
           width: 391px;
           height: 363px;
         }
@@ -27,9 +28,9 @@
       .content {
 
         .reconstructionTitle {
-          max-height: 60px;
-          word-break: break-word;
-          overflow-y: auto;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           margin-bottom: 20px;
 
           h1 {

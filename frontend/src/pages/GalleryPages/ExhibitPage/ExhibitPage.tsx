@@ -74,7 +74,7 @@ export const ExhibitPage = () => {
                             </div>
                             <div className='content'>
                                 <div className='exhibitTitle'>
-                                    <h1>{dataExhibit?.title}</h1>
+                                    <h1 title={dataExhibit?.title}>{dataExhibit?.title}</h1>
                                 </div>
                                 <div className='subtitle'>
                                     <h4>{dataExhibit?.time_ago}</h4>
