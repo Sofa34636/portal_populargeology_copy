@@ -30,8 +30,8 @@ export const ReconstructionPage = () => {
 
         dispatch(changeTime(timeTypes[timeParam]))
         dispatch(changeInstrument(instrumentTypes.reconstruction))
-
-
+    }, [dataReconstruction])
+    useEffect(() => {
         const contentContainer = document.querySelector('.content')
         setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
         setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
@@ -46,9 +46,7 @@ export const ReconstructionPage = () => {
         return () => {
             window?.removeEventListener('resize', handleContentResize)
         }
-
-    }, [dataReconstruction])
-
+    }, [])
 
     const { isLoadingReconstructions, fetchedReconstructions } = useFetchAllReconstructions(10, +locationId, 10)
 

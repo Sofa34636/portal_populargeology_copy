@@ -50,10 +50,10 @@ export const HomePage = () => {
 
     <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'home'} headerDisplayStyle={'home'}>
       <div className={'home-page'}>
-        {/* <div className="home-page__background"> */}
-        {/*   <div className="rect1"></div> */}
-        {/*   <div className="rect2"></div> */}
-        {/* </div> */}
+         {/*<div className="home-page__background">*/}
+         {/*  <div className="rect1"></div>*/}
+         {/*  <div className="rect2"></div>*/}
+         {/*</div>*/}
         <div className="home-page__time">
           <h2>Выбирайте время</h2>
           <div className="time_buttons">

@@ -32,21 +32,23 @@ export const ArticlePage = () => {
 
       dispatch(changeTime(timeTypes[timeParam]))
       dispatch(changeInstrument(instrumentTypes.articles))
-
-      const contentContainer = document.querySelector('.content')
-      setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
-      setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
-
-      const handleContentResize = () => {
-          setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
-          setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
-      }
-      window.addEventListener('resize', handleContentResize)
-
-      return () => {
-          window?.removeEventListener('resize', handleContentResize)
-      }
   }, [dataArticle])
+    useEffect(() => {
+        const contentContainer = document.querySelector('.content')
+        setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
+        setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
+
+
+        const handleContentResize = () => {
+            setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
+            setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
+        }
+        window.addEventListener('resize', handleContentResize)
+
+        return () => {
+            window?.removeEventListener('resize', handleContentResize)
+        }
+    }, [])
 
   const { isLoadingArticles, fetchedArticles } = useFetchAllArticles(10, timeState, 10)
 

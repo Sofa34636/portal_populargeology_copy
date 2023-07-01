@@ -39,9 +39,8 @@
 			left: calc(50% - 283.35px/2 - 819.09px);
 			top: calc(50% - 155.68px/2 - 280.43px);
 
-			background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(238, 45, 1, 0.8) 0%, rgba(238, 45, 1, 0.4) 51.04%, rgba(238, 45, 1, 0) 100%);
 			border-radius: 100px;
-
+			background: radial-gradient(40.78% 34.59% at 48.57% 60.13%, rgba(238, 45, 1, 0.8) 0%, rgba(238, 45, 1, 0.4) 51.04%, rgba(238, 45, 1, 0) 100%);
 			transform: rotate(-26.03deg);
 
 		}
@@ -180,13 +179,12 @@
 			}
 		}
 	}
-
 }
 
 /* Portrait tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
 	.home-page {
-		button{
+		button {
 			width: 150px;
 			font-size: 12px !important;
 		}
@@ -194,12 +192,15 @@
 		.title {
 			padding-bottom: 10px;
 		}
+
 		.title h1 {
 			font-size: 18px;
 		}
+
 		.content h2 {
 			font-size: 14px;
 		}
+
 		.content .time_buttons {
 			padding-bottom: 24px;
 		}
@@ -214,15 +215,16 @@
 				height: 50px;
 			}
 		}
+
 		.earth-time-dropdown__content {
 			min-width: 150px;
+
 			li {
 				font-size: 10px;
 				padding-top: 8px;
 			}
 		}
 	}
-
 }
 
 /* Portrait tablets and small desktops */
@@ -339,6 +341,7 @@
 
 	.content .learn {
 		justify-content: center;
+
 		button {
 			width: 150px;
 			height: 30px;
@@ -346,11 +349,11 @@
 	}
 	.earth-time-dropdown__content {
 		min-width: 60px;
+
 		li {
 			font-size: 10px;
 			padding-top: 4px;
 		}
 	}
-
 }
 

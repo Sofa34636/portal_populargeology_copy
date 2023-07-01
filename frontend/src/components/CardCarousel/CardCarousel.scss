@@ -44,7 +44,7 @@
       grid-column-gap: 0.5em;
       grid-row-gap: 0.5em;
       .card_preview {
-        height: 38vh;
+        min-height: 38vh;
         .photo {
           object-fit: cover;
           height: 85%;
@@ -156,10 +156,11 @@
         //height: 100%;
         //display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        overflow: auto !important;
+        overflow-y: auto !important;
         //grid-column-gap: 0.5em;
         //grid-row-gap: 0.5em;
         .card_preview {
+          min-height: 30vh;
           .photo {
           }
         }
@@ -178,7 +179,7 @@
       //grid-column-gap: 0.5em;
       //grid-row-gap: 0.5em;
       .card_preview {
-        height: 25vh;
+        min-height: 25vh;
         .photo {
         }
         .title {
@@ -198,9 +199,9 @@
         display: flex;
         flex-direction: column;
         gap: 0.5em;
-        overflow: auto !important;
+        overflow-y: auto !important;
         .card_preview {
-          height: 25vh;
+          min-height: 25vh;
           .photo {
           }
           .title {

@@ -31,7 +31,8 @@ export const ExhibitPage = () => {
         dispatch(changeTime(timeTypes[timeParam]))
         dispatch(changeInstrument(instrumentTypes.exhibits))
 
-
+    }, [dataExhibit])
+    useEffect(() => {
         const contentContainer = document.querySelector('.content')
         setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
         setVerticalListResponsiveStyle(cardVerticalListResponsiveStyle(window.innerWidth))
@@ -46,8 +47,7 @@ export const ExhibitPage = () => {
         return () => {
             window?.removeEventListener('resize', handleContentResize)
         }
-
-    }, [dataExhibit])
+    }, [])
 
 
     const { isLoadingExhibits, fetchedExhibits } = useFetchAllExhibits(10, timeState, 10)
