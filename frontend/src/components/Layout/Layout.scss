@@ -26,9 +26,6 @@ main {
 
 footer {
   z-index: 100;
-  .footer-default {
-    width: 100%;
-  }
 
   background-color: black;
   position: fixed;
@@ -69,10 +66,7 @@ footer {
     }
     }
       footer {
-        .footer-default {
 
-          width: 100%;
-        }
     }
 
 }
@@ -99,9 +93,6 @@ footer {
       }
     }
     footer {
-      .footer-default {
-        width: 100%;
-      }
     }
 
   }
@@ -130,10 +121,6 @@ footer {
 
     }
     footer {
-      .footer-default {
-
-        width: 100%;
-      }
     }
 
 
@@ -155,10 +142,13 @@ footer {
   .layout {
     header {
       font-size: 14px;
-      .time-span, .instrument-span, .main {
+      .time-span, .instrument-span, #homeButton {
         display: none;
       }
-
+      #homeIconButton {
+        display: flex;
+        align-items: baseline;
+      }
     }
 
     .parent {
@@ -175,9 +165,7 @@ footer {
       }
     }
     footer {
-      .footer-default {
-        width: 100%;
-      }
+
     }
 
 

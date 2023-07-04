@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
-
 .footer-default {
+	width: 95vw;
 	display: flex;
 	justify-content: space-between;
 
@@ -25,7 +25,7 @@
 
 .footer-home {
 
-	//width: 100%;
+	width: 95vw;
 	//background-color: black;
 	display: flex;
 	flex-direction: row;
@@ -59,6 +59,7 @@
 }
 
 .footer-video {
+	width: 95vw;
 	display: flex;
 	justify-content: space-between;
 
@@ -77,5 +78,32 @@
 				color: #313131;
 			}
 		}
+	}
+}
+
+
+@media (max-width: 831px) {
+	$width: 90vw;
+	.footer-home {
+		width: $width;
+	}
+	.footer-default {
+		width: $width;
+	}
+	.footer-video {
+		width: $width;
+	}
+}
+
+@media (max-width: 473px) {
+	$width: 85vw;
+	.footer-home {
+		width: $width;
+	}
+	.footer-default {
+		width: $width;
+	}
+	.footer-video {
+		width: $width;
 	}
 }

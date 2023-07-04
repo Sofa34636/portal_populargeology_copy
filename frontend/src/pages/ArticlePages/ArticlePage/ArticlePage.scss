@@ -28,6 +28,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            min-height: 2em;
             h1 {
                 font-size: 2em;
                 line-height: 1.2em;
@@ -264,6 +265,7 @@
 
             .title {
                 h1 {
+                    font-size: 1.5em;
                 }
             }
 

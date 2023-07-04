@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import PublicRoundedIcon from '@mui/icons-material/PublicRounded';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link} from 'react-router-dom'
 import { historyOfEarth, Instrument, instrumentTypes, Time, timeTypes } from '../../types/timeline'
@@ -102,8 +103,11 @@ export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
           <nav className='menu'>
             <ul className='menu__list'>
               <li className='main'>
-                <Link to={'/'} className='menu__link no_select'>
+                <Link to={'/'} id='homeButton' className='menu__link no_select'>
                   Главная
+                </Link>
+                <Link to={'/'} id='homeIconButton' className='menu__link no_select'>
+                  <PublicRoundedIcon />
                 </Link>
                 <span className='separator no_select'>/</span>
               </li>

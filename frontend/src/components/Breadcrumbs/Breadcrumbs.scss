@@ -7,6 +7,9 @@
 .main {
 	display: flex;
 	align-items: center;
+	#homeIconButton {
+		display: none;
+	}
 }
 
 .current-time {
@@ -25,7 +28,6 @@ svg {
 
 .menu__list {
 	display: flex;
-	align-items: center;
 	align-items: center;
 }
 

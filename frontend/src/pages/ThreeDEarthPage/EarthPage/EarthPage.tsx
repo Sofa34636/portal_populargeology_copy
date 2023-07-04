@@ -82,9 +82,9 @@ export const  EarthPage = () => {
                     )
                   })
                 }
-                <div className='learn'>
-                  <Button className="learn-btn" onClick={learnMoreButtonClick}>Узнать больше</Button>
-                </div>
+                {/*<div className='learn'>*/}
+                {/*  <Button className="learn-btn" onClick={learnMoreButtonClick}>Узнать больше</Button>*/}
+                {/*</div>*/}
               </div>
 
             </Grid>
