@@ -15,8 +15,8 @@ export const  EarthMorePage = () => {
   return (
     <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'back'} headerDisplayStyle={'default'} breadCrumbsFirstCrumb={'Узнать больше'}>
       <div className="earth-more">
-          <img alt='earth-more__image' src={data.image_more}/>
-            <h1>{data.title}</h1>
+          <img alt='image' className='earth-more__image' src={data.image_more}/>
+            <h1 className='earth-more__title'>{data.title}</h1>
             <div className='earth-more__text'>
                 {
                     data?.text.split('\r\n').map((paragraph, index) => {

@@ -91,7 +91,7 @@ export const  EarthPage = () => {
             <Grid className="earth-page__right" item xs={6}>
               <>
                 {
-                  error ? <h5 className='error-earth'>Произошла ошибка при загрузке Земли</h5> :
+                  error ? <h5 className='error-earth'>Произошла ошибка при загрузке Земли!</h5> :
 
                 <Suspense fallback={<ProgressCircle/>}>
                     <Canvas>
