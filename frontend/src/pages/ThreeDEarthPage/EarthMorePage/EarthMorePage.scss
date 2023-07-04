@@ -1,0 +1,22 @@
+img {
+  width: 30%;
+  float: left;
+  margin-right: 18px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+
+.earth-more {
+  padding-top: 32px;
+
+  &__text {
+    text-wrap: revert;
+  }
+}

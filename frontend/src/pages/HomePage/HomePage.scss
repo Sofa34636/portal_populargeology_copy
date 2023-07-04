@@ -339,13 +339,16 @@
 		padding-bottom: 6px;
 	}
 
-	.content .learn {
+	.home-page__learn {
 		justify-content: center;
-
-		button {
-			width: 150px;
-			height: 30px;
+		a {
+			button {
+				width: 150px;
+				height: 30px;
+				white-space: nowrap;
+			}
 		}
+
 	}
 	.earth-time-dropdown__content {
 		min-width: 60px;

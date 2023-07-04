@@ -6,6 +6,8 @@ export interface IEarth {
   time: Time;
   time_ago: string;
   text: string;
+  text_more: string;
+  image_more: string;
   ambientMap: string;
   baseMap: string;
   cloudMap: string;

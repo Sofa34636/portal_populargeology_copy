@@ -29,7 +29,6 @@ export const BreadcrumbsComponent: FC<IBreadcrumbsComponentProps> = (props) => {
   const [ isEarthTimePicked, setIsEarthTimePicked] = useState(false)
   const [ isEarthOrReliefPicked, setIsEarthOrReliefPicked] = useState(false)
 
-
   const [currentTimes, setCurrentTimes] = useState<Time[]>(
     Object.values(timeTypes).slice(0,4).filter((i) => i != time)
   )

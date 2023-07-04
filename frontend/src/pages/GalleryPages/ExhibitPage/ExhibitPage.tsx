@@ -32,6 +32,7 @@ export const ExhibitPage = () => {
         dispatch(changeInstrument(instrumentTypes.exhibits))
 
     }, [dataExhibit])
+
     useEffect(() => {
         const contentContainer = document.querySelector('.content')
         setContentSize({width: contentContainer?.clientWidth, height: contentContainer?.clientHeight})
