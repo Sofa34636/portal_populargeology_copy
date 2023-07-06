@@ -14,7 +14,7 @@
 			max-height: 56vh;
 			overflow: auto;
 			p {
-				margin-right: 50px;
+				word-break: normal;
 			}
 			button {
 				margin-top: 5px;
@@ -32,7 +32,10 @@
 				width: 150px;
 				height: 25px;
 				font-size: 10px;
-				border: 1px solid $white
+				border: 1px solid $white;
+				&:hover {
+					border: 1px solid $orange;
+				}
 			}
 		}
 	}
@@ -97,4 +100,15 @@ p {
 	position: absolute;
 	top: 50%;
 	left: 65%;
+}
+
+
+@media (max-width: 471px) {
+	.earth-page {
+		&__left {
+			.learn {
+				justify-content: flex-start;
+			}
+		}
+	}
 }

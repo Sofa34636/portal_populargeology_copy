@@ -9,7 +9,7 @@ import {
 import {pageRedirect} from "../../pageRedirect";
 import Button from "@mui/material/Button";
 import {useNavigate, useParams} from "react-router-dom";
-import './ArticleScientificPublicationsPagePage.scss'
+import './ArticleScientificPublicationsPage.scss'
 import {timeLineSlice} from "../../../store/reducers/timeLineSlice";
 import {instrumentTypes, timeTypes} from "../../../types/timeline";
 
@@ -30,7 +30,7 @@ export const ArticleScientificPublicationsPage = () => {
 
 
     return(
-        <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'default'} headerDisplayStyle={'default'}>
+        <Layout time={timeState} instrument={instrumentState} footerDisplayStyle={'hide'} headerDisplayStyle={'default'}>
             <div className='scientific_publications'>
                 <Grid className="scientific_publications__parent" container spacing={0}>
                     <Grid className="scientific_publications__parent--leftContainer" item sm={0} md={4}>

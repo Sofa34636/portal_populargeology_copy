@@ -5,6 +5,8 @@
   //min-width: 100%;
 
   &__item {
+    display: flex;
+    flex-direction: row;
     .card_preview {
       width: 300px;
     }

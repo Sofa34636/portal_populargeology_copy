@@ -41,7 +41,9 @@
 
 @media (max-width: 991px) {
   .scientific_publications {
+
     &__parent {
+      padding-top: 25px;
       &--leftContainer {
         display: none;
       }

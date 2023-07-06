@@ -4,7 +4,7 @@ export const getApiUrl = () =>
     .filter((e, i) => i != 2)
 
     // production
-      // .join(':') + ':8000/api';
+      .join(':') + ':8000/api';
 
     // deploy
-      .join(':') + '/api';
+    //   .join(':') + '/api';
