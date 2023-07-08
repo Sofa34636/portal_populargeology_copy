@@ -56,6 +56,9 @@ export const Footer: React.FC<IFooterProps> = (props) => {
     } else {
        prevTimeIndex = currentTimeIndex ? currentTimeIndex - 1 : currentTimeIndex;
     }
+    if (prevTimeIndex === 3) {
+        prevTimeIndex = 2
+    }
     const newTime = Object.values(timeTypes)[prevTimeIndex]
 
     dispatch(changeTime(newTime));
@@ -63,10 +66,15 @@ export const Footer: React.FC<IFooterProps> = (props) => {
   };
 
   const nextTime = () => {
-    const nextTimeIndex =
-        currentTimeIndex === Object.values(timeTypes).length - 1
-          ? currentTimeIndex
-          : currentTimeIndex + 1;
+    let nextTimeIndex;
+        if (currentTimeIndex === Object.values(timeTypes).length - 1) {
+            nextTimeIndex = currentTimeIndex
+        } else if (currentTimeIndex === 2) {
+            nextTimeIndex = 4
+        } else {
+            nextTimeIndex = currentTimeIndex + 1
+        }
+
     const newTime = Object.values(timeTypes)[nextTimeIndex]
 
     dispatch(changeTime(newTime));
