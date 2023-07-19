@@ -97,7 +97,9 @@ export const useFetchAllArticles = (groupOf = 6, time: Time, limit = 0) => {
 
 
     if (error || isLoading) {
-        isLoading ? console.log('Loading...') : console.log(error)
+        if (error) {
+            console.log(error)
+        }
     }
     else {
         fetchedArticles = timeIsEarth(time) ? fillEarthArticleList(data, groupOf) : fillArticleList(data, groupOf)

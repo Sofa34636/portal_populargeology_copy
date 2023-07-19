@@ -10,6 +10,10 @@ python manage.py makemigrations
 python manage.py makemigrations portal_api
 python manage.py migrate
 python manage.py createsuperuser
+
+if DEBUG == False:
+    python manage.py collectstatic
+
 python manage.py runserver
 ```
 

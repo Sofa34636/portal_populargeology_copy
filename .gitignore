@@ -8,6 +8,7 @@ coverage
 public
 
 # misc
+venv
 env
 .env
 .DS_Store
