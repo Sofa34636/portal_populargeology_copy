@@ -19,7 +19,6 @@ interface IFooterProps {
 export const Footer: React.FC<IFooterProps> = (props) => {
 
   const { videoTimeAgo, footerDisplayStyle } = props;
-  console.log(videoTimeAgo)
   const { time: timeState, instrument: instrumentState } = useAppSelector(
     (state) => state.timeLineReducer,
   );
