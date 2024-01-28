@@ -12,11 +12,15 @@ export const ArticleSourcesMenu: React.FC<{reference: string; magazine: string}>
     const open = Boolean(anchorEl);
 
 
-    const linkifyString = (link: string) => {
-        if (link?.indexOf('https://') !== 0 && link?.indexOf('http://') !== 0)
-            return `https://${link}`
-        return link
-    }
+    // const linkifyString = (link: string) => {
+    //     let linkString = link
+    //     if (link?.indexOf('<a>') !== 0 || link?.indexOf('</a>'))
+    //         linkString = `<a>${linkString}</a>`
+    //     if (link?.indexOf('https://') !== 0 && link?.indexOf('http://') !== 0)
+    //         return `https://${link}`
+    //
+    //     return link
+    // }
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);

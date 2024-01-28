@@ -1,18 +1,37 @@
 import {Accordion, AccordionBody, AccordionHeader, AccordionItem} from "react-headless-accordion";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import React from "react";
+import React, {useState} from "react";
 import {useAppSelector} from "../../../../hooks/redux";
 import {getKeyByValue} from "../../../../pages/pageRedirect";
 import {timeTypes} from "../../../../types/timeline";
 import {earthSciPub_Hierarchy} from "../../../../types/scientificPublications";
+import {useFetchArticlesByPeriod} from "../../../../hooks/useFetchArticlesByPeriod"
 import Button from "@mui/material/Button";
 
 
 export const ArticleScientificPublicationsHierarchyMenu = () => {
+
+    const [articles, setArticles] = useState<{title: string, url: string}[]>([])
+
     const { time: timeState } = useAppSelector((state) => state.timeLineReducer);
 
     const hierarchy = earthSciPub_Hierarchy[getKeyByValue(timeTypes, timeState)]
+
+    const handleFetchArticles = (layerName: string) => {
+        const response = useFetchArticlesByPeriod(layerName).then(resp => setArticles(resp.data)).catch(resp => console.log(resp))
+    }
+
+    const Article = (title, url, index) => {
+        return (
+          <div style={{
+              display: "flex",
+              flexDirection: "row",}}>
+              <h2>{index}</h2>
+              <a href={url} target="_blank">{title}</a>
+          </div>
+        )
+    }
 
     const Layer = (props: { layerName: string, layerNumber: number, children?: JSX.Element | JSX.Element[] }) => {
 
@@ -22,14 +41,24 @@ export const ArticleScientificPublicationsHierarchyMenu = () => {
                     <>
                         <AccordionHeader className={`LayerButton Layer${props.layerNumber}`}>
                             <h3>{props.layerName}</h3>
-                            {open ? <ExpandLessIcon/> : <ExpandMoreIcon/>}
+                            {open ? <ExpandLessIcon/> : <ExpandMoreIcon onClick={() => setArticles([])}/>}
                         </AccordionHeader>
 
                         <AccordionBody className={`LayerBody Layer${props.layerNumber}`}>
-                            <div>
-                                <Button className={`LayerDownloadButton Layer${props.layerNumber}`}>
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                minHeight: "10rem",
+                                overflowY: "auto"}}>
+                                {articles.length !== 0 ?
+                                  articles.map((value, index) => {
+                                    return (
+                                      <Article title={value.title} url={value.url} index={index} key={index.toString()}/>
+                                    )
+                                }) :
+                                <Button onClick={() => handleFetchArticles(props.layerName)} className={`LayerDownloadButton Layer${props.layerNumber}`}>
                                     Загрузить публикации
-                                </Button>
+                                </Button>}
                             </div>
                             <div>
                                 {props.children}
