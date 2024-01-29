@@ -68,3 +68,11 @@ class ExhibitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exhibit
         fields = '__all__'
+
+class ExhibitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exhibit
+        fields = '__all__'
+
+class PeriodArticlesSerializer(serializers.Serializer):
+    period = serializers.CharField(required=True)

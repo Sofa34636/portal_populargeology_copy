@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from portal_api.views import ArticleView, ExhibitView, VideoView, EarthView, LocationView, ReconstructionView
+from portal_api.views import ArticleView, ExhibitView, VideoView, EarthView, LocationView, ReconstructionView, PeriodArticlesView
 from rest_framework.routers import DefaultRouter, SimpleRouter
 from django.urls import re_path
 from django.views.static import serve
@@ -17,9 +17,13 @@ router.register('earth', EarthView, basename='earth_view')
 router.register('location', LocationView, basename='location_view')
 router.register('reconstruction', ReconstructionView, basename='reconstruction_view')
 
+api_urlpatterns = router.urls + [
+    path('periodArticles/', PeriodArticlesView.as_view(), name='periodArticles')
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/', include(api_urlpatterns)),
 ]
 
 if (settings.DEBUG):

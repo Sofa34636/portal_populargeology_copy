@@ -6,29 +6,31 @@ import {useAppSelector} from "../../../../hooks/redux";
 import {getKeyByValue} from "../../../../pages/pageRedirect";
 import {timeTypes} from "../../../../types/timeline";
 import {earthSciPub_Hierarchy} from "../../../../types/scientificPublications";
-import {useFetchArticlesByPeriod} from "../../../../hooks/useFetchArticlesByPeriod"
+import {fetchArticlesByPeriod} from "../../../../api/fetchArticlesByPeriod"
 import Button from "@mui/material/Button";
+import {IPeriodArticle} from "../../../../types/IPeriodArticle";
 
 
 export const ArticleScientificPublicationsHierarchyMenu = () => {
 
-    const [articles, setArticles] = useState<{title: string, url: string}[]>([])
+    const [articles, setArticles] = useState<IPeriodArticle[]>([])
 
     const { time: timeState } = useAppSelector((state) => state.timeLineReducer);
 
     const hierarchy = earthSciPub_Hierarchy[getKeyByValue(timeTypes, timeState)]
 
     const handleFetchArticles = (layerName: string) => {
-        const response = useFetchArticlesByPeriod(layerName).then(resp => setArticles(resp.data)).catch(resp => console.log(resp))
+        const response = fetchArticlesByPeriod(layerName).then(resp => setArticles(Object.values(resp.data)))
     }
 
-    const Article = (title, url, index) => {
+    const Article = ({title, url, index}: {title: string, url: string, index: number}) => {
         return (
           <div style={{
               display: "flex",
-              flexDirection: "row",}}>
+              flexDirection: "row",
+              gap: "2rem"}}>
               <h2>{index}</h2>
-              <a href={url} target="_blank">{title}</a>
+              <a href={url} target="_blank" rel="noreferrer">{title}</a>
           </div>
         )
     }
@@ -48,17 +50,19 @@ export const ArticleScientificPublicationsHierarchyMenu = () => {
                             <div style={{
                                 display: "flex",
                                 flexDirection: "column",
-                                minHeight: "10rem",
+                                minHeight: articles.length === 0 ? "1rem" : "10rem",
                                 overflowY: "auto"}}>
-                                {articles.length !== 0 ?
-                                  articles.map((value, index) => {
-                                    return (
-                                      <Article title={value.title} url={value.url} index={index} key={index.toString()}/>
-                                    )
-                                }) :
-                                <Button onClick={() => handleFetchArticles(props.layerName)} className={`LayerDownloadButton Layer${props.layerNumber}`}>
-                                    Загрузить публикации
-                                </Button>}
+                                {
+                                    articles.length !== 0 ?
+                                        articles.map((value, index) => {
+                                            return (
+                                              <Article title={value.title} url={value.url} index={index + 1} key={index.toString()}/>
+                                            )
+                                        })  :
+                                            <Button onClick={() => handleFetchArticles(props.layerName)} className={`LayerDownloadButton Layer${props.layerNumber}`}>
+                                                Загрузить публикации
+                                            </Button>
+                                }
                             </div>
                             <div>
                                 {props.children}

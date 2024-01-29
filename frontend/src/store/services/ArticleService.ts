@@ -23,4 +23,4 @@ export const articleAPI = createApi({
   }),
 });
 
-export const { useFetchAllArticlesQuery, useGetArticleByIdQuery} = articleAPI;
+export const { useFetchAllArticlesQuery, useGetArticleByIdQuery } = articleAPI;
