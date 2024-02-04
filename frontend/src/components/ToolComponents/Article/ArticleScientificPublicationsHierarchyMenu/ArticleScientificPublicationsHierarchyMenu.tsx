@@ -41,28 +41,46 @@ export const ArticleScientificPublicationsHierarchyMenu = () => {
             <AccordionItem>
                 {({open}) => (
                     <>
-                        <AccordionHeader className={`LayerButton Layer${props.layerNumber}`}>
+                        <AccordionHeader className={`LayerButton Layer${props.layerNumber}`} onClick={() => {
+                            if (open) {
+                                setArticles([])
+                            }
+                        }}>
                             <h3>{props.layerName}</h3>
-                            {open ? <ExpandLessIcon/> : <ExpandMoreIcon onClick={() => setArticles([])}/>}
+                            {open ?
+                                <ExpandLessIcon/>
+                                :
+                                <ExpandMoreIcon/>
+                            }
                         </AccordionHeader>
 
                         <AccordionBody className={`LayerBody Layer${props.layerNumber}`}>
-                            <div style={{
+                            <div id={`layer${props.layerNumber}`} style={{
                                 display: "flex",
                                 flexDirection: "column",
-                                minHeight: articles.length === 0 ? "1rem" : "10rem",
+                                minHeight: articles.length === 0 ? "3rem" : "20rem",
+                                gap: "0.5rem",
+                                maxHeight: "20rem",
                                 overflowY: "auto"}}>
                                 {
-                                    articles.length !== 0 ?
-                                        articles.map((value, index) => {
-                                            return (
-                                              <Article title={value.title} url={value.url} index={index + 1} key={index.toString()}/>
-                                            )
-                                        })  :
-                                            <Button onClick={() => handleFetchArticles(props.layerName)} className={`LayerDownloadButton Layer${props.layerNumber}`}>
-                                                Загрузить публикации
-                                            </Button>
-                                }
+                                    articles?.map((value, index) => {
+                                    return (
+                                      <Article title={value.title} url={value.url} index={index + 1} key={index.toString()}/>
+                                    )
+                                })}
+                                <Button
+                                    style={{
+                                        display: articles.length === 0 ? "flex" : "none",
+                                        justifyContent: "left",
+                                        alignItems: "center",
+                                        height: "100%",
+                                    }}
+                                    onClick={() => {
+                                        handleFetchArticles(props.layerName)
+                                    }}
+                                    className={`LayerDownloadButton Layer${props.layerNumber}`}>
+                                    Загрузить публикации
+                                </Button>
                             </div>
                             <div>
                                 {props.children}
