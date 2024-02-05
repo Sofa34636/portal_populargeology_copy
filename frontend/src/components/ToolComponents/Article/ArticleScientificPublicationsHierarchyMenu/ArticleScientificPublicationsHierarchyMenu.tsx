@@ -31,7 +31,7 @@ export const ArticleScientificPublicationsHierarchyMenu = () => {
               gap: "1rem"}}>
               <h2 style={{
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "left",
                   minWidth: "1rem",
               }}>{index}</h2>
               <a href={url} target="_blank" rel="noreferrer">{title}</a>
