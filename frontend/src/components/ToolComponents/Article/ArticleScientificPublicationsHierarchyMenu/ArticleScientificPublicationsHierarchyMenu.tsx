@@ -28,8 +28,12 @@ export const ArticleScientificPublicationsHierarchyMenu = () => {
           <div style={{
               display: "flex",
               flexDirection: "row",
-              gap: "2rem"}}>
-              <h2>{index}</h2>
+              gap: "1rem"}}>
+              <h2 style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  minWidth: "1rem",
+              }}>{index}</h2>
               <a href={url} target="_blank" rel="noreferrer">{title}</a>
           </div>
         )
@@ -58,7 +62,7 @@ export const ArticleScientificPublicationsHierarchyMenu = () => {
                             <div id={`layer${props.layerNumber}`} style={{
                                 display: "flex",
                                 flexDirection: "column",
-                                minHeight: articles.length === 0 ? "3rem" : "20rem",
+                                minHeight: articles.length === 0 ? "1rem" : "20rem",
                                 gap: "0.5rem",
                                 maxHeight: "20rem",
                                 overflowY: "auto"}}>
@@ -72,8 +76,6 @@ export const ArticleScientificPublicationsHierarchyMenu = () => {
                                     style={{
                                         display: articles.length === 0 ? "flex" : "none",
                                         justifyContent: "left",
-                                        alignItems: "center",
-                                        height: "100%",
                                     }}
                                     onClick={() => {
                                         handleFetchArticles(props.layerName)
