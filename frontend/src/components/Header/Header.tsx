@@ -28,7 +28,7 @@ export const Header: FC<IHeaderProps> = (props)  => {
     case 'home':
       return (
           <div className="title no_select">
-            <h1>история вселенной</h1>
+            <h1>История Земли</h1>
           </div>
       );
   }

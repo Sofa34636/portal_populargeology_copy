@@ -7,7 +7,7 @@ def execute_script(period):
     resultName = "results.json"
 
     wd = os.getcwd()
-#     subprocess.call(["php", "t2_json_out.php", period])
+    subprocess.call(["python3", "t2_json_out.py", period])
     if (os.path.exists(resultName)):
         with open(resultName, 'r') as result_file:
             result_data = json.load(result_file)

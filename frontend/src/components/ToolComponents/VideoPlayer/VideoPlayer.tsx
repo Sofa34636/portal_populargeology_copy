@@ -220,7 +220,7 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
           url={videoUrl}
           playing={videoState.playing}
           muted={false}
-          loop={true}
+          loop={false}
           onPause={handlePause}
           onPlay={handlePlay}
           onProgress={handleProgress}

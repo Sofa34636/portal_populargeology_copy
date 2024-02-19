@@ -15,6 +15,20 @@
   }
 }
 
+.content {
+  z-index: 10;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.max-w-max {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+
 header {
   z-index: 100;
 }

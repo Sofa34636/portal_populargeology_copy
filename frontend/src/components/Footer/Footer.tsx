@@ -103,13 +103,13 @@ export const Footer: React.FC<IFooterProps> = (props) => {
       return (
         <div className={"footer-home"}>
           <Button>
-           <a href="https://populargeology.ru/about/#">О проекте</a>
+           <a href="https://populargeology.ru/main/about2.html">О проекте</a>
          </Button>
          <Button>
-           <a href="https://populargeology.ru/about/#">Участники</a>
+           <a href="https://populargeology.ru/main/copyrights2.html#participants">Участники</a>
          </Button>
          <Button>
-           <a href="https://populargeology.ru/istochniki/">Источники</a>
+           <a href="https://populargeology.ru/main/copyrights2.html">Источники</a>
          </Button>
         </div>
     );

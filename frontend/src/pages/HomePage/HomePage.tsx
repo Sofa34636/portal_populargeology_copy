@@ -113,7 +113,7 @@ export const HomePage = () => {
         <div className="home-page__learn">
           <Link to={pageRedirect(timeState, instrumentState)}>
             <Button variant="outlined">
-              Изучать Вселенную
+              Изучать историю Земли
             </Button>
           </Link>
         </div>
