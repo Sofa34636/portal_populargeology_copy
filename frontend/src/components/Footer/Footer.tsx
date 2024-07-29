@@ -7,9 +7,10 @@ import { instrumentTypes, timeTypes } from '../../types/timeline';
 
 import './Footer.scss';
 
-import { useNavigate } from 'react-router-dom'
+import { NavLink, Route, Router, Routes, useNavigate } from 'react-router-dom'
 import { pageRedirect } from '../../pages/pageRedirect'
 import { footerDisplayStyles } from '../../types/layoutStyles'
+import AboutTheProject from '../AboutTheProject/AboutTheProject';
 
 interface IFooterProps {
   footerDisplayStyle: footerDisplayStyles
@@ -101,17 +102,47 @@ export const Footer: React.FC<IFooterProps> = (props) => {
 
     case 'home':
       return (
-        <div className={"footer-home"}>
-          <Button>
-           <a href="https://populargeology.ru/main/about2.html">О проекте</a>
-         </Button>
-         <Button>
-           <a href="https://populargeology.ru/main/copyrights2.html#participants">Участники</a>
-         </Button>
-         <Button>
-           <a href="https://populargeology.ru/main/copyrights2.html">Источники</a>
-         </Button>
-        </div>
+        <div className="footer-home">
+      {location.pathname !== '/aboutTheProject' ? (
+        <Button>
+          <NavLink to="/aboutTheProject" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            О проекте
+          </NavLink>
+        </Button>
+      ) : (
+        <Button>
+          <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Главная
+          </NavLink>
+        </Button>
+      )}
+      {location.pathname !== '/participants' ? (
+        <Button>
+          <NavLink to="/participants" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Участники
+          </NavLink>
+        </Button>
+      ) : (
+        <Button>
+          <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Главная
+          </NavLink>
+        </Button>
+      )}
+      {location.pathname !== '/sources' ? (
+        <Button>
+          <NavLink to="/sources" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Источники
+          </NavLink>
+        </Button>
+      ) : (
+        <Button>
+          <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : ''}>
+            Главная
+          </NavLink>
+        </Button>
+      )}
+    </div>
     );
 
     case 'back':

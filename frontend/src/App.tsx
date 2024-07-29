@@ -17,6 +17,9 @@ import {
 import { EarthMorePage } from './pages/ThreeDEarthPage/EarthMorePage/EarthMorePage'
 import {ReconstructionListPage} from "./pages/ReconstructionPages/ReconstructionListPage/ReconstructionListPage";
 import {ReconstructionPage} from "./pages/ReconstructionPages/ReconstructionPage/ReconstructionPage";
+import AboutTheProject from './components/AboutTheProject/AboutTheProject';
+import Sources from './components/Sources/Sources';
+import Participants from './components/Participants/Participants';
 
 export default function App() {
 
@@ -43,7 +46,11 @@ export default function App() {
           {routes.map((obj, i) => {
             return <Route path={obj.path} element={obj.element} key={i} />;
           })}
+          <Route path='/aboutTheProject' Component={AboutTheProject} />
+          <Route path='/sources' Component={Sources} />
+          <Route path='/participants' Component={Participants} />
         </Routes>
+        
       </div>
     </div>
   );
