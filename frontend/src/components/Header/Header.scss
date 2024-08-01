@@ -1,12 +1,19 @@
 .title {
   padding-bottom: 48px;
   text-transform: uppercase;
+}
 
-  h1 {
-    font-family: RSLight, serif;
-    font-size: 32px;
-    font-weight: 250;
-    line-height: 60px;
+.title h1 {
+  font-family: RSLight, serif;
+  font-size: 32px;
+  font-weight: 250;
+  line-height: 60px;
+}
+
+@media (max-width: 1000px) {
+  .title h1 {
+    font-size: 20px;
+    line-height: 20px;
   }
 }
 

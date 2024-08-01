@@ -67,19 +67,6 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
     }
   };
 
-  /* 
-  const handlePlayBack = () => {
-  if (playerRef.current) {
-    // Получаем текущее время воспроизведения
-    const currentTime = playerRef.current.getCurrentTime();
-    // Вычисляем новое время, перематывая на 5 секунд назад, но не меньше 0
-    const newTime = Math.max(currentTime - 5, 0);
-    // Перематываем видео на новое время
-    playerRef.current.seekTo(newTime, 'seconds');
-  }
-};
-  */
-
   const handlePlayForward = () => {
     if (playerRef.current) {
 
@@ -89,20 +76,7 @@ export const VideoPlayer: FC<IVideoPlayerProps> = (props) => {
     }
   };
 
-  /*
-  const handlePlayForward = () => {
-  if (playerRef.current) {
-    // Получаем текущее время воспроизведения
-    const currentTime = playerRef.current.getCurrentTime();
-    // Получаем общую длительность видео
-    const duration = playerRef.current.getDuration();
-    // Вычисляем новое время, перематывая на 5 секунд вперед, но не больше длительности видео
-    const newTime = Math.min(currentTime + 5, duration);
-    // Перематываем видео на новое время
-    playerRef.current.seekTo(newTime, 'seconds');
-  }
-};
-  */
+
 
   const handleProgress = (progress: { playedSeconds: number }) => {
     setCurrentTime(progress.playedSeconds);
